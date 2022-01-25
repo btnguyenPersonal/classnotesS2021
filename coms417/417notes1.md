@@ -139,3 +139,5 @@ ___
 #### Jacoco
 - Uses JUnit for testing
 - Instruments classes to provide code coverage
+- works based on a `pom.xml`
+- `mvn compiler = 1.8`

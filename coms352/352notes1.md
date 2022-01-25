@@ -9,7 +9,6 @@ Each process can get virtual CPUs
 Memory Virtualisation - programs can write anywhere in the memory
 
 ## Program vs Process
-
 - _program_ is instructions stored on the disk &rarr; an executable file
 - _process_ is a running program
 
@@ -28,7 +27,6 @@ Memory Virtualisation - programs can write anywhere in the memory
 - __Stack and Frame Pointer__ &rarr; what are the parameters of functions?
 
 ## Scheduler
-
 - The scheduler is part of the OS
 - Job is to make sure that only one program is running at once
 - Context Switch
@@ -38,11 +36,9 @@ Memory Virtualisation - programs can write anywhere in the memory
   - When a process is deleted it goes into zombie state, because it may need the exit id
 
 ## POSIX (Portable Operating System Interface)
-
 Standard programming interface provided by UNIX like system
 
 ## `fork() //Process Creation`
-
 ```
 pid_t fort()
 ```
@@ -80,7 +76,6 @@ Scheduler picks which parent or child process goes first
 ___Note___: Calling `fork()` twice will create 4 processes
 
 ## `wait() // Wait for Child`
-
 ```
 pid_t wait(int *wstatus)
 ```
@@ -94,10 +89,9 @@ ___
 ___
 
 - On Failure
-  - Returns pid of the child process that terminated
+
 
 ## `exec() // Change the Program`
-
 ```
 int exec(const char *pathname, char *const argv[]);
 ```
@@ -111,9 +105,7 @@ int exec(const char *pathname, char *const argv[]);
   ```
 
 # Interprocess Communication
-
 #### `||||||||||||||||||||||||||PIPES||||||||||||||||||||||||||`
-
 ```
 status () {
   echo -n " $(amixer | grep 'Front Left:' | awk '{print $5}') \
@@ -123,7 +115,6 @@ status () {
 ```
 
 ## `pipe() // Connect two processes`
-
 ```
 int pipe(int p[2]);
 ```
@@ -142,7 +133,6 @@ ___
 ___
 
 ## Limited Direct Execution
-
 __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
 #### How do processes share time?
@@ -153,7 +143,6 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
   - Hardware provides interrupts, kernel mode, and user mode to keep the user in control
 
 ## Direct Execution
-
 - Lets the code do everything on the computer
 - CPU has bit that indicates if in _user mode_ or _kernel mode_
   - Cannot read/write outside of address space bounds
@@ -162,11 +151,9 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 - Normal processes only execute in user mode, the OS executes in kernel mode
 
 ## Process mode
-
 - Protects the computer from altering sensitive data
 
 ## System Call
-
-Problem: how can users perform privileged operations?
+- Problem: how can users perform privileged operations?
 
 - `sudo` everything
