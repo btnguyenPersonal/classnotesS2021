@@ -62,7 +62,7 @@ B
 
 ___
 
-- On success
+- On Success
 
   - Both parent and child continue execution at the point of return from `fork()`
   - `return pid of the child process` to the parent process
@@ -70,7 +70,7 @@ ___
 
 ___
 
-- On failure:
+- On Failure:
   - Does not create child and `returns -1`
 
 ___
@@ -91,3 +91,82 @@ ___
 
 - On Success
   - Returns pid of the child process that terminated
+___
+
+- On Failure
+  - Returns pid of the child process that terminated
+
+## `exec() // Change the Program`
+
+```
+int exec(const char *pathname, char *const argv[]);
+```
+
+- Replaces the current program with a new one, command line args are passed in argv
+
+- example usage:
+  ```
+  char *argv[] = {"wc", "README",0};
+  exec('wc", argc);
+  ```
+
+# Interprocess Communication
+
+#### `||||||||||||||||||||||||||PIPES||||||||||||||||||||||||||`
+
+```
+status () {
+  echo -n " $(amixer | grep 'Front Left:' | awk '{print $5}') \
+  $(date '+%m/%d/%Y ')$(date '+%r' | awk '{print $1}' | \
+  sed s/:[0-9][0-9]$//) $(date '+%r' | awk '{print $2}') "
+}
+```
+
+## `pipe() // Connect two processes`
+
+```
+int pipe(int p[2]);
+```
+
+___
+
+- On Success
+  - New file descriptor points to source of provided file descriptor
+  - Returns new file descriptor
+
+___
+
+- On Failure
+  - Returns -1
+
+___
+
+## Limited Direct Execution
+
+__Time-sharing__ &rarr; each process can share the CPU so each can make progress
+
+#### How do processes share time?
+  - multiprogramming - when a process waits for I/O, the OS can have another take of the CPU
+  - multitasking - each process gets a time-slice, a time limit before the next process gets to execute on the CPU
+
+#### How does the OS keep control?
+  - Hardware provides interrupts, kernel mode, and user mode to keep the user in control
+
+## Direct Execution
+
+- Lets the code do everything on the computer
+- CPU has bit that indicates if in _user mode_ or _kernel mode_
+  - Cannot read/write outside of address space bounds
+  - Cannot read/write I/O devices
+- When in kernel mode, all instructions allowed
+- Normal processes only execute in user mode, the OS executes in kernel mode
+
+## Process mode
+
+- Protects the computer from altering sensitive data
+
+## System Call
+
+Problem: how can users perform privileged operations?
+
+- `sudo` everything

@@ -25,11 +25,11 @@ ___
 
 - __Planning__: Planning for next solution
 
-    Turing Test: answers indistinguishable from human
+  Turing Test: answers indistinguishable from human
 
-    In AI, there are many uncertainties
+  In AI, there are many uncertainties
 
-    Big Difference of AI in _theory_ and in _practice_
+  Big Difference of AI in _theory_ and in _practice_
 
 ## A Brief History
 
@@ -63,7 +63,7 @@ ___
 - Performable actions
 - Perceptual sequence
 
-    Rational Agents are expected to __maximize__ the performance metric
+  Rational Agents are expected to __maximize__ the performance metric
 
 ### Omniscience vs Rationality
 
@@ -79,31 +79,31 @@ ___
 
 ##### PEAS
 - `P`erformance measure
-    - Save
-    - Fast
-    - Legal
-    - Comfortable trip
-    - Maximize Profits
-    - Minimize Impact on other Drivers
+  - Save
+  - Fast
+  - Legal
+  - Comfortable trip
+  - Maximize Profits
+  - Minimize Impact on other Drivers
 - `E`nvironment of the agent
-    - Roads
-    - Traffic
-    - Police
-    - Pedestrians
-    - Weather
+  - Roads
+  - Traffic
+  - Police
+  - Pedestrians
+  - Weather
 - agent's `A`ctuators and `S`ensors
-    - Steering
-    - Accelerator
-    - Brake
-    - Camera
-    - Back Sensors
+  - Steering
+  - Accelerator
+  - Brake
+  - Camera
+  - Back Sensors
 
 ### Fully Observable vs Partially Observable
 
 - Chess &rarr; _Fully_ Observable
-    - can see everything
+  - can see everything
 - Poker &rarr; _Partially_ Observable
-    - cannot see everything
+  - cannot see everything
 
 ### Dynamic vs Semi-Dynamic vs Static
 
@@ -119,20 +119,90 @@ ___
 ## Structure of Agents
 
 - Job of AI is to design an agent program that will
-    - perceptions &rarr; actions
+  - perceptions &rarr; actions
 
 ### Basic Agent Types
 
 - Simple reflex agents
-    - select actions based on current perceptions, and ignore perception history
-    - usually reduces to `if`, `else if`, `else` statements
-    - never improves on past mistakes
+  - select actions based on current perceptions, and ignore perception history
+  - usually reduces to `if`, `else if`, `else` statements
+  - never improves on past mistakes
 - Model-based reflex agents
-    - maintains some internal state of the environment
-    - usually keeps track with features
-    - also reduces to `if`, `else if`, `else` statements, but also will check the environment state
+  - maintains some internal state of the environment
+  - usually keeps track with features
+  - also reduces to `if`, `else if`, `else` statements, but also will check the environment state
 - Goal-based agents
-    - will take the future into account
-    - will try to predict the future
+  - will take the future into account
+  - will try to predict the future
 - Utility-based agents
-    - will evaluate current performance, and will try to learn from it
+  - will evaluate current performance, and will try to learn from it
+
+## Problem Solving via Search
+  - Four-Phase Problem Solving
+    ![](RomaniaShortestPath.png)
+    - Goal formulation
+    - Problem formulation
+      - states: cities
+      - action: travel from one city to another city
+    - Search
+      - State Space
+        - The whole graph
+      - Initial State
+        - Arad
+      - Goal State
+        - Bucharest
+      - Actions
+        - `[toZerind, toSibiu, toTimisoara]`
+      - Transition model
+        - `RESULT(Arad, ToZerind) = Zerind`
+      - Action cost function
+        - cost of applying action a in state s to reach s'
+      - Solution inital state &rarr; goal state
+    - Execution
+
+## Vacuum World
+  ![](./VacuumWorld.png)
+  - Actions: Suck, Left, Right
+  - Goal: every cell is clean
+  - Cost 1 for each action
+
+## Knuth's Conjecture
+  ![](./KnuthConj.png)
+  - Any integer > 4 can be reached from 4 via a sequence of square root, floor and factorial operations
+  - States: positive real numbers
+  - Initial state: 4
+  - Goal state: the desired integer > 4
+  - Actions: sqrt, floor, or factorial operation
+  - Action Cost: 1
+
+#### Vacuum vs Knuth
+  - Vacuum has _finite_ amount of states, so it can be completely solved
+  - Knuth has _infinite_ amount of states, so DFS will completely fail
+
+## Tree Search
+  ![](./TreeSearchFrontier.png)
+  - Different search algorithms just choose which frontier node to expand first
+    - Best First &rarr; uses an evaluation function to expand closest to goal
+    - Depth First &rarr; keeps expanding one until it can't
+    - Breadth First &rarr; goes down in levels
+      - __Uninformed Search__ &rarr; no clue about how close a state is to the goal
+      - Always find a solution with a minimum number of actions
+      - ___Very___ high memory issues and exponential time complexity
+
+#### Queues
+  - Priority queue pops the node with min cost
+  - A FIFO queue pops the first added node (used in BFS)
+  - A LIFO queue pops the most recently added node (used in DFS)
+
+### Performance Measures:
+  - Completeness &rarr; Is the algorithm guaranteed to find a solution whenever one exists, and to report failure otherwise?
+    - State space may be infinite!
+  - Cost optimality &rarr; Does it find a solution with the lowest path cost of all solutions?
+  - Time complexity &rarr; Physical time or the number of states/actions to get to desired result
+  - Space complexity &rarr; Memory needed for the search
+    - |V| + |E|
+  - Complexity of a problem is measured in:
+    - d: _depth_ number of actions in the optimal solution
+    - m: _maximum number of actions_ in any path
+    - b: _branching factor_ number of successors of a node
+
