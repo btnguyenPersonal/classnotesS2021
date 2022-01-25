@@ -22,6 +22,8 @@ ER models: Thing or a real-world object distinguishable from other objects
 
 Key: A minimal set of attributes whose value together are distinct for each individual entity for all the entities in the same entity set
 
+Keys are underlined
+
 Relationship: Association among two or more entities
 
 Relationship Set: Each supply relationship is uniquely identified by sid, pid, and jid
@@ -38,3 +40,7 @@ Key Constraints
 Participation Constraints
 - __Every entity must participate__ in the entity set
 - &rarr; __&larr;__
+
+Weak Entity Set
+  - A partial key has a dashed underline below the attribute name
+  - This does not uniquely identity things connected to it
