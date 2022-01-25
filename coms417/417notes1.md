@@ -114,7 +114,7 @@ ___
 - Expensive because it happens often
 
 ## Early testing Design
-- **Mistakes in requirements and high-level design are costly**
+**Mistakes in requirements and high-level design are costly**
 - often found months or years after they are created
 - May be dispersed throughout multiple versions
 
@@ -124,11 +124,11 @@ ___
 
 #### Test Criterion
 - Collection of rules
-    - Cover every statement
-    - Cover every branch
-    - Cover every widget
+  - Cover every __statement__
+  - Cover every __branch__
+  - Cover every __widget__
 
-### Specification vs Structural Testing
+## Specification vs Structural Testing
 - Specification &rarr; tests from specification and external descriptions
 - Structural &rarr; tests from the code (testing methods)
 
