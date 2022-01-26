@@ -52,60 +52,41 @@ printf("B");
 B
 B
 ```
-
 - Creates a new process by duplicating the calling process
 - Child process has a copy of parent's address space
-
 ___
-
 - On Success
-
   - Both parent and child continue execution at the point of return from `fork()`
   - `return pid of the child process` to the parent process
   - `return 0` to child process
-
 ___
-
 - On Failure:
   - Does not create child and `returns -1`
-
 ___
-
 Scheduler picks which parent or child process goes first
-
 ___Note___: Calling `fork()` twice will create 4 processes
 
 ## `wait() // Wait for Child`
 ```
 pid_t wait(int *wstatus)
 ```
-
 - Suspend execution for he parent until one of its children terminates
-
 ___
-
 - On Success
   - Returns pid of the child process that terminated
 ___
-
-- On Failure
-
-
 ## `exec() // Change the Program`
 ```
 int exec(const char *pathname, char *const argv[]);
 ```
-
 - Replaces the current program with a new one, command line args are passed in argv
-
 - example usage:
   ```
   char *argv[] = {"wc", "README",0};
   exec('wc", argc);
   ```
-
 # Interprocess Communication
-#### `||||||||||||||||||||||||||PIPES||||||||||||||||||||||||||`
+#### `|||||||||||||||||||||||||PIPES|||||||||||||||||||||||||`
 ```
 status () {
   echo -n " $(amixer | grep 'Front Left:' | awk '{print $5}') \
@@ -113,23 +94,19 @@ status () {
   sed s/:[0-9][0-9]$//) $(date '+%r' | awk '{print $2}') "
 }
 ```
-
 ## `pipe() // Connect two processes`
 ```
 int pipe(int p[2]);
 ```
-
 ___
 
 - On Success
   - New file descriptor points to source of provided file descriptor
   - Returns new file descriptor
-
 ___
 
 - On Failure
   - Returns -1
-
 ___
 
 ## Limited Direct Execution
@@ -156,4 +133,30 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 ## System Call
 - Problem: how can users perform privileged operations?
 
-- `sudo` everything
+## Jobs
+- Real processes alternate between needing CPU time and waiting for I/O
+- Jobs with Time-Sharing, can switch between them when needed
+- __Preemption__ will kick off processes in the middle of a job before it's done to make sure that other jobs can be done
+- Metrics
+  - Time of arrival &rarr; job first enters ready state
+  - Time of completion &rarr; time when job finishes
+  - Time of first run &rarr; time when job starts its first run on the CPU
+  - __Turnaround Time__ = __Time of completion__ - __Time of arrival__
+- Why different metrics?
+  - __Turnaround time__ &rarr; tells time to complete jobs, good for CPU bound processes, where getting enough CPU runtime is the main concern
+  - __Response time__ &rarr; tells how long to respond to I/O, good for I/O bound(interactive) processes, which have short CPU bursts and frequent I/O
+  - There are other metrics, later we will look at _fairness_
+- FIFO
+  - Always pick out job that comes first
+  - Preemption: None
+  - Advantage: Easy to implement
+  - Disadvantage: Large upfront CPU processes can hurt turnaround and response time
+- Shortest Job First (SJF)
+  - Always pick out the shortest by job length
+  - Preemption: None
+  - Advantage: Optimal average turnaround and response time when all jobs arrive _at the same time_
+  - Disadvantage: If short jobs arrive after starting a long job?
+- Shortest Time-to-Completion first (STCF)
+  - like SJF, but when a new job comes in, it will kick that job off first
+  - Preemption: if a new job arrive with a shorter time to completion, it preempts
+  - Advantage: short jobs don't need to wait for a long job to complete
