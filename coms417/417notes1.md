@@ -2,22 +2,20 @@
 
 Software testing can stop unintended bugs
 
-### Levels
+#### Levels
 - 0 &rarr; no difference between _testing_ and _debugging_
 - 1 &rarr; purpose of testing is to show _correctness_
 - 2 &rarr; show program *does not work*
 - 3 &rarr; *reduce the risk* of the software
 - 4 &rarr; Testing is a *mental discipline* that helps all IT professionals develop higher level software
 
-##### Key Challenge
+#### Key Challenge
 Testing can only show the presence of faults. It _cannot_ determine the absence of faults
 
-##### Model-Driven Testing
+#### Model-Driven Testing
 Use higher levels of abstraction or models to reduce complexity and guide testing
 
-___
-
-### Triangle Example
+## Triangle Example
 ```
 [~]$ java triangle 4 4 4
 equilateral
@@ -55,8 +53,6 @@ invalid
 
     - not all failures will give visible failures
 
-___
-
 #### `RIPR` Model
 - `R` eachability
     - reach the error
@@ -66,8 +62,6 @@ ___
     - need to propagate out to other parts of the program
 - `R` evealability
     - incorrect final state
-
-___
 
 #### Test Manager
 - Sets test policies and processes
@@ -81,11 +75,7 @@ ___
 - Analyzing results
 - Reporting results to developers and manager
 
-___
-
 ***Note***: Agile Devs will be doing both of these at once all the time
-
-___
 
 #### Code Coverage
 - Branch Coverage &rarr; based on all control flows (all `if` and `else` statements)
@@ -115,7 +105,7 @@ ___
 
 ## Early testing Design
 **Mistakes in requirements and high-level design are costly**
-- often found months or years after they are created
+- Often found months or years after they are created
 - May be dispersed throughout multiple versions
 
 #### Test requirements
@@ -135,9 +125,91 @@ ___
 #### Test Automation
 - automation can be used for generation
 - also can make scripts to run all the tests
+- reduces time of testing &rarr; run more tests!
 
 #### Jacoco
 - Uses JUnit for testing
 - Instruments classes to provide code coverage
 - works based on a `pom.xml`
 - `mvn compiler = 1.8`
+
+#### Excise task vs Revenue task
+- Excise task
+  - tasks that need to happen
+  - automation is key for these tasks
+- Revenue task
+  - tasks that bring $$$ in
+#### Automation
+  - Frees up engineer time
+  - Helps catch errors
+#### Software testability
+  - How _easy or hard to test is the software_?
+
+#### Observability and Controllability
+- Embedded software &rarr; does not provide human readable output
+  - low observability
+- Embedded software &rarr; gets input from other hardware, not human inputs
+  - low controllability
+
+#### Prefix and Postfix Values
+- Prefix
+  - turn phone on
+  - open messenger
+- Postfix
+  - type and send message
+  - 2 Types:
+    1. Verification values
+    2. Exit values
+
+#### Test Automation Frameworks
+- Ability to share common test data between tests
+- Can run through command line or GUI
+
+#### JUnit Methods
+```
+assertTrue(boolean)
+```
+  - Simplest form
+```
+assertTrue(String, boolean)
+```
+  - `String` provides info to tester if the assertion is `false`
+```
+fail(String)
+```
+  - Used specify a failing message when a specific line is reached
+
+#### Test Fixture
+  - code can be shared between tests
+  - `@Before` and `@After`
+  - Mostly used for setup and teardown
+
+#### Standard Imports
+```
+import static org.junit.Assert.*;
+import org.junit.*;
+import java.util.*;
+```
+```
+int a[]; // Test Fixture
+
+@Before
+public void setUp() {
+  for (int i = 0; i < 100; i++) {
+     a[i] = i;
+  }
+}
+```
+```
+@After
+public void tearDown() {
+  a = null;
+}
+```
+```
+@Test
+public void test_1 {
+  a.add("cat");
+  assertTrue("Add cat test", a[0] == cat);
+}
+```
