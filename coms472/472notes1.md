@@ -167,16 +167,6 @@ ___
   - Vacuum has _finite_ amount of states, so it can be completely solved
   - Knuth has _infinite_ amount of states, so DFS will completely fail
 
-## Tree Search
-  ![](./TreeSearchFrontier.png)
-  - Different search algorithms just choose which frontier node to expand first
-    - Best First &rarr; uses an evaluation function to expand closest to goal
-    - Depth First &rarr; keeps expanding one until it can't
-    - Breadth First &rarr; goes down in levels
-      - __Uninformed Search__ &rarr; no clue about how close a state is to the goal
-      - Always find a solution with a minimum number of actions
-      - ___Very___ high memory issues and exponential time complexity
-
 #### Queues
   - Priority queue pops the node with min cost
   - A FIFO queue pops the first added node (used in BFS)
@@ -194,3 +184,48 @@ ___
     - m: _maximum number of actions_ in any path
     - b: _branching factor_ number of successors of a node
 
+## Tree Search
+  ![](./TreeSearchFrontier.png)
+  - Different search algorithms just choose which frontier node to expand first
+#### Best First
+  - uses an evaluation function to expand closest to goal
+#### Breadth First
+  - goes down in levels
+  - __Uninformed Search__ &rarr; no clue about how close a state is to the goal
+  - Always find a solution with a minimum number of actions
+  - ___Very___ high memory issues and exponential time complexity
+#### Depth First
+  - keeps expanding one until it can't
+  - Expand the ___deepest___ node first
+  - Backtrack when can't go down anymore
+  - Returns __first__ solution it finds, not the __cheapest__
+  - Can expand the same state many times
+  - Could get stuck in an _infinite_ loop
+  - Small memory for problems admitting tree-like search
+  - No need for storing entire tree
+  - _Memory Consumption_ = $O(branching Factor * maximum Depth)$
+  - Can avoid an infinite path, add a __depth limit__
+
+#### Iterative Deepening Search
+  ![](./dfslimitedsearch.png)
+  - Pick a good value for l by trying all values for l: 1, 2, 3, ...
+  - ___Is it actually faster than BFS?___
+    - Time: $O(b^d)$ &rarr; __Same as [BFS](#breadth-first)!__
+    - Memory: $O(branching Factor * depth Solution)$ &rarr; very small
+
+#### Bidirectional Search
+  ![](./BidirectionalSearch.png)
+  - $b^{d/2} + b^{d/2} << b^d$
+  - Can use [BFS](#breadth-first) or [IDS](#iterative-deepening-search) doesn't matter
+  - ___Does not work___ for different node costs
+
+#### Informed (Heuristic) Search
+  - based off [BFS](#breadth-first)
+  - Use a function that _estimates_ the cheapest path to the goal
+  - $h(n)$ = _estimated_ cost based on domain
+    - $e.g.$ straight line distance
+  - Does not always give the optimal solution
+  ![](./greedvsopt.png)
+
+#### A* search
+  ![](./astarsearch.png)

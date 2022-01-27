@@ -40,7 +40,7 @@ Standard programming interface provided by UNIX like system
 
 ## `fork() //Process Creation`
 ```
-pid_t fort()
+pid_t fork()
 ```
 
 ```
