@@ -149,13 +149,13 @@ ___
     - Execution
 
 ## Vacuum World
-  ![](./VacuumWorld.png)
+  ![](../pic/VacuumWorld.png)
   - Actions: Suck, Left, Right
   - Goal: every cell is clean
   - Cost 1 for each action
 
 ## Knuth's Conjecture
-  ![](./KnuthConj.png)
+  ![](../pic/KnuthConj.png)
   - Any integer > 4 can be reached from 4 via a sequence of square root, floor and factorial operations
   - States: positive real numbers
   - Initial state: 4
@@ -185,7 +185,7 @@ ___
     - b: _branching factor_ number of successors of a node
 
 ## Tree Search
-  ![](./TreeSearchFrontier.png)
+  ![](../pic/TreeSearchFrontier.png)
   - Different search algorithms just choose which frontier node to expand first
 #### Best First
   - uses an evaluation function to expand closest to goal
@@ -207,14 +207,14 @@ ___
   - Can avoid an infinite path, add a __depth limit__
 
 #### Iterative Deepening Search
-  ![](./dfslimitedsearch.png)
+  ![](../pic/dfslimitedsearch.png)
   - Pick a good value for l by trying all values for l: 1, 2, 3, ...
   - ___Is it actually faster than BFS?___
     - Time: $O(b^d)$ &rarr; __Same as [BFS](#breadth-first)!__
     - Memory: $O(branching Factor * depth Solution)$ &rarr; very small
 
 #### Bidirectional Search
-  ![](./BidirectionalSearch.png)
+  ![](../pic/BidirectionalSearch.png)
   - $b^{d/2} + b^{d/2} << b^d$
   - Can use [BFS](#breadth-first) or [IDS](#iterative-deepening-search) doesn't matter
   - ___Does not work___ for different node costs
@@ -225,7 +225,7 @@ ___
   - $h(n)$ = _estimated_ cost based on domain
     - $e.g.$ straight line distance
   - Does not always give the optimal solution
-  ![](./greedvsopt.png)
+  ![](../pic/greedvsopt.png)
 
 #### A* search
-  ![](./astarsearch.png)
+  ![](../pic/astarsearch.png)
