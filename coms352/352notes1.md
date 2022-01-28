@@ -54,15 +54,12 @@ B
 ```
 - Creates a new process by duplicating the calling process
 - Child process has a copy of parent's address space
-___
 - On Success
   - Both parent and child continue execution at the point of return from `fork()`
   - `return pid of the child process` to the parent process
   - `return 0` to child process
-___
 - On Failure:
   - Does not create child and `returns -1`
-___
 Scheduler picks which parent or child process goes first
 ___Note___: Calling `fork()` twice will create 4 processes
 
@@ -71,10 +68,8 @@ ___Note___: Calling `fork()` twice will create 4 processes
 pid_t wait(int *wstatus)
 ```
 - Suspend execution for he parent until one of its children terminates
-___
 - On Success
   - Returns pid of the child process that terminated
-___
 ## `exec() // Change the Program`
 ```
 int exec(const char *pathname, char *const argv[]);
@@ -98,16 +93,12 @@ status () {
 ```
 int pipe(int p[2]);
 ```
-___
-
 - On Success
   - New file descriptor points to source of provided file descriptor
   - Returns new file descriptor
-___
 
 - On Failure
   - Returns -1
-___
 
 ## Limited Direct Execution
 __Time-sharing__ &rarr; each process can share the CPU so each can make progress
@@ -160,3 +151,31 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
   - like SJF, but when a new job comes in, it will kick that job off first
   - Preemption: if a new job arrive with a shorter time to completion, it preempts
   - Advantage: short jobs don't need to wait for a long job to complete
+  - Disadvantage: sometimes response time can be bad (Bad for I/O bound processes)
+- Round Robin (RR)
+  - Implementation: FIFO queue
+  - Preemption: Job on CPU gets __time-slice__, preempt when time expired
+  - Advantage: Low response time, Guaranteed response time
+  - Disadvantage: high turnaround time, and frequent context switches reduce CPU efficiency
+- Problem with SJF and STCF: Oracle
+  - Scheduler doesn't know how long it will take for a job to complete
+  - SJF and STCF needs the ability to see into the future
+- Multi-Level Feedback Queue
+  - SJF and STCF have good features, but they require oracle vision and they have serious flaws for some workloads
+  - RR has low response time, but it treats all jobs equally which can result in poor turnaround time and frequent context switches
+  - Rule 1 &rarr; `if Priority(A) > Priority(B), A runs and B doesn't`
+  - Rule 2 &rarr; `if Priority(A) = Priority(B), A and B run in RR`
+#### Examples of Common Processes
+- Process 1: waits for user to press key, performs short task such as adding char to display buffer and then waits for next key press.
+- Process 2: Perform a long math computation
+#### CPU bound vs I/O bound processes
+  - Jobs that need fast response but little CPU time should be highest priority
+  - Jobs that need long CPU time and little I/O should be lowest priority
+#### Adding Feedback to Multi-Level Queue
+  - Rule 3 &rarr; When a job enters the system, it is placed at the highest priority (the topmost queue)
+  - Rule 4a &rarr; If a job uses up an entire time slice while running, its priority is reduced
+  - Rule 4b &rarr; If a job gives up the CPU before the time slice is up, it stays at the same priority level.
+  - Problem: Starvation
+    - What happens if we turn up the rate of I/O bound jobs?
+    - One job can freeze if there are too many I/O jobs
+  - Rule 5: After some time period S, move all the jobs in the system to the topmost queue
