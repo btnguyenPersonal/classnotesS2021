@@ -228,49 +228,49 @@
   - Does not always give the optimal solution
   ![](../pic/greedvsopt.png)
 
-#### A * search
+#### A$\ast$ search
   ![](../pic/astarsearch.png)
   ![](../pic/astarcalculations.png)
   ___Note___: can go backward from __Arad__ &rarr; __Sibiu__ &rarr; __Arad__
 
 #### Admissible Heuristic
-  - A * Search is __complete__ (when the state space either has a solution or is finite)
+  - A$\ast$ Search is __complete__ (when the state space either has a solution or is finite)
   - Whether it is optimal depends on the heuristic.
   - _Admissible_ = ___never___ overestimates the cost to reach a goal
 
-#### Optimality of A *
+#### Optimality of A$\ast$
   Proof by Contradiction:
   - Let ___n___ be the first node on the optimal path that is _unexpanded_
   - Does not expand that many nodes
 
-#### Dijkstra's Algorithm vs A * Search
+#### Dijkstra's Algorithm vs A$\ast$ Search
   - Dijkstra's Search Contour is a circle around the start node
-  - A * 's Search Contour is an oval focused toward the goal
+  - A$\ast$ 's Search Contour is an oval focused toward the goal
 
 #### Monotonicity
   - the $g$ cost increases along a path because action costs are positive
   - $g(n)$ + $h(n)$ $\leqslant$ $g(n)$ + $c(n, a, n')$ + $h(n')$
   - $h(n)$ $\leqslant$ $c(n, a, n')$ + $h(n')$
 
-#### Efficiency of A *
+#### Efficiency of A$\ast$
   - h: admissible
   - C * : cost of the optimal solution path
-    - A * will expand every node reachable via a sequence of nodes that have costs < C *
-    - A * will not expand any node with f(n) > C *
-    - A * might expand a node n with cost f(n) = C * before selecting a goal node
-  - ___A * prunes away nodes unnecessary for finding an optimal solution___
-    - A * can take exponential time if the heuristic function is misleading
+    - A$\ast$ will expand every node reachable via a sequence of nodes that have costs < C *
+    - A$\ast$ will not expand any node with f(n) > C *
+    - A$\ast$ might expand a node n with cost f(n) = C * before selecting a goal node
+  - ___A$\ast$ prunes away nodes unnecessary for finding an optimal solution___
+    - A$\ast$ can take exponential time if the heuristic function is misleading
 
-#### Sacrificing Search (Weighted A * Search)
+#### Sacrificing Search (Weighted A$\ast$ Search)
   - Can use an ___Inadmissible___ Search, to get a faster function, but non-optimal solutions
-  - A * Search   &rarr; g(n) + h(n) (W = 1)
-  - Weighted A * Search &rarr; g(n) + W * h(n) (1 <= W < Infinity)
+  - A$\ast$ Search   &rarr; g(n) + h(n) (W = 1)
+  - Weighted A$\ast$ Search &rarr; g(n) + W * h(n) (1 <= W < Infinity)
 
 #### Memory-Bounded Search
   - Beam search keeps the k nodes with the best f scores.
     - Less memory and faster execution
     - Incomplete and suboptimal
-  - Iterative-deepening A * Search (IDA)
+  - Iterative-deepening A$\ast$ Search (IDA)
     - The cutoff at each iteration is the f-cost
   - Steady progress toward the goal if f-cost of every path is an integer
 
@@ -279,7 +279,7 @@
   - Slightly more efficient than IDA
   - Less memory efficient
 
-#### Applying A * to 8-puzzle
+#### Applying A$\ast$ to 8-puzzle
   - Two Heuristics
 ![](../pic/8puzzleperformance.png)
     - h1 = # of tiles displaced
