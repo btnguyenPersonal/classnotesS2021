@@ -81,6 +81,7 @@ int exec(const char *pathname, char *const argv[]);
   exec('wc", argc);
   ```
 # Interprocess Communication
+
 #### `|||||||||||||||||||||||||PIPES|||||||||||||||||||||||||`
 ```
 status () {
@@ -88,7 +89,9 @@ status () {
   $(date '+%m/%d/%Y ')$(date '+%r' | awk '{print $1}' | \
   sed s/:[0-9][0-9]$//) $(date '+%r' | awk '{print $2}') "
 }
+
 ```
+
 ## `pipe() // Connect two processes`
 ```
 int pipe(int p[2]);
@@ -165,41 +168,51 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
   - RR has low response time, but it treats all jobs equally which can result in poor turnaround time and frequent context switches
   - __Rule 1__ &rarr; `if Priority(A) > Priority(B), A runs and B doesn't`
   - __Rule 2__ &rarr; `if Priority(A) = Priority(B), A and B run in RR`
+
 #### Examples of Common Processes
 - Process 1: waits for user to press key, performs short task such as adding char to display buffer and then waits for next key press.
 - Process 2: Perform a long math computation
+
 #### CPU bound vs I/O bound processes
   - Jobs that need fast response but little CPU time should be highest priority
   - Jobs that need long CPU time and little I/O should be lowest priority
+  
 #### Adding Feedback to Multi-Level Queue
 ![](../pic/multilevelqueue.png)
   - __Rule 3__ &rarr; When a job enters the system, it is placed at the highest priority (the topmost queue)
   - __Rule 4a__ &rarr; If a job uses up an entire time slice while running, its priority is reduced
   - __Rule 4b__ &rarr; If a job gives up the CPU before the time slice is up, it stays at the same priority level.
+
 #### Problem: Starvation
   ![](../pic/starve.png)
   - What happens if we turn up the rate of I/O bound jobs?
   - One job can freeze if there are too many I/O jobs
+
 #### Priority boosts
   ![](../pic/priorityboost.png)
   - __Rule 5__ &rarr; After some time period S, move all the jobs in the system to the topmost queue
+
 ## Problem: Gaming the System
   ![](../pic/gamingsystem.png)
   - Smart programmers will catch on: ___"I can make my application run faster if I never let a complete quanta expire"___
   - Could add some randomness to the quanta
+
 #### Optimization: Lower Priority, Longer Quanta
   ![](../pic/optimizequanta.png)
   - Longer quanta in the lower queues can reduce frequency of context switches
+
 # The Complete MLFQ
   - __Rule 1__ &rarr; `if Priority(A) > Priority(B), A runs and B doesn't`
   - __Rule 2__ &rarr; `if Priority(A) = Priority(B), A and B run in RR`
   - __Rule 3__ &rarr; When a job enters the system, it is placed at the highest priority (the topmost queue)
   - __Rule 4__ &rarr; Once a job uses up its time allotment at a given level (regardless of how many times it has given up the CPU), its priority is reduced (i.e., it moves down one queue).
   - __Rule 5__ &rarr; After some time period S, move all the jobs in the system to the topmost queue
+
 #### Fair Scheduling
   - Each job is assigned numbered _tickets_
   - Every time slice, scheduler randomly picks a winning tickets and the job runs for that time slice
   - Over time, jobs runtime is proportional to percent of tickets held
+
 ##### Lottery scheduler doesn't assign priorities how to assign tickets
   - In effect, the lottery scheduler is a kind of priority scheduler
     - More tickets means higher priority
@@ -208,12 +221,14 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
     - Assign number of tickets inversely proportional to each job's runtime
   - __Pros__: No job can be starved, everyone gets their fair share of runtime
   - __Cons__: A short job can be unlucky and have higher response time
+
 #### Stride Scheduling
   - Lottery has good fairness over the long run, but randomness can result in suboptimal choices over a short time
   - __Stride Scheduling__ is deterministic (not random) but has same fairness
   - For each job set its __stride__ is $(10000/ numTickets)$
   - Every time a job executes, increment it's _pass_ counter by its _stride_
   - Scheduler always picks the job with the lowest pass counter to run next
+
 ## Linux Completely Fair Scheduler (CFS)
   - CFS gives a proportion of CPU time to each process, there are two questions
   - When to preempt the currently running process?
@@ -223,6 +238,7 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
       - ___Note___: `sched_latency` is scheduler latency
   - Which process to run next?
     - The process with the smallest __virtual runtime (vruntime)__
+
 #### Nice Values
   - Nice value set by user to indicate "priority", weights the $1/N$ time slice a process gets before preemption
 ```
@@ -231,6 +247,7 @@ current_time_slice = current_weight / processes_weights_total * sched_latency
   - Lower nice value will receive larger time slice
   - Higher nice value will receive smaller time slice
   - `time_slice` of all processes still add up to `sched_latency`
+
 #### Virtual Runtime
   - weighted version of the real runtime of each process
   ```

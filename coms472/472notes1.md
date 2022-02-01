@@ -1,15 +1,12 @@
 # Principals of AI
 
-___
-
 ### First Day Orientation
+
 ##### Office Hours: Tuesday and Thursday 11am-12:15am
 
-Textbook and Slides are electronic
+- Textbook and Slides are electronic
 
-All programming projects in Java
-
-___
+- All programming projects in Java
 
 ## What is AI?
 - __Perception__: Interpretation of data
@@ -70,6 +67,7 @@ ___
   - Does not require Omniscience
 
 ### The nature of environments
+
 ##### PEAS
 - `P`erformance measure
   - Save
@@ -187,13 +185,16 @@ ___
 ## Tree Search
   ![](../pic/TreeSearchFrontier.png)
   - Different search algorithms just choose which frontier node to expand first
+
 #### Best First
   - uses an evaluation function to expand closest to goal
+
 #### Breadth First
   - goes down in levels
   - __Uninformed Search__ &rarr; no clue about how close a state is to the goal
   - Always find a solution with a minimum number of actions
   - ___Very___ high memory issues and exponential time complexity
+
 #### Depth First
   - keeps expanding one until it can't
   - Expand the ___deepest___ node first
