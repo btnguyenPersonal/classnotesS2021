@@ -287,3 +287,66 @@
       - This is too simple
     - h2 = sum of Manhattan distances from their goal positions
       - Admissible: every move reduces the Manhattan distance of only one tile by <= 1
+
+#### Misplaced Tiles vs Manhattan Distance
+  - Given two heuristic functions $h_1$ and $h_2$, we say $h_2$ dominates $h_1$ if $h_2$(n) >= $h_1$(n) at ever node n.
+  - If $h_2$ dominates $h1$, A$\ast$ using $h_2$ will not expand more nodes than using $h_1$
+
+#### Admissibility & Consistency
+  - A solution in the original problem is also a solution in the relaxed problem
+  - But an optimal solution to the relaxed problem may be shorter than an optimal solution to the original problem.
+  - The cost of an optimal solution to the relaxed problem is an admissible heuristic for the original problem.
+  - Such heuristic is an exact cost for the relaxed problem.
+
+#### Heuristics from Formal Specification
+  - A tile can move from square X to square Y if X is adjacent to Y and Y is blank
+  - __Relaxing__ means removing one or two of the conditions
+  - __Dominates__ means gives the heuristic gives more steps
+    - A tile can move from square X to square Y if X is adjacent to Y &rarr; __Manhattan Distance__
+    - A tile can move from square X to square Y if Y is blank
+    - A tile can move from square X to square Y &rarr; __Misplaced Tiles__
+    - Both __Manhattan Distance__ and __Misplaced Tiles__ allow the problem to be cut into each of the 8 sub-pieces
+  - Heuristics will slow down because have to execute the heuristic function before expanding a node
+  
+## Local Search
+  ![](../pic/localsearch.png)
+  - Evaluate and modify one or more _current states_ rather than systematically exploring paths from an initial state
+  - Advantages of Local Search
+    - Uses very little memory
+    - Finding good solutions in state spaces intractable for a systematic search
+    - Useful in pure optimization
+
+#### Hill Climbing
+  ![](../pic/hillclimbdef.png)
+  ![](../pic/8queenhill.png)
+  - Will always try to take the short term best solution
+  - Disadvantages
+    - will find local maximums, where it will get stuck
+  - Variations
+    - Stochastic hill climbing
+      - Random selection among the uphill moves
+      - Probability of selection varying with steepness
+    - First-choice hill climbing
+      - Random generation of successors untila better (than the current) one is found
+      - Useful when many successors exist and/or the objective function is costly to evaluate
+    - Random restart hill climbing
+      - Restart search from random inital state
+
+#### Simulated Annealing
+  - __Annealing__ &rarr; Heat a metal to a high temp and then gradually cool it, allowing the material to reach a low-energy crystalline state so it is hardened.
+  ![](../pic/annealingsim.png)
+  - make sure that Temperature(T) approaches 0 slow enough
+
+#### Local Beam Search
+  ![](../pic/localbeam.png)
+  - Keep track of k states rather than one
+    1. start with k randomly generated states
+    1. generate all their successors
+    1. Stop if any successor is a goal
+    1. Otherwise, keep the k best successors and go back to step 2
+
+#### Evolutionary Algorithms
+  1. Start with a population of k randomly generated states (individuals)
+  1. Select the _most fit_ individuals to become parents of the next generation
+  1. Combine every p parents to form an offspring (typically p = 2).
+  1. Restart at step 2 and repeat until _sufficiently fit_
