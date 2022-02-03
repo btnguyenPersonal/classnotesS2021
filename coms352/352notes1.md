@@ -258,19 +258,22 @@ current_time_slice =
   - if nice < 0: weight ratio < 1 and vruntime < actual run time
   - if nice > 0: weight ratio > 1 and vruntime > actual run time
 
-## Efficiency
+#### Efficiency
   - Scheduler gets called often, efficiency matters
   - CFS uses _binary search_ tree to quickly find process with lowest runtime
 
-## Multiprogramming
+#### Multiprogramming
   - Processes share main memory
   - Simplest scheme is to assign contiguous regions of memory
   - Becomes costly when a process needs to grow its memory
 
-## Process Address Space
+#### Process Address Space
   - A processes view of memory is called its _address space_
   - Address space starts at 0
   - Address space is contiguous
   - All address available at any time
   - At the top are static items(code, global variables, and constants)
   - Also need stack which comes from the bottom
+
+#### Memory Virtualisation
+  - 
