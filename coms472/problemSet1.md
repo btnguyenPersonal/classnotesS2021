@@ -1,51 +1,74 @@
-# Problem Set 1
+# COMS 472 Problem Set 1
 #### By Ben Nguyen
 ## 3.2
 ###### Give a complete problem formulation for each of the following problems. Choose a formulation that is precise enough to be implemented.
 ###### 1. There are six glass boxes in a row, each with a lock. Each of the first five boxes holds a key unlocking the next box in line; the last box holds a banana. You have the key to the first box, and you want the banana.
 ---
 __Solution__:
-  1. Take the first key and open the first box
-  2. Take the last key you have found and open the next box that has not been opened yet
-  3. Repeat the last step until you have found the banana
+  - __State Space__: set of 6 boxes either unlocked or locked
+  - __Initial Space__: (Key, Box, Box, Box, Box, Box, Box)
+  - __Goal Space__: (Key, Key, Key, Key, Key, Key, Banana)
+  - __Actions__: ACTIONS((Key, Key, Key, Key, Key, Key, Box)) = {$openBox$}
+  - __Transition Model__: RESULT((Key, Key, Key, Key, Key, Key, Box), $openBox$) = (Key, Key, Key, Key, Key, Key, Banana)
+  - __Cost Function__: Number Boxes opened
 ---
-###### 2. You start with the sequence ABABAECCEC, or in general any sequence made from A, B, C, and E. You can transform this sequence using the following equalities: AC = E, AB = BC, BB = E, and Ex = x for any x. For example, ABBC can be transformed into AEC, and then AC, and then E. Your goal is to produce the sequence E. 
+###### 2. You start with the sequence ABABAECCEC, or in general any sequence made from A, B, C, and E. You can transform this sequence using the following equalities: AC = E, AB = BC, BB = E, and Ex = x for any x. For example, ABBC can be transformed into AEC, and then AC, and then E. Your goal is to produce the sequence E.
 ---
 __Solution__:
-  1. First parse through the entire string, and store all of the permutations that the can result from one translation in the string through the given equalities, and check if any of those are equal to the sequence `E`
-  2. If one is equal to the sequence `E`, then the algorithm is done, and the algorithm can go back through the tree to find out what equalities where used to result in the answer
-  3. Otherwise, if none of the resulting strings are not equal, then all of the new strings become the frontier and the algorithm starts back at step 1
+  - __State Space__: set of strings containing only ABEC
+  - __Initial Space__: ABABAECCEC
+  - __Goal Space__: E
+  - __Actions__: ACTIONS(ABABAECCEC) = {$useAC=E$, $useAB=BC$, $useBB=E$, $useEx=x$,}
+  - __Transition Model__:
+    - RESULT(BBAC, $useAC=E$) = BBE
+    - RESULT(ABBA, $useAB=BC$) = BCBA
+    - RESULT(BBAC, $useBB=E$) = EAC
+    - RESULT(EBC, $useEx=x$) = BC
+  - __Cost Function__: Number of rules used
 ---
 ###### 3. There is an n×n grid of squares, each square initially being either unpainted floor or a bottomless pit. You start standing on an unpainted floor square, and can either paint the square under you or move onto an adjacent unpainted floor square. You want the whole floor painted.
 ---
 __Solution__:
-  1. Move to the closest square with the least amount of unpainted floor squares adjacent to it by using a Depth-first search until you are standing on the desired square
-  2. Paint the square under you and go back to step 1 if there are any unpainted floor squares left
+  - __State Space__: The nxn grid of squares
+  - __Initial Space__: Each square being either unpainted or a bottomless pit, and player at initial state
+  - __Goal Space__: Each square being either painted or a bottomless pit
+  - __Actions__: ACTIONS(Floor) = {$paint$, $moveAdjacent$}
+  - __Transition Model__:
+    - RESULT(Floor, $paint$) = Floor with one more square painted
+    - RESULT(Floor, $moveAdjacent$) = Floor with player moved one square adjacently
+  - __Cost Function__: Number of $paint$ moves + Number of $moveAdjacent$ moves
 ---
 ###### 4. A container ship is in port, loaded high with containers. There 13 rows of containers, each 13 containers wide and 5 containers tall. You control a crane that can move to any location above the ship, pick up the container under it, and move it onto the dock. You want the ship unloaded.
 ---
 __Solution__:
-  1. Take the highest top-left-most container and unload it, then unload the 4 containers under it
-  2. Move your crane one container to the right and repeat step 1 if possible
-  3. If there are no more containers to the moved to the right, go one row down and start again at the left-most container
+  - __State Space__: The container ship's containers
+  - __Initial Space__: 13 rows x 13 wide x 5 tall containers on the ship, and crane at initial state
+  - __Goal Space__: No containers on the ship
+  - __Actions__: ACTIONS(Ship) = {$moveCrane$, $pickUpContainer$, $moveToDock$}
+  - __Transition Model__:
+    - RESULT(Floor, $moveCrane$) = Ship with crane moved to a certain location
+    - RESULT(Floor, $pickUpContainer$) = Crane picks up container directly under it
+    - RESULT(Floor, $moveToDock$) = Crane sets the currently holding container on the dock
+  - __Cost Function__: Number of $moveCrane$ moves + Number of $pickUpContainer$ moves + Number of $moveToDock$ moves
 ---
 ## 3.7
 ###### Consider the n-queens problem using the “efficient” incremental formulation given on page . Explain why the state space has at least $\sqrt[3]{n!}$ states and estimate the largest n for which exhaustive exploration is feasible. (Hint: Derive a lower bound on the branching factor by considering the maximum number of squares that a queen can attack in any column.)
 ---
 __Solution__:
-  1. The branching factor for this equation is n, because when placing the first queen there are 8 squares on the first row that a queen can be placed
-  2. Therefore, there are $n^n$ possible queen configurations that need to be checked for a valid state
+  - Since there are $n$ columns, each with one queen on it, and each one of those $n$ queens can go on one of the $n$ rows, there are $n^n$ states
+  - Therefore, the n-queens problem must have at least $\sqrt[3]{n!}$ states because $\sqrt[3]{n!}$ < $n^n$
+  - Estimation for largest n for which exhaustive search is feasible: $20$
 ---
 ## 3.17
 Which of the following are true and which are false? Explain your answers.
-###### 1. Depth-first search always expands at least as many nodes as A search with an admissible heuristic.
-  > ???
+###### 1. Depth-first search always expands at least as many nodes as A $\ast$ search with an admissible heuristic.
+  > true
 
-  what is an "admissible heuristic"
+  Because A $\ast$ always finds the optimal number of steps for a solution with an admissible heuristic
 ###### 2. h(n)=0 is an admissible heuristic for the 8-puzzle.
-  > ???
+  > true
 
-  what is an "admissible heuristic"
+  Because the heuristic only has to give a smaller or equal number of steps than the optimal solution to be admissible
 ###### 3. A is of no use in robotics because percepts, states, and actions are continuous.
   > false
 
