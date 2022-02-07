@@ -276,4 +276,80 @@ current_time_slice =
   - Also need stack which comes from the bottom
 
 #### Memory Virtualisation
-  - 
+  ![](../pic/memoryreloc.png)
+  - in reality, the memory for each process is broken up a lot
+  - However, the OS handles everything so we don't have to think about it
+
+#### Base and Bounds Translation
+  ```
+  128: mov 1000, %eax
+  ```
+  1. program counter is incremented to 128
+  1. CPU beings fetching instructions by reading from address 128
+  1. MMU translates 128 to 32,896 and memory is read
+  1. CPU decodes instruction and requests a read from address 1000
+  1. MMU translates 1000 to 33,768 and memory is read
+  1. CPU finishes execution of instructions
+
+#### Exception Handling
+  - Memory access out of bounds results in a trap
+  - OS typically terminates process
+
+#### Hardware Requirements
+  | Hardware Requirements | Common Implementation |
+  |---|---|
+  | Privilege mode | Kernel mode
+  | Base and bounds registers
+  | Translate virtual address | MMU intercepts all addresses between
+  | Privileged instructions to update base and bounds | 
+  | Ability to raise exceptions | 
+
+#### Segmentation
+  - Base and bounds means direct translation from address space to physical memory
+  - Assumes program knows in advance how much dynamic memory will be required
+  - Growing process's memory dynamically is very difficult
+  > How to remove limitations of physical memory from address?
+  - Problem
+    - What happens when address space is full?
+    - Using base and bounds, process needs to be copied to a larger space in memory
+    - All pointers need to be updated!
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+  printf("code %p\n", main);
+  printf("heap %p\n", malloc(1));
+  printf("stack %p\n", &argc[1]);
+  return 0;
+}
+```
+Solution:
+  - Just make the address space massive (up to limits of addressable size)
+
+---
+
+  - Just like memory virtualisation, can put anything anywhere
+
+|13|12|11|10|9|8|7|6|5|4|3|2|1|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|S|S|O|O|O|O|O|O|O|O|O|O|O|
+S = Segment
+O = Offset
+
+#### Independent Direction of Segment Growth
+  - We can even allow segments to grow in different directions
+  - A set of registers can indicate if a segment grows up or down
+
+#### Sharing
+  - Protection registers can enable sharing
+  - Example: two processes are executing the same code. If code segment is read-only no danger of processes corrupting each other
+
+  |Segment|Base register|Size register|Grows Positive?|Protection|
+  |---|---|---|---|---|
+  |Code|32K|2K|1|Read-Execute|
+  |Heap|34K|2K|1|Read-Write|
+  |Stack|28K|2K|0|Read-Write|
+
+#### Free Memory
+  - Segments are in contiguous regions of physical memory
