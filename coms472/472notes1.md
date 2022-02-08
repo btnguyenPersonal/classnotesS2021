@@ -350,3 +350,19 @@
   1. Select the _most fit_ individuals to become parents of the next generation
   1. Combine every p parents to form an offspring (typically p = 2).
   1. Restart at step 2 and repeat until _sufficiently fit_
+
+#### Applications of GA
+  - Complex structured problems
+    - Circuit layout, job-shop scheduling
+  - Evolving the architecture of deep neural networks
+  - Finding bugs of hardware
+  - Molecular structure optimization
+  - Image processing
+  - Learning robots
+
+
+## Non-deterministic Actions
+  - Doesn't know the current state
+  - Doesn't know the next state
+  - _belief state_ is a set of physical states believed to be possible by the agent
+    - Solution: __conditional plan__ &rarr; gives a set of actions based on what could happen
