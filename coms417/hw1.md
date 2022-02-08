@@ -58,7 +58,7 @@ The inverse method is not tested at all, and there is not enough testing on the 
 #### Two Faults not due to numeric overflow
 
   1. the case $x^0$ will return `-1` because line 26 will return -1 if `right` is zero
-  1. any time where the case $x^y$ where y is negative will fail even though it should return $1/x^y$
+  1. the inverse function can actually overflow when using very large numbers
 
 #### Fixing the Faults
 
@@ -69,3 +69,7 @@ The inverse method is not tested at all, and there is not enough testing on the 
   ![](./inlinefix.png)
 
 #### Finding the overflow
+
+  The inverse function does not have any overflow protection, whereas the power function does.
+  This means that the inverse function can fail when very large values are input. Adding this does not increase the test coverage, since it was already at 100%
+
