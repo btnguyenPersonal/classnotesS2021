@@ -87,5 +87,21 @@ If the Depth first search is starting in the middle of an n by n grid, and it al
 The regular depth-first search would keep expanding the left-most nodes until it found the end goal, whereas the Iterative Deepening search would search all of the paths of length 1 around the start node, and then 2 around the start node, until it finally searches at the path length that is equal to the shortest path, so it will take $O(n^2)$, and regular DFS would take $O(n)$ time
 ## 3.27
 ###### Trace the operation of A search applied to the problem of getting to Bucharest from Lugoj using the straight-line distance heuristic. That is, show the sequence of nodes that the algorithm will consider and the f, g, and h score for each node.
+![](./astarstep-5.png)
+![](./astarstep-4.png)
+![](./astarstep-3.png)
+![](./astarstep-2.png)
+![](./astarstep-1.png)
+![](./astarstep0.png)
+![](./astarstep1.png)
+![](./astarstep2.png)
+![](./astarstep3.png)
+![](./astarstep4.png)
+![](./astarstep5.png)
 ## 3.31
 ###### The heuristic path algorithm Pohl:1977 is a best-first search in which the evaluation function is f(n)=(2−w)g(n)+wh(n). For what values of w is this complete? For what values is it optimal, assuming that h is admissible? What kind of search does this perform for w=0, w=1, and w=2?
+  - w is complete for values of 0 and 1
+  - if h is admissible, then the value of 2 is optimal
+    - when w is 0, it performs Breadth first search
+    - when w is 1, it performs a * search
+    - when w is 2, it performs search based on just the heuristic function
