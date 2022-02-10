@@ -9,7 +9,7 @@ __Solution__:
   - __Initial Space__: (Key, Box, Box, Box, Box, Box, Box)
   - __Goal Space__: (Key, Key, Key, Key, Key, Key, Banana)
   - __Actions__: ACTIONS((Key, Key, Key, Key, Key, Key, Box)) = {$openBox$}
-  - __Transition Model__: RESULT((Key, Key, Key, Key, Key, Key, Box), $openBox$) = (Key, Key, Key, Key, Key, Key, Banana)
+  - __Transition Model__: RESULT((Key, Key, Key, Key, Key, Key, Box), $openBox$) = (Key, Key, Key, Key, Key, Key, Banana) ___opens the box and gets the key___
   - __Cost Function__: Number Boxes opened
 ---
 ###### 2. You start with the sequence ABABAECCEC, or in general any sequence made from A, B, C, and E. You can transform this sequence using the following equalities: AC = E, AB = BC, BB = E, and Ex = x for any x. For example, ABBC can be transformed into AEC, and then AC, and then E. Your goal is to produce the sequence E.
@@ -35,7 +35,7 @@ __Solution__:
   - __Actions__: ACTIONS(Floor) = {$paint$, $moveAdjacent$}
   - __Transition Model__:
     - RESULT(Floor, $paint$) = Floor with one more square painted
-    - RESULT(Floor, $moveAdjacent$) = Floor with player moved one square adjacently
+    - RESULT(Floor, $moveAdjacent$) = Floor with player moved one square adjacently (does not work with moving to a bottomless pit)
   - __Cost Function__: Number of $paint$ moves + Number of $moveAdjacent$ moves
 ---
 ###### 4. A container ship is in port, loaded high with containers. There 13 rows of containers, each 13 containers wide and 5 containers tall. You control a crane that can move to any location above the ship, pick up the container under it, and move it onto the dock. You want the ship unloaded.
@@ -62,29 +62,54 @@ __Solution__:
 ## 3.17
 Which of the following are true and which are false? Explain your answers.
 ###### 1. Depth-first search always expands at least as many nodes as A $\ast$ search with an admissible heuristic.
-  > true
+  > false
 
-  Because A $\ast$ always finds the optimal number of steps for a solution with an admissible heuristic
+  A counter-example is this:
+
+  ---
+
+  ![](../pic/dfsastar.png)
+
+  ---
+
+  - DFS will find the goal by just expanding A
+  - A $\ast$ will find the goal by expanding B and A
+
 ###### 2. h(n)=0 is an admissible heuristic for the 8-puzzle.
   > true
 
-  Because the heuristic only has to give a smaller or equal number of steps than the optimal solution to be admissible
-###### 3. A is of no use in robotics because percepts, states, and actions are continuous.
+  - Because the heuristic only has to give a smaller or equal number of steps than the optimal solution to be admissible
+###### 3. A $\ast$ is of no use in robotics because percepts, states, and actions are continuous.
   > false
 
-  A* still is of good use in robotics because A* is good at creating a pathfinding solution when there is already prior knowledge given to the bot
+  - A $\ast$ still is of good use in robotics because A$\ast$ is good at creating a pathfinding solution when there is already prior knowledge given to the bot
 ###### 4. Breadth-first search is complete even if zero step costs are allowed.
   > true
 
-  Breadth first search will always find the solution eventually because even when there are zero-step costs, because it will iteratively find every possible path that the search can take. This will result in the Breadth first search taking n iterations, in which n is the number of steps that is in the optimal solution from the start to end node
+  - Breadth first search will always find the solution eventually because even when there are zero-step costs, because it will iteratively find every possible path that the search can take. This will result in the Breadth first search taking n iterations, in which n is the number of steps that is in the optimal solution from the start to end node
 ###### 5. Assume that a rook can move on a chessboard any number of squares in a straight line, vertically or horizontally, but cannot jump over other pieces. Manhattan distance is an admissible heuristic for the problem of moving the rook from square A to square B in the smallest number of moves.
-  > true
+  > false
 
-  This is true because the Manhattan distance is by definition unable to move diagonal, so the shortest Manhattan distance will be the shortest rook movement
+  - if a Rook is 5 squares north of the goal square, the Manhattan distance would be 5, but the rook could get to the goal in 1 move
 ## 3.22
 ###### Describe a state space in which iterative deepening search performs much worse than depth-first search (for example, O(n2) vs. O(n)).
-If the Depth first search is starting in the middle of an n by n grid, and it always expands the leftmost node first, Iterative deepening search would perform much worse on a large grid where the end goal is directly on the left side of the grid compared to regular depth first search
-The regular depth-first search would keep expanding the left-most nodes until it found the end goal, whereas the Iterative Deepening search would search all of the paths of length 1 around the start node, and then 2 around the start node, until it finally searches at the path length that is equal to the shortest path, so it will take $O(n^2)$, and regular DFS would take $O(n)$ time
+
+---
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |B|---|---|---|---|A|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+  |---|---|---|---|---|---|---|---|---|---|---|
+---
+
+- If the Depth first search is starting in the middle of an n by n grid, and it always expands the leftmost node first, Iterative deepening search would perform much worse on a large grid where the end goal is directly on the left side of the grid compared to regular depth first search
+- The regular depth-first search would keep expanding the left-most nodes until it found the end goal, whereas the Iterative Deepening search would search all of the paths of length 1 around the start node, and then 2 around the start node, until it finally searches at the path length that is equal to the shortest path, so it will take $O(n^2)$, and regular DFS would take $O(n)$ time
+- When DFS expands the leftmost node over every other node, it find B from A much faster than Iterative deepening search
 ## 3.27
 ###### Trace the operation of A search applied to the problem of getting to Bucharest from Lugoj using the straight-line distance heuristic. That is, show the sequence of nodes that the algorithm will consider and the f, g, and h score for each node.
 ![](./astarstep-5.png)
@@ -98,10 +123,11 @@ The regular depth-first search would keep expanding the left-most nodes until it
 ![](./astarstep3.png)
 ![](./astarstep4.png)
 ![](./astarstep5.png)
+  - You have reached the solution of Bucharest
 ## 3.31
 ###### The heuristic path algorithm Pohl:1977 is a best-first search in which the evaluation function is f(n)=(2−w)g(n)+wh(n). For what values of w is this complete? For what values is it optimal, assuming that h is admissible? What kind of search does this perform for w=0, w=1, and w=2?
-  - w is complete for values of 0 and 1
+  - w is complete for any value less than or equal to 2
   - if h is admissible, then the value of 2 is optimal
-    - when w is 0, it performs Breadth first search
-    - when w is 1, it performs a * search
-    - when w is 2, it performs search based on just the heuristic function
+    - when w is 0, it performs Universal cost, which is optimal and complete
+    - when w is 1, it performs A $\ast$ search, which is optimal and complete
+    - when w is 2, it performs Greedy Best-First Search, which is __not__ optimal and __not__ complete
