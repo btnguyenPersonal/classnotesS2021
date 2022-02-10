@@ -340,6 +340,7 @@ O = Offset
 #### Independent Direction of Segment Growth
   - We can even allow segments to grow in different directions
   - A set of registers can indicate if a segment grows up or down
+  ![](../pic/fragmentmemory.png)
 
 #### Sharing
   - Protection registers can enable sharing
@@ -353,3 +354,61 @@ O = Offset
 
 #### Free Memory
   - Segments are in contiguous regions of physical memory
+  - To allocate a new segment, OS must keep a list of free memory
+  - Simple solution is a linked list of free regions of memory
+  - On a new allocation search for first open spot that has sufficient memory(first fit strategy)
+  - Best fit strategy searches for smallest regions of free memory that will fit the segment
+
+#### Fragmentation
+  - Segmentation made code, stack and heap independently relocatable
+  - Segments can become arbitrarily large contiguous
+  - Resulted in external fragmentation
+  - Small gaps that are not big enough to put anything there
+
+#### Paging
+  - Address space divided into equal sized pages that can be stored in frames
+  ![](../pic/paging.png)
+
+#### Page Table
+  - __Virtual Page Number (VPN)__ is the index of the table
+  - __Physical Frame Number (PFN)__ points to the frame in physical memory
+  - __Valid bit__ indicates if table entry is valid(not all of address space needs to be mapped)
+  - Makes it easy to grow and shrink our process memory, just get to a new page that can be located anywhere
+
+  ---
+
+  ![](../pic/pagetable.png)
+
+#### Virtual Address Bits
+  - Virtual address divided into VPN and offset
+  ![](../pic/virtualaddress.png)
+  ![](../pic/vpnbits.png)
+  - If total address space is $2^m$ bytes and page size is $2^n$ bytes
+    - VPN is m-n bits
+    - offset is n bits
+  - ___Question___: If address space is $1GB$ and page size is $4KB$ how many bits in the VPN?
+    - Answer: $1GB$ = $2^{30}$, $4KB$ = $2^{12}$, therefore VPN is $30-12=18$ bits
+    - Check: $4KB$ $\times$ $2^{18}$ = 1GB
+
+  ---
+
+  ![](../pic/physoffset.png)
+
+#### Address Translation
+  ![](../pic/addrtranslation.png)
+
+#### Unused Pages
+  - Unused pages don't need to be mapped to physical memory
+  - Process is unaware of pages, when it requests more memory allocated for heap of stack the OS maps pages as needed
+
+#### Free Memory Management
+  - OS needs to know which frames are not in use, simple method is linked list
+  - No external fragmentation - no unusable gaps between frames
+  ---
+
+  ![](../pic/internalfrag.png)
+
+#### Page size
+  - Small page size means bigger page table (more page table entries)
+  - Bigger page size means more internal fragmentation
+  - Typical page size is 8KB in Linux
