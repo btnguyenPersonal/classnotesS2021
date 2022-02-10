@@ -9,7 +9,7 @@ __Solution__:
   - __Initial Space__: (Key, Box, Box, Box, Box, Box, Box)
   - __Goal Space__: (Key, Key, Key, Key, Key, Key, Banana)
   - __Actions__: ACTIONS((Key, Key, Key, Key, Key, Key, Box)) = {$openBox$}
-  - __Transition Model__: RESULT((Key, Key, Key, Key, Key, Key, Box), $openBox$) = (Key, Key, Key, Key, Key, Key, Banana) ___opens the box and gets the key___
+  - __Transition Model__: RESULT((Key, Key, Key, Key, Key, Key, Box), $openBox$) = (Key, Key, Key, Key, Key, Key, Banana) &rarr; ___opens the box and gets the key___
   - __Cost Function__: Number Boxes opened
 ---
 ###### 2. You start with the sequence ABABAECCEC, or in general any sequence made from A, B, C, and E. You can transform this sequence using the following equalities: AC = E, AB = BC, BB = E, and Ex = x for any x. For example, ABBC can be transformed into AEC, and then AC, and then E. Your goal is to produce the sequence E.
