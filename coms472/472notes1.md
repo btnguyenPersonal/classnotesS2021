@@ -366,3 +366,39 @@
   - Doesn't know the next state
   - _belief state_ is a set of physical states believed to be possible by the agent
     - Solution: __conditional plan__ &rarr; gives a set of actions based on what could happen
+
+#### Sensorless Situation
+  - Agent's precepts provide no information at all.
+  - They can be robust due to __zero__ dependence on sensors working properly
+    - A sequence of actions from search in the space $B$ of belief states (b-states)
+      - Full observability in B: the agent always knows its belief state
+    - Transform the physical problem into a belief state problem
+    - Apply existing search algorithms
+
+#### Goal test: The goal is achieved
+  - possibly if one of the states $s \in b$ pass
+  - necessary if all of the states $s \in b$ pass
+
+#### Reachable Belief States
+  - DFA for every possible state and transitions between them
+
+#### Partially Observable Environments
+  - Many problems are unsolvable without sensing
+  - A little sensing (e.g only one visible square in the 8-puzzle can go a long way)
+    - Can build your knowledge of all states based on previous state
+
+#### Transition Model between b-states
+  - __Prediction__: computes the b-state from an action a.
+  - __Possible percepts__: computes the set of percepts that could be observed in the predicted b-state
+  - __Update__: computes the set of states in b that could have produced the percept
+
+#### Offline vs Online Search
+  - Compute a complete solution before taking the first action
+  - $RESULT(s,a)$ is unknown unless being in $s$ and doing $a$
+
+#### Dead Ends
+  - Can hit dead ends and doesn't know when to stop
+
+#### Expensive search effort
+  - As if the state space is being constructed by an imaginary adversary
+  - can
