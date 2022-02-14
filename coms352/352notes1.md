@@ -412,3 +412,41 @@ O = Offset
   - Small page size means bigger page table (more page table entries)
   - Bigger page size means more internal fragmentation
   - Typical page size is 8KB in Linux
+
+#### Basics of the Heap
+  - Heap is managed at user level provided by language libraries
+    - In C `malloc()` and `free()`
+    - In Java `new` and the __garbage collector__
+  - ___Compaction___ (moving allocated spaces together and make larger contiguous free space) not possible for heap
+
+#### Problem of External Fragmentation
+  - want to allocate a 20 byte object, but nowhere to put a 20 byte object, an example of external fragmentation
+  - A __free list__ is used to track free fragments of memory
+
+#### Free space operations
+  - _splitting_ divides a free space into two parts so one part can be allocated
+  - _coalescing_ is merging contiguous free spaces into one
+      
+#### Tracking Allocated Regions
+  ```
+  typedef struct {
+    int size;
+    int magic;
+  } header_t;
+  ```
+  - __size__ &rarr; number of bytes allocated to the program
+  - __magic__ &rarr; a secret number that can be checked to see if it is the start of the region
+  - __head__ &rarr; a pointer to the first free region of memory
+  - __next__ &rarr; points to the next free region of memory or 0 if it is the last region
+  - Linked list is embedded into the heap
+
+#### How to chose a free chunk?
+  - Is it always best to chose the first free chunk that fits?
+  - Strategies
+    - Best Fit &rarr; find chunk that will result in least fragmentation
+    - Worst Fit &rarr; find chunk that will result in the largest left over chunk
+    - First Fit &rarr; find first chunk that fits
+    - Next Fit &rarr; find the second best chunk that fits
+  - __Alternate Approaches__:
+    - Segregated Lists - manage common sized objects separately
+    - Buddy Allocation - tree like structure that allocates blocks in powers of 2
