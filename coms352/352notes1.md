@@ -450,3 +450,33 @@ O = Offset
   - __Alternate Approaches__:
     - Segregated Lists - manage common sized objects separately
     - Buddy Allocation - tree like structure that allocates blocks in powers of 2
+
+#### TLB
+  - Page table is stored in main memory
+  - Every memory access requires additional read to loop up page table entry
+  - Store a cache of "popular" page table entries with the MMU hardware
+  - Cache can be accessed in single CPU cycle (main memory > 100 cycles!)
+
+#### TLB Cache
+  - Look for VPN in TLB cache
+  - If found (TLB hist) return entry
+  - Else (TLB hist) get entry from page table in main memory
+  - Store entry to cache (possibly replacing some other entry)
+
+#### Why does Cache work?
+  - Spatial locality &rarr; address of memory access is likely to be close to the previous access
+  - Temporal locality &rarr; addresses likely to repeat in time
+
+#### Why does spatial locality exist?
+  - __Sequential__ memory access is common
+  - ex: iterating through an array
+  ```
+  for (int i = 0; i < count; i++) {
+     sum += a[i];
+  }
+  ```
+
+#### Replacement Policy
+  - To add a new TLB cache entry we need to replace an old one, how to pick which to replace?
+  - Least-recently-used &rarr; replace the entry that was used the longest ago
+  - Random &rarr; replace a random entry
