@@ -32,7 +32,7 @@ Breadth First Search
 
 ___Solution___:
 
-First Choice Hill Climbing
+Hill Climbing Search
 
 ---
 
@@ -50,7 +50,7 @@ Depth First Search
 
 ---
 
-Random Search
+Depth First Search where you start at the parent node, and then each search has a random chance to choose a random node
 
 ---
 
@@ -62,9 +62,13 @@ Random Search
 
 ___Solution___:
 
-A $\ast$ will create all of its belief states based on $h\ast(s)$, so $h\ast(b)$ will be functionally identical to it. A $\ast$ will perform exactly the same as if it were in a fully observable problem
+An admissible heuristic h(b) for a sensorless problem is to take the lowest cost that h(s) can ever give, and use that for all outputs of h(b)
 
-Does sensorless mean not being able to know the costs associated with moving between states?
+This works because in sensorless problems, we have no idea where we are, so the only thing it is safe to assume is that the heuristic must return equal to or less than the lowest cost in h(s), because anything that goes over will make the heuristic inadmissible
+
+Most of the time, this will just mean that h(b) = 0
+
+This heuristic will just give the same performance as Uniform Cost search
 
 ---
 
@@ -74,29 +78,44 @@ Does sensorless mean not being able to know the costs associated with moving bet
 
 a. Prove that if an action sequence is a solution for a belief state b, it is also a solution for any subset of b. Can anything be said about supersets of b?
 
-The reverse can also be said about the supersets of b, because if there is an actionable sequence of moves to solve the superset of b, then there must also be an actionable sequence of moves for b.
 
-- $Assume$ $A$ $is$ $a$ $subset$ $of$ $B$
+Proof by Contradiction:
 
-- $=>$ $if$ $B$ $has$ $an$ $actionable$ $sequence$ $that$ $is$ $a$ $solution$ $to$ $it$, $then$ $A$ $must$ $have$ $that$ $solution$ $as$ $well$.
+- Assume that $b$ is a subset of $b_s$, and $b_s$ has an actionable solution
 
-- $Let$ $A$ $=$ $b,$ $B$ $=$ $q$
+Contradiction statement: if there is a solution for $b_s$, there could be a subset of $b$ that does not have the solution
 
-- $=>$ $b$ $is$ $a$ $subset$ $of$ $q$
+- Therefore, the start node of $b_s$ must be able to reach the start node of $b$ by the definition of subset
 
-- $=>$ $if$ $q$ $has$ $an$ $actionable$ $sequence$ $that$ $is$ $a$ $solution$ $to$ $it$, $then$ $b$ $must$ $have$ $that$ $solution$ $as$ $well$.
+- There also must be a path from the start of $b_s$ to the goal state, by the given prompt
 
-- $q$ $is$ $a$ $superset$ $of$ $b$
+- Therefore, there is a path from the start of $b$ to the goal state
 
-- $Therefore,$ $if$ $supersets$ $of$ $b$ $have$ $an$ $actionable$ $sequence$ $of$ $moves,$ $then$ $b$ $must$ $also$ $have$ $a$ $solution$
+- Contradiction
+
+<!-- - $Assume$ $A$ $is$ $a$ $subset$ $of$ $B$ -->
+
+<!-- - $=>$ $if$ $B$ $has$ $an$ $actionable$ $sequence$ $that$ $is$ $a$ $solution$ $to$ $it$, $then$ $A$ $must$ $have$ $that$ $solution$ $as$ $well$. -->
+
+<!-- - $Let$ $A$ $=$ $b,$ $B$ $=$ $q$ -->
+
+<!-- - $=>$ $b$ $is$ $a$ $subset$ $of$ $q$ -->
+
+<!-- - $=>$ $if$ $q$ $has$ $an$ $actionable$ $sequence$ $that$ $is$ $a$ $solution$ $to$ $it$, $then$ $b$ $must$ $have$ $that$ $solution$ $as$ $well$. -->
+
+<!-- - $q$ $is$ $a$ $superset$ $of$ $b$ -->
+
+<!-- - $Therefore,$ $if$ $supersets$ $of$ $b$ $have$ $an$ $actionable$ $sequence$ $of$ $moves,$ $then$ $b$ $must$ $also$ $have$ $a$ $solution$ -->
 
 b. Explain in detail how to modify graph search for sensorless problems to take advantage of your answers in (a).
 
-In sensorless problems, many times you can build a model for Reachable belief states, and find the solution for all of them if there is one, and then if you can make a sequence of moves to _guarantee_ that you are in one of the states that can be solved, then you have a solution to the problem, because you found a superset of b that can be solved
+In a sensorless problem, to solve the problem with no prior knowledge what state you are currently in, you would assume that you are in every state at once.
 
-c. Explain in detail how to modify and–or search for partially observable problems, beyond the modifications you describe in (b).
+Your start state would have n many trees, each with n different unique starting positions on the state space, where n is the total number of states in the state space.
 
-For partially-observable problems, you do not need to find a way for you to guarantee that you are in a solvable state, with partially observable, you can see part of the state space, so often you can just find out what state you are in by making moves, and observing what happens, which will give you info, which can be used to piece together what state space you are in.
+Then, each time you move around in the tree, you would apply the action you would for one node, to every single node in every tree in the state.
+
+Then, to find the solution to the sensorless problem, the goal state is that every tree in your state has the current node on the goal node.
 
 ## 4.10
 
