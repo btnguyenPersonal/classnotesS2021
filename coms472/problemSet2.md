@@ -121,6 +121,6 @@ Then, to find the solution to the sensorless problem, the goal state is that eve
 
 ###### Consider the sensorless version of the erratic vacuum world. Draw the belief-state space reachable from the initial belief state {1,2,3,4,5,6,7,8}, and explain why the problem is unsolvable.
 
-![](../pic/vacuum\ world.png)
+![](../pic/vacuumstate.png)
 
   This problem is unsolvable because there is no way for you to know if you have cleaned up all of the dirt. You will get caught in a cycle where no matter what you do, if you have no sensors you can never tell if you are in the goal state. Every time you suck from any of the left states, you do not know which one of the left states you will end up in, and the same can be said for the right side. When you switch from one of the left states to the right state, it does not guarantee which room you are going to be in either. Therefore, you will get stuck in this loop of sucking or switching rooms, and since neither of those moves helps you at all with figuring out where you are, you can never figure out if you are at the goal state or not.
