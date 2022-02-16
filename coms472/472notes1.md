@@ -401,4 +401,22 @@
 
 #### Expensive search effort
   - As if the state space is being constructed by an imaginary adversary
-  - can
+
+#### Nash Equilibrium
+  - Each player has chosen a strategy and no player can increase own expected payoff by changing their own strategy
+
+#### Minimax function
+  assume that both players play optimally:
+  - Max moves to a state of maximum value of its turn;
+  - Min moves to a state of minimum value at its turn;
+
+  - Complete if the game tree is finite
+  - Optimal against an optimal opponent
+    - If Min does not play optimally,
+      1. Max will play at least as well as an optimal player
+      1. but there may be a better strategy against the suboptimal Min
+  - Three-way ones need to have a different vector values
+
+#### Alpha-Beta Cutoff
+  - number of states is exponential in the depth of the game tree
+  - The cutoff where to algorithm will cut off the that part of the tree
