@@ -480,3 +480,50 @@ O = Offset
   - To add a new TLB cache entry we need to replace an old one, how to pick which to replace?
   - Least-recently-used &rarr; replace the entry that was used the longest ago
   - Random &rarr; replace a random entry
+
+#### Swap
+  - Users have expectation they can run many programs concurrently
+  - Memory requirements of all processes combined can easily exceed physical memory
+  - Observation
+    - At any time, many idle processes
+    - Only a few pages account for most memory accesses
+  - __Idea__: rarely used pages can be stored on disk
+
+  ---
+
+  How can OS take advantage of large slow disk space to give illusion of infinite space?
+
+  ---
+
+#### Swap Space
+  - When physical memory is full, less used pages moved to swap space
+  - Swap space divided into blocks that can hold one page
+  - Preset Bit
+    - Page table has __preset bit__ to indicate if page is in physical memory (`1`) or in swap (`0`)
+
+#### What to do when page not present?
+  - When a program tries to access memory that is on a page currently in swap a page fault occurs
+  - The page fault is just a trap, it is managed by OS code called the page-fault handler
+  - The page-fault handler needs to move the page back to main memory
+  - It may require making room by __swapping__ some other page into swap space
+
+#### Why not put everything on disk?
+  - Main memory is 100x slower than CPU
+  - SSD drive is 100x slower than main memory
+  - Swap enables large easy to use address spaces, but cost of page fault is enormous, really want to avoid page faults
+
+#### Replacement Policy
+  - Need to decide on page to evict (page out) so a page can be brought back to memory (page in)
+  - There are many page-replacement policies, just like we saw with TLB cache 
+    - FIFO
+    - LRU
+    - Random
+
+#### Proactive Free Space Management
+  - Assume main memory is full
+    - What happens when use starts a new application?
+    - Several page faults! Really slow!
+  - OS proactively moves pages to swap to always keep a small amount for memory free for responding to sudden activity
+  - Two thresholds high watermark and low watermark
+    - When free memory drops below low watermark OS start background task to start pushing pages to swap space
+    - Task stop when free memory passes high watermark
