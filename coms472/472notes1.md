@@ -420,3 +420,10 @@
 #### Alpha-Beta Cutoff
   - number of states is exponential in the depth of the game tree
   - The cutoff where to algorithm will cut off the that part of the tree
+
+#### Alpha and Beta Values
+  - Alpha-beta pruning gets its name from two extra parameters $\alpha$ $\beta$
+  - Alpha is highest value
+  - Beta is lowest value
+  - [$\alpha$, $\beta$]
+
