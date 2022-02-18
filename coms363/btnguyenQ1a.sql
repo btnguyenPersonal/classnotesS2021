@@ -2,18 +2,25 @@ drop database if exists btnguyen;
 create database btnguyen;
 use btnguyen;
 
+drop table if exists Dependents;
+create table Dependents (
+	dname varchar(255),
+	relationships varchar(255),
+    date_of_birth date,
+    primary key (dname)
+);
+
 drop table if exists Employees;
 create table Employees (
 	essn int,
     ename varchar(255),
     eaddress varchar(255),
     esalary varchar(255),
-    ephone_num varchar(255),
+    ephone_num varchar(10),
     union_mem_num int,
-    phone_num varchar(10),
-    primary key (essn)
-    -- constraint Depends foreign key (dname)
---     references Dependents (dname)
+    dname varchar(255),
+    primary key (essn),
+    foreign key (dname) references Dependents (dname)
 );
 
 drop table if exists Model;
@@ -40,14 +47,6 @@ create table Traffic_Control (
 	exam_date date
 );
 
-drop table if exists Dependents;
-create table Dependents (
-	dname varchar(255),
-	relationships varchar(255),
-	date_of_birth date,
-    primary key (dname)
-);
-
 drop table if exists Plane;
 create table Plane (
 	reg_no int,
@@ -62,3 +61,7 @@ create table Test (
     FAA_no int,
     primary key(FAA_no)
 );
+
+-- alter table `Employees` 
+-- add constraint `Depends` foreign key (`dname`) 
+-- references `Dependents` (`dname`) ON DELETE CASCADE ON UPDATE CASCADE;						
