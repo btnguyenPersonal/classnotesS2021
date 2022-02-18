@@ -10,17 +10,17 @@ create table Employees (
     esalary varchar(255),
     ephone_num varchar(255),
     union_mem_num int,
-    phone_num varchar(10)
+    phone_num varchar(10),
+    primary key (essn)
 );
-alter table Employees add primary key (essn);
 
 drop table if exists Model;
 create table Model (
 	model_no int,
     capacity int,
-    weigth int
+    weigth int,
+    primary key (model_no)
 );
-alter table Model add primary key (model_no);
 
 drop table if exists Technician;
 create table Technician (
@@ -42,21 +42,21 @@ drop table if exists Dependents;
 create table Dependents (
 	dname varchar(255),
 	relationships varchar(255),
-	date_of_birth date
+	date_of_birth date,
+    primary key (dname)
 );
-alter table Dependents add primary key (dname);
 
 drop table if exists Plane;
 create table Plane (
 	reg_no int,
-    pname varchar(255)
+    pname varchar(255),
+    primary key (reg_no)
 );
-alter table Plane add primary key (reg_no);
 
 drop table if exists Test;
 create table Test (
 	score int,
     tname varchar(255),
-    FAA_no int
+    FAA_no int,
+    primary key(FAA_no)
 );
-alter table Test add primary key (FAA_no);
