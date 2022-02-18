@@ -66,9 +66,11 @@ An admissible heuristic h(b) for a sensorless problem is to take the lowest cost
 
 This works because in sensorless problems, we have no idea where we are, so the only thing it is safe to assume is that the heuristic must return equal to or less than the lowest cost in h(s), because anything that goes over will make the heuristic inadmissible
 
-Most of the time, this will just mean that h(b) = 0
+So the only heuristic that will never overestimate the distance to the goal is to give the smallest distance to the goal no matter what the belief state is in.
 
-This heuristic will just give the same performance as Uniform Cost search
+Most of the time, this will just mean that h(b) = the shortest distance between a state and the goal state
+
+This heuristic will just give the same performance as Uniform Cost search, since the heuristic will give the same answer for every node.
 
 ---
 
@@ -114,6 +116,10 @@ In a sensorless problem, to solve the problem with no prior knowledge what state
 Your start state would have n many trees, each with n different unique starting positions on the state space, where n is the total number of states in the state space.
 
 Then, each time you move around in the tree, you would apply the action you would for one node, to every single node in every tree in the state.
+
+___Using (a)___, If we find that $b$ is _not_ solvable, then as soon as we see that any of the trees is in the $b$ state, then we can immediately discard that state, and stop searching there, because we know that that state is unsolvable.
+
+Also with the inverse, If we find that $b$ is solvable, then as soon as we see that all of the trees are in the $b$ state, then we can append the solution to to $b$ with the current moves that the search has found to find the solution to the problem.
 
 Then, to find the solution to the sensorless problem, the goal state is that every tree in your state has the current node on the goal node.
 
