@@ -907,3 +907,13 @@ O = Offset
   - Indirection means one extra lookup step to find page table entry
 
   What about more than one level of indirection?
+
+  - makes the page table size exponentially smaller
+
+  Alternative: Inverted Page Table ___(SUCKS)___
+
+  - Page table index is PFN which translates to VPN (inverted from normal page table)
+
+  - All processes share one big page table
+
+  - Lookup can be made faster using hashtable
