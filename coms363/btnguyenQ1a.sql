@@ -12,6 +12,8 @@ create table Employees (
     union_mem_num int,
     phone_num varchar(10),
     primary key (essn)
+    -- constraint Depends foreign key (dname)
+--     references Dependents (dname)
 );
 
 drop table if exists Model;
