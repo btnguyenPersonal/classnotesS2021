@@ -19,8 +19,7 @@ create table Employees (
     ephone_num varchar(10),
     union_mem_num int,
     dname varchar(255),
-    primary key (essn),
-    foreign key (dname) references Dependents (dname)
+    primary key (essn)
 );
 
 drop table if exists Model;
@@ -62,6 +61,24 @@ create table Test (
     primary key(FAA_no)
 );
 
--- alter table `Employees` 
--- add constraint `Depends` foreign key (`dname`) 
--- references `Dependents` (`dname`) ON DELETE CASCADE ON UPDATE CASCADE;						
+-- alter table Dependents 
+-- add constraint Depends foreign key (essn)
+-- references Employees (essn);	
+
+-- alter table Dependents
+-- add constraint must_have_only_one unique (essn);
+
+alter table Employees 
+add constraint Depends foreign key (dname) 
+references Dependents (dname);	
+
+-- alter table Employees 
+-- add constraint ISA foreign key (dname) 
+-- references Dependents (dname);	
+
+-- alter table Dependents 
+-- add foreign key (essn) 
+-- references Employees (essn);
+
+-- alter table Dependents 
+-- add constraint unique (essn);				
