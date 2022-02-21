@@ -1,0 +1,11 @@
+Which design is better at ...
+
+reducing data redundancies?
+  - Design B is better because it will store the pid and pname separately, so any subsequent call only has to reference pid instead of both pid and pname
+
+preventing deletion anomalies?
+  - Design B is better because
+
+preventing insertion anomalies?
+
+preventing deletion anomalies?
