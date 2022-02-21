@@ -1,1 +1,1 @@
-select * from Employees;
+select * from Model;

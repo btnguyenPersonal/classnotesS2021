@@ -17,7 +17,7 @@ drop table if exists Dependents;
 create table Dependents (
 	dname varchar(255) not null,
 	relationships varchar(255),
-    date_of_birth date,
+    date_of_birth varchar(255),
     dependssn int unique not null,
     primary key (dname, dependssn),
     foreign key (dependssn) references Employees (essn)
@@ -27,7 +27,7 @@ drop table if exists Model;
 create table Model (
 	model_no int not null,
     capacity int,
-    weigth int,
+    weight int,
     primary key (model_no)
 );
 
@@ -59,7 +59,7 @@ create table Manager (
 
 drop table if exists Traffic_Control;
 create table Traffic_Control (
-	exam_date date,
+	exam_date varchar(255),
     traffic_ssn int primary key,
     foreign key (traffic_ssn) references Employees (essn)
 );
@@ -85,7 +85,7 @@ drop table if exists Test_info;
 create table Test_info (
 	hours int,
     score int,
-    tdate date,
+    tdate varchar(255),
     tech_ssn int not null,
     reg_no int not null,
     FAA_no int not null,
@@ -97,7 +97,7 @@ create table Test_info (
 
 drop table if exists Monitor;
 create table Monitor (
-	most_recent_date date,
+	most_recent_date varchar(255),
     manager_ssn int not null,
     tech_ssn int not null,
     reg_no int not null,
