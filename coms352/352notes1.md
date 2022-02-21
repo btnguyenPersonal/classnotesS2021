@@ -10,9 +10,9 @@ Memory Virtualisation - programs can write anywhere in the memory
 
 ## Program vs Process
 
-- _program_ is instructions stored on the disk &rarr; an executable file
+_program_ is instructions stored on the disk &rarr; an executable file
 
-- _process_ is a running program
+_process_ is a running program
 
 |Memory|CPU|
 
@@ -30,27 +30,27 @@ Memory Virtualisation - programs can write anywhere in the memory
 
 |state = RUNNING||
 
-- __Registers__ &rarr; data stored directly on CPU
+__Registers__ &rarr; data stored directly on CPU
 
-- __Program Counter__ &rarr; which instructions are executed next
+__Program Counter__ &rarr; which instructions are executed next
 
-- __Address Space__ &rarr; where data is stored in memory
+__Address Space__ &rarr; where data is stored in memory
 
-- __Stack and Frame Pointer__ &rarr; what are the parameters of functions?
+__Stack and Frame Pointer__ &rarr; what are the parameters of functions?
 
 ## Scheduler
 
-- The scheduler is part of the OS
+The scheduler is part of the OS
 
-- Job is to make sure that only one program is running at once
+Job is to make sure that only one program is running at once
 
-- Context Switch
+Context Switch
 
   Save CPU context of descheduled process
 
   Load CPU context of descheduled process
 
-- Every process must have a _parent_
+Every process must have a _parent_
 
   When a process is deleted it goes into zombie state, because it may need the exit id
 
@@ -77,11 +77,11 @@ B
 
 ```
 
-- Creates a new process by duplicating the calling process
+Creates a new process by duplicating the calling process
 
-- Child process has a copy of parent's address space
+Child process has a copy of parent's address space
 
-- On Success
+On Success
 
   Both parent and child continue execution at the point of return from `fork()`
 
@@ -89,7 +89,7 @@ B
 
   `return 0` to child process
 
-- On Failure:
+On Failure:
 
   Does not create child and `returns -1`
 
@@ -105,9 +105,9 @@ pid_t wait(int *wstatus)
 
 ```
 
-- Suspend execution for he parent until one of its children terminates
+Suspend execution for he parent until one of its children terminates
 
-- On Success
+On Success
 
   Returns pid of the child process that terminated
 
@@ -119,9 +119,9 @@ int exec(const char *pathname, char *const argv[]);
 
 ```
 
-- Replaces the current program with a new one, command line args are passed in argv
+Replaces the current program with a new one, command line args are passed in argv
 
-- example usage:
+example usage:
 
 ```
 
@@ -154,13 +154,13 @@ int pipe(int p[2]);
 
 ```
 
-- On Success
+On Success
 
   New file descriptor points to source of provided file descriptor
 
   Returns new file descriptor
 
-- On Failure
+On Failure
 
   Returns -1
 
@@ -180,35 +180,35 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
 ## Direct Execution
 
-- Lets the code do everything on the computer
+Lets the code do everything on the computer
 
-- CPU has bit that indicates if in _user mode_ or _kernel mode_
+CPU has bit that indicates if in _user mode_ or _kernel mode_
 
   Cannot read/write outside of address space bounds
 
   Cannot read/write I/O devices
 
-- When in kernel mode, all instructions allowed
+When in kernel mode, all instructions allowed
 
-- Normal processes only execute in user mode, the OS executes in kernel mode
+Normal processes only execute in user mode, the OS executes in kernel mode
 
 ## Process mode
 
-- Protects the computer from altering sensitive data
+Protects the computer from altering sensitive data
 
 ## System Call
 
-- Problem: how can users perform privileged operations?
+Problem: how can users perform privileged operations?
 
 ## Jobs
 
-- Real processes alternate between needing CPU time and waiting for I/O
+Real processes alternate between needing CPU time and waiting for I/O
 
-- Jobs with Time-Sharing, can switch between them when needed
+Jobs with Time-Sharing, can switch between them when needed
 
-- __Preemption__ will kick off processes in the middle of a job before it's done to make sure that other jobs can be done
+__Preemption__ will kick off processes in the middle of a job before it's done to make sure that other jobs can be done
 
-- Metrics
+Metrics
 
   Time of arrival &rarr; job first enters ready state
 
@@ -218,7 +218,7 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
   __Turnaround Time__ = __Time of completion__ - __Time of arrival__
 
-- Why different metrics?
+Why different metrics?
 
   __Turnaround time__ &rarr; tells time to complete jobs, good for CPU bound processes, where getting enough CPU runtime is the main concern
 
@@ -226,7 +226,7 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
   There are other metrics, later we will look at _fairness_
 
-- FIFO
+FIFO
 
   Always pick out job that comes first
 
@@ -236,7 +236,7 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
   Disadvantage: Large upfront CPU processes can hurt turnaround and response time
 
-- Shortest Job First (SJF)
+Shortest Job First (SJF)
 
   Always pick out the shortest by job length
 
@@ -246,7 +246,7 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
   Disadvantage: If short jobs arrive after starting a long job?
 
-- Shortest Time-to-Completion first (STCF)
+Shortest Time-to-Completion first (STCF)
 
   like SJF, but when a new job comes in, it will kick that job off first
 
@@ -256,7 +256,7 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
   Disadvantage: sometimes response time can be bad (Bad for I/O bound processes)
 
-- Round Robin (RR)
+Round Robin (RR)
 
   Implementation: FIFO queue
 
@@ -266,13 +266,13 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
   Disadvantage: high turnaround time, and frequent context switches reduce CPU efficiency
 
-- Problem with SJF and STCF: Oracle
+Problem with SJF and STCF: Oracle
 
   Scheduler doesn't know how long it will take for a job to complete
 
   SJF and STCF needs the ability to see into the future
 
-- Multi-Level Feedback Queue
+Multi-Level Feedback Queue
 
   SJF and STCF have good features, but they require oracle vision and they have serious flaws for some workloads
 
@@ -284,9 +284,9 @@ __Time-sharing__ &rarr; each process can share the CPU so each can make progress
 
 ## Examples of Common Processes
 
-- Process 1: waits for user to press key, performs short task such as adding char to display buffer and then waits for next key press.
+Process 1: waits for user to press key, performs short task such as adding char to display buffer and then waits for next key press.
 
-- Process 2: Perform a long math computation
+Process 2: Perform a long math computation
 
 ## CPU bound vs I/O bound processes
 
@@ -917,3 +917,95 @@ O = Offset
   - All processes share one big page table
 
   - Lookup can be made faster using hashtable
+
+## Replacement Policy
+
+__cache hit__ &rarr; page is in main memory
+
+__cache miss__ &rarr; page is in swap space instead
+
+Reference Strings &rarr; if program accesses 0, 0, 0, 1, 1, 1, 2, 0, 1
+
+  - Would be converted to 0, 1, 2, 0, 1
+
+---
+
+_Optimal Comparison_ (not real) &rarr; assume we can predict the future and always chose to evict the page that will be used furthest out (or any page that will never be used again)
+
+First attempt is _FIFO_, despite simplicity not a good choice because causes paradoxical corner-case behavior known as _Belady's anomaly_
+
+  - Advantage:
+    - easy to implement and fast (O(1) operations) can be implemented in a fixed size cache using a circular buffer
+
+  - Belady's Anomaly &rarr; more cache space gives a worse performance
+
+Random &rarr; evict from cache at random
+
+  - Advantages
+
+    - easy to implement and fast
+
+    - no corner cases
+
+  - Disadvantages
+
+    - sometimes will kick out a popular page and give lots of misses
+
+LRU (least recently used)
+
+  - evice the page used the least recently
+
+  - Advantages
+
+    - Better performance than FIFO
+
+    - Provable that larger cache size is always a subset of smaller
+
+    - No Belady's anomaly possible
+
+  - Disadvantages
+
+    - slow
+
+    - accounting to do on every single page access
+
+## So which is actually faster?
+
+No locality (completely access was random)
+
+  - Then all of the policies gives the exact same as random
+
+  - cache that can store 50% of total pages only gives 50% hit rate
+
+80-20 Workload (80% of accesses are of 20% of the pages)
+
+  - A few pages get the most accesses
+
+  - Most pages get a few accesses
+
+  - LRU performs the closest to optimal, FIFO and RAND perform the same
+
+Looping-Sequential Workload
+
+  - Assume loop repeatedly reads pages 1 to 49 in increasing order
+
+  - When a cache size is below 50, LRU and FIFO have same corner case that causes every access to be a miss
+
+  - Random avoids corner cases
+
+Clock Algorithm
+
+  - LRU performs the closest in optimal for typical workloads, but it is really costly on every access
+
+  - A way to approximate LRU cheaply
+
+  - Add extra use bit to page table entry, on every memory access MMU set use bit of page to 1
+
+  - When looking for page to evict
+
+    - Visit pages in round-robin order
+
+    - If page use bit is 0, chose that page to evict
+
+    - Else set use bit to 0 and continue search
+
