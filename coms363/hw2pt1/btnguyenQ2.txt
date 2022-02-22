@@ -1,0 +1,13 @@
+Which design is better at ...
+
+reducing data redundancies?
+  - Design B is better because it will store the pid and pname separately, so any subsequent call only has to reference pid instead of both pid and pname.
+
+preventing deletion anomalies?
+  - Design B is better for preventing deletion anomalies because in Design A, there is no way to delete a certain location other than deleting it from every single row.
+
+preventing insertion anomalies?
+  - Design B is better for preventing insertion anomalies because to insert in Design A, you always need to know every single thing about every object, whereas in Design B, you only need to know the primary keys of the object, for example you don't need to know the venue_desc every time you insert into the table, you just need to know the venue_name.
+
+preventing update anomalies?
+  - Design B is better for preventing update anomalies because if a location is changed in Design A, every single row needs to be updated, and that could create an update anomaly if some of the data does not get changed correctly. Where in Design B, there does not need to be any rows updated except for the row where the location is stored, and it will automatically change every row.
