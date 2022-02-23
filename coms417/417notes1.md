@@ -213,3 +213,11 @@ public void test_1 {
   assertTrue("Add cat test", a[0] == cat);
 }
 ```
+
+## Category-Partition
+  - Specifying and generating functional tests
+  - Tests aimed at most vulnerable parts of the system
+  - Cases where input and environment interactions can cause problems
+
+#### Functional Units are aspects of the program behavior that can be tested independently
+  - TSL (test specification language) means of implementing the category partition method

@@ -1009,3 +1009,49 @@ Clock Algorithm
 
     - Else set use bit to 0 and continue search
 
+## Concurrency
+
+2 types
+
+  - Multiprogramming - to utilize the CPU efficiently when programs block for I/O
+
+  - Multitasking - to give all programs a fair slice of the CPU and make progress
+
+What about providing concurrency within a process?
+  - Programs have tasks that need to block for I/O
+  - Programs want to be responsive to the user while performing tasks in the background
+
+  - Programs want to distribute their computations across multiple CPUs to complete faster
+
+#### What is a thread?
+
+  - multiple points of execution of a program within a single process
+
+  - each thread has is own stack segment
+
+  - Program, data, and heap are shared with the process
+
+#### Thread Control Block
+
+  - Everything that was learned for process scheduling, it is the same for thread scheduling
+
+#### Concurrency vs Parrallelism
+
+__Concurrent__ means multiple threads making progress in time but may be implemented by time-sharing
+
+__Parallel__ means multiple threads instructions executing independently on multiple CPU cores
+
+- __Concurrency__ allows I/O overlap and responsiveness
+
+- __Parallelism__ of threads enables performance increases
+
+## Why use threads?
+
+Threads provide more convenience and better performance
+
+- Simple memory sharing (all threads share same data and heap)
+
+- Lower cost of thread creation (don't need to allocate new address space, just stack)
+
+- Lower cost of context switch (only stack and registers change)
+
