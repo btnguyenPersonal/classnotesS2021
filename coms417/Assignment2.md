@@ -51,21 +51,27 @@ public void test0()  throws Throwable  {
 No, only the Stack passes all tests, the triangle returns a failure
 
 2. Change the oracle for the first Stack Test and recompile/run the tests.
+
 Show the failure as a screenshot.
 
 Failed Test:
+
 ![](../pic/failedTest.png)
 
 3.
 
 Fixed Code:
+
 ![](../pic/fixedTriangle.png)
+
 Fixed Tests:
+
 ![](../pic/successfulTriangle.png)
 
 4.
 
 ![](../pic/isosceles1.png)
+
 ![](../pic/isosceles2.png)
 
 5.
@@ -75,7 +81,17 @@ I have 20 tests cases now
 6.
 
 ![](../pic/runFaultyTriangle.png)
-  Now, since the evosuite has been run again with the faulty code, it now assumes that the "faulty" code is all true, and since the evosuite doesn't inherently know what an isosceles triangle is, it will trust that the triangle class knows what an isosceles triangle is, even if the logic there is not sound
 
 7.
 
+  Now, since the evosuite has been run again with the faulty code, it now assumes that the "faulty" code is all true, and since the evosuite doesn't inherently know what an isosceles triangle is, it will trust that the triangle class knows what an isosceles triangle is, even if the logic there is not sound.
+
+  The implication for automated test generation is that while it is very good for finding crashes and places where the program breaks, it the behavior is not what is desired, but the program does not break, then automated test generation will set those tests as correct even thought they are not.
+
+8.
+
+There are 13 test cases for the power class
+
+9.
+
+![](../pic/evosuitepower.png)
