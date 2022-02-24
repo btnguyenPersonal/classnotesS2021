@@ -53,3 +53,22 @@ Develop a formal proof of correctness for alpha–beta pruning. To do this, cons
 #### Typo in part 1: the second argument of min is n_{21} (i.e., subscripts 21} not "n_2 1" (i.e., 1 as a product factor). 
 
 ## Extra problem (17 pts) 
+
+![](../pic/alphabetapruning.png)
+
+You are given a minimax search tree as shown on the next page.  The
+tree has nine internal nodes .  Not all terminal states (leaves) are 
+at the same depth. 
+
+Execute the alpha-beta pruning algorithm (use the version from the 3rd 
+edition of the textbook in the lecture notes on February 15).
+
+a. (6 pts) Mark all the subtrees (including leaves) that have been pruned.
+    You may, for instance, simply put double slashes \\ or // across the edge 
+    entering the root of such a subtree from the above.  
+
+b. (8 pts) Next to each visited internal node, write down the two values  
+    just before the return from the call MAX-VALUE or MIN-VALUE invoked on the 
+    state represented by the node.
+
+c. (3 pts) What is the final value for MAX at the root?
