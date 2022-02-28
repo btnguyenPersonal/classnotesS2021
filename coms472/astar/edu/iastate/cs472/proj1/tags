@@ -1,0 +1,74 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/ben/git/classnotesS2021/coms472/edu/iastate/cs472/proj1/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+AStar	EightPuzzle.java	/^	public static String AStar(State s0, Heuristic h)$/;"	m	class:EightPuzzle
+DBL_DOWN	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DBL_LEFT	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DBL_RIGHT	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DBL_UP	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DOWN	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DoubleMoveHeuristic	Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
+EightPuzzle	EightPuzzle.java	/^public class EightPuzzle $/;"	c
+Heuristic	Heuristic.java	/^public enum Heuristic $/;"	g
+LEFT	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+ManhattanDist	Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
+ManhattanDistance	State.java	/^	private int ManhattanDistance = -1;     \/\/ Manhattan distance between this state and the $/;"	f	class:State	file:
+Move	Move.java	/^public enum Move $/;"	g
+OrderedStateList	OrderedStateList.java	/^	  public OrderedStateList(Heuristic h, boolean isOpen)$/;"	m	class:OrderedStateList
+OrderedStateList	OrderedStateList.java	/^public class OrderedStateList $/;"	c
+PuzzleSolver	PuzzleSolver.java	/^public class PuzzleSolver $/;"	c
+RIGHT	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+State	State.java	/^    public State (String inputFileName) throws FileNotFoundException, IllegalArgumentException$/;"	m	class:State
+State	State.java	/^    public State(int[][] board) throws IllegalArgumentException $/;"	m	class:State
+State	State.java	/^public class State implements Cloneable, Comparable<State>$/;"	c
+StateComparator	StateComparator.java	/^public class StateComparator implements Comparator<State>$/;"	c
+TileMismatch	Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
+UP	Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+addState	OrderedStateList.java	/^	  public void addState(State s)$/;"	m	class:OrderedStateList
+board	State.java	/^	public int[][] board; 		\/\/ configuration of tiles $/;"	f	class:State
+clone	State.java	/^    public Object clone()$/;"	m	class:State
+compare	StateComparator.java	/^	public int compare(State s1, State s2)$/;"	m	class:StateComparator
+compareStates	OrderedStateList.java	/^	  private int compareStates(State s1, State s2)$/;"	m	class:OrderedStateList	file:
+compareTo	State.java	/^    public int compareTo(State s)$/;"	m	class:State
+computeManhattanDistance	State.java	/^	private int computeManhattanDistance()$/;"	m	class:State	file:
+computeNumMismatchedTiles	State.java	/^	private int computeNumMismatchedTiles()$/;"	m	class:State	file:
+computeNumSingleDoubleMoves	State.java	/^	private int computeNumSingleDoubleMoves()$/;"	m	class:State	file:
+cost	State.java	/^    public int cost() throws IllegalArgumentException$/;"	m	class:State
+edu.iastate.cs472.proj1	EightPuzzle.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	Heuristic.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	Move.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	OrderedStateList.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	PuzzleSolver.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	State.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	StateComparator.java	/^package edu.iastate.cs472.proj1;$/;"	p
+equals	State.java	/^    public boolean equals(Object o)$/;"	m	class:State
+findState	OrderedStateList.java	/^	  public State findState(State s)$/;"	m	class:OrderedStateList
+head	OrderedStateList.java	/^	  private State head;           \/\/ dummy node as the head of the sorted linked list $/;"	f	class:OrderedStateList	file:
+heu	State.java	/^	public static Heuristic heu; \/\/ heuristic used. shared by all the states. $/;"	f	class:State
+isGoalState	State.java	/^    public boolean isGoalState()$/;"	m	class:State
+isOPEN	OrderedStateList.java	/^	  private boolean isOPEN;       \/\/ true if this OrderedStateList object is the list OPEN and /;"	f	class:OrderedStateList	file:
+main	PuzzleSolver.java	/^	public static void main(String[] args) throws FileNotFoundException, IllegalArgumentException$/;"	m	class:PuzzleSolver
+move	State.java	/^	public Move move;           \/\/ the move that generated this state from its predecessor$/;"	f	class:State
+next	State.java	/^	public State next; 			\/\/ next node on the OPEN\/CLOSED list$/;"	f	class:State
+numMismatchedTiles	State.java	/^	private int numMismatchedTiles = -1;    \/\/ number of mismatched tiles between this state $/;"	f	class:State	file:
+numMoves	State.java	/^	public int numMoves; 	    \/\/ number of moves from the initial state to this state$/;"	f	class:State
+numSingleDoubleMoves	State.java	/^	private int numSingleDoubleMoves = -1;  \/\/ number of single and double moves with each double/;"	f	class:State	file:
+predecessor	State.java	/^	public State predecessor; 	\/\/ predecessor node on the path from the initial state $/;"	f	class:State
+previous	State.java	/^	public State previous;    	\/\/ previous node on the OPEN\/CLOSED list$/;"	f	class:State
+remove	OrderedStateList.java	/^	  public State remove()$/;"	m	class:OrderedStateList
+removeState	OrderedStateList.java	/^	  public void removeState(State s) throws IllegalStateException$/;"	m	class:OrderedStateList
+size	OrderedStateList.java	/^	  private int size = 0;$/;"	f	class:OrderedStateList	file:
+size	OrderedStateList.java	/^	  public int size()$/;"	m	class:OrderedStateList
+solutionPath	EightPuzzle.java	/^	private static String solutionPath(State goal)$/;"	m	class:EightPuzzle	file:
+solvable	State.java	/^    public boolean solvable()$/;"	m	class:State
+solve8Puzzle	EightPuzzle.java	/^	public static String solve8Puzzle(State s0)$/;"	m	class:EightPuzzle
+successorState	State.java	/^    public State successorState(Move m) throws IllegalArgumentException $/;"	m	class:State
+toString	State.java	/^    public String toString()$/;"	m	class:State

@@ -20,7 +20,13 @@ Consider the two-player game described in Figure
 
 3. Explain why the standard minimax algorithm would fail on this game tree and briefly sketch how you might fix it, drawing on your answer to (b). Does your modified algorithm give optimal decisions for all games with loops?
 
+Carried ? up until it gets ignored, treated it as an unknown state
+
+Tried to solve until the minimax algorithm would throw out that path
+
 4. This 4-square game can be generalized to n squares for any n>2. Prove that A wins if n is even and loses if n is odd.
+
+Some induction maybe
 
 ## 5.9 (3+4+3+4+4 = 18 pts) 
 
@@ -28,11 +34,15 @@ This problem exercises the basic concepts of game playing, using tic-tac-toe (no
 
 1. Approximately how many possible games of tic-tac-toe are there?
 
+  $9!$ because each person can pick $K=9$ places at the start, then $K-1$ for each following move
+
 2. Show the whole game tree starting from an empty board down to depth 2 (i.e., one X and one O on the board), taking symmetry into account.
 
 3. Mark on your tree the evaluations of all the positions at depth 2.
 
 4. Using the minimax algorithm, mark on your tree the backed-up values for the positions at depths 1 and 0, and use those values to choose the best starting move.
+
+Best starting move would be in the middle
 
 5. Circle the nodes at depth 2 that would not be evaluated if alpha–beta pruning were applied, assuming the nodes are generated in the optimal order for alpha–beta pruning.
 
@@ -66,6 +76,10 @@ edition of the textbook in the lecture notes on February 15).
 a. (6 pts) Mark all the subtrees (including leaves) that have been pruned.
     You may, for instance, simply put double slashes \\ or // across the edge 
     entering the root of such a subtree from the above.  
+
+prune 80
+
+prune 4 and 7
 
 b. (8 pts) Next to each visited internal node, write down the two values  
     just before the return from the call MAX-VALUE or MIN-VALUE invoked on the 

@@ -1,6 +1,8 @@
 package edu.iastate.cs472.proj1;
 
 import java.io.FileNotFoundException;
+import java.io.File;
+import java.util.Scanner;
 
 /**
  *  
@@ -60,8 +62,13 @@ public class State implements Cloneable, Comparable<State>
 	 */
     public State(int[][] board) throws IllegalArgumentException 
     {
-    	// TODO 
-	}
+      this.move = null;
+      this.numMoves = 0;
+      this.previous = null;
+      this.next = null;
+      this.predecessor = null;
+      this.board = board;
+    }
     
     
     /**
@@ -79,9 +86,22 @@ public class State implements Cloneable, Comparable<State>
      */
     public State (String inputFileName) throws FileNotFoundException, IllegalArgumentException
     {
-    	
-    	// TODO 
-	}
+      try {
+        File f = new File(inputFileName);
+        Scanner s = new Scanner(f);
+        while (s.hasNextLine()) {
+          for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+              this.board[i][j] = Integer.parseInt(s.next());
+            }
+          }
+        }
+        s.close();
+      } catch (FileNotFoundException e) {
+        System.out.println("File not found: " + inputFileName);
+        e.printStackTrace();
+      }
+    }
     
     
     /**
@@ -108,8 +128,14 @@ public class State implements Cloneable, Comparable<State>
      */                                  
     public State successorState(Move m) throws IllegalArgumentException 
     {
-    	// TODO 
-    	return null; 
+      State output = new State(this.board);
+      output.predecessor = this;
+      output.move = m;
+      output.next = null;
+      output.previous = null;
+      output.numMoves++;
+      // TODO game logic
+    	return output; 
     }
     
         
@@ -140,8 +166,19 @@ public class State implements Cloneable, Comparable<State>
      */
     public boolean isGoalState()
     {
-    	// TODO 
-    	return false; 
+      int[][] goalBoard = {
+        {1, 2, 3},
+        {8, 0, 4},
+        {7, 6, 5}
+      };
+    	for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          if (this.board[i][j] != goalBoard[i][j]) {
+            return false;
+          }
+        }
+      }
+      return true;
     }
     
     
@@ -162,8 +199,14 @@ public class State implements Cloneable, Comparable<State>
     @Override 
     public String toString()
     {
-    	// TODO 
-    	return null; 
+      String output = "";
+    	for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          output += this.board[i][j] + " ";
+        }
+        output += "\n";
+      }
+      return output;
     }
     
     
@@ -176,8 +219,7 @@ public class State implements Cloneable, Comparable<State>
     @Override
     public Object clone()
     {
-    	// TODO 
-    	return null; 
+    	return new State(board); 
     }
   
 
@@ -188,8 +230,14 @@ public class State implements Cloneable, Comparable<State>
     @Override 
     public boolean equals(Object o)
     {
-    	// TODO 
-    	return false; 
+    	for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          if (((State) o).board[i][j] != this.board[i][j]) {
+            return false;
+          }
+        }
+      }
+    	return true; 
     }
         
     
@@ -207,7 +255,11 @@ public class State implements Cloneable, Comparable<State>
      */
     public int cost() throws IllegalArgumentException
     {
-    	// TODO 
+      switch(this.heu) {
+        case this.TileMismatch: 
+          return computeNumMismatchedTiles();
+          break;
+      }
     	return 0; 
     }
 
@@ -235,11 +287,23 @@ public class State implements Cloneable, Comparable<State>
      * 
      * @return the number of mismatched tiles between this state and the goal state. 
      */
-	private int computeNumMismatchedTiles()
-	{
-		// TODO 
-		return 0; 
-	}
+    private int computeNumMismatchedTiles()
+    {
+      int[][] goalBoard = {
+        {1, 2, 3},
+        {8, 0, 4},
+        {7, 6, 5}
+      };
+      int numMismatched = 0;
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          if (this.board[i][j] != goalBoard[i][j]) {
+            numMismatched++;
+          }
+        }
+      }
+      return numMismatched; 
+    }
 
 	
 	/**

@@ -14,21 +14,14 @@ _program_ is instructions stored on the disk &rarr; an executable file
 
 _process_ is a running program
 
-|Memory|CPU|
-
-|:---:|:---:|
-
-|Stack|Registers|
-
-|Heap|Program Counter|
-
-|Code|Stack Pointer|
-
-|Static Data||
-
-|process id||
-
-|state = RUNNING||
+| Memory          | CPU             |
+| :---:           | :---:           |
+| Stack           | Registers       |
+| Heap            | Program Counter |
+| Code            | Stack Pointer   |
+| Static Data     |                 |
+| process id      |                 |
+| state = RUNNING |                 |
 
 __Registers__ &rarr; data stored directly on CPU
 
@@ -551,11 +544,9 @@ Solution:
 
   Just like memory virtualisation, can put anything anywhere
 
-|13|12|11|10|9|8|7|6|5|4|3|2|1|
-
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-
-|S|S|O|O|O|O|O|O|O|O|O|O|O|
+| 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   | 2   | 1   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S   | S   | O   | O   | O   | O   | O   | O   | O   | O   | O   | O   | O   |
 
 S = Segment
 
@@ -577,13 +568,10 @@ O = Offset
 
   |Segment|Base register|Size register|Grows Positive?|Protection|
 
-  |---|---|---|---|---|
-
-  |Code|32K|2K|1|Read-Execute|
-
-  |Heap|34K|2K|1|Read-Write|
-
-  |Stack|28K|2K|0|Read-Write|
+  | ---   | --- | --- | --- | ---          |
+  | Code  | 32K | 2K  | 1   | Read-Execute |
+  | Heap  | 34K | 2K  | 1   | Read-Write   |
+  | Stack | 28K | 2K  | 0   | Read-Write   |
 
 ## Free Memory
 
@@ -1035,7 +1023,7 @@ What about providing concurrency within a process?
 
   - Everything that was learned for process scheduling, it is the same for thread scheduling
 
-#### Concurrency vs Parrallelism
+#### Concurrency vs Parallelism
 
 __Concurrent__ means multiple threads making progress in time but may be implemented by time-sharing
 
@@ -1054,4 +1042,69 @@ Threads provide more convenience and better performance
 - Lower cost of thread creation (don't need to allocate new address space, just stack)
 
 - Lower cost of context switch (only stack and registers change)
+
+
+// can switch at any of the three assembly instructions, so an interrupt can mess it up
+
+```
+                  mov 0x8049a1c, %eax
+counter++; --->   add $0x1, %eax
+                  mov %eax, 0x8049a1c
+```
+
+#### Bug: Race Condition
+
+Storing and loading to the same shared variable, has problems with concurrency
+
+## Thread library
+
+__Thread library__ provides API for creating and manging threads
+
+Can be implemented in two places
+
+- Entirely in user space, the library requires no special OS suport
+
+- OS supported, uses system calls to operate at kernel level
+
+Examples of common thread libraries
+
+- POSIX pthreads: can be implemented at user level or kernel level
+
+- Windows threads: implemented at kernel level
+
+- Java threads: JVM implements threads using thread libraries available on host system
+
+## `pthread_create()` 
+
+New thread executes concurrently with the parent thread
+
+The new thread runs until on of the following happens
+
+- It returns
+
+## `pthread_exit()` 
+
+Exits from the thread instead of just the process
+
+## `pthread_join()` 
+
+Joins two threads into one
+
+## Synchronizing threads
+
+```
+while (n != *id);
+```
+
+This will keep asking if `n != id` until that is true
+
+## Locks 
+
+Provide mutual exclusion to a critical section of code
+
+Mutual excision - only one thread at a time
+
+Critical section - a section of code that can only be executed by one thread at a a time and the thread must execute the code to completion before another thread can enter
+
+- Shared variables can be used in a critical section
 

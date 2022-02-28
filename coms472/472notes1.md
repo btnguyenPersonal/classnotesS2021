@@ -463,6 +463,7 @@ Advantages of Local Search
 #### Hill Climbing
   ![](../pic/hillclimbdef.png)
   ![](../pic/8queenhill.png)
+  ![](~/Downloads/dvd.png)
 
 Will always try to take the short term best solution
 
@@ -613,6 +614,10 @@ Beta is lowest value
 
 [$\alpha$, $\beta$]
 
+# Monte Carlo Tree Search 
+
+> see slides
+
 #### Disjunctive Constraint
 
 Four workers installing wheels have to share one tool for axle installment
@@ -640,3 +645,29 @@ A __higher order constraint__ relate more variables
 __Global constraint__ &rarr; involves an arbitrary number of constraints
 
 - Ex: Sudoku has to have all in rows and all in columns and all in boxes as different numbers
+
+__Alldiff constraint__ involves every variable
+
+## Cryptoarithmetic Puzzle
+
+see slides to get picture
+
+??? I have no idea how to do this
+
+#### Constraint Propogation
+
+Use constraints to reduce the number of legal values for a variable, which in turn reduce those for another variable, and so on.
+
+Suppost South Australians dislike green
+
+&darr;
+
+Domain for SA: {red,blue}
+
+__Arc Consistency__ every value that can be assigned to Xi, also has a corresponding value Xj
+
+## Path Consistency
+
+Path consistency checks implicit constraints inferable across triples of variables along a path
+
+Go up from unary constraints to binary to ternary, to solve the problems
