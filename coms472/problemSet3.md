@@ -16,13 +16,20 @@ Consider the two-player game described in Figure
 
 - Put loop states (states that already appear on the path to the root) in double square boxes. Since their value is unclear, annotate each with a “?” in a circle.
 
+![](../pic/jumpgameTree.jpg)
+
 2. Now mark each node with its backed-up minimax value (also in a circle). Explain how you handled the “?” values and why.
+
+![](../pic/jumpgameMinimax.jpg)
+
+  The "?" values where discarded when they would be overwritten anyway no matter what they would have given back. For example, when the minimax algorithm wants to pick a node that has the lowest value, and one of the two nodes it is considering is a $-1$, then there is no way for the other node to influence the outcome, so it does not matter if it is a "?". All of the "?" values has this happen to them and got overwritten.
 
 3. Explain why the standard minimax algorithm would fail on this game tree and briefly sketch how you might fix it, drawing on your answer to (b). Does your modified algorithm give optimal decisions for all games with loops?
 
-Carried ? up until it gets ignored, treated it as an unknown state
+This game does not take into account who's turn it is in the game state, so there could be a 1,3 or 1,3 and the game tree would think that they are the same thing, but in reality in each one it is a different person's move
 
-Tried to solve until the minimax algorithm would throw out that path
+<!-- Carried ? up until it gets ignored, treated it as an unknown state -->
+<!-- Tried to solve until the minimax algorithm would throw out that path -->
 
 4. This 4-square game can be generalized to n squares for any n>2. Prove that A wins if n is even and loses if n is odd.
 
@@ -38,29 +45,37 @@ This problem exercises the basic concepts of game playing, using tic-tac-toe (no
 
 2. Show the whole game tree starting from an empty board down to depth 2 (i.e., one X and one O on the board), taking symmetry into account.
 
+![](../pic/tictac1.jpg)
+
 3. Mark on your tree the evaluations of all the positions at depth 2.
 
+![](../pic/tictac2.jpg)
+
 4. Using the minimax algorithm, mark on your tree the backed-up values for the positions at depths 1 and 0, and use those values to choose the best starting move.
+
+![](../pic/tictac3.jpg)
 
 Best starting move would be in the middle
 
 5. Circle the nodes at depth 2 that would not be evaluated if alpha–beta pruning were applied, assuming the nodes are generated in the optimal order for alpha–beta pruning.
 
+![](../pic/tictac3.jpg)
+
 ## 5.14 (4+4+5+4 = 17 pts) 
+
+<!-- Typo in part 1: the second argument of min is n_{21} (i.e., subscripts 21} not "n_2 1" (i.e., 1 as a product factor). --> 
 
 ![](../pic/Exercise\ 5.14\ alpha-beta-proof-figure.jpg)
 
-Develop a formal proof of correctness for alpha–beta pruning. To do this, consider the situation shown in Figure . The question is whether to prune node nj, which is a max-node and a descendant of node n1. The basic idea is to prune it if and only if the minimax value of n1 can be shown to be independent of the value of nj.
+Develop a formal proof of correctness for alpha–beta pruning. To do this, consider the situation shown in Figure . The question is whether to prune node $n_j$, which is a max-node and a descendant of node $n_1$. The basic idea is to prune it if and only if the minimax value of $n_1$ can be shown to be independent of the value of $n_j$.
 
-1. Mode n1 takes on the minimum value among its children: n1=min(n2,n21,…,n2b2). Find a similar expression for n2 and hence an expression for n1 in terms of nj.
+1. Mode $n_1$ takes on the minimum value among its children: $n_1=min(n_2,n_{21},…,n_{2b_2})$. Find a similar expression for $n_2$ and hence an expression for $n_1$ in terms of $n_j$.
 
-2. Let li be the minimum (or maximum) value of the nodes to the left of node ni at depth i, whose minimax value is already known. Similarly, let ri be the minimum (or maximum) value of the unexplored nodes to the right of ni at depth i. Rewrite your expression for n1 in terms of the li and ri values.
+2. Let $l_i$ be the minimum (or maximum) value of the nodes to the left of node $n_i$ at depth $i$, whose minimax value is already known. Similarly, let $r_i$ be the minimum (or maximum) value of the unexplored nodes to the right of $n_i$ at depth $i$. Rewrite your expression for $n_1$ in terms of the $l_i$ and $r_i$ values.
 
-3. Now reformulate the expression to show that in order to affect n1, nj must not exceed a certain bound derived from the li values.
+3. Now reformulate the expression to show that in order to affect $n_1$, $n_j$ must not exceed a certain bound derived from the $l_i$ values.
 
-4. Repeat the process for the case where nj is a min-node.
-
-#### Typo in part 1: the second argument of min is n_{21} (i.e., subscripts 21} not "n_2 1" (i.e., 1 as a product factor). 
+4. Repeat the process for the case where $n_j$ is a min-node.
 
 ## Extra problem (17 pts) 
 
