@@ -616,7 +616,17 @@ Beta is lowest value
 
 # Monte Carlo Tree Search 
 
-> see slides
+![](../pic/montecarloChess.png)
+  
+![](../pic/montecarloBackpropogation.png)
+
+![](../pic/montecarloUncertain.png)
+
+![](../pic/montecarloFormula.png)
+
+![](../pic/montecarloAdvantage.png)
+
+![](../pic/montecarloDisadvantage.png)
 
 #### Disjunctive Constraint
 
