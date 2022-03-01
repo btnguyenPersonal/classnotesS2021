@@ -53,13 +53,13 @@ Standard programming interface provided by UNIX like system
 
 ## `fork() //Process Creation`
 
-```
+```c
 
 pid_t fork()
 
 ```
 
-```
+```c
 
 printf("A");
 fork();
@@ -92,7 +92,7 @@ ___Note___: Calling `fork()` twice will create 4 processes
 
 ## `wait() // Wait for Child`
 
-```
+```c
 
 pid_t wait(int *wstatus)
 
@@ -106,7 +106,7 @@ On Success
 
 ## `exec() // Change the Program`
 
-```
+```c
 
 int exec(const char *pathname, char *const argv[]);
 
@@ -116,7 +116,7 @@ Replaces the current program with a new one, command line args are passed in arg
 
 example usage:
 
-```
+```c
 
 char *argv[] = {"wc", "README",0};
 exec('wc", argc);
@@ -127,7 +127,7 @@ exec('wc", argc);
 
 ## `|||||||||||||||||||||||||PIPES|||||||||||||||||||||||||`
 
-```
+```sh
 
 status () {
 
@@ -141,7 +141,7 @@ status () {
 
 ## `pipe() // Connect two processes`
 
-```
+```c
 
 int pipe(int p[2]);
 
@@ -397,7 +397,7 @@ Process 2: Perform a long math computation
 
   Nice value set by user to indicate "priority", weights the $1/N$ time slice a process gets before preemption
 
-```
+```c
 
 current_time_slice = 
     current_weight / processes_weights_total * sched_latency
@@ -414,7 +414,7 @@ current_time_slice =
 
   weighted version of the real runtime of each process
 
-  ```
+  ```c
 
   vruntime = vruntime + (weight ratio based on nice value) * runtime
 
@@ -464,7 +464,7 @@ current_time_slice =
 
 ## Base and Bounds Translation
 
-  ```
+  ```c
 
   128: mov 1000, %eax
 
@@ -522,7 +522,7 @@ current_time_slice =
 
  - All pointers need to be updated!
 
-```
+```c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -693,7 +693,7 @@ O = Offset
 
 ## Tracking Allocated Regions
 
-  ```
+  ```c
 
   typedef struct {
     int size;
@@ -764,7 +764,7 @@ O = Offset
 
   ex: iterating through an array
 
-  ```
+  ```c
 
   for (int i = 0; i < count; i++) {
      sum += a[i];
@@ -1092,7 +1092,7 @@ Joins two threads into one
 
 ## Synchronizing threads
 
-```
+```c
 while (n != *id);
 ```
 
@@ -1107,4 +1107,131 @@ Mutual excision - only one thread at a time
 Critical section - a section of code that can only be executed by one thread at a a time and the thread must execute the code to completion before another thread can enter
 
 - Shared variables can be used in a critical section
+
+In pthreads a lock is called a __mutex lock__ (short for mutual exclusion)
+
+```c
+lock_t mutex; // globally allocated lock called mutex
+...
+lock(&mutex);
+balance = balance + 1;
+unlock(&mutex);
+```
+
+## Goals 
+
+__Mutual Exclusion__ - prevent mutliple threads from entering a critical section
+
+__Fairness__ - does each thread contending for lock get fair opportunity to enter, do not want to starve a thread by always giving priority to others
+
+__Performance__ - time overhead of entering and exiting critical section
+
+## Simple Hardware Solution - Disable Interrupts
+
+Simple solution is to disable interrupts
+
+When thread has control of CPU it can only be preempted by hardware interrupt (OS is not running so has no control)
+
+Many negative aspects
+
+- Enable and disable interrupts are privileged instructions
+
+- OS loses control - user program can keep CPU for as long as it wants
+
+- Can result in important interrupts getting delayed or lost
+
+```c
+void lock () {
+  DisableInterrupts();
+}
+void unlock () {
+  EnableInterrupts();
+}
+```
+
+## Simple Software Solution
+
+```c
+typedef struct __lock_t { int flag; } lock_t;
+
+void init(lock_t *mutex) {
+  // 0 -> lock is available, 1 -> held;
+  mutex -> flag = 0;
+}
+
+void lock(lock_t *mutex) {
+  while (mutex-> flag == 1) // TEST the flag
+    ;                       // spin-wait (do nothing)
+  mutex-> flag = 1;         // now SET it!
+}
+
+void unlock(lock_t *mutex) {
+  mutex->flag = 0;
+}
+```
+
+This has a race condition bug!
+
+# Peterson's Algorithm 
+
+- A Software Solution that works!
+
+```c
+int flag[2];
+int turn;
+
+void init() {
+  // indicate you inntend to hold the lock w/ 'flag'
+  flag[0] = flag[1] = 0;
+  // whose turn is it? (thread 0 or 1)
+  turn = 0;
+}
+void lock() {
+  // 'self' is the thread ID of caller
+  flag[self] = 1;
+  // make it other thread's turn
+  turn = 1 - self;
+  while ((flag[1-self] == 1) && (turn == 1-self))
+        ; // spin-wait while it's not your turn
+}
+void unlock() {
+  // simply undo your intent
+  flag[self] = 0;
+}
+```
+
+No race condition!
+
+Problem: modern compilers will reorder code when it is safe to do so, so doesn't actually work with modern machine
+
+## Hardware Support - Test-and-Set
+
+Common hardware support is a test-and-set instruction
+
+```c
+int TestAndSet(int *old_ptr, int new) {
+  int old = *old_ptr;
+  *old_ptr = new; // return the new value;
+  return old; // return the old value
+}
+```
+
+## Using Test-and-Set to Build a lock?
+
+```c
+typedef struct __lock_t {
+  int flag;
+} lock_t;
+void init(lock_t *lock) {
+  lock->flag = 0;
+}
+void lock(lock_t *lock) {
+  while (TestAndSet(&lock->flag, 1) == 1)
+    ;
+}
+void unlock(lock_t *lock) {
+  lock->flag = 1;
+}
+```
+
 
