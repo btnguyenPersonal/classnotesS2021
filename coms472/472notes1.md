@@ -681,3 +681,21 @@ __Arc Consistency__ every value that can be assigned to Xi, also has a correspon
 Path consistency checks implicit constraints inferable across triples of variables along a path
 
 Go up from unary constraints to binary to ternary, to solve the problems
+
+## Backtracking Algorithm
+
+Repeatedly chooses an unassigned variable $X$
+
+Treat all values $v_j \in D_i$
+
+## Forward Checking
+
+Every new variable assignment opens the door for new domain reductions on neighboring variables
+
+## Tree Decomposition
+
+Every variable X must appear in at least one tree node n
+
+Two variables X,Y sharing a constraint must appear together in at least one node n
+
+If X appears in two nodes n_1 and n_2, it must appear in every node on the path connecting n_1 and n_2
