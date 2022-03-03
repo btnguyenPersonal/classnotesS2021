@@ -85,7 +85,31 @@ $n_1=min(max(min(max(...max(...n_j))), min(...), min(...), ...), max(...),…,ma
 
 2. Let $l_i$ be the minimum (or maximum) value of the nodes to the left of node $n_i$ at depth $i$, whose minimax value is already known. Similarly, let $r_i$ be the minimum (or maximum) value of the unexplored nodes to the right of $n_i$ at depth $i$. Rewrite your expression for $n_1$ in terms of the $l_i$ and $r_i$ values.
 
+$n_1=min(max(min(max(...max(...n_j))), min(...), min(...), ...), max(...),…,max(...))$
+
+if ($l_i$ < $r_i$ && in a max node) {
+  prune;
+}
+
+if ($l_i$ > $r_i$ && in a min node) {
+  prune;
+}
+
+$l_1<n_1<r_1$
+
+$l_2<l_1<n_1<r_1<r_2$
+
+$l_j<...<l_2<l_1<n_1<r_1<r_2<...<r_j$
+
 3. Now reformulate the expression to show that in order to affect $n_1$, $n_j$ must not exceed a certain bound derived from the $l_i$ values.
+
+To affect $n_1$, it must be between $l_1$ and $r_1$, because if $n_j$ is somewhere outside of the range, it cannot possibly affect the value of $n_1$.
+
+ex:
+
+$l_j<...<l_2<n_j<l_1<n_1<r_1<r_2<...<r_j$
+
+Therefore, $n_1$ is still inbetween $l_1$ and $r_1$, and $n_j$ did not affect the outcome
 
 4. Repeat the process for the case where $n_j$ is a min-node.
 
