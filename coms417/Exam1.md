@@ -176,9 +176,23 @@ It is impossible to generate all possible tests because the test cases could go 
 
 a.
 
-evosuite can generate tests for you with the fuzzing functionality, while selenium cannot do that, it can only run tests that you make and give to selenium. Like in the Triangle Program, evosuite could make tests by itself and give them to you.
+Evosuite can generate tests for you with the fuzzing functionality, while selenium cannot do that, it can only run tests that you make and give to selenium. Like in the Triangle Program, evosuite could make tests by itself and give them to you.
 
-evosuite has an automated oracle while selenium has a manual oracle
+Evosuite has an automated oracle while selenium has a manual oracle. While testing the triangle program, evosuite could make tests, and set to the oracle to what was given as the output, like when the program made a test where it gave the TriangleType with a = 3, b = 3, and c = 3, and expected back Equilateral
+
+Evosuite works from a code perspective while selenium works from an artifact perspective. Selenium can run an application and then open up a google chrome window and have a test to see if an artifact has shown up on the screen. Evosuite can show you code coverage and places where your code has not been reached yet by tests.
+
+b.
+
+A problem with this approach is that some of the behavior of the program could be unwanted by the programmer, but evosuite's oracle will treat it as a pass. For example in the TriangleType assignment, we put a fault into the program that changed some of the equilateral cases to be wrong, and to be treated as isosceles instead. Evosuite's oracle assigned those cases that the programmer meant to be equilateral as isosceles instead, and marked them as correct even if they were not supposed to be. Small faults that do not break the program can be easily missed by the oracle assigning wrong outputs as correct.
+
+c.
+
+This problem with automated oracles is less of a problem with regression testing because regression testing is mainly used for checking that adding or deleting code somewhere isn't affecting other pieces of the code base in unintended way. Since it is only checking for changes, all we have to know is if behavior of some code has changed, instead of is that behavior 100% correct. Since the regression tests will fail regardless if the tests are put in manually or automated when the code is changed.
+
+One place where we can trust automated testing is when we have two interconnected pieces of code A and B, each relying on each other, and you have automated tests for both of them.
+
+Then, when you start changing A, the automated regression tests of B will fail where there is code that the behavior has changed based on the changes to A's code. We can trust these regression tests for telling us about B because they signal that some behavior has changed somewhere in B, not whether that behavior is correct or not.
 
 ## Problem 5
 
