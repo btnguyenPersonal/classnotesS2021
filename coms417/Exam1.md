@@ -68,4 +68,121 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
 
 ## Problem 2
 
+4 Characteristics:
+
+- --show-ends
+
+  - $b_1$: displays an extra $ at end of every line
+
+  - $b_2$: does not display an extra $ at end of every line
+
+- --number
+
+  - $b_1$: shows extra numbered output in from of files compared to no flag
+
+  - $b_2$: does not show extra numbered output in from of files compared to no flag
+
+- --show-tabs
+
+  - $b_1$: displays ^I
+
+  - $b_2$: displays tabs
+
+  - $b_3$: displays neither tabs nor ^I
+
+- --squeeze-blank
+
+  - $b_1$: has repeated empty output lines
+
+  - $b_2$: no repeated output lines
+
+## Problem 3
+
+a.
+
+length 1:
+
+e1 &rarr; e2
+
+e2 &rarr; e3
+
+e2 &rarr; e1
+
+e2 &rarr; e4
+
+e3 &rarr; e5
+
+e4 &rarr; e3
+
+e5 &rarr; e1
+
+e5 &rarr; e2
+
+e5 &rarr; e3
+
+e5 &rarr; e4
+
+e5 &rarr; e5
+
+length 2:
+
+e1 &rarr; e2 &rarr; e3
+
+e1 &rarr; e2 &rarr; e1
+
+e2 &rarr; e3 &rarr; e5
+
+e2 &rarr; e1 &rarr; e2
+
+e2 &rarr; e4 &rarr; e3
+
+e3 &rarr; e5 &rarr; e1
+
+e3 &rarr; e5 &rarr; e2
+
+e3 &rarr; e5 &rarr; e3
+
+e3 &rarr; e5 &rarr; e4
+
+e3 &rarr; e5 &rarr; e5
+
+e4 &rarr; e3 &rarr; e5
+
+e5 &rarr; e3 &rarr; e5
+
+e5 &rarr; e5 &rarr; e1
+
+e5 &rarr; e5 &rarr; e2
+
+e5 &rarr; e5 &rarr; e3
+
+e5 &rarr; e5 &rarr; e4
+
+e5 &rarr; e5 &rarr; e5
+
+b.
+
+There is a coverage subsumption relationship between length 1 and 2 because every test case of length one gets you back to one of the start cases of the problem, meaning that once you have tested all of the cases of length 1, everything after that will be chaining more of the length 1 test cases together to create the length n cases. For example, wherever you go from e5, which is all the states, you will always get to either e1, e2, e3, e4, e5, which all have their length 1 cases covered in the length 1 test cases, meaning that you have already tested all of the cases
+
+c.
+
+The case where e5 is the start needs a reaching event, or in other words a prefix-value (Inputs necessary to put the software into an appropriate state to receive the test case values) because it can only be reached by pressing e3 before to get to the dialog windows.
+
+d.
+
+It is impossible to generate all possible tests because the test cases could go up to an infinite length, for example one test could be alternating between e3 and e5 a million times, and each time you add one alteration between e3 and e5, they would have to make tests for that, meaning that there are an infinite number of tests.
+
+## Problem 4
+
+a.
+
+evosuite can generate tests for you with the fuzzing functionality, while selenium cannot do that, it can only run tests that you make and give to selenium. Like in the Triangle Program, evosuite could make tests by itself and give them to you.
+
+evosuite has an automated oracle while selenium has a manual oracle
+
+## Problem 5
+
+
+
+## Problem 6
 
