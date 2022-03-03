@@ -1210,7 +1210,7 @@ Common hardware support is a test-and-set instruction
 
 ```c
 int TestAndSet(int *old_ptr, int new) {
-  int old = *old_ptr;
+  int old = *old_ptr; //fetch old value at old_ptr
   *old_ptr = new; // return the new value;
   return old; // return the old value
 }
@@ -1227,11 +1227,43 @@ void init(lock_t *lock) {
 }
 void lock(lock_t *lock) {
   while (TestAndSet(&lock->flag, 1) == 1)
-    ;
+    ; // spin-wait (do nothing)
 }
 void unlock(lock_t *lock) {
   lock->flag = 1;
 }
 ```
 
+## Problem: Performance of Spinning
 
+Uses CPU for indefinite amount of time
+
+## Solution to Spinning - Yield
+
+Solution is that waiting thread should voluntarily give up CPU
+
+- After running all the round robin once, it will give yield for some time
+
+## Problem: Fairness
+
+So far, when multiple threads contending for lock the winner is up to chance
+
+- Which ever one executes TestAndSet first
+
+A more controlled method is a FIFO queue for thread waiting on lock
+
+## Classic Concurrency Problems
+
+Concurrency makes reasoning about code very difficult
+
+There are several classic problems that have been created to illustrate issues in concurrency and common solutions
+
+It is a good idea to study the solutions to these problems and use them as patterns in your code
+
+## The Producer/Consumer (Bounded Buffer)
+
+One or more producer threads generate data items and place them in a buffer
+
+One or more consumers grab items from the buffer and consume them
+
+Common example: a pipe between processes acts as a buffer

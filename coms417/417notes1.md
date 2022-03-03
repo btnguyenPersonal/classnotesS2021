@@ -63,6 +63,14 @@ invalid
 - `R` evealability
     - incorrect final state
 
+`r` - test must execute the faulty code
+
+`i` - execution must create an incorrect state of the program (error)
+
+`p` - the error has to propagate to the output or final state of program
+
+`r` - the tester has to observe the incorrect output/final state
+
 #### Test Manager
 - Sets test policies and processes
 - Interact with other managers on the project

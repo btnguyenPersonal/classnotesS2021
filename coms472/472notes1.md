@@ -699,3 +699,4 @@ Every variable X must appear in at least one tree node n
 Two variables X,Y sharing a constraint must appear together in at least one node n
 
 If X appears in two nodes n_1 and n_2, it must appear in every node on the path connecting n_1 and n_2
+

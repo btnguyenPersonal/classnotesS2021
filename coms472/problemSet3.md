@@ -31,9 +31,15 @@ This game does not take into account who's turn it is in the game state, so ther
 <!-- Carried ? up until it gets ignored, treated it as an unknown state -->
 <!-- Tried to solve until the minimax algorithm would throw out that path -->
 
-4. This 4-square game can be generalized to n squares for any n>2. Prove that A wins if n is even and loses if n is odd.
+4. This 4-square game can be generalized to $n$ squares for any $n>2$. Prove that A wins if $n$ is even and loses if $n$ is odd.
 
-Some induction maybe
+<!-- Some induction maybe -->
+
+Assuming that both players play optimally, the optimal move is always to progress toward the goal, which is always forward and never backward.
+
+Therefore, if $n$ is even, if both players always go forward, then it will take $n-1$ steps for player A to get to the end, and $n$ for player B to get to the end because player A will always jump over B.
+
+Therefore, if $n$ is odd, if both players always go forward, then it will take $n$ steps for player A to get to the end, and $n-1$ for player B to get to the end because player B will always jump over A.
 
 ## 5.9 (3+4+3+4+4 = 18 pts) 
 
@@ -67,9 +73,15 @@ Best starting move would be in the middle
 
 ![](../pic/Exercise\ 5.14\ alpha-beta-proof-figure.jpg)
 
-Develop a formal proof of correctness for alpha–beta pruning. To do this, consider the situation shown in Figure . The question is whether to prune node $n_j$, which is a max-node and a descendant of node $n_1$. The basic idea is to prune it if and only if the minimax value of $n_1$ can be shown to be independent of the value of $n_j$.
+Develop a formal proof of correctness for alpha–beta pruning. To do this, consider the situation shown in the Figure above. The question is whether to prune node $n_j$, which is a max-node and a descendant of node $n_1$. The basic idea is to prune it if and only if the minimax value of $n_1$ can be shown to be independent of the value of $n_j$.
 
 1. Mode $n_1$ takes on the minimum value among its children: $n_1=min(n_2,n_{21},…,n_{2b_2})$. Find a similar expression for $n_2$ and hence an expression for $n_1$ in terms of $n_j$.
+
+$n_2=max(n_3,n_{31},…,n_{3b_3})$
+
+$n_1=min(max(n_3,n_{31},…,n_{3b_3}),max(n_3,n_{31},…,n_{3b_3}),…,max(n_3,n_{31},…,n_{3b_3}))$
+
+$n_1=min(max(min(max(...max(...n_j))), min(...), min(...), ...), max(...),…,max(...))$
 
 2. Let $l_i$ be the minimum (or maximum) value of the nodes to the left of node $n_i$ at depth $i$, whose minimax value is already known. Similarly, let $r_i$ be the minimum (or maximum) value of the unexplored nodes to the right of $n_i$ at depth $i$. Rewrite your expression for $n_1$ in terms of the $l_i$ and $r_i$ values.
 
@@ -92,12 +104,14 @@ a. (6 pts) Mark all the subtrees (including leaves) that have been pruned.
     You may, for instance, simply put double slashes \\ or // across the edge 
     entering the root of such a subtree from the above.  
 
-prune 80
-
-prune 4 and 7
+![](../pic/alphabetapruningFixed.png)
 
 b. (8 pts) Next to each visited internal node, write down the two values  
     just before the return from the call MAX-VALUE or MIN-VALUE invoked on the 
     state represented by the node.
 
+![](../pic/alphabetapruningFixed.png)
+
 c. (3 pts) What is the final value for MAX at the root?
+
+14 is the MAX value at the root
