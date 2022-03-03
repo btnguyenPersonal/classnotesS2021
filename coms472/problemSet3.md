@@ -28,6 +28,8 @@ Consider the two-player game described in Figure
 
 This game does not take into account who's turn it is in the game state, so there could be a 1,3 or 1,3 and the game tree would think that they are the same thing, but in reality in each one it is a different person's move
 
+Also while minimax will loop the states back on itself, while the alpha beta exploration will recreate the entire tree at that node, instead of looping back on itself
+
 <!-- Carried ? up until it gets ignored, treated it as an unknown state -->
 <!-- Tried to solve until the minimax algorithm would throw out that path -->
 
@@ -95,11 +97,13 @@ if ($l_i$ > $r_i$ && in a min node) {
   prune;
 }
 
-$l_1<n_1<r_1$
+$l_2<n_1<l_1$
 
-$l_2<l_1<n_1<r_1<r_2$
+$l_4<l_2<n_1<l_1<l_3$
 
-$l_j<...<l_2<l_1<n_1<r_1<r_2<...<r_j$
+$l_j<...<l_4<l_2<n_1<l_1<l_3<...<l_{j-1}$
+
+<!-- > -->
 
 3. Now reformulate the expression to show that in order to affect $n_1$, $n_j$ must not exceed a certain bound derived from the $l_i$ values.
 
@@ -107,11 +111,19 @@ To affect $n_1$, it must be between $l_1$ and $r_1$, because if $n_j$ is somewhe
 
 ex:
 
-$l_j<...<l_2<n_j<l_1<n_1<r_1<r_2<...<r_j$
+$l_j<...<l_4<\bold {n_j}<l_2<n_1<l_1<l_3<...<l_{j-1}$
 
-Therefore, $n_1$ is still inbetween $l_1$ and $r_1$, and $n_j$ did not affect the outcome
+<!-- > -->
+
+Therefore, $n_1$ is still inbetween $l_2$ and $l_4$, and $n_j$ did not affect the outcome
 
 4. Repeat the process for the case where $n_j$ is a min-node.
+
+$l_j<...<l_4<l_2<n_1<l_1<\bold {n_j}<l_3<...<l_{j-1}$
+
+<!-- > -->
+
+Therefore, $n_1$ is still inbetween $l_1$ and $l_3$, and $n_j$ did not affect the outcome
 
 ## Extra problem (17 pts) 
 

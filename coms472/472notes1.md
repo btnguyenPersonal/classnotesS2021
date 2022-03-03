@@ -700,3 +700,108 @@ Two variables X,Y sharing a constraint must appear together in at least one node
 
 If X appears in two nodes n_1 and n_2, it must appear in every node on the path connecting n_1 and n_2
 
+## Knowledge based agents
+
+Problem solving agents do not know general facts
+
+- An 8 puzzle agent does not know that two tiles cannot occupy the same state space
+
+Their atomic representations are very limited
+
+- a list of all possible concrete states
+
+## Knowledge Base
+
+A knowledge base (kb) is a set of sentences that represents some assertion about the world
+
+An axiom is such a sentence that is taken to be true without being derived from other sentences.
+
+Inference: derive statement form other statements
+
+## Wumpus World
+
+Cave consists of connected rooms
+
+- Some rooms contain pits that will trap whoever enters the room
+
+- The wumpus lurks in one room ready to eat whoever enters the room
+
+- The wumpus can be shot by the agent, who only has one arrow
+
+- The heap of gold is in a different room that where the wumpus lurks
+
+- Wumpus gives off bad smell in North, South, East, West locations
+
+- Pits gives off breeze in North, South, East, West locations
+
+GOAL: Find the gold and bring back to start without being killed
+
+#### Performance measure
+
+- +1000 (climbing out of cave with the gold)
+
+- -1000 (falling into a pit or being eaten by the wumpus)
+
+- -1 (each action taken)
+
+- -10 (using up the arrow)
+
+#### Actuators
+
+1. Forward, TurnLeft by 90, TurnRight by 90
+  - will die if go into wumpus or pit
+
+1. Grab
+  - Grabs gold in the square
+
+1. Shoot
+  - Fire arrow in the direction the agent is facing
+  - The arrow continues until hitting the wumpus (or hitting a wall)
+1. Climb
+  - climb out of cave if at [1][1]
+
+#### Actuators
+
+1. Stench
+
+  - Wumpus nearby
+
+1. Breeze
+
+  - Pit nearby
+
+1. Glitter
+
+  - in the square where the gold is
+
+1. Bump
+
+  - when agent walks into wall
+
+1. Scream
+
+  - when wumpus is killed
+
+## Characteristics of Wumpus world
+
+  Deterministic
+  
+  - outcome specified
+
+  Discrete
+
+  - 
+
+  Static
+
+  - wumpus does not move
+
+  Single agent
+
+  Partially observable
+
+## Syntax vs Semantics
+
+Syntax &rarr; "x + y = 4" is valid, but "x + + = y" is not
+
+Semantics &rarr; "x + y = 4" is true when x and y add to 4 and false when x = -1 and y = -2
