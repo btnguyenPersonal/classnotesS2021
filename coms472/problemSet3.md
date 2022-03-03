@@ -4,8 +4,6 @@
 
 ## 5.8 (7+3+7+6 = 23 pts)
 
-![](../pic/Exercise\ 5.8\ line-game4-figure.jpg)
-
 Consider the two-player game described in Figure 
 
 1. Draw the complete game tree, using the following conventions:
@@ -45,8 +43,6 @@ Therefore, if $n$ is odd, if both players always go forward, then it will take $
 
 ## 5.9 (3+4+3+4+4 = 18 pts) 
 
-This problem exercises the basic concepts of game playing, using tic-tac-toe (noughts and crosses) as an example. We define Xn as the number of rows, columns, or diagonals with exactly n X’s and no O’s. Similarly, On is the number of rows, columns, or diagonals with just n O’s. The utility function assigns +1 to any position with X3=1 and −1 to any position with O3=1. All other terminal positions have utility 0. For nonterminal positions, we use a linear evaluation function defined as Eval(s)=3X2(s)+X1(s)−(3O2(s)+O1(s)).
-
 1. Approximately how many possible games of tic-tac-toe are there?
 
   $9!$ because each person can pick $K=9$ places at the start, then $K-1$ for each following move
@@ -72,8 +68,6 @@ Best starting move would be in the middle
 ## 5.14 (4+4+5+4 = 17 pts) 
 
 <!-- Typo in part 1: the second argument of min is n_{21} (i.e., subscripts 21} not "n_2 1" (i.e., 1 as a product factor). --> 
-
-![](../pic/Exercise\ 5.14\ alpha-beta-proof-figure.jpg)
 
 Develop a formal proof of correctness for alpha–beta pruning. To do this, consider the situation shown in the Figure above. The question is whether to prune node $n_j$, which is a max-node and a descendant of node $n_1$. The basic idea is to prune it if and only if the minimax value of $n_1$ can be shown to be independent of the value of $n_j$.
 
