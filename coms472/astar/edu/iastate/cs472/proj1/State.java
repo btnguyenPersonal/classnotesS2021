@@ -82,7 +82,7 @@ public class State implements Cloneable, Comparable<State>
      * 
      * @param inputFileName
      * @throws FileNotFoundException
-     * @throws IllegalArgumentException  if the file content does not meet the above requirements. 
+     * @throws IllegahilArgumentException  if the file content does not meet the above requirements. 
      */
     public State (String inputFileName) throws FileNotFoundException, IllegalArgumentException
     {
@@ -256,11 +256,15 @@ public class State implements Cloneable, Comparable<State>
     public int cost() throws IllegalArgumentException
     {
       switch(this.heu) {
-        case this.TileMismatch: 
+        case TileMismatch: 
           return computeNumMismatchedTiles();
-          break;
+        case ManhattanDist: 
+          return computeNumMismatchedTiles();
+        case DoubleMoveHeuristic: 
+          return computeNumMismatchedTiles();
+        default:
+          throw new IllegalAccessError();
       }
-    	return 0; 
     }
 
     

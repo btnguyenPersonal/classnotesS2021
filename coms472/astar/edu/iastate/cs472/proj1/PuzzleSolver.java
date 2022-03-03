@@ -39,7 +39,14 @@ public class PuzzleSolver
 		// solutions.  (No extra credit but good for debugging and for the user.)
 		String fileNames[] = new String[] {"8Puzzle.txt"}; 
 		
-		// TODO 
+		System.out.println("hello");
+		int[][] board = {
+			{0, 1, 2},
+			{3, 4, 5},
+			{6, 7, 8}
+		};
+		State state = new State(board);
+		System.out.println(state);
 	}
 
 }
