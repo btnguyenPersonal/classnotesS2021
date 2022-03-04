@@ -12,7 +12,7 @@ a.
 
 All of the test cases pass when run with JUnit. Explain why this happens using the RIPR model. Be explicit.
 
-The reason that all of the tests pass is because none of the test cases even get to the ___R___ in RIPR, which is Reachability (meaning that the faulty code never gets run). And since the faulty code never gets run, it never gets to the other steps in the RIPR process.
+The reason that all of the tests pass is because none of the test cases even get to the ___R___ in RIPR, which is Reachability (meaning that the faulty code never gets run). And since the faulty code never gets run, it never gets to the other steps in the RIPR process, which are infection, propagation, and revealability.
 
 None of the tests cases ever reaches the broken code on line 9, because for all the tests, a $\ge$ b.
 
@@ -196,32 +196,41 @@ Then, when you start changing A, the automated regression tests of B will fail w
 
 ## Problem 5
 
-The subsumption relationship is that every test set that satisfies all of the patterns, will also satisfy all of the shapes
+The subsumption relationship is that every test set that satisfies all of the patterns, must also satify all of the shapes, because every shape can have a specified pattern, and if every pattern is specified then that by definition means that you have covered all of the shapes.
 
-For example, if you have a test set with pattern that will
+Therefore, the patterns set subsumes the shape set in this case.
+
+For example, if you have a test that checks that every image with each one of the patterns does not have a circle shape, then that means by definition you have tested all of the different shapes are also not a circle.
 
 C2 test suite:
 
-isStarOrCloud(solid, false);
-isStarOrCloud(striped, false);
-isStarOrCloud(dotted, true);
+```java
+notACircle(images.filter("solid"), true);
+notACircle(images.filter("striped"), true);
+notACircle(images.filter("dotted"), true);
+```
 
 C1 test suite:
 
-isStarOrCloud(square, false);
-isStarOrCloud(triangle, false);
-isStarOrCloud(star, true);
-isStarOrCloud(octogon, false);
-isStarOrCloud(cloud, true);
-
+```java
+notACircle(images.filter("square"), true);
+notACircle(images.filter("triangle"), true);
+notACircle(images.filter("star"), true);
+notACircle(images.filter("octogon"), true);
+notACircle(images.filter("cloud"), true);
+```
 
 ## Problem 6
+
+#### Controllability
 
 Controllability can be hard when testing programs because sometimes it just may not be possible for it to always reach every outcome of the code, and thus will be unable to test every part of the program.
 
 For example, if you had a program that would find the outcome of a game based on an internally rolled random number from 1 to 1,000,000,000 where each roll created a unique outcome, there would be almost no way for you to make an efficient test suite for that program that would run in a reasonable amount of time.
 
 You would have to run the program until it went through every single case, which could take years if the calculations are very complex. Therefore, if the program is not controllable enough, it is hard to test.
+
+#### Observability
 
 Observability can be hard when testing because it can sometimes be hard to set the oracles to the correct evalutations to make a useful test case.
 
