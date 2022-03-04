@@ -74,9 +74,9 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
 
 4 Characteristics:
 
-- `--show-ends`
+- Characteristic: `--show-ends`
 
-  - $b_1$: displays an extra $ at end of every line
+  - Block: $b_1$: displays an extra $ at end of every line
 
     ex in:
 
@@ -98,7 +98,7 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-  - $b_2$: does not display an extra $ at end of every line
+  - Block: $b_2$: does not display an extra $ at end of every line
 
     ex in:
 
@@ -120,9 +120,9 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-- `--number`
+- Characteristic: `--number`
 
-  - $b_1$: shows extra numbered output in from of files compared to no flag
+  - Block: $b_1$: shows extra numbered output in from of files compared to no flag
 
     ex in:
 
@@ -144,7 +144,7 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-  - $b_2$: does not show extra numbered output in from of files compared to no flag
+  - Block: $b_2$: does not show extra numbered output in from of files compared to no flag
 
     ex in:
     ```
@@ -164,9 +164,9 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-- `--show-tabs`
+- Characteristic: `--show-tabs`
 
-  - $b_1$: displays ^I
+  - Block: $b_1$: displays ^I
 
     ex in:
 
@@ -188,7 +188,7 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-  - $b_2$: displays tabs
+  - Block: $b_2$: displays tabs
 
     ex in:
 
@@ -210,7 +210,7 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-  - $b_3$: displays neither tabs nor ^I
+  - Block: $b_3$: displays neither tabs nor ^I
 
     ex in:
 
@@ -228,9 +228,9 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-- `--squeeze-blank`
+- Characteristic: `--squeeze-blank`
 
-  - $b_1$: has no empty output lines
+  - Block: $b_1$: has no empty output lines
 
     ex in:
 
@@ -251,7 +251,7 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
     ----------------------
     ```
 
-  - $b_2$: has output lines
+  - Block: $b_2$: has output lines
 
     ex in:
 
