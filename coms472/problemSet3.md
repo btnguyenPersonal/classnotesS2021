@@ -83,33 +83,33 @@ $n_1=min(max(min(max(...max(...n_j))), min(...), min(...), ...), max(...),…,ma
 
 $n_1=min(n_2,n_{21},…,n_{2b_2})$
 
-Now we only have to evaluate a single thing every time we go up a level, which is just check either if the $n_i$ &gt; $r_i$ if it's a max node, or if $n_i$ &lt; $l_i$
+Now we only have to evaluate a single thing every time we go up a level, which is just check either if the $n_i$ &gt; $l_i$ if it's a max node, or if $n_i$ &lt; $l_i$
 
-$n_1=min(l_2, n_2)$
+$n_1=min(l_2, n_2, r_2)$
 
-$n_2=max(n_3, r_3)$
+$n_2=max(l_2, n_3, r_3)$
 
 Therefore, $n_1$ can be expanded out until the entire tree is expanded to this:
 
-$n_1=min(l_2, max(min(l_4,...), r_3))$
+$n_1=min(l_2, max(l_3, min(l_4,...,r_4), r_3), r_2)$
 
 3. Now reformulate the expression to show that in order to affect $n_1$, $n_j$ must not exceed a certain bound derived from the $l_i$ values.
 
-$n_1=min(l_2, max(min(l_4,...), r_3))$
+$n_1=min(l_2, max(l_3, min(l_4,...,r_4), r_3), r_2)$
 
 To affect $n_1$, it must be more than ever single $r$ odd value, and less than ever single $l$ even value
 
 $n_j$ must be &lt; $min(l_2, l_4, l_6, ..., l_{j-1})$ because the even values are the ones that get used in the min function, so $n_j$ must be lower than all of them to get through all of the min expressions and affect $n_1$
 
-$n_j$ must also be &gt; $max(r_3, r_5, r_7, ..., r_j)$ because the even values are the ones that get used in the min function, so $n_j$ must be higher than all of them to get through all of the max expressions and affect $n_1$
+$n_j$ must also be &gt; $max(l_3, l_5, l_7, ..., l_j)$ because the even values are the ones that get used in the min function, so $n_j$ must be higher than all of them to get through all of the max expressions and affect $n_1$
 
 Therefore the final expression for $n_j$ to affect $n_1$ is
 
-$max(r_3, r_5, r_7, ..., r_j)$ &lt; $n_j$ &lt; $min(l_2, l_4, l_6, ..., l_{j-1})$ 
+$max(l_3, l_5, l_7, ..., l_j)$ &lt; $n_j$ &lt; $min(l_2, l_4, l_6, ..., l_{j-1})$ 
 
 4. Repeat the process for the case where $n_j$ is a min-node.
 
-$n_1=min(l_2, max(min(l_4,...), r_3))$
+$n_1=min(l_2, max(l_3, min(l_4,...,r_4), r_3), r_2)$
 
 To affect $n_1$, it must be more than ever single $r$ odd value, and less than ever single $l$ even value
 
@@ -119,7 +119,7 @@ $n_j$ must also be &gt; $max(r_3, r_5, r_7, ..., r_{j-1})$ because the even valu
 
 Therefore the final expression for $n_j$ to affect $n_1$ is
 
-$max(r_3, r_5, r_7, ..., r_{j-1})$ &lt; $n_j$ &lt; $min(l_2, l_4, l_6, ..., l_j)$ 
+$max(l_3, l_5, l_7, ..., l_{j-1})$ &lt; $n_j$ &lt; $min(l_2, l_4, l_6, ..., l_j)$ 
 
 ## Extra problem (17 pts)
 
