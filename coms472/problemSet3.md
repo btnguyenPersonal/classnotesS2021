@@ -4,7 +4,7 @@
 
 ## 5.8 (7+3+7+6 = 23 pts)
 
-Consider the two-player game described in Figure 
+Consider the two-player game described in Figure
 
 1. Draw the complete game tree, using the following conventions:
 
@@ -41,7 +41,7 @@ Therefore, if $n$ is even, if both players always go forward, then it will take 
 
 Therefore, if $n$ is odd, if both players always go forward, then it will take $n$ steps for player A to get to the end, and $n-1$ for player B to get to the end because player B will always jump over A.
 
-## 5.9 (3+4+3+4+4 = 18 pts) 
+## 5.9 (3+4+3+4+4 = 18 pts)
 
 1. Approximately how many possible games of tic-tac-toe are there?
 
@@ -65,15 +65,15 @@ Best starting move would be in the middle
 
 ![](../pic/tictac3.jpg)
 
-## 5.14 (4+4+5+4 = 17 pts) 
+## 5.14 (4+4+5+4 = 17 pts)
 
-<!-- Typo in part 1: the second argument of min is n_{21} (i.e., subscripts 21} not "n_2 1" (i.e., 1 as a product factor). --> 
+<!-- Typo in part 1: the second argument of min is n_{21} (i.e., subscripts 21} not "n_2 1" (i.e., 1 as a product factor). -->
 
 Develop a formal proof of correctness for alpha–beta pruning. To do this, consider the situation shown in the Figure above. The question is whether to prune node $n_j$, which is a max-node and a descendant of node $n_1$. The basic idea is to prune it if and only if the minimax value of $n_1$ can be shown to be independent of the value of $n_j$.
 
 1. Mode $n_1$ takes on the minimum value among its children: $n_1=min(n_2,n_{21},…,n_{2b_2})$. Find a similar expression for $n_2$ and hence an expression for $n_1$ in terms of $n_j$.
 
-$n_2=max(n_3,n_{31},…,n_{3b_3})$
+$n_1=min(n_2,n_{21},…,n_{2b_2})$
 
 $n_1=min(max(n_3,n_{31},…,n_{3b_3}),max(n_3,n_{31},…,n_{3b_3}),…,max(n_3,n_{31},…,n_{3b_3}))$
 
@@ -81,63 +81,65 @@ $n_1=min(max(min(max(...max(...n_j))), min(...), min(...), ...), max(...),…,ma
 
 2. Let $l_i$ be the minimum (or maximum) value of the nodes to the left of node $n_i$ at depth $i$, whose minimax value is already known. Similarly, let $r_i$ be the minimum (or maximum) value of the unexplored nodes to the right of $n_i$ at depth $i$. Rewrite your expression for $n_1$ in terms of the $l_i$ and $r_i$ values.
 
-$n_1=min(max(min(max(...max(...n_j))), min(...), min(...), ...), max(...),…,max(...))$
+$n_1=min(n_2,n_{21},…,n_{2b_2})$
 
-if ($l_i$ < $r_i$ && in a max node) {
-  prune;
-}
+Now we only have to evaluate a single thing every time we go up a level, which is just check either if the $n_i$ &gt; $r_i$ if it's a max node, or if $n_i$ &lt; $l_i$
 
-if ($l_i$ > $r_i$ && in a min node) {
-  prune;
-}
+$n_1=min(l_2, n_2)$
 
-$l_2<n_1<l_1$
+$n_2=max(n_3, r_3)$
 
-$l_4<l_2<n_1<l_1<l_3$
+Therefore, $n_1$ can be expanded out until the entire tree is expanded to this:
 
-$l_j<...<l_4<l_2<n_1<l_1<l_3<...<l_{j-1}$
-
-<!-- > -->
+$n_1=min(l_2, max(min(l_4,...), r_3))$
 
 3. Now reformulate the expression to show that in order to affect $n_1$, $n_j$ must not exceed a certain bound derived from the $l_i$ values.
 
-To affect $n_1$, it must be between $l_1$ and $r_1$, because if $n_j$ is somewhere outside of the range, it cannot possibly affect the value of $n_1$.
+$n_1=min(l_2, max(min(l_4,...), r_3))$
 
-ex:
+To affect $n_1$, it must be more than ever single $r$ odd value, and less than ever single $l$ even value
 
-$l_j<...<l_4<\bold {n_j}<l_2<n_1<l_1<l_3<...<l_{j-1}$
+$n_j$ must be &lt; $min(l_2, l_4, l_6, ..., l_{j-1})$ because the even values are the ones that get used in the min function, so $n_j$ must be lower than all of them to get through all of the min expressions and affect $n_1$
 
-<!-- > -->
+$n_j$ must also be &gt; $max(r_3, r_5, r_7, ..., r_j)$ because the even values are the ones that get used in the min function, so $n_j$ must be higher than all of them to get through all of the max expressions and affect $n_1$
 
-Therefore, $n_1$ is still inbetween $l_2$ and $l_4$, and $n_j$ did not affect the outcome
+Therefore the final expression for $n_j$ to affect $n_1$ is
+
+$max(r_3, r_5, r_7, ..., r_j)$ &lt; $n_j$ &lt; $min(l_2, l_4, l_6, ..., l_{j-1})$ 
 
 4. Repeat the process for the case where $n_j$ is a min-node.
 
-$l_j<...<l_4<l_2<n_1<l_1<\bold {n_j}<l_3<...<l_{j-1}$
+$n_1=min(l_2, max(min(l_4,...), r_3))$
 
-<!-- > -->
+To affect $n_1$, it must be more than ever single $r$ odd value, and less than ever single $l$ even value
 
-Therefore, $n_1$ is still inbetween $l_1$ and $l_3$, and $n_j$ did not affect the outcome
+$n_j$ must be &lt; $min(l_2, l_4, l_6, ..., l_j)$ because the even values are the ones that get used in the min function, so $n_j$ must be lower than all of them to get through all of the min expressions and affect $n_1$
 
-## Extra problem (17 pts) 
+$n_j$ must also be &gt; $max(r_3, r_5, r_7, ..., r_{j-1})$ because the even values are the ones that get used in the min function, so $n_j$ must be higher than all of them to get through all of the max expressions and affect $n_1$
+
+Therefore the final expression for $n_j$ to affect $n_1$ is
+
+$max(r_3, r_5, r_7, ..., r_{j-1})$ &lt; $n_j$ &lt; $min(l_2, l_4, l_6, ..., l_j)$ 
+
+## Extra problem (17 pts)
 
 ![](../pic/alphabetapruning.png)
 
 You are given a minimax search tree as shown on the next page.  The
-tree has nine internal nodes .  Not all terminal states (leaves) are 
-at the same depth. 
+tree has nine internal nodes .  Not all terminal states (leaves) are
+at the same depth.
 
-Execute the alpha-beta pruning algorithm (use the version from the 3rd 
+Execute the alpha-beta pruning algorithm (use the version from the 3rd
 edition of the textbook in the lecture notes on February 15).
 
 a. (6 pts) Mark all the subtrees (including leaves) that have been pruned.
-    You may, for instance, simply put double slashes \\ or // across the edge 
-    entering the root of such a subtree from the above.  
+    You may, for instance, simply put double slashes \\ or // across the edge
+    entering the root of such a subtree from the above.
 
 ![](../pic/alphabetapruningFixed.png)
 
-b. (8 pts) Next to each visited internal node, write down the two values  
-    just before the return from the call MAX-VALUE or MIN-VALUE invoked on the 
+b. (8 pts) Next to each visited internal node, write down the two values
+    just before the return from the call MAX-VALUE or MIN-VALUE invoked on the
     state represented by the node.
 
 ![](../pic/alphabetapruningFixed.png)
