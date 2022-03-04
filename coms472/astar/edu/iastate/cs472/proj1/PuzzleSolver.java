@@ -48,7 +48,7 @@ public class PuzzleSolver
 		State state = new State(board);
 		System.out.println(state);
 		State state2 = new State("./puzzle.txt");
-		System.out.println(state.computeManhattanDistance());
+		System.out.println(state2.get_inversions());
 	}
 
 }
