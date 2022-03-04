@@ -196,7 +196,37 @@ Then, when you start changing A, the automated regression tests of B will fail w
 
 ## Problem 5
 
+The subsumption relationship is that every test set that satisfies all of the patterns, will also satisfy all of the shapes
+
+For example, if you have a test set with pattern that will
+
+C2 test suite:
+
+isStarOrCloud(solid, false);
+isStarOrCloud(striped, false);
+isStarOrCloud(dotted, true);
+
+C1 test suite:
+
+isStarOrCloud(square, false);
+isStarOrCloud(triangle, false);
+isStarOrCloud(star, true);
+isStarOrCloud(octogon, false);
+isStarOrCloud(cloud, true);
 
 
 ## Problem 6
 
+Controllability can be hard when testing programs because sometimes it just may not be possible for it to always reach every outcome of the code, and thus will be unable to test every part of the program.
+
+For example, if you had a program that would find the outcome of a game based on an internally rolled random number from 1 to 1,000,000,000 where each roll created a unique outcome, there would be almost no way for you to make an efficient test suite for that program that would run in a reasonable amount of time.
+
+You would have to run the program until it went through every single case, which could take years if the calculations are very complex. Therefore, if the program is not controllable enough, it is hard to test.
+
+Observability can be hard when testing because it can sometimes be hard to set the oracles to the correct evalutations to make a useful test case.
+
+For example, let's say that you have a program that gives out one number a second between 1 and 1,000,000. Then there is a function in that program that will never let the number 5 get chosen ever.
+
+The Observability is low for this program, because when the function if run, there is no immediate way to tell if the program is running correctly, there is only a way for you to know if the program is running incorrectly, which is if the program randomly chooses a 5 after the function is called.
+
+There is not an efficient way to test this program because there is no completely 100% way for you to tell if the function is correct or not after the function is called, because it may just be unlucky that the program has not chosen 5 yet, so it has to wait for an indefinite amount of time for either a failure (which would be a 5 showing up) or to wait forever.
