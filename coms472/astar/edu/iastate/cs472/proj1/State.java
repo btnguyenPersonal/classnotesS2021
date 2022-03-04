@@ -89,6 +89,7 @@ public class State implements Cloneable, Comparable<State>
       try {
         File f = new File(inputFileName);
         Scanner s = new Scanner(f);
+        this.board = new int[3][3];
         while (s.hasNextLine()) {
           for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -255,7 +256,7 @@ public class State implements Cloneable, Comparable<State>
      */
     public int cost() throws IllegalArgumentException
     {
-      switch(this.heu) {
+      switch(heu) {
         case TileMismatch: 
           return computeNumMismatchedTiles();
         case ManhattanDist: 
@@ -318,9 +319,34 @@ public class State implements Cloneable, Comparable<State>
 	 */
 	private int computeManhattanDistance()
 	{
-		// TODO 
-		return 0; 
+    int dist = 0;
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        dist += getManhattanSingle(i, j);
+      }
+    }
+		return dist; 
 	}
+
+  private int getManhattanSingle(int in_i, int in_j) {
+
+    int goal_i = -1;
+    int goal_j = -1;
+    int[][] goalBoard = {
+      {1, 2, 3},
+      {8, 0, 4},
+      {7, 6, 5}
+    };
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        if (goalBoard[i][j] == board[in_i][in_j]) {
+          goal_i = i;
+          goal_j = j;
+        }
+      }
+    }
+    return Math.abs(goal_i - in_i) + Math.abs(goal_j - in_j);
+  }
 	
 	
 	/**
