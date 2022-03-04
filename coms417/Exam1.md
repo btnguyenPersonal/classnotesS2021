@@ -12,7 +12,7 @@ a.
 
 All of the test cases pass when run with JUnit. Explain why this happens using the RIPR model. Be explicit.
 
-The reason that all of the tests pass is because none of the test cases even get to the ___R___ in RIPR, which is Reachability (meaning that the faulty code never gets run). And since the faulty code never gets run, it never gets to the other steps in the RIPR process, which are infection, propagation, and revealability.
+The reason that all of the tests pass is because none of the test cases even get to the ___R___ in RIPR, which is Reachability (meaning that the faulty code never gets run). And since the faulty code never gets run, it never gets to the other steps in the RIPR process, which are infection, propagation, and revealability. Meaning that the process never manifests in an error or fault in the program
 
 None of the tests cases ever reaches the broken code on line 9, because for all the tests, a $\ge$ b.
 
@@ -23,6 +23,10 @@ if (a > b) { // <= this is always false for the test cases
     //error in code
 }
 ```
+
+&uarr;
+
+Unreachable error, so none of the test cases fail.
 
 b.
 
@@ -70,31 +74,204 @@ Also, Line 30 cannot get full coverage because there is no case where `(a == b)`
 
 4 Characteristics:
 
-- --show-ends
+- `--show-ends`
 
   - $b_1$: displays an extra $ at end of every line
 
+    ex in:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+
+    ```
+    ----------------------
+    Hello  World$
+    1 2 3 4 5$
+    $
+    ----------------------
+    ```
+
   - $b_2$: does not display an extra $ at end of every line
 
-- --number
+    ex in:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+    
+    ----------------------
+    ```
+
+- `--number`
 
   - $b_1$: shows extra numbered output in from of files compared to no flag
 
+    ex in:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+
+    ```
+    ----------------------
+    1 Hello  World
+    2 1 2 3 4 5
+    3 
+    ----------------------
+    ```
+
   - $b_2$: does not show extra numbered output in from of files compared to no flag
 
-- --show-tabs
+    ex in:
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+- `--show-tabs`
 
   - $b_1$: displays ^I
 
+    ex in:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+
+    ```
+    ----------------------
+    Hello^IWorld
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
   - $b_2$: displays tabs
+
+    ex in:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
 
   - $b_3$: displays neither tabs nor ^I
 
-- --squeeze-blank
+    ex in:
 
-  - $b_1$: has repeated empty output lines
+    ```
+    ----------------------
+    Hello
+    ----------------------
+    ```
 
-  - $b_2$: no repeated output lines
+    ex out:
+
+    ```
+    ----------------------
+    Hello
+    ----------------------
+    ```
+
+- `--squeeze-blank`
+
+  - $b_1$: has no empty output lines
+
+    ex in:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+    ----------------------
+    ```
+
+  - $b_2$: has output lines
+
+    ex in:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
+
+    ex out:
+
+    ```
+    ----------------------
+    Hello  World
+    1 2 3 4 5
+
+    ----------------------
+    ```
 
 ## Problem 3
 
