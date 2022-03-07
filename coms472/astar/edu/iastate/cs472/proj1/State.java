@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.Scanner;
 
 /**
- *  
+ *
  * @author
  *
  */
@@ -20,7 +20,7 @@ import java.util.Scanner;
  * CLOSED, which will be used by the A* algorithm to search for a path from a
  * given initial board
  * configuration to the final board configuration below:
- * 
+ *
  * 1 2 3
  * 8 4
  * 7 6 5
@@ -51,14 +51,14 @@ public class State implements Cloneable, Comparable<State> {
 
   /**
    * Constructor (for the initial state).
-   * 
+   *
    * It takes a 2-dimensional array representing an initial board configuration.
    * The empty
    * square is represented by the number 0.
-   * 
+   *
    * a) Initialize all three links previous, next, and predecessor to null.
    * b) Set move to null and numMoves to zero.
-   * 
+   *
    * @param board
    * @throws IllegalArgumentException if board is not a 3X3 array or its nine
    *                                  entries are
@@ -75,15 +75,15 @@ public class State implements Cloneable, Comparable<State> {
 
   /**
    * Constructor (for the initial state)
-   * 
+   *
    * It takes a state from an input file that has three rows, each containing
    * three digits
    * separated by exactly one blank. Every row starts with a digit. The nine
    * digits are
    * from 0 to 8 with no duplicates.
-   * 
+   *
    * Do the same initializations as for the first constructor.
-   * 
+   *
    * @param inputFileName
    * @throws FileNotFoundException
    * @throws IllegahilArgumentException if the file content does not meet the
@@ -114,13 +114,13 @@ public class State implements Cloneable, Comparable<State> {
    * cannot be executed. Besides setting the array board[][] properly, you also
    * need to do the
    * following:
-   * 
+   *
    * a) set the predecessor of the successor state to this state;
    * b) set the private instance variable move of the successor state to the
    * parameter m;
    * c) Set the links next and previous to null;
    * d) Set the variable numMoves for the successor state to this.numMoves + 1.
-   * 
+   *
    * @param m one of the moves LEFT, RIGHT, UP, DOWN, DBL_LEFT, DBL_RIGHT, DBL_UP,
    *          and DBL_DOWN
    * @return null if the successor state is this.predecessor
@@ -143,14 +143,113 @@ public class State implements Cloneable, Comparable<State> {
    *                                  the bottom row.
    */
   public State successorState(Move m) throws IllegalArgumentException {
+    if (isIllegalMove(m)) {
+      throw new IllegalArgumentException("Illegal Move");
+    }
     State output = new State(this.board);
     output.predecessor = this;
     output.move = m;
     output.next = null;
     output.previous = null;
     output.numMoves++;
-    // TODO game logic
+    int[] zero = getZero();
+    int i = zero[0];
+    int j = zero[1];
+    if (m == Move.LEFT) {
+      this.board[i][j] = this.board[i][j + 1];
+      this.board[i][j + 1] = 0;
+    }
+    else if (m == Move.RIGHT) {
+      this.board[i][j] = this.board[i][j - 1];
+      this.board[i][j + 1] = 0;
+    }
+    else if (m == Move.UP) {
+      this.board[i][j] = this.board[i + 1][j];
+      this.board[i + 1][j] = 0;
+    }
+    else if (m == Move.DOWN) {
+      this.board[i][j] = this.board[i - 1][j];
+      this.board[i + 1][j] = 0;
+    }
+    else if (m == Move.DBL_LEFT) {
+      this.board[i][j] = this.board[i][j + 1];
+      this.board[i][j + 1] = this.board[i][j + 2];
+      this.board[i][j + 2] = 0;
+    }
+    else if (m == Move.DBL_RIGHT) {
+      this.board[i][j] = this.board[i][j - 1];
+      this.board[i][j - 1] = this.board[i][j - 2];
+      this.board[i][j - 2] = 0;
+    }
+    else if (m == Move.DBL_UP) {
+      this.board[i][j] = this.board[i + 1][j];
+      this.board[i + 1][j] = this.board[i + 2][j];
+      this.board[i + 2][j] = 0;
+    }
+    else if (m == Move.DBL_DOWN) {
+      this.board[i][j] = this.board[i - 1][j];
+      this.board[i - 1][j] = this.board[i - 2][j];
+      this.board[i - 2][j] = 0;
+    }
     return output;
+  }
+
+  public int[] getZero() {
+    int[] output = new int[2];
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        if (this.board[i][j] == 0) {
+          output[0] = i;
+          output[1] = j;
+        }
+      }
+    }
+    return output;
+  }
+
+  public boolean isIllegalMove(Move move) {
+    int[] zero = getZero();
+    if (move == Move.LEFT) {
+      if (zero[1] == 2) {
+        return true;
+      }
+    }
+    else if (move == Move.RIGHT) {
+      if (zero[1] == 0) {
+        return true;
+      }
+    }
+    else if (move == Move.UP) {
+      if (zero[0] == 2) {
+        return true;
+      }
+    }
+    else if (move == Move.DOWN) {
+      if (zero[0] == 0) {
+        return true;
+      }
+    }
+    else if (move == Move.DBL_LEFT) {
+      if (zero[1] == 2 || zero[1] == 1) {
+        return true;
+      }
+    }
+    else if (move == Move.DBL_RIGHT) {
+      if (zero[1] == 0 || zero[1] == 1) {
+        return true;
+      }
+    }
+    else if (move == Move.DBL_UP) {
+      if (zero[0] == 2 || zero[0] == 1) {
+        return true;
+      }
+    }
+    else if (move == Move.DBL_DOWN) {
+      if (zero[0] == 0 || zero[0] == 1) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -161,7 +260,7 @@ public class State implements Cloneable, Comparable<State> {
    * of inversions.
    */
   /**
-   * 
+   *
    * @return true if the puzzle starting in this state can be rearranged into the
    *         goal state.
    */
@@ -185,11 +284,11 @@ public class State implements Cloneable, Comparable<State> {
   /**
    * Check if this state is the goal state, namely, if the array board[][] stores
    * the following contents:
-   * 
+   *
    * 1 2 3
    * 8 0 4
    * 7 6 5
-   * 
+   *
    * @return
    */
   public boolean isGoalState() {
@@ -210,17 +309,17 @@ public class State implements Cloneable, Comparable<State> {
 
   /**
    * Write the board configuration according to the following format:
-   * 
+   *
    * a) Output row by row in three lines with no indentations.
    * b) Two adjacent tiles in each row have exactly one blank in between.
    * c) The empty square is represented by a blank.
-   * 
+   *
    * For example,
-   * 
+   *
    * 2 3
    * 1 8 4
    * 7 6 5
-   * 
+   *
    */
   @Override
   public String toString() {
@@ -238,7 +337,7 @@ public class State implements Cloneable, Comparable<State> {
    * Create a clone of this State object by copying over the board[][]. Set the
    * links previous,
    * next, and predecessor to null.
-   * 
+   *
    * The method is called by SuccessorState();
    */
   @Override
@@ -269,14 +368,14 @@ public class State implements Cloneable, Comparable<State> {
    * the estimated number of moves to the goal state using the heuristic stored in
    * the instance
    * variable heu.
-   * 
+   *
    * If heu == TileMismatch, add up numMoves and the return values from
    * computeNumMismatchedTiles().
    * If heu == MahattanDist, add up numMoves and the return values of
    * computeMahattanDistance().
    * If heu == DoubleMoveHeuristic, add up numMoves and the return value of
    * computeNumSingleDoubleMoves().
-   * 
+   *
    * @return estimated number of moves from the initial state to the goal state
    *         via this state.
    * @throws IllegalArgumentException if heuristic is neither 0 nor 1.
@@ -297,11 +396,11 @@ public class State implements Cloneable, Comparable<State> {
   /**
    * Compare two states by the cost. Let c1 and c2 be the costs of this state and
    * the argument state s.
-   * 
+   *
    * @return -1 if c1 < c2
    *         0 if c1 = c2
    *         1 if c1 > c2
-   * 
+   *
    *         Call the method cost(). This comparison will be used in maintaining
    *         the OPEN list by the A* algorithm.
    */
@@ -320,7 +419,7 @@ public class State implements Cloneable, Comparable<State> {
    * Return the value of the private variable numMismatchedTiles if it is
    * non-negative, and compute its
    * value otherwise.
-   * 
+   *
    * @return the number of mismatched tiles between this state and the goal state.
    */
   private int computeNumMismatchedTiles() {
@@ -344,7 +443,7 @@ public class State implements Cloneable, Comparable<State> {
    * Return the value of the private variable ManhattanDistance if it is
    * non-negative, and compute its value
    * otherwise.
-   * 
+   *
    * @return the Manhattan distance between this state and the goal state.
    */
   private int computeManhattanDistance() {
@@ -381,7 +480,7 @@ public class State implements Cloneable, Comparable<State> {
    * Return the value of the private variable numSingleDoubleMoves if it is
    * non-negative, and compute its value
    * otherwise.
-   * 
+   *
    * @return the value of the private variable numSingleDoubleMoves that bounds
    *         from below the number of moves,
    *         single or double, which will take this state to the goal state.

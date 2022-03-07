@@ -39,7 +39,6 @@ public class PuzzleSolver
 		// solutions.  (No extra credit but good for debugging and for the user.)
 		String fileNames[] = new String[] {"8Puzzle.txt"}; 
 		
-		System.out.println("hello");
 		int[][] board = {
 			{1, 2, 3},
 			{8, 0, 4},
@@ -48,7 +47,7 @@ public class PuzzleSolver
 		State state = new State(board);
 		System.out.println(state);
 		State state2 = new State("./puzzle.txt");
-		System.out.println(state2.get_inversions());
+		System.out.println(state2);
+		System.out.println(state2.successorState(Move.UP).successorState(Move.DBL_DOWN).successorState(Move.DBL_LEFT));
 	}
-
 }

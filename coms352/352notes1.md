@@ -1267,3 +1267,61 @@ One or more producer threads generate data items and place them in a buffer
 One or more consumers grab items from the buffer and consume them
 
 Common example: a pipe between processes acts as a buffer
+
+Mutex lock and unlock surrounding a put() and get() so only one can do put() or get() at a single time
+
+Producers can wake up other producers with the if statement
+
+To work, need to have two different conditions, and each will signal opposite type
+
+## Sephamore
+
+variable that provides both locking and signaling
+
+restrict how many threads have access to the resource at any time
+
+```c
+sem_init(&s, pshared, 5); // init with 5 allowed to use
+
+// decrease value by 1
+sem_wait(&s); // try to get resource, if none available, wait until one is
+
+//increment value by 1
+sem_post(&s); // give up resource, signal one resource available
+```
+
+Use semaphore like lock
+
+- init s to 1
+
+- acquire s with sem_wait()
+
+- acquire s with sem_post()
+
+Because semaphore can be interpreted as being in one of two states, this is a __binary__ semaphore
+
+## Readers-Writers Problem
+
+Readers - can only read doc
+
+Writer - can read or write to doc
+
+#### Simple solution:
+
+- can only have one writer to write at a time
+
+- as many readers can read as you want
+
+Two semaphors:
+
+rw_mutex initalized to 1
+
+- ensure writers can exclusively edit doc
+
+read_count number of readers currently reading
+
+mutex initalized to 1
+
+- ensures readers can all read when they want
+
+This solution has _starvation_ where readers can block out the writers
