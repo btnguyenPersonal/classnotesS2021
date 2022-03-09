@@ -169,40 +169,40 @@ public class State implements Cloneable, Comparable<State> {
     int i = zero[0];
     int j = zero[1];
     if (m == Move.RIGHT) {
-      this.board[i][j] = this.board[i][j + 1];
-      this.board[i][j + 1] = 0;
+      output.board[i][j] = output.board[i][j + 1];
+      output.board[i][j + 1] = 0;
     }
     else if (m == Move.LEFT) {
-      this.board[i][j] = this.board[i][j - 1];
-      this.board[i][j - 1] = 0;
+      output.board[i][j] = output.board[i][j - 1];
+      output.board[i][j - 1] = 0;
     }
     else if (m == Move.DOWN) {
-      this.board[i][j] = this.board[i + 1][j];
-      this.board[i + 1][j] = 0;
+      output.board[i][j] = output.board[i + 1][j];
+      output.board[i + 1][j] = 0;
     }
     else if (m == Move.UP) {
-      this.board[i][j] = this.board[i - 1][j];
-      this.board[i - 1][j] = 0;
+      output.board[i][j] = output.board[i - 1][j];
+      output.board[i - 1][j] = 0;
     }
     else if (m == Move.DBL_RIGHT) {
-      this.board[i][j] = this.board[i][j + 1];
-      this.board[i][j + 1] = this.board[i][j + 2];
-      this.board[i][j + 2] = 0;
+      output.board[i][j] = output.board[i][j + 1];
+      output.board[i][j + 1] = output.board[i][j + 2];
+      output.board[i][j + 2] = 0;
     }
     else if (m == Move.DBL_LEFT) {
-      this.board[i][j] = this.board[i][j - 1];
-      this.board[i][j - 1] = this.board[i][j - 2];
-      this.board[i][j - 2] = 0;
+      output.board[i][j] = output.board[i][j - 1];
+      output.board[i][j - 1] = output.board[i][j - 2];
+      output.board[i][j - 2] = 0;
     }
     else if (m == Move.DBL_DOWN) {
-      this.board[i][j] = this.board[i + 1][j];
-      this.board[i + 1][j] = this.board[i + 2][j];
-      this.board[i + 2][j] = 0;
+      output.board[i][j] = output.board[i + 1][j];
+      output.board[i + 1][j] = output.board[i + 2][j];
+      output.board[i + 2][j] = 0;
     }
     else if (m == Move.DBL_UP) {
-      this.board[i][j] = this.board[i - 1][j];
-      this.board[i - 1][j] = this.board[i - 2][j];
-      this.board[i - 2][j] = 0;
+      output.board[i][j] = output.board[i - 1][j];
+      output.board[i - 1][j] = output.board[i - 2][j];
+      output.board[i - 2][j] = 0;
     }
     return output;
   }
