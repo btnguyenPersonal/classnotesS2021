@@ -73,6 +73,14 @@ public class State implements Cloneable, Comparable<State> {
     this.board = board;
   }
 
+  public State() throws IllegalArgumentException {
+    this.move = null;
+    this.numMoves = 0;
+    this.previous = null;
+    this.next = null;
+    this.predecessor = null;
+  }
+
   /**
    * Constructor (for the initial state)
    *
@@ -151,7 +159,7 @@ public class State implements Cloneable, Comparable<State> {
     if (isIllegalMove(m)) {
       throw new IllegalArgumentException("Illegal Move");
     }
-    State output = new State(this.board);
+    State output = (State) this.clone();
     output.predecessor = this;
     output.move = m;
     output.next = null;
@@ -358,7 +366,14 @@ public class State implements Cloneable, Comparable<State> {
    */
   @Override
   public Object clone() {
-    return new State(board);
+    State output = new State();
+    output.board = new int[3][3];
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        output.board[i][j] = this.board[i][j];
+      }
+    }
+    return output;
   }
 
   /**

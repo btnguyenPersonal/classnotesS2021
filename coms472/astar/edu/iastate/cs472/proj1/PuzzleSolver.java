@@ -52,9 +52,6 @@ public class PuzzleSolver
     State state = new State(board);
     State state2 = new State(board2);
     State state3 = new State("./puzzle.txt");
-    OrderedStateList list = new OrderedStateList(Heuristic.TileMismatch, true);
-    list.addState(state2);
-    list.addState(state);
-    list.addState(state3);
+    System.out.println(EightPuzzle.solve8Puzzle(state2));
   }
 }

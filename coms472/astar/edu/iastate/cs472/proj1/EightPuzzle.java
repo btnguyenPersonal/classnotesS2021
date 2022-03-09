@@ -41,10 +41,12 @@ public class EightPuzzle
     Heuristic h[] = {Heuristic.TileMismatch, Heuristic.ManhattanDist, Heuristic.DoubleMoveHeuristic }; 
     String [] moves = new String[3]; 
 
-    for (int i = 0; i < 3; i++)
-    {
-      moves[i] = AStar(s0, h[i]); 
-    }
+    moves[0] = AStar(s0, Heuristic.TileMismatch);
+
+    // for (int i = 0; i < 3; i++)
+    // {
+    //   moves[i] = AStar(s0, h[i]); 
+    // }
 
     // 3) Combine the three solution strings into one that would print out in the 
     //    output format specified in Section 6 of the project description.
@@ -69,8 +71,14 @@ public class EightPuzzle
     OrderedStateList OPEN = new OrderedStateList(h, true); 
     OrderedStateList CLOSE = new OrderedStateList(h, false);
     OPEN.addState(s0);
+    int index = 0;
     while (OPEN.size() != 0) {
       State s = OPEN.remove();
+      if (index < 10) {
+        index++;
+        OPEN.print();
+        CLOSE.print();
+      }
       CLOSE.addState(s);
       if (s.isGoalState()) {
         return solutionPath(s);
@@ -78,7 +86,7 @@ public class EightPuzzle
         ArrayList<State> successors = generateSubsets(s);
         for (int i = 0; i < successors.size(); i++) {
           State current = successors.get(i);
-          if (OPEN.findState(current) == null && CLOSED.findState(current) == null) {
+          if (OPEN.findState(current) == null && CLOSE.findState(current) == null) {
             OPEN.addState(current);
           }
         }

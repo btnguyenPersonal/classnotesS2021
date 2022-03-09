@@ -105,7 +105,7 @@ public class OrderedStateList
   {
     State current = head.next;
     for (int i = 0; i < size; i++) {
-      if (compareStates(current, s) == 0) {
+      if (s.equals(current)) {
         return current;
       }
       current = current.next;
@@ -178,11 +178,6 @@ public class OrderedStateList
    */
   private int compareStates(State s1, State s2)
   {
-    if (isOPEN == true) {
-      return s1.compareTo(s2);
-    } else {
-      StateComparator comparator = new StateComparator();
-      return comparator.compare(s1, s2);
-    }
+    return s1.compareTo(s2);
   }
 }
