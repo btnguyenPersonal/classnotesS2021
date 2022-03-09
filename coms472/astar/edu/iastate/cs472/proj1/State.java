@@ -168,38 +168,38 @@ public class State implements Cloneable, Comparable<State> {
     int[] zero = getZero();
     int i = zero[0];
     int j = zero[1];
-    if (m == Move.RIGHT) {
+    if (m == Move.LEFT) {
       output.board[i][j] = output.board[i][j + 1];
       output.board[i][j + 1] = 0;
     }
-    else if (m == Move.LEFT) {
+    else if (m == Move.RIGHT) {
       output.board[i][j] = output.board[i][j - 1];
       output.board[i][j - 1] = 0;
     }
-    else if (m == Move.DOWN) {
+    else if (m == Move.UP) {
       output.board[i][j] = output.board[i + 1][j];
       output.board[i + 1][j] = 0;
     }
-    else if (m == Move.UP) {
+    else if (m == Move.DOWN) {
       output.board[i][j] = output.board[i - 1][j];
       output.board[i - 1][j] = 0;
     }
-    else if (m == Move.DBL_RIGHT) {
+    else if (m == Move.DBL_LEFT) {
       output.board[i][j] = output.board[i][j + 1];
       output.board[i][j + 1] = output.board[i][j + 2];
       output.board[i][j + 2] = 0;
     }
-    else if (m == Move.DBL_LEFT) {
+    else if (m == Move.DBL_RIGHT) {
       output.board[i][j] = output.board[i][j - 1];
       output.board[i][j - 1] = output.board[i][j - 2];
       output.board[i][j - 2] = 0;
     }
-    else if (m == Move.DBL_DOWN) {
+    else if (m == Move.DBL_UP) {
       output.board[i][j] = output.board[i + 1][j];
       output.board[i + 1][j] = output.board[i + 2][j];
       output.board[i + 2][j] = 0;
     }
-    else if (m == Move.DBL_UP) {
+    else if (m == Move.DBL_DOWN) {
       output.board[i][j] = output.board[i - 1][j];
       output.board[i - 1][j] = output.board[i - 2][j];
       output.board[i - 2][j] = 0;
@@ -208,13 +208,6 @@ public class State implements Cloneable, Comparable<State> {
   }
 
   public int[] getZero() {
-    // for (int i = 0; i < 3; i++) {
-    //   for (int j = 0; j < 3; j++) {
-    //     System.out.print(this.board[i][j]);
-    //   }
-    //   System.out.println();
-    // }
-    // System.out.println();
     int[] output = new int[2];
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
