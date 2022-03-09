@@ -203,6 +203,8 @@ public class State implements Cloneable, Comparable<State> {
       output.board[i][j] = output.board[i - 1][j];
       output.board[i - 1][j] = output.board[i - 2][j];
       output.board[i - 2][j] = 0;
+    } else {
+      throw new IllegalArgumentException("Illegal Move: " + m);
     }
     return output;
   }

@@ -152,8 +152,9 @@ public class EightPuzzle
     String output = goal.toString();
     State current = goal;
     while (current.predecessor != null) {
-      System.out.println(current.predecessor);
-      output = current.toString() + "\n<insert move here>\n" + output;
+      Move m = current.move;
+      current = current.predecessor;
+      output = current.toString() + m + "\n" + output;
     }
     return output;
   }
