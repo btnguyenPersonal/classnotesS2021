@@ -287,7 +287,7 @@ Process 2: Perform a long math computation
 
   Jobs that need long CPU time and little I/O should be lowest priority
 
-  
+
 
 ## Adding Feedback to Multi-Level Queue
 
@@ -399,7 +399,7 @@ Process 2: Perform a long math computation
 
 ```c
 
-current_time_slice = 
+current_time_slice =
     current_weight / processes_weights_total * sched_latency
 
 ```
@@ -500,9 +500,9 @@ current_time_slice =
 
   | Translate virtual address | MMU intercepts all addresses between
 
-  | Privileged instructions to update base and bounds | 
+  | Privileged instructions to update base and bounds |
 
-  | Ability to raise exceptions | 
+  | Ability to raise exceptions |
 
 ## Segmentation
 
@@ -689,7 +689,7 @@ O = Offset
 
   _coalescing_ is merging contiguous free spaces into one
 
-      
+
 
 ## Tracking Allocated Regions
 
@@ -832,7 +832,7 @@ O = Offset
 
   Need to decide on page to evict (page out) so a page can be brought back to memory (page in)
 
-  There are many page-replacement policies, just like we saw with TLB cache 
+  There are many page-replacement policies, just like we saw with TLB cache
 
  - FIFO
 
@@ -859,11 +859,11 @@ O = Offset
 ## How to make smaller page tables?
 
   __Idea:__ One Page table per segment
-  
+
   - use segment number to determine which page table to use
 
   __Problems:__
-  
+
   - Need to use segmentation (not as flexible as pure paging)
 
   - Page table size is now dynamic (it can grow and shrink with segment)
@@ -873,7 +873,7 @@ O = Offset
     - External fragmentation between page tables
 
   __Idea:__ Multi-Level Page tables
-  
+
   - Chop page tables into page sized units
 
   - Don't store page table unit where all page table entires are marked invalid
@@ -1074,7 +1074,7 @@ Examples of common thread libraries
 
 - Java threads: JVM implements threads using thread libraries available on host system
 
-## `pthread_create()` 
+## `pthread_create()`
 
 New thread executes concurrently with the parent thread
 
@@ -1082,11 +1082,11 @@ The new thread runs until on of the following happens
 
 - It returns
 
-## `pthread_exit()` 
+## `pthread_exit()`
 
 Exits from the thread instead of just the process
 
-## `pthread_join()` 
+## `pthread_join()`
 
 Joins two threads into one
 
@@ -1098,7 +1098,7 @@ while (n != *id);
 
 This will keep asking if `n != id` until that is true
 
-## Locks 
+## Locks
 
 Provide mutual exclusion to a critical section of code
 
@@ -1118,7 +1118,7 @@ balance = balance + 1;
 unlock(&mutex);
 ```
 
-## Goals 
+## Goals
 
 __Mutual Exclusion__ - prevent mutliple threads from entering a critical section
 
@@ -1172,7 +1172,7 @@ void unlock(lock_t *mutex) {
 
 This has a race condition bug!
 
-# Peterson's Algorithm 
+# Peterson's Algorithm
 
 - A Software Solution that works!
 
@@ -1325,3 +1325,65 @@ mutex initalized to 1
 - ensures readers can all read when they want
 
 This solution has _starvation_ where readers can block out the writers
+
+## Classic Problem: Dinning Philosophers
+
+- 5 philosophers alternate between thinking and eating
+
+## Broken Solution
+
+![](../pic/dinningphil.png)
+
+`getChop()` = left and right in get semaphore
+
+`putChop()` = left and right in post semaphore
+
+#### Problem:
+
+all of the philosophers can pick the left chopstick, and then all are waiting for right chopstick, and none can get it.
+
+## One solution
+
+simple rule: Ph4 must pick up the right chopstick before the left
+
+If cycle cannot form, then it works
+
+## Common non-deadlock bugs
+
+#### Atomicity violation
+
+Try to use `thd->info`, but it can change inbetween the if and using
+
+```c
+Thread 1::
+if (thd->info) {
+  fputs(thd->info, ...);
+}
+
+Thread 2::
+thd->info = NULL;
+```
+
+Need to have lock around the check and use
+
+#### Order violation
+
+One thing needs to happen before another
+
+```c
+Thread 1::
+void init() {
+  mThread = PR_CreateThread(mMain, ...);
+}
+
+Thread 2::
+void mMain(...) {
+  mState - mThread->State;
+}
+```
+
+## Why does deadlock Happen?
+
+- There needs to be a __circular wait__ for resources (like the dinning philosophers)
+
+- Also needs __mutual exclusion__, when something gets access to a resource, nothing else can modify/use the resource
