@@ -72,7 +72,7 @@ public class EightPuzzle
     OrderedStateList CLOSE = new OrderedStateList(h, false);
     OPEN.addState(s0);
     int index = 0;
-    while (OPEN.size() != 0) {
+    while (OPEN.size() > 0) {
       State s = OPEN.remove();
       if (index < 10) {
         index++;
