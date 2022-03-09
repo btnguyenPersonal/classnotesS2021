@@ -309,9 +309,9 @@ public class State implements Cloneable, Comparable<State> {
    */
   public boolean isGoalState() {
     int[][] goalBoard = {
-        { 1, 2, 3 },
-        { 8, 0, 4 },
-        { 7, 6, 5 }
+      { 1, 2, 3 },
+      { 8, 0, 4 },
+      { 7, 6, 5 }
     };
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
@@ -440,9 +440,9 @@ public class State implements Cloneable, Comparable<State> {
    */
   private int computeNumMismatchedTiles() {
     int[][] goalBoard = {
-        { 1, 2, 3 },
-        { 8, 0, 4 },
-        { 7, 6, 5 }
+      { 1, 2, 3 },
+      { 8, 0, 4 },
+      { 7, 6, 5 }
     };
     int numMismatched = 0;
     for (int i = 0; i < 3; i++) {
@@ -477,9 +477,9 @@ public class State implements Cloneable, Comparable<State> {
     int goal_i = -1;
     int goal_j = -1;
     int[][] goalBoard = {
-        { 1, 2, 3 },
-        { 8, 0, 4 },
-        { 7, 6, 5 }
+      { 1, 2, 3 },
+      { 8, 0, 4 },
+      { 7, 6, 5 }
     };
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
