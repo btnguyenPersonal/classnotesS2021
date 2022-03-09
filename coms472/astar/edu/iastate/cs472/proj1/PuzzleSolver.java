@@ -52,6 +52,6 @@ public class PuzzleSolver
     State state = new State(board);
     State state2 = new State(board2);
     State state3 = new State("./puzzle.txt");
-    System.out.println(EightPuzzle.solve8Puzzle(state2));
+    System.out.println(EightPuzzle.solve8Puzzle(state3));
   }
 }
