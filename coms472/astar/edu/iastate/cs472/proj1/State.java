@@ -231,42 +231,42 @@ public class State implements Cloneable, Comparable<State> {
   public boolean isIllegalMove(Move move) {
     int[] zero = getZero();
     if (move == Move.LEFT) {
-      if (zero[1] == 0) {
-        return true;
-      }
-    }
-    else if (move == Move.RIGHT) {
       if (zero[1] == 2) {
         return true;
       }
     }
-    else if (move == Move.UP) {
-      if (zero[0] == 0) {
+    else if (move == Move.RIGHT) {
+      if (zero[1] == 0) {
         return true;
       }
     }
-    else if (move == Move.DOWN) {
+    else if (move == Move.UP) {
       if (zero[0] == 2) {
         return true;
       }
     }
-    else if (move == Move.DBL_LEFT) {
-      if (zero[1] == 0 || zero[1] == 1) {
+    else if (move == Move.DOWN) {
+      if (zero[0] == 0) {
         return true;
       }
     }
-    else if (move == Move.DBL_RIGHT) {
+    else if (move == Move.DBL_LEFT) {
       if (zero[1] == 2 || zero[1] == 1) {
         return true;
       }
     }
+    else if (move == Move.DBL_RIGHT) {
+      if (zero[1] == 0 || zero[1] == 1) {
+        return true;
+      }
+    }
     else if (move == Move.DBL_UP) {
-      if (zero[0] == 0 || zero[0] == 1) {
+      if (zero[0] == 2 || zero[0] == 1) {
         return true;
       }
     }
     else if (move == Move.DBL_DOWN) {
-      if (zero[0] == 2 || zero[0] == 1) {
+      if (zero[0] == 0 || zero[0] == 1) {
         return true;
       }
     }
