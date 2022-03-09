@@ -74,13 +74,12 @@ public class EightPuzzle
     int index = 0;
     while (OPEN.size() > 0) {
       State s = OPEN.remove();
-      if (index < 10) {
-        index++;
-        OPEN.print();
-        CLOSE.print();
-      }
-      CLOSE.addState(s);
       if (s.isGoalState()) {
+        System.out.println("-------------------------------------");
+        OPEN.print();
+        System.out.println("-------------------------------------");
+        CLOSE.print();
+        System.out.println("-------------------------------------");
         return solutionPath(s);
       } else {
         ArrayList<State> successors = generateSubsets(s);
@@ -90,28 +89,45 @@ public class EightPuzzle
             OPEN.addState(current);
           }
         }
+        CLOSE.addState(s);
       }
     }
-    return null; 
+    return null;
   }
 
   public static ArrayList<State> generateSubsets(State s) {
     ArrayList<State> output = new ArrayList<State>();
-    if (!s.isIllegalMove(Move.LEFT)) {
+    System.out.println(s);
+    if (!(s.isIllegalMove(Move.LEFT))) {
+      System.out.println("left");
       output.add(s.successorState(Move.LEFT));
-    } else if (!s.isIllegalMove(Move.RIGHT)) {
+    }
+    if (!(s.isIllegalMove(Move.RIGHT))) {
+      System.out.println("right");
       output.add(s.successorState(Move.RIGHT));
-    } else if (!s.isIllegalMove(Move.UP)) {
+    }
+    if (!(s.isIllegalMove(Move.UP))) {
+      System.out.println("up");
       output.add(s.successorState(Move.UP));
-    } else if (!s.isIllegalMove(Move.DOWN)) {
+    }
+    if (!(s.isIllegalMove(Move.DOWN))) {
+      System.out.println("down");
       output.add(s.successorState(Move.DOWN));
-    } else if (!s.isIllegalMove(Move.DBL_LEFT)) {
+    }
+    if (!(s.isIllegalMove(Move.DBL_LEFT))) {
+      System.out.println("2left");
       output.add(s.successorState(Move.DBL_LEFT));
-    } else if (!s.isIllegalMove(Move.DBL_RIGHT)) {
+    }
+    if (!(s.isIllegalMove(Move.DBL_RIGHT))) {
+      System.out.println("2right");
       output.add(s.successorState(Move.DBL_RIGHT));
-    } else if (!s.isIllegalMove(Move.DBL_UP)) {
+    }
+    if (!(s.isIllegalMove(Move.DBL_UP))) {
+      System.out.println("2up");
       output.add(s.successorState(Move.DBL_UP));
-    } else if (!s.isIllegalMove(Move.DBL_DOWN)) {
+    }
+    if (!(s.isIllegalMove(Move.DBL_DOWN))) {
+      System.out.println("2down");
       output.add(s.successorState(Move.DBL_DOWN));
     }
     return output;
@@ -135,6 +151,7 @@ public class EightPuzzle
   {
     String output = goal.toString();
     State current = goal;
+    System.out.println(current.predecessor);
     while (current.predecessor != null) {
       output = current.toString() + "\n<insert move here>\n" + output;
     }

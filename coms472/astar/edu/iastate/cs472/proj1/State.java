@@ -168,38 +168,38 @@ public class State implements Cloneable, Comparable<State> {
     int[] zero = getZero();
     int i = zero[0];
     int j = zero[1];
-    if (m == Move.LEFT) {
+    if (m == Move.RIGHT) {
       this.board[i][j] = this.board[i][j + 1];
       this.board[i][j + 1] = 0;
     }
-    else if (m == Move.RIGHT) {
+    else if (m == Move.LEFT) {
       this.board[i][j] = this.board[i][j - 1];
-      this.board[i][j + 1] = 0;
+      this.board[i][j - 1] = 0;
     }
-    else if (m == Move.UP) {
+    else if (m == Move.DOWN) {
       this.board[i][j] = this.board[i + 1][j];
       this.board[i + 1][j] = 0;
     }
-    else if (m == Move.DOWN) {
+    else if (m == Move.UP) {
       this.board[i][j] = this.board[i - 1][j];
-      this.board[i + 1][j] = 0;
+      this.board[i - 1][j] = 0;
     }
-    else if (m == Move.DBL_LEFT) {
+    else if (m == Move.DBL_RIGHT) {
       this.board[i][j] = this.board[i][j + 1];
       this.board[i][j + 1] = this.board[i][j + 2];
       this.board[i][j + 2] = 0;
     }
-    else if (m == Move.DBL_RIGHT) {
+    else if (m == Move.DBL_LEFT) {
       this.board[i][j] = this.board[i][j - 1];
       this.board[i][j - 1] = this.board[i][j - 2];
       this.board[i][j - 2] = 0;
     }
-    else if (m == Move.DBL_UP) {
+    else if (m == Move.DBL_DOWN) {
       this.board[i][j] = this.board[i + 1][j];
       this.board[i + 1][j] = this.board[i + 2][j];
       this.board[i + 2][j] = 0;
     }
-    else if (m == Move.DBL_DOWN) {
+    else if (m == Move.DBL_UP) {
       this.board[i][j] = this.board[i - 1][j];
       this.board[i - 1][j] = this.board[i - 2][j];
       this.board[i - 2][j] = 0;
@@ -208,12 +208,20 @@ public class State implements Cloneable, Comparable<State> {
   }
 
   public int[] getZero() {
+    // for (int i = 0; i < 3; i++) {
+    //   for (int j = 0; j < 3; j++) {
+    //     System.out.print(this.board[i][j]);
+    //   }
+    //   System.out.println();
+    // }
+    // System.out.println();
     int[] output = new int[2];
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
         if (this.board[i][j] == 0) {
           output[0] = i;
           output[1] = j;
+          return output;
         }
       }
     }
@@ -223,42 +231,42 @@ public class State implements Cloneable, Comparable<State> {
   public boolean isIllegalMove(Move move) {
     int[] zero = getZero();
     if (move == Move.LEFT) {
-      if (zero[1] == 2) {
-        return true;
-      }
-    }
-    else if (move == Move.RIGHT) {
       if (zero[1] == 0) {
         return true;
       }
     }
-    else if (move == Move.UP) {
-      if (zero[0] == 2) {
+    else if (move == Move.RIGHT) {
+      if (zero[1] == 2) {
         return true;
       }
     }
-    else if (move == Move.DOWN) {
+    else if (move == Move.UP) {
       if (zero[0] == 0) {
         return true;
       }
     }
-    else if (move == Move.DBL_LEFT) {
-      if (zero[1] == 2 || zero[1] == 1) {
+    else if (move == Move.DOWN) {
+      if (zero[0] == 2) {
         return true;
       }
     }
-    else if (move == Move.DBL_RIGHT) {
+    else if (move == Move.DBL_LEFT) {
       if (zero[1] == 0 || zero[1] == 1) {
         return true;
       }
     }
+    else if (move == Move.DBL_RIGHT) {
+      if (zero[1] == 2 || zero[1] == 1) {
+        return true;
+      }
+    }
     else if (move == Move.DBL_UP) {
-      if (zero[0] == 2 || zero[0] == 1) {
+      if (zero[0] == 0 || zero[0] == 1) {
         return true;
       }
     }
     else if (move == Move.DBL_DOWN) {
-      if (zero[0] == 0 || zero[0] == 1) {
+      if (zero[0] == 2 || zero[0] == 1) {
         return true;
       }
     }
