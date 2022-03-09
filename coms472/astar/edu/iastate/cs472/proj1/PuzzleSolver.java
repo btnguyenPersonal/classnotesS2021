@@ -44,10 +44,19 @@ public class PuzzleSolver
 			{8, 0, 4},
 			{7, 6, 5}
 		};
+		int[][] board2 = {
+			{1, 2, 3},
+			{0, 8, 4},
+			{7, 6, 5}
+		};
 		State state = new State(board);
-		System.out.println(state);
-		State state2 = new State("./puzzle.txt");
-		System.out.println(state2);
-		System.out.println(state2.successorState(Move.UP).successorState(Move.DBL_DOWN).successorState(Move.DBL_LEFT));
+		State state2 = new State(board2);
+		State state3 = new State("./puzzle.txt");
+    OrderedStateList list = new OrderedStateList(Heuristic.TileMismatch, true);
+    list.addState(state2);
+    list.addState(state);
+    list.addState(state3);
+    list.print();
+    System.out.println(list.findState(state3));
 	}
 }

@@ -38,9 +38,16 @@ public class OrderedStateList
 	   */
 	  public OrderedStateList(Heuristic h, boolean isOpen)
 	  {
-		  //	TODO
+      int[][] emptyBoard = new int[3][3];
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          emptyBoard[i][j] = -1;
+        }
+      }
+      head = new State(emptyBoard);
+      head.next = head;
+      head.previous = head;
 		  State.heu = h;   // initialize heuristic used for evaluating all State objects. 
-
 	  }
 
 	  
@@ -61,7 +68,26 @@ public class OrderedStateList
 	   */
 	  public void addState(State s)
 	  {
-		  // TODO 
+      size++;
+      State current = head.next;
+      boolean isSet = false;
+      while (compareStates(current, head) != 0) {
+        if (compareStates(s, current) <= 0) {
+          s.next = current;
+          s.previous = current.previous;
+          (current.previous).next = s;
+          current.previous = s;
+          isSet = true;
+          break;
+        }
+        current = current.next;
+      }
+      if (!isSet) {
+        s.next = head;
+        s.previous = head.previous;
+        (head.previous).next = s;
+        head.previous = s;
+      }
 	  }
 	  
 	  
@@ -77,8 +103,14 @@ public class OrderedStateList
 	   */
 	  public State findState(State s)
 	  {
-		  // TODO 
-		  return null; 
+      State current = head.next;
+      for (int i = 0; i < size; i++) {
+        if (compareStates(current, s) == 0) {
+          return current;
+        }
+        current = current.next;
+      }
+      return null;
 	  }
 	  
 	  
@@ -91,8 +123,28 @@ public class OrderedStateList
 	   */
 	  public void removeState(State s) throws IllegalStateException
 	  {
-		  // TODO 
+      State current = head.next;
+      for (int i = 0; i < size; i++) {
+        if (compareStates(current, s) == 0) {
+          current.next = (current.next).next;
+          (current.next).previous = current;
+          size--;
+          break;
+        }
+        current = current.next;
+      }
+      throw new IllegalStateException("State not found");
 	  }
+
+    public void print() {
+      State current = head.next;
+      int i = 1;
+      for (int j = 0; j < size; j++) {
+        System.out.println("    i: " + i + "\n" + current);
+        i++;
+        current = current.next;
+      } 
+    }
 	  
 	  
 	  /**
@@ -103,8 +155,11 @@ public class OrderedStateList
 	   */
 	  public State remove()
 	  {
-		  // TODO
-		  return null; 
+      State first = head.next;
+      head.next = (head.next).next;
+      (head.next).previous = head;
+      size--;
+		  return first; 
 	  }
 	  
 	  
@@ -123,8 +178,11 @@ public class OrderedStateList
 	   */
 	  private int compareStates(State s1, State s2)
 	  {
-		  // TODO 
-		  
-		  return 0; 
+      if (isOPEN == true) {
+        return s1.compareTo(s2);
+      } else {
+        StateComparator comparator = new StateComparator();
+        return comparator.compare(s1, s2);
+      }
 	  }
 }

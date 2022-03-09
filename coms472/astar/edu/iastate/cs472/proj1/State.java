@@ -90,6 +90,11 @@ public class State implements Cloneable, Comparable<State> {
    *                                    above requirements.
    */
   public State(String inputFileName) throws FileNotFoundException, IllegalArgumentException {
+    this.move = null;
+    this.numMoves = 0;
+    this.previous = null;
+    this.next = null;
+    this.predecessor = null;
     try {
       File f = new File(inputFileName);
       Scanner s = new Scanner(f);
@@ -265,20 +270,31 @@ public class State implements Cloneable, Comparable<State> {
    *         goal state.
    */
   public boolean solvable() {
-    return get_inversions() % 2 == 0;
+    return get_inversions() % 2 == 1;
   }
 
-  // TODO set private
-  public int get_inversions() {
+  private int get_inversions() {
     int inversions = 0;
-    for (int i = 0; i < 3 - 1; i++) {
-      for (int j = i + 1; j < 3; j++) {
-        if (true) { // idk
+    String boardString = getBoardString();
+    for (int i = 0; i < boardString.length(); i++) {
+      for (int j = i; j < boardString.length(); j++) {
+        if (Integer.parseInt(boardString.substring(j, j + 1)) > Integer.parseInt(boardString.substring(i, i + 1))) {
           inversions++;
+          break;
         }
       }
     }
     return inversions;
+  }
+
+  private String getBoardString() {
+    String boardString = "";
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        boardString += this.board[i][j];
+      }
+    }
+    return boardString;
   }
 
   /**
