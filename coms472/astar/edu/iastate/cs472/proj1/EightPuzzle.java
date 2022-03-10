@@ -103,17 +103,19 @@ public class EightPuzzle
     if (!(s.isIllegalMove(Move.DOWN))) {
       output.add(s.successorState(Move.DOWN));
     }
-    if (!(s.isIllegalMove(Move.DBL_LEFT))) {
-      output.add(s.successorState(Move.DBL_LEFT));
-    }
-    if (!(s.isIllegalMove(Move.DBL_RIGHT))) {
-      output.add(s.successorState(Move.DBL_RIGHT));
-    }
-    if (!(s.isIllegalMove(Move.DBL_UP))) {
-      output.add(s.successorState(Move.DBL_UP));
-    }
-    if (!(s.isIllegalMove(Move.DBL_DOWN))) {
-      output.add(s.successorState(Move.DBL_DOWN));
+    if (s.heu == Heuristic.DoubleMoveHeuristic) {
+      if (!(s.isIllegalMove(Move.DBL_LEFT))) {
+        output.add(s.successorState(Move.DBL_LEFT));
+      }
+      if (!(s.isIllegalMove(Move.DBL_RIGHT))) {
+        output.add(s.successorState(Move.DBL_RIGHT));
+      }
+      if (!(s.isIllegalMove(Move.DBL_UP))) {
+        output.add(s.successorState(Move.DBL_UP));
+      }
+      if (!(s.isIllegalMove(Move.DBL_DOWN))) {
+        output.add(s.successorState(Move.DBL_DOWN));
+      }
     }
     return output;
   }
@@ -134,7 +136,7 @@ public class EightPuzzle
    */
   private static String solutionPath(State goal)
   {
-    String output = "\n" + goal.toString() + "\n";
+    String output = "\n" + goal.toString() + "\n\n";
     State current = goal;
     int moves = 0;
     while (current.predecessor != null) {
