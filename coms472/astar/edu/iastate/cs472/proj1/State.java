@@ -162,7 +162,7 @@ public class State implements Cloneable, Comparable<State> {
     output.move = m;
     output.next = null;
     output.previous = null;
-    output.numMoves++;
+    output.numMoves = this.numMoves + 1;
     int[] zero = getZero();
     int i = zero[0];
     int j = zero[1];
