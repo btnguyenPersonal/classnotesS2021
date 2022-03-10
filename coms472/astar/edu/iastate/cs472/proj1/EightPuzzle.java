@@ -42,16 +42,15 @@ public class EightPuzzle
     Heuristic h[] = {Heuristic.TileMismatch, Heuristic.ManhattanDist, Heuristic.DoubleMoveHeuristic }; 
     String [] moves = new String[3]; 
 
-    // for (int i = 0; i < 3; i++)
-    // {
-    //   moves[i] = AStar(s0, h[i]); 
-    // }
+    for (int i = 0; i < 3; i++)
+    {
+      moves[i] = AStar(s0, h[i]); 
+    }
 
-    moves[2] = AStar(s0, h[2]); 
     // 3) Combine the three solution strings into one that would print out in the 
     //    output format specified in Section 6 of the project description.
 
-    return "Tile:\n" + moves[0] + "\nManhattan:\n" + moves[1] + "\nDoubleMove:\n" + moves[2]; 
+    return moves[0] + moves[1] + moves[2]; 
   }
 
 
@@ -135,15 +134,16 @@ public class EightPuzzle
    */
   private static String solutionPath(State goal)
   {
-    String output = "Goal" + "\n" + goal.toString();
+    String output = "\n" + goal.toString();
     State current = goal;
+    int moves = 0;
     while (current.predecessor != null) {
-      System.out.println("hi");
       Move m = current.move;
-      int moves = current.numMoves;
       current = current.predecessor;
-      output = m + "\n" + "Moves: " + moves + "\n" + current.toString() + "\n" + output;
+      output = "\n" + current.toString() + "\n" + m + "\n" + output;
+      moves++;
     }
+    output = moves + "\n" + output;
     return output;
   }
 }
