@@ -107,11 +107,9 @@ public class State implements Cloneable, Comparable<State> {
       File f = new File(inputFileName);
       Scanner s = new Scanner(f);
       this.board = new int[3][3];
-      while (s.hasNextLine()) {
-        for (int i = 0; i < 3; i++) {
-          for (int j = 0; j < 3; j++) {
-            this.board[i][j] = Integer.parseInt(s.next());
-          }
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+          this.board[i][j] = Integer.parseInt(s.next());
         }
       }
       s.close();
