@@ -279,17 +279,19 @@ public class State implements Cloneable, Comparable<State> {
    *         goal state.
    */
   public boolean solvable() {
+    System.out.println(get_inversions());
     return get_inversions() % 2 == 1;
   }
 
   private int get_inversions() {
     int inversions = 0;
     String boardString = getBoardString();
-    for (int i = 0; i < boardString.length(); i++) {
-      for (int j = i; j < boardString.length(); j++) {
-        if (Integer.parseInt(boardString.substring(j, j + 1)) > Integer.parseInt(boardString.substring(i, i + 1))) {
+    for (int i = 0; i < boardString.length() - 1; i++) {
+      for (int j = i + 1; j < boardString.length(); j++) {
+        int num_i = Integer.parseInt(boardString.substring(i, i + 1));
+        int num_j = Integer.parseInt(boardString.substring(j, j + 1));
+        if (num_i != 0 && num_j != 0 && num_i > num_j) {
           inversions++;
-          break;
         }
       }
     }
@@ -351,7 +353,11 @@ public class State implements Cloneable, Comparable<State> {
     String output = "";
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        output += this.board[i][j] + " ";
+        if (this.board[i][j] == 0) {
+          output += "  ";
+        } else {
+          output += this.board[i][j] + " ";
+        }
       }
       output += "\n";
     }
