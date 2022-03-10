@@ -489,7 +489,6 @@ public class State implements Cloneable, Comparable<State> {
   }
 
   private int getManhattanSingle(int in_i, int in_j) {
-
     int goal_i = -1;
     int goal_j = -1;
     int[][] goalBoard = {
@@ -518,24 +517,39 @@ public class State implements Cloneable, Comparable<State> {
    *         single or double, which will take this state to the goal state.
    */
   private int computeNumSingleDoubleMoves() {
-    if (numSingleDoubleMoves >= 0) {
-      return numSingleDoubleMoves;
-    } else {
-      for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-          if (this.board[i][j] == 0) {
-            numSingleDoubleMoves = 0;
-            if (i == 0 || i == 2) {
-              numSingleDoubleMoves++;
-            }
-            if (j == 0 || j == 2) {
-              numSingleDoubleMoves++;
-            }
-            break;
-          }
+    int dist = 0;
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        dist += getDoubleManhattanSingle(i, j);
+      }
+    }
+    return dist;
+  }
+
+  private int getDoubleManhattanSingle(int in_i, int in_j) {
+    int goal_i = -1;
+    int goal_j = -1;
+    int[][] goalBoard = {
+      { 1, 2, 3 },
+      { 8, 0, 4 },
+      { 7, 6, 5 }
+    };
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        if (goalBoard[i][j] == board[in_i][in_j]) {
+          goal_i = i;
+          goal_j = j;
         }
       }
-      return numSingleDoubleMoves;
     }
+    int i = Math.abs(goal_i - in_i);
+    int j = Math.abs(goal_j - in_j);
+    if (i == 2) {
+      i = 1;
+    }
+    if (j == 2) {
+      j = 2;
+    }
+    return i + j;
   }
 }
