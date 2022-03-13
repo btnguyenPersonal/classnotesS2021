@@ -9,3 +9,7 @@ SELECT f.fid, f.fname FROM food f, recipe r WHERE f.fid = r.fid AND (r.iid=23 OR
 
 -- d. return all non-used ingredients in any recipes
 SELECT ingredient.iid, ingredient.iname FROM ingredient WHERE ingredient.iid NOT IN (SELECT recipe.iid FROM recipe);
+
+-- e. list all the food items in desceding order of the number of ingredients
+SELECT food.fid, food.fname FROM food JOIN ingredient JOIN recipe GROUP BY food.fid ORDER BY food.fid DESC;
+-- TODO ADD num ingredients AND total amt also sort BY num ingredients instead
