@@ -33,3 +33,6 @@ INSERT INTO `ingredient` VALUES(21,'Pork', 1.44, 'Meat'),(23,'Chicken', 1.65,
 (29,'Egg Noodle', 2.0, 'Carbohydrate'),(31,'Beef', 1.8, 'Meat');
 INSERT INTO `recipe` VALUES (10, 18, 21), (10,18,23),(250,22,23),(100,22,24),
 (300,25,21),(250,26,23),(200,27,23),(60,27,28),(250,27,29),(50,30,28),(300,30,31);
+insert into ingredient
+select max(iid)+1, 'Cheese', 2.0, 'Protein'
+from ingredient;
