@@ -1,0 +1,7 @@
+A writeup that clearly describes your admissible heuristic function ℎ3 employed to solve 
+the 8-puzzle optimally when single moves and double moves are all considered.  Include 
+your reasoning why the function is admissible.   
+
+My heuristic function h3 to solve the 8 puzzle optimally when both single and double moves are considered is giving the manhattan distance, but instead of counting two moves in the same direction as two moves, it combines them into one.
+
+This function is admissible because it works the same way as manhattan distance, except that it allows double moves. It can never overestimate the number of moves, because it is the same as manhattan distance, except for the fact that it sees double moves as one move instead of two. And since this is the only change we do to the puzzle is allow double moves as one move, this makes it as complete as manhattan distance was.

@@ -1,12 +1,11 @@
+/**
+ * @author btnguyen
+ *
+ */
+
 package edu.iastate.cs472.proj1;
 
 import java.util.Comparator;
-
-/**
- *  
- * @author
- *
- */
 
 /**
  * This method compares two states in the lexicographical order of the board configuration. 

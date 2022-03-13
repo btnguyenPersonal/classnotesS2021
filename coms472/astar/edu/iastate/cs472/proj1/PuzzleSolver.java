@@ -1,3 +1,8 @@
+/**
+ * @author btnguyen
+ *
+ */
+
 package edu.iastate.cs472.proj1;
 
 import java.io.FileNotFoundException;
@@ -39,19 +44,17 @@ public class PuzzleSolver
     // solutions.  (No extra credit but good for debugging and for the user.)
     String fileNames[] = new String[] {"8Puzzle.txt"}; 
 
+    // example state declaration
     int[][] board = {
       {1, 2, 3},
       {8, 0, 4},
       {7, 6, 5}
     };
-    int[][] board2 = {
-      {1, 2, 3},
-      {0, 8, 4},
-      {7, 6, 5}
-    };
     State state = new State(board);
-    State state2 = new State(board2);
-    State state3 = new State("./puzzle.txt");
-    System.out.println(EightPuzzle.solve8Puzzle(state3));
+    // System.out.println(EightPuzzle.solve8Puzzle(state));
+
+    // run from the puzzle.txt file
+    State state2 = new State(fileNames[0]);
+    System.out.println(EightPuzzle.solve8Puzzle(state2));
   }
 }

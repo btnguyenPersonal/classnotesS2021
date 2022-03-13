@@ -1,3 +1,8 @@
+/**
+ * @author btnguyen
+ *
+ */
+
 package edu.iastate.cs472.proj1;
 
 

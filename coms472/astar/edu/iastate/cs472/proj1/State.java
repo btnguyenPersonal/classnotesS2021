@@ -1,3 +1,8 @@
+/**
+ * @author btnguyen
+ *
+ */
+
 package edu.iastate.cs472.proj1;
 
 import java.io.FileNotFoundException;
@@ -279,7 +284,6 @@ public class State implements Cloneable, Comparable<State> {
    *         goal state.
    */
   public boolean solvable() {
-    System.out.println(get_inversions());
     return get_inversions() % 2 == 1;
   }
 

@@ -1,0 +1,5 @@
+Ways to run:
+
+you can change the 8Puzzle.txt file to the puzzle that you want to solve
+
+Also in the PuzzleSolver.java file you can create a state like the example ones that are given, and call solve8puzzle() on that state instead
