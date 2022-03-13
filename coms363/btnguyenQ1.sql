@@ -1,3 +1,4 @@
+-- 1.
 -- a. returns the number of foods
 SELECT COUNT(*) AS numFoods FROM food;
 
@@ -11,5 +12,7 @@ SELECT f.fid, f.fname FROM food f, recipe r WHERE f.fid = r.fid AND (r.iid=23 OR
 SELECT ingredient.iid, ingredient.iname FROM ingredient WHERE ingredient.iid NOT IN (SELECT recipe.iid FROM recipe);
 
 -- e. list all the food items in desceding order of the number of ingredients
-SELECT food.fid, food.fname FROM food JOIN ingredient JOIN recipe GROUP BY food.fid ORDER BY food.fid DESC;
--- TODO ADD num ingredients AND total amt also sort BY num ingredients instead
+SELECT recipe.fid, food.fname, count(recipe.iid) AS numIngredients, sum(recipe.amount) AS totalAmt FROM recipe JOIN food ON food.fid = recipe.fid GROUP BY recipe.fid ORDER BY count(recipe.iid) DESC;
+
+-- 2.
+-- 3.
