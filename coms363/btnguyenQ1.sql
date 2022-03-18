@@ -56,21 +56,4 @@ END //
 delimiter ;
 CALL findFoodWithMeat(2, 5);
 
-CREATE PROCEDURE findFoodWithMeat() @numMeatIngredients INT, @totalgrams INT AS -- todo change TO FLOAT instead
-SELECT t1.fid, t1.fname, t1.totalMeatAmt FROM 
-(
-  SELECT food.fid, food.fname, sum(amount) AS totalMeatAmt, count(category)
-  FROM recipe
-  JOIN food ON food.fid=recipe.fid
-  JOIN ingredient ON ingredient.iid=recipe.iid
-  WHERE ingredient.category='Meat'
-  GROUP BY food.fid
-  ORDER BY (food.fid) DESC
-) AS t1
-WHERE t1.totalMeatAmt > floor(@totalgrams)
-AND t1.category = @numMeatIngredients
-GO;
-
-EXEC findFoodwithMeat @numMeatIngredients = 2, @totalgrams = 100;
-
 -- 3.
