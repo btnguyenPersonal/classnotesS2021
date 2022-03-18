@@ -1,0 +1,19 @@
+
+Com S 472/572 Spring 2022
+Problem Set 4 (65 pts)
+
+Due at 11:59pm 
+Thursday, Mar 24
+
+All exercises are from https://aimacode.github.io/aima-exercises/
+
+
+6.1 (5 pts) 
+6.6 (10 pts) 
+6.11 (10 pts)
+     -- partial assignment {WA = green, V = red}
+6.20 (2+2+2+2=8 pts)
+7.4 (12 X 1 = 12 pts) 
+     -- no explanation needed. 
+7.6a, b, e (4+3+3 = 10 pts)
+7.7 (2+4+4 = 10 pts)
