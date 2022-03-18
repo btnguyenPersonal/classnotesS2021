@@ -36,7 +36,27 @@ GROUP BY recipe.fid
 ORDER BY count(recipe.iid) DESC;
 
 -- 2.
-CREATE PROCEDURE findFoodWithMeat() @numMeatIngredients INT(10), @totalgrams INT(10) AS -- todo change TO FLOAT instead
+DROP PROCEDURE IF EXISTS findFoodWithMeat;
+delimiter //
+CREATE PROCEDURE findFoodWithMeat(IN numMeatIngredients INT, IN totalgrams INT)
+BEGIN
+  SELECT t1.fid, t1.fname, t1.totalMeatAmt FROM 
+  (
+    SELECT food.fid, food.fname, sum(amount) AS totalMeatAmt, count(category) AS foodType
+    FROM recipe
+    JOIN food ON food.fid=recipe.fid
+    JOIN ingredient ON ingredient.iid=recipe.iid
+    WHERE ingredient.category='Meat'
+    GROUP BY food.fid
+    ORDER BY (food.fid) DESC
+  ) AS t1
+  WHERE t1.totalMeatAmt > floor(totalgrams)
+  AND t1.foodType = numMeatIngredients;
+END //
+delimiter ;
+CALL findFoodWithMeat(2, 5);
+
+CREATE PROCEDURE findFoodWithMeat() @numMeatIngredients INT, @totalgrams INT AS -- todo change TO FLOAT instead
 SELECT t1.fid, t1.fname, t1.totalMeatAmt FROM 
 (
   SELECT food.fid, food.fname, sum(amount) AS totalMeatAmt, count(category)
