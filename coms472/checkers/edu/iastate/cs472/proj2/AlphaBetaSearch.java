@@ -1,6 +1,6 @@
 package edu.iastate.cs472.proj2;
 
-import proj2Solution.CheckersData;
+// import proj2Solution.CheckersData;
 
 /**
  * 
