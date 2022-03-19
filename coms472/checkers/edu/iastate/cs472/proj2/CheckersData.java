@@ -123,17 +123,17 @@ public class CheckersData {
     // 1. move the piece from (fromRow,fromCol) to (toRow,toCol)
     // 2. if this move is a jump, remove the captured piece
     // 3. if the piece moves into the kings row on the opponent's side of the board, crowned it as a king
-    CheckersMove[] = moves;
+    CheckersMove[] moves = getLegalMoves(board[fromRow][fromCol]);
     if (moves != null) {
       board[toRow][toCol] = board[fromRow][fromCol];
       board[fromRow][fromCol] = EMPTY;
       if (true/* is a jump */) {
         // jumped pieces get removed
       }
-      if (board[toRow][toCol] = BLACK && toRow == 7) {
+      if (board[toRow][toCol] == RED && toRow == 0) {
         // change to king
       }
-      if (board[toRow][toCol] = RED && toRow == 0) {
+      if (board[toRow][toCol] == BLACK && toRow == 7) {
         // change to king
       }
     }
@@ -151,10 +151,84 @@ public class CheckersData {
    * @param player color of the player, RED or BLACK
    */
   CheckersMove[] getLegalMoves(int player) {
-    // Todo: Implement your getLegalMoves here.
-    return null;
+    int index = 0;
+    CheckersMove[] legalMoves = null;
+    CheckersMove[] moves = null;
+    for (int row = 0; row < 8; row++) {
+      for (int col = 0; col < 8; col++) {
+        moves = getLegalMovesSingle(board[row][col], row, col);
+        for (int i = 0; i < moves.length; i++) {
+          legalMoves[index] = moves[i];
+          index++;
+        }
+      }
+    }
+    return legalMoves;
   }
 
+
+  // EMPTY = 0,
+  // RED = 1,
+  // RED_KING = 2,
+  // BLACK = 3,
+  // BLACK_KING = 4;
+  CheckersMove[] getLegalMovesSingle(int player, int row, int col) {
+    CheckersMove[] legalMoves = null;
+    int index = 0;
+    switch (player) {
+      case RED:
+        if (checkIf(row, col, RED_KING)) {
+          if (checkIf(row + 1, col + 1, EMPTY)) {
+            legalMoves[index] = new CheckersMove(row, col, row + 1, col + 1);
+            index++;
+          }
+          if (checkIf(row + 1, col - 1, EMPTY)) {
+            legalMoves[index] = new CheckersMove(row, col, row + 1, col - 1);
+            index++;
+          }
+        }
+        if (checkIf(row - 1, col + 1, EMPTY)) {
+          legalMoves[index] = new CheckersMove(row, col, row - 1, col + 1);
+          index++;
+        }
+        if (checkIf(row - 1, col - 1, EMPTY)) {
+          legalMoves[index] = new CheckersMove(row, col, row - 1, col - 1);
+          index++;
+        }
+        break;
+      case BLACK:
+        if (checkIf(row, col, BLACK_KING)) {
+          if (checkIf(row - 1, col + 1, EMPTY)) {
+            legalMoves[index] = new CheckersMove(row, col, row - 1, col + 1);
+            index++;
+          }
+          if (checkIf(row - 1, col - 1, EMPTY)) {
+            legalMoves[index] = new CheckersMove(row, col, row - 1, col - 1);
+            index++;
+          }
+        }
+        if (checkIf(row + 1, col + 1, EMPTY)) {
+          legalMoves[index] = new CheckersMove(row, col, row + 1, col + 1);
+          index++;
+        }
+        if (checkIf(row + 1, col - 1, EMPTY)) {
+          legalMoves[index] = new CheckersMove(row, col, row + 1, col - 1);
+          index++;
+        }
+        break;
+      default:
+        break;
+    }
+    return legalMoves;
+  }
+  
+  boolean checkIf(int row, int col, int color) {
+    if (row < 0 || row > 7 || col < 0 || col > 7) {
+      return false;
+    } else {
+      return board[row][col] == color;
+    }
+  }
 
   /**
    * Return a list of the legal jumps that the specified player can
