@@ -3,13 +3,13 @@ create database if not exists project;
 
 use project;
 
-drop table if exists URLs;  #drop in the opposite of order of creation to avoid foreign key issues
+drop table if exists URLs;
 drop table if exists HashTags;
 drop table if exists Mention;
 drop table if exists Tweets;
 drop table if exists Users;
 
-create table Users(# create entities with no foreign keys first
+create table Users(
 	screen_name varchar(80),
 	user_name varchar(80),
 	category varchar(80),
@@ -24,7 +24,6 @@ create table Tweets(
 	post_day int,
 	post_month int,
 	post_year int,
-    -- 80 is not enough for tweet_text 
 	texts varchar(160),
 	retweetCt int,
 	user_screen_name varchar(80) not null,
