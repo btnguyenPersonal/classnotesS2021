@@ -2,7 +2,7 @@
 Com S 472/572 Spring 2022
 Problem Set 4 (65 pts)
 
-Due at 11:59pm 
+Due at 11:59pm
 Thursday, Mar 24
 
 All exercises are from https://aimacode.github.io/aima-exercises/
@@ -36,7 +36,7 @@ How many solutions are there for the map-coloring problem in Figure 6.1? How man
 
 4 x 4 x 3 x 2 x 2 x 2 x 2 = 768
 
-2 Colors: 
+2 Colors:
 
 No solutions, because if WA is color 1, SA has to be the color 2, then NT can be neither color 1 or color 2.
 
@@ -44,11 +44,11 @@ No solutions, because if WA is color 1, SA has to be the color 2, then NT can be
 
 6.6 (10 pts)
 
-Show how a single ternary constraint such as $A+B=C$ can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains. 
+Show how a single ternary constraint such as $A+B=C$ can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains.
 
-(*Hint:* Consider a new variable that takes on values that are pairs of other values, and consider constraints such as $X$ is the first element of the pair $Y$.) 
+(*Hint:* Consider a new variable that takes on values that are pairs of other values, and consider constraints such as $X$ is the first element of the pair $Y$.)
 
-Next, show how constraints with more than three variables can be treated similarly. 
+Next, show how constraints with more than three variables can be treated similarly.
 
 Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.
 
@@ -139,7 +139,7 @@ Consider the problem of tiling a surface (completely and exactly covering it) wi
 
 4. Describe exactly the set of solvable instances that have a tree-structured constraint graph.
 
-7.4 (12 X 1 = 12 pts) 
+7.4 (12 X 1 = 12 pts)
 
 Which of the following are correct?
 1. False ⊨ True. Correct
@@ -158,28 +158,29 @@ Which of the following are correct?
 7.6a, b, e (4+3+3 = 10 pts)
 
 Prove each of the following assertions:
-1. α is valid if and only if True⊨α.
+a. α is valid if and only if True⊨α.
 
 
 
-2. For any α, False⊨α.
+b. For any α, False⊨α.
 
-False⊨False is true.
-False⊨True is true.
+- False⊨False is true.
 
-Therefore, False⊨α is always true.
+- False⊨True is true.
 
-5. α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
+- Therefore, False⊨α is always true.
 
-assume α = True
+e. α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
 
-True⊨β must also be true
+- assume α = True
 
-β must also be true by definition of ⊨.
+- True⊨β must also be true
 
-Therefore, (α∧¬β) cannot be satisfied
+- β must also be true by definition of ⊨.
 
-Therefore, (α∧¬β) is unsatisfiable.
+- Therefore, (α∧¬β) cannot be satisfied
+
+- Therefore, (α∧¬β) is unsatisfiable.
 
 7.7 (2+4+4 = 10 pts)
 
