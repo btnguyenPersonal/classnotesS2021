@@ -18,6 +18,30 @@ How many solutions are there for the map-coloring problem in Figure 6.1? How man
 
 ---
 
+4 Colors:
+
+- T gets all 4 choices
+
+- SA gets 4 colors to choose from
+
+- WA gets 3 choices bc can't choose SA's color
+
+- NT gets 2 choices bc can't choose WA or SA
+
+- Q gets 2 choices bc can't choose NT or SA
+
+- NSW gets 2 choices bc can't choose Q or SA
+
+- V gets 2 choices bc can't choose NSW or SA
+
+4 x 4 x 3 x 2 x 2 x 2 x 2 = 768
+
+2 Colors: 
+
+No solutions, because if WA is color 1, SA has to be the color 2, then NT can be neither color 1 or color 2.
+
+---
+
 6.6 (10 pts)
 
 Show how a single ternary constraint such as $A+B=C$ can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains. (*Hint:* Consider a new variable that takes on values that are pairs of other values, and consider constraints such as $X$ is the first element of the pair $Y$.) Next, show how constraints with more than three variables can be treated similarly. Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.
