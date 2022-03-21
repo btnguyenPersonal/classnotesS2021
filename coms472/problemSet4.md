@@ -44,34 +44,113 @@ No solutions, because if WA is color 1, SA has to be the color 2, then NT can be
 
 6.6 (10 pts)
 
-Show how a single ternary constraint such as $A+B=C$ can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains. (*Hint:* Consider a new variable that takes on values that are pairs of other values, and consider constraints such as $X$ is the first element of the pair $Y$.) Next, show how constraints with more than three variables can be treated similarly. Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.
+Show how a single ternary constraint such as $A+B=C$ can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains. 
+
+(*Hint:* Consider a new variable that takes on values that are pairs of other values, and consider constraints such as $X$ is the first element of the pair $Y$.) 
+
+Next, show how constraints with more than three variables can be treated similarly. 
+
+Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.
+
+- $consider$ $D$
+
+- $A$ $=$ $D(firstPair)$
+
+- $B$ $=$ $D(secondPair)$
+
+- $D(value)$ $=$ $D(sumOfPairs)$
+
+- $Therefore$ $D=C$
 
 6.11 (10 pts)
 
 - partial assignment {WA = green, V = red}
 
+---
+
+![](../pic/australia-figure.png)
+
+---
+
 - Use the AC-3 algorithm to show that arc consistency can detect the inconsistency of the partial assignment green, red for the problem shown in Figure 6.1.
+
+available colors: Green, Red
+
+```
+queue = WA, SA, T, NT, Q, NSW, V
+  WA=green
+  SA=?
+  T=?
+  NT=?
+  Q=?
+  NSW=?
+  V=red
+```
+```
+queue = SA, T, NT, Q, NSW, V
+  WA=green
+  SA=?
+  T=?
+  NT=?
+  Q=?
+  NSW=?
+  V=red
+```
+```
+queue = T, NT, Q, NSW, V
+  WA=green
+  SA=red
+  T=?
+  NT=?
+  Q=?
+  NSW=?
+  V=red
+```
+```
+queue = NT, Q, NSW, V
+  WA=green
+  SA=red
+  T=green
+  NT=?
+  Q=?
+  NSW=?
+  V=red
+```
+```
+queue = Q, NSW, V
+  WA=green
+  SA=red
+  T=green
+  NT=(can't revise so backtrack)
+  Q=?
+  NSW=?
+  V=red
+```
 
 6.20 (2+2+2+2=8 pts)
 
 Consider the problem of tiling a surface (completely and exactly covering it) with n dominoes (2×1 rectangles). The surface is an arbitrary edge-connected (i.e., adjacent along an edge, not just a corner) collection of 2n 1×1 squares (e.g., a checkerboard, a checkerboard with some squares missing, a 10×1 row of squares, etc.).
+
 1. Formulate this problem precisely as a CSP where the dominoes are the variables.
+
 2. Formulate this problem precisely as a CSP where the squares are the variables, keeping the state space as small as possible. (*Hint:* does it matter which particular domino goes on a given pair of squares?)
+
 3. Construct a surface consisting of 6 squares such that your CSP formulation from part (b) has a *tree-structured* constraint graph.
+
 4. Describe exactly the set of solvable instances that have a tree-structured constraint graph.
 
 7.4 (12 X 1 = 12 pts) 
 
 Which of the following are correct?
-1. False⊨True.
-2. True⊨False.
-3. (A∧B)⊨(A⇔B).
-4. A⇔B⊨A∨B.
-5. A⇔B⊨¬A∨B.
-6. (A∧B)⇒C⊨(A⇒C)∨(B⇒C).
-7. (C∨(¬A∧¬B))≡((A⇒C)∧(B⇒C)).
-8. (A∨B)∧(¬C∨¬D∨E)⊨(A∨B).
-9. (A∨B)∧(¬C∨¬D∨E)⊨(A∨B)∧(¬D∨E).
+1. False ⊨ True. Correct
+2. True ⊨ False. Incorrect
+3. (A∧B) ⊨ (A⇔B). Correct
+4. A⇔B ⊨ A∨B. Correct
+5. A⇔B ⊨ ¬A∨B. Incorrect
+6. (A∧B)⇒C ⊨ (A⇒C)∨(B⇒C).
+7. (C∨(¬A∧¬B)) ≡ ((A⇒C)∧(B⇒C)).
+8. (A∨B)∧(¬C∨¬D∨E) ⊨ (A∨B).
+9. (A∨B)∧(¬C∨¬D∨E) ⊨ (A∨B)∧(¬D∨E).
 10. (A∨B)∧¬(A⇒B) is satisfiable.
 11. (A⇔B)∧(¬A∨B) is satisfiable.
 12. (A⇔B)⇔C has the same number of models as (A⇔B) for any fixed set of proposition symbols that includes A, B, C.
@@ -80,8 +159,27 @@ Which of the following are correct?
 
 Prove each of the following assertions:
 1. α is valid if and only if True⊨α.
+
+
+
 2. For any α, False⊨α.
+
+False⊨False is true.
+False⊨True is true.
+
+Therefore, False⊨α is always true.
+
 5. α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
+
+assume α = True
+
+True⊨β must also be true
+
+β must also be true by definition of ⊨.
+
+Therefore, (α∧¬β) cannot be satisfied
+
+Therefore, (α∧¬β) is unsatisfiable.
 
 7.7 (2+4+4 = 10 pts)
 
