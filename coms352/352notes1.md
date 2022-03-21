@@ -1387,3 +1387,31 @@ void mMain(...) {
 - There needs to be a __circular wait__ for resources (like the dinning philosophers)
 
 - Also needs __mutual exclusion__, when something gets access to a resource, nothing else can modify/use the resource
+
+## I/O Devices
+
+- I/O is much slower than CPU
+
+## Main System Bus
+
+```
+< --- [CPU] --- [Memory] --- > memory bus
+            |
+< ----------- [Graphics] --- > general i/o bus (GPU)
+            |
+< -- [HDD] -------- [USB] -- > peripheral bus
+```
+
+```
+< --- [CPU] --- [HDD] --- [Memory] --- [USB] --- >
+```
+
+#### Interrupts
+
+- When disk is getting read, can instead switch to another process while waiting for disk to finish
+
+- Without interrupts, has to do a _spinning loop_ and just wait until disk is done
+
+## Direct Memory Access (DMA)
+
+- Kind of like a second CPU just for transferring memory to things around the bus instead of just using the CPU for everything
