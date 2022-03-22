@@ -449,7 +449,7 @@ __Dominates__ means gives the heuristic gives more steps
   - Both __Manhattan Distance__ and __Misplaced Tiles__ allow the problem to be cut into each of the 8 sub-pieces
 
 Heuristics will slow down because have to execute the heuristic function before expanding a node
-  
+
 ## Local Search
   ![](../pic/localsearch.png)
 
@@ -614,10 +614,10 @@ Beta is lowest value
 
 [$\alpha$, $\beta$]
 
-# Monte Carlo Tree Search 
+# Monte Carlo Tree Search
 
 ![](../pic/montecarloChess.png)
-  
+
 ![](../pic/montecarloBackpropogation.png)
 
 ![](../pic/montecarloUncertain.png)
@@ -785,12 +785,12 @@ GOAL: Find the gold and bring back to start without being killed
 ## Characteristics of Wumpus world
 
   Deterministic
-  
+
   - outcome specified
 
   Discrete
 
-  - 
+  -
 
   Static
 
@@ -805,3 +805,45 @@ GOAL: Find the gold and bring back to start without being killed
 Syntax &rarr; "x + y = 4" is valid, but "x + + = y" is not
 
 Semantics &rarr; "x + y = 4" is true when x and y add to 4 and false when x = -1 and y = -2
+
+## Monotonicity
+
+Set of entailed sentences can only increase as new information is added to the KB
+
+## Resolution
+
+_sound_ &rarr; $KB$ &vDash; $a$ whenever $KB$ &vdash; $a$
+
+_complete_ &rarr; $KB$ &vdash; $a$ whenever $KB$ &vDash; $a$
+
+Will try to cancel every possibility until only one exists
+
+$l_1$ &or; ... &or; $l_i$ &or; ... &or; $l_k$
+
+If $l_i$ is false, statement now changes to:
+
+$l_1$ &or; ... &or; $l_{i-1}$ &or; $l_{i-1}$ &or; ... &or; $l_k$
+
+## Conjunctive Normal Form
+
+- A conjunction of clauses
+
+## Converting to CNF
+
+A -> B = !A &or; B
+
+To show KB &vDash; a, we show that KB &or; !a is unsatisfiable
+
+## Resolution tree
+
+![](../pic/resolution.png)
+
+![](../pic/resolutionRewritten.png)
+
+![](../pic/resolutionClauses.png)
+
+![](../pic/resolutionTree.png)
+
+## Ground Resolution Theorem
+
+if $S$ is unsatisfiable, then RC(S) contains the empty clause &empty;
