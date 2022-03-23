@@ -142,17 +142,101 @@ Consider the problem of tiling a surface (completely and exactly covering it) wi
 7.4 (12 X 1 = 12 pts)
 
 Which of the following are correct?
-1. False ⊨ True. Correct
-2. True ⊨ False. Incorrect
-3. (A∧B) ⊨ (A⇔B). Correct
-4. A⇔B ⊨ A∨B. Correct
-5. A⇔B ⊨ ¬A∨B. Incorrect
+
+1. False ⊨ True.
+
+> Correct
+
+2. True ⊨ False.
+
+> Incorrect
+
+3. (A∧B) ⊨ (A⇔B).
+
+> Correct
+
+4. A⇔B ⊨ A∨B.
+
+> Correct
+
+5. A⇔B ⊨ ¬A∨B.
+
+- (A⇒B)∧(B⇒A) ⊨ ¬A∨B.
+
+- (!A∨B)∧(!B∨A) ⊨ ¬A∨B.
+
+- Every time the first statement is true the first part of the and must also be true, meaning that this is true
+
+> Correct
+
 6. (A∧B)⇒C ⊨ (A⇒C)∨(B⇒C).
+
+- !(A∧B)∨C ⊨ (!A∨C)∨(!B∨C).
+
+- !A∨!B∨C ⊨ (!A∨C)∨(!B∨C).
+
+- !A∨!B∨C ⊨ !A∨C∨!B∨C.
+
+- !A∨!B∨C ⊨ !A∨!B∨C.
+
+> Correct
+
 7. (C∨(¬A∧¬B)) ≡ ((A⇒C)∧(B⇒C)).
+
+- (C∨(¬A∧¬B)) ≡ (!A∨C)∧(!B∨C).
+
+- (C∨(¬A∧¬B)) ≡ (!A∧!B)∨C.
+
+> Correct
+
 8. (A∨B)∧(¬C∨¬D∨E) ⊨ (A∨B).
+
+- Every time the first statement is true the first part of the and must also be true, meaning that this is true
+
+> Correct
+
 9. (A∨B)∧(¬C∨¬D∨E) ⊨ (A∨B)∧(¬D∨E).
+
+- Counter Example:
+
+- A: True
+
+- B: True
+
+- C: False
+
+- D: True
+
+- E: False
+
+> Incorrect
+
 10. (A∨B)∧¬(A⇒B) is satisfiable.
+
+- (A∨B)∧¬(!A∨B)
+
+- (A∨B)∧(A∧!B)
+
+- (A∨B)∧(A∧!B)
+
+- A = True
+
+- B = False
+
+> Correct
+
 11. (A⇔B)∧(¬A∨B) is satisfiable.
+
+- (A⇒B)∧(B⇒A)∧(¬A∨B).
+
+- (!A∨B)∧(!B∨A)∧(¬A∨B).
+
+- A = False
+
+- B = False
+
+> Correct
+
 12. (A⇔B)⇔C has the same number of models as (A⇔B) for any fixed set of proposition symbols that includes A, B, C.
 
 7.6a, b, e (4+3+3 = 10 pts)
@@ -160,7 +244,13 @@ Which of the following are correct?
 Prove each of the following assertions:
 a. α is valid if and only if True⊨α.
 
+True⊨False is false
 
+True⊨True is True
+
+therefore, α must always be true for the statement to be true
+
+Therefore α must be valid
 
 b. For any α, False⊨α.
 
@@ -168,7 +258,7 @@ b. For any α, False⊨α.
 
 - False⊨True is true.
 
-- Therefore, False⊨α is always true.
+- Therefore, False⊨α is always true because α can be either False or True and the statement will still be true
 
 e. α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
 

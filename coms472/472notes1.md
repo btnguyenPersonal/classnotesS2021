@@ -830,7 +830,7 @@ $l_1$ &or; ... &or; $l_{i-1}$ &or; $l_{i-1}$ &or; ... &or; $l_k$
 
 ## Converting to CNF
 
-A -> B = !A &or; B
+A => B = !A &or; B
 
 To show KB &vDash; a, we show that KB &or; !a is unsatisfiable
 
