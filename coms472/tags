@@ -1,0 +1,306 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/ben/git/classnotesS2021/coms472/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+1. Depth-first search always expands at least as many nodes as A $\\ast$ search with an admissible heuristic.	problemSet1.md	/^###### 1. Depth-first search always expands at least as many nodes as A $\\ast$ search with an a/;"	u	section:COMS 472 Problem Set 1""3.17
+1. There are six glass boxes in a row, each with a lock. Each of the first five boxes holds a key unlocking the next box in line; the last box holds a banana. You have the key to the first box, and you want the banana.	problemSet1.md	/^###### 1. There are six glass boxes in a row, each with a lock. Each of the first five boxes hol/;"	u	section:COMS 472 Problem Set 1""3.2
+2. You start with the sequence ABABAECCEC, or in general any sequence made from A, B, C, and E. You can transform this sequence using the following equalities: AC = E, AB = BC, BB = E, and Ex = x for any x. For example, ABBC can be transformed into AEC, and then AC, and then E. Your goal is to produce the sequence E.	problemSet1.md	/^###### 2. You start with the sequence ABABAECCEC, or in general any sequence made from A, B, C, /;"	u	section:COMS 472 Problem Set 1""3.2
+2. h(n)=0 is an admissible heuristic for the 8-puzzle.	problemSet1.md	/^###### 2. h(n)=0 is an admissible heuristic for the 8-puzzle.$/;"	u	section:COMS 472 Problem Set 1""3.17
+3. A $\\ast$ is of no use in robotics because percepts, states, and actions are continuous.	problemSet1.md	/^###### 3. A $\\ast$ is of no use in robotics because percepts, states, and actions are continuou/;"	u	section:COMS 472 Problem Set 1""3.17
+3. There is an n×n grid of squares, each square initially being either unpainted floor or a bottomless pit. You start standing on an unpainted floor square, and can either paint the square under you or move onto an adjacent unpainted floor square. You want the whole floor painted.	problemSet1.md	/^###### 3. There is an n×n grid of squares, each square initially being either unpainted floor o/;"	u	section:COMS 472 Problem Set 1""3.2
+3.17	problemSet1.md	/^## 3.17$/;"	s	chapter:COMS 472 Problem Set 1
+3.2	problemSet1.md	/^## 3.2$/;"	s	chapter:COMS 472 Problem Set 1
+3.22	problemSet1.md	/^## 3.22$/;"	s	chapter:COMS 472 Problem Set 1
+3.27	problemSet1.md	/^## 3.27$/;"	s	chapter:COMS 472 Problem Set 1
+3.31	problemSet1.md	/^## 3.31$/;"	s	chapter:COMS 472 Problem Set 1
+3.7	problemSet1.md	/^## 3.7$/;"	s	chapter:COMS 472 Problem Set 1
+4. A container ship is in port, loaded high with containers. There 13 rows of containers, each 13 containers wide and 5 containers tall. You control a crane that can move to any location above the ship, pick up the container under it, and move it onto the dock. You want the ship unloaded.	problemSet1.md	/^###### 4. A container ship is in port, loaded high with containers. There 13 rows of containers,/;"	u	section:COMS 472 Problem Set 1""3.2
+4. Breadth-first search is complete even if zero step costs are allowed.	problemSet1.md	/^###### 4. Breadth-first search is complete even if zero step costs are allowed.$/;"	u	section:COMS 472 Problem Set 1""3.17
+4.1	problemSet2.md	/^## 4.1$/;"	s	chapter:COMS 472 Problem Set 2
+4.10	problemSet2.md	/^## 4.10$/;"	s	chapter:COMS 472 Problem Set 2
+4.7	problemSet2.md	/^## 4.7$/;"	s	chapter:COMS 472 Problem Set 2
+4.8	problemSet2.md	/^## 4.8$/;"	s	chapter:COMS 472 Problem Set 2
+5. Assume that a rook can move on a chessboard any number of squares in a straight line, vertically or horizontally, but cannot jump over other pieces. Manhattan distance is an admissible heuristic for the problem of moving the rook from square A to square B in the smallest number of moves.	problemSet1.md	/^###### 5. Assume that a rook can move on a chessboard any number of squares in a straight line, /;"	u	section:COMS 472 Problem Set 1""3.17
+5.14 (4+4+5+4 = 17 pts)	problemSet3.md	/^## 5.14 (4+4+5+4 = 17 pts)$/;"	s
+5.8 (7+3+7+6 = 23 pts)	problemSet3.md	/^## 5.8 (7+3+7+6 = 23 pts)$/;"	s
+5.9 (3+4+3+4+4 = 18 pts)	problemSet3.md	/^## 5.9 (3+4+3+4+4 = 18 pts)$/;"	s
+A Brief History	472notes1.md	/^## A Brief History$/;"	s	chapter:Principals of AI
+A$\\ast$ search	472notes1.md	/^#### A$\\ast$ search$/;"	t	section:Principals of AI""Tree Search
+ANSI_RED	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  public static final String ANSI_RED = "\\u001B[31m";$/;"	f	class:CheckersData
+ANSI_RESET	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  public static final String ANSI_RESET = "\\u001B[0m";$/;"	f	class:CheckersData
+ANSI_YELLOW	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  public static final String ANSI_YELLOW = "\\u001B[33m";$/;"	f	class:CheckersData
+AStar	astar/edu/iastate/cs472/proj1/EightPuzzle.java	/^  public static String AStar(State s0, Heuristic h)$/;"	m	class:EightPuzzle
+Actuators	472notes1.md	/^#### Actuators$/;"	t	section:Monte Carlo Tree Search""Wumpus World
+Admissibility & Consistency	472notes1.md	/^#### Admissibility & Consistency$/;"	t	section:Principals of AI""Tree Search
+Admissible Heuristic	472notes1.md	/^#### Admissible Heuristic$/;"	t	section:Principals of AI""Tree Search
+AdversarialSearch	checkers/edu/iastate/cs472/proj2/AdversarialSearch.java	/^public abstract class AdversarialSearch {$/;"	c
+Alpha and Beta Values	472notes1.md	/^#### Alpha and Beta Values$/;"	t	section:Principals of AI""Non-deterministic Actions
+Alpha-Beta Cutoff	472notes1.md	/^#### Alpha-Beta Cutoff$/;"	t	section:Principals of AI""Non-deterministic Actions
+AlphaBetaSearch	checkers/edu/iastate/cs472/proj2/AlphaBetaSearch.java	/^public class AlphaBetaSearch extends AdversarialSearch {$/;"	c
+Applications of GA	472notes1.md	/^#### Applications of GA$/;"	t	section:Principals of AI""Local Search
+Applying A$\\ast$ to 8-puzzle	472notes1.md	/^#### Applying A$\\ast$ to 8-puzzle$/;"	t	section:Principals of AI""Tree Search
+BLACK	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^          BLACK = 3,$/;"	f	class:CheckersData
+BLACK_KING	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^          BLACK_KING = 4;$/;"	f	class:CheckersData
+Backtracking Algorithm	472notes1.md	/^## Backtracking Algorithm$/;"	s	chapter:Monte Carlo Tree Search
+Basic Agent Types	472notes1.md	/^### Basic Agent Types$/;"	S	section:Principals of AI""Structure of Agents
+Best First	472notes1.md	/^#### Best First$/;"	t	section:Principals of AI""Tree Search
+Bidirectional Search	472notes1.md	/^#### Bidirectional Search$/;"	t	section:Principals of AI""Tree Search
+Board	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    Board() {$/;"	m	class:Checkers.Board
+Board	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  private class Board extends JPanel implements ActionListener, MouseListener {$/;"	c	class:Checkers
+Breadth First	472notes1.md	/^#### Breadth First$/;"	t	section:Principals of AI""Tree Search
+By Ben Nguyen	problemSet1.md	/^#### By Ben Nguyen$/;"	t	chapter:COMS 472 Problem Set 1
+By Ben Nguyen	problemSet2.md	/^#### By Ben Nguyen$/;"	t	chapter:COMS 472 Problem Set 2
+By Ben Nguyen	problemSet3.md	/^#### By Ben Nguyen$/;"	t	section:Problem Set 3
+COMS 472 Problem Set 1	problemSet1.md	/^# COMS 472 Problem Set 1$/;"	c
+COMS 472 Problem Set 2	problemSet2.md	/^# COMS 472 Problem Set 2$/;"	c
+CSNode	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public CSNode(){}$/;"	m	class:CSNode
+CSNode	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public CSNode(E data)$/;"	m	class:CSNode
+CSNode	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public CSNode(E data, CSNode<E> child, CSNode<E> sibling)$/;"	m	class:CSNode
+CSNode	checkers/edu/iastate/cs472/proj2/CSNode.java	/^public class CSNode<E>$/;"	c
+CSTree	checkers/edu/iastate/cs472/proj2/CSTree.java	/^public class CSTree<E> $/;"	c
+Characteristics of Wumpus world	472notes1.md	/^## Characteristics of Wumpus world$/;"	s	chapter:Monte Carlo Tree Search
+Checkers	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  public Checkers() {$/;"	m	class:Checkers
+Checkers	checkers/edu/iastate/cs472/proj2/Checkers.java	/^public class Checkers extends JPanel {$/;"	c
+CheckersData	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  CheckersData() {$/;"	m	class:CheckersData
+CheckersData	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^public class CheckersData {$/;"	c
+CheckersMove	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^    CheckersMove(int r1, int c1, int r2, int c2) {$/;"	m	class:CheckersMove
+CheckersMove	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^public class CheckersMove {$/;"	c
+Conjunctive Normal Form	472notes1.md	/^## Conjunctive Normal Form$/;"	s	chapter:Monte Carlo Tree Search
+Consider the n-queens problem using the “efficient” incremental formulation given on page . Explain why the state space has at least $\\sqrt[3]{n!}$ states and estimate the largest n for which exhaustive exploration is feasible. (Hint: Derive a lower bound on the branching factor by considering the maximum number of squares that a queen can attack in any column.)	problemSet1.md	/^###### Consider the n-queens problem using the “efficient” incremental formulation given on /;"	u	section:COMS 472 Problem Set 1""3.7
+Consider the sensorless version of the erratic vacuum world. Draw the belief-state space reachable from the initial belief state {1,2,3,4,5,6,7,8}, and explain why the problem is unsolvable.	problemSet2.md	/^###### Consider the sensorless version of the erratic vacuum world. Draw the belief-state space /;"	u	section:COMS 472 Problem Set 2""4.10
+Constraint Propogation	472notes1.md	/^#### Constraint Propogation$/;"	t	section:Monte Carlo Tree Search""Cryptoarithmetic Puzzle
+Converting to CNF	472notes1.md	/^## Converting to CNF$/;"	s	chapter:Monte Carlo Tree Search
+Cryptoarithmetic Puzzle	472notes1.md	/^## Cryptoarithmetic Puzzle$/;"	s	chapter:Monte Carlo Tree Search
+DBL_DOWN	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DBL_LEFT	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DBL_RIGHT	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DBL_UP	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DOWN	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+Daily Serving Limits	472notes1.md	/^## Daily Serving Limits$/;"	s	chapter:Monte Carlo Tree Search
+Dead Ends	472notes1.md	/^#### Dead Ends$/;"	t	section:Principals of AI""Non-deterministic Actions
+Depth First	472notes1.md	/^#### Depth First$/;"	t	section:Principals of AI""Tree Search
+Describe a state space in which iterative deepening search performs much worse than depth-first search (for example, O(n2) vs. O(n)).	problemSet1.md	/^###### Describe a state space in which iterative deepening search performs much worse than depth/;"	u	section:COMS 472 Problem Set 1""3.22
+Dijkstra's Algorithm vs A$\\ast$ Search	472notes1.md	/^#### Dijkstra's Algorithm vs A$\\ast$ Search$/;"	t	section:Principals of AI""Tree Search
+Disjunctive Constraint	472notes1.md	/^#### Disjunctive Constraint$/;"	t	chapter:Monte Carlo Tree Search
+DoubleMoveHeuristic	astar/edu/iastate/cs472/proj1/Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
+Dynamic vs Semi-Dynamic vs Static	472notes1.md	/^### Dynamic vs Semi-Dynamic vs Static$/;"	S	section:Principals of AI""Intelligent Agents
+EMPTY	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^    EMPTY = 0,$/;"	f	class:CheckersData
+Efficiency of A$\\ast$	472notes1.md	/^#### Efficiency of A$\\ast\$$/;"	t	section:Principals of AI""Tree Search
+EightPuzzle	astar/edu/iastate/cs472/proj1/EightPuzzle.java	/^public class EightPuzzle$/;"	c
+Episodic vs Sequential	472notes1.md	/^### Episodic vs Sequential$/;"	S	section:Principals of AI""Intelligent Agents
+Evolutionary Algorithms	472notes1.md	/^#### Evolutionary Algorithms$/;"	t	section:Principals of AI""Local Search
+Expensive search effort	472notes1.md	/^#### Expensive search effort$/;"	t	section:Principals of AI""Non-deterministic Actions
+Extra problem (17 pts)	problemSet3.md	/^## Extra problem (17 pts)$/;"	s
+First Day Orientation	472notes1.md	/^### First Day Orientation$/;"	S	chapter:Principals of AI
+Forward Checking	472notes1.md	/^## Forward Checking$/;"	s	chapter:Monte Carlo Tree Search
+Fully Observable vs Partially Observable	472notes1.md	/^### Fully Observable vs Partially Observable$/;"	S	section:Principals of AI""Intelligent Agents
+Give a complete problem formulation for each of the following problems. Choose a formulation that is precise enough to be implemented.	problemSet1.md	/^###### Give a complete problem formulation for each of the following problems. Choose a formulat/;"	u	section:COMS 472 Problem Set 1""3.2
+Give the name of the algorithm that results from each of the following special cases	problemSet2.md	/^###### Give the name of the algorithm that results from each of the following special cases$/;"	u	section:COMS 472 Problem Set 2""4.1
+Goal test: The goal is achieved	472notes1.md	/^#### Goal test: The goal is achieved$/;"	t	section:Principals of AI""Non-deterministic Actions
+Ground Resolution Theorem	472notes1.md	/^## Ground Resolution Theorem$/;"	s	chapter:Monte Carlo Tree Search
+Heuristic	astar/edu/iastate/cs472/proj1/Heuristic.java	/^public enum Heuristic $/;"	g
+Heuristics from Formal Specification	472notes1.md	/^#### Heuristics from Formal Specification$/;"	t	section:Principals of AI""Tree Search
+Hill Climbing	472notes1.md	/^#### Hill Climbing$/;"	t	section:Principals of AI""Local Search
+In Section  we introduced belief states to solve sensorless search problems. A sequence of actions solves a sensorless problem if it maps every physical state in the initial belief state b to a goal state. Suppose the agent knows h$\\ast$(s), the true optimal cost of solving the physical state s in the fully observable problem, for every state s in b. Find an admissible heuristic h(b) for the sensorless problem in terms of these costs, and prove its admissibilty. Comment on the accuracy of this heuristic on the sensorless vacuum problem of Figure 4.14. How well does A$\\ast$ perform?	problemSet2.md	/^###### In Section  we introduced belief states to solve sensorless search problems. A sequence o/;"	u	section:COMS 472 Problem Set 2""4.7
+Informed (Heuristic) Search	472notes1.md	/^#### Informed (Heuristic) Search$/;"	t	section:Principals of AI""Tree Search
+Intelligent Agents	472notes1.md	/^## Intelligent Agents$/;"	s	chapter:Principals of AI
+Iterative Deepening Search	472notes1.md	/^#### Iterative Deepening Search$/;"	t	section:Principals of AI""Tree Search
+Knowledge Base	472notes1.md	/^## Knowledge Base$/;"	s	chapter:Monte Carlo Tree Search
+Knowledge based agents	472notes1.md	/^## Knowledge based agents$/;"	s	chapter:Monte Carlo Tree Search
+Knuth's Conjecture	472notes1.md	/^## Knuth's Conjecture$/;"	s	chapter:Principals of AI
+LEFT	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+Local Beam Search	472notes1.md	/^#### Local Beam Search$/;"	t	section:Principals of AI""Local Search
+Local Search	472notes1.md	/^## Local Search$/;"	s	chapter:Principals of AI
+ManhattanDist	astar/edu/iastate/cs472/proj1/Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
+ManhattanDistance	astar/edu/iastate/cs472/proj1/State.java	/^  private int ManhattanDistance = -1; \/\/ Manhattan distance between this state and the$/;"	f	class:State	file:
+Memory-Bounded Search	472notes1.md	/^#### Memory-Bounded Search$/;"	t	section:Principals of AI""Tree Search
+Minimax function	472notes1.md	/^#### Minimax function$/;"	t	section:Principals of AI""Non-deterministic Actions
+Misplaced Tiles vs Manhattan Distance	472notes1.md	/^#### Misplaced Tiles vs Manhattan Distance$/;"	t	section:Principals of AI""Tree Search
+Monotonicity	472notes1.md	/^## Monotonicity$/;"	s	chapter:Monte Carlo Tree Search
+Monotonicity	472notes1.md	/^#### Monotonicity$/;"	t	section:Principals of AI""Tree Search
+Monte Carlo Tree Search	472notes1.md	/^# Monte Carlo Tree Search$/;"	c
+MonteCarloTreeSearch	checkers/edu/iastate/cs472/proj2/MonteCarloTreeSearch.java	/^public class MonteCarloTreeSearch extends AdversarialSearch {$/;"	c
+Move	astar/edu/iastate/cs472/proj1/Move.java	/^public enum Move $/;"	g
+Nash Equilibrium	472notes1.md	/^#### Nash Equilibrium$/;"	t	section:Principals of AI""Non-deterministic Actions
+Non-deterministic Actions	472notes1.md	/^## Non-deterministic Actions$/;"	s	chapter:Principals of AI
+Office Hours: Tuesday and Thursday 11am-12:15am	472notes1.md	/^##### Office Hours: Tuesday and Thursday 11am-12:15am$/;"	T	subsection:Principals of AI""First Day Orientation
+Offline vs Online Search	472notes1.md	/^#### Offline vs Online Search$/;"	t	section:Principals of AI""Non-deterministic Actions
+Omniscience vs Rationality	472notes1.md	/^### Omniscience vs Rationality$/;"	S	section:Principals of AI""Intelligent Agents
+Optimality of A$\\ast$	472notes1.md	/^#### Optimality of A$\\ast\$$/;"	t	section:Principals of AI""Tree Search
+OrderedStateList	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  public OrderedStateList(Heuristic h, boolean isOpen)$/;"	m	class:OrderedStateList
+OrderedStateList	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^public class OrderedStateList$/;"	c
+PEAS	472notes1.md	/^##### PEAS$/;"	T	subsection:Principals of AI""Intelligent Agents""The nature of environments
+Partially Observable Environments	472notes1.md	/^#### Partially Observable Environments$/;"	t	section:Principals of AI""Non-deterministic Actions
+Path Consistency	472notes1.md	/^## Path Consistency$/;"	s	chapter:Monte Carlo Tree Search
+Performance Measures:	472notes1.md	/^### Performance Measures:$/;"	S	section:Principals of AI""Knuth's Conjecture
+Performance measure	472notes1.md	/^#### Performance measure$/;"	t	section:Monte Carlo Tree Search""Wumpus World
+PreBoard	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    PreBoard()$/;"	m	class:Checkers.PreBoard
+PreBoard	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  public static class PreBoard extends JPanel{$/;"	c	class:Checkers
+Principals of AI	472notes1.md	/^# Principals of AI$/;"	c
+Problem Set 3	problemSet3.md	/^## Problem Set 3$/;"	s
+Problem Solving via Search	472notes1.md	/^## Problem Solving via Search$/;"	s	chapter:Principals of AI
+PuzzleSolver	astar/edu/iastate/cs472/proj1/PuzzleSolver.java	/^public class PuzzleSolver $/;"	c
+Queues	472notes1.md	/^#### Queues$/;"	t	section:Principals of AI""Knuth's Conjecture
+RED	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^          RED = 1,$/;"	f	class:CheckersData
+RED_KING	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^          RED_KING = 2,$/;"	f	class:CheckersData
+RIGHT	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+Reachable Belief States	472notes1.md	/^#### Reachable Belief States$/;"	t	section:Principals of AI""Non-deterministic Actions
+Recursive Best-First Search (RBFS)	472notes1.md	/^#### Recursive Best-First Search (RBFS)$/;"	t	section:Principals of AI""Tree Search
+Resolution	472notes1.md	/^## Resolution$/;"	s	chapter:Monte Carlo Tree Search
+Resolution tree	472notes1.md	/^## Resolution tree$/;"	s	chapter:Monte Carlo Tree Search
+Sacrificing Search (Weighted A$\\ast$ Search)	472notes1.md	/^#### Sacrificing Search (Weighted A$\\ast$ Search)$/;"	t	section:Principals of AI""Tree Search
+Sensorless Situation	472notes1.md	/^#### Sensorless Situation$/;"	t	section:Principals of AI""Non-deterministic Actions
+Simplex method $O(2^n)$	472notes1.md	/^## Simplex method $O(2^n)\$$/;"	s	chapter:Monte Carlo Tree Search
+Simulated Annealing	472notes1.md	/^#### Simulated Annealing$/;"	t	section:Principals of AI""Local Search
+State	astar/edu/iastate/cs472/proj1/State.java	/^  public State() throws IllegalArgumentException {$/;"	m	class:State
+State	astar/edu/iastate/cs472/proj1/State.java	/^  public State(String inputFileName) throws FileNotFoundException, IllegalArgumentException {$/;"	m	class:State
+State	astar/edu/iastate/cs472/proj1/State.java	/^  public State(int[][] board) throws IllegalArgumentException {$/;"	m	class:State
+State	astar/edu/iastate/cs472/proj1/State.java	/^public class State implements Cloneable, Comparable<State> {$/;"	c
+StateComparator	astar/edu/iastate/cs472/proj1/StateComparator.java	/^public class StateComparator implements Comparator<State>$/;"	c
+Structure of Agents	472notes1.md	/^## Structure of Agents$/;"	s	chapter:Principals of AI
+Syntax vs Semantics	472notes1.md	/^## Syntax vs Semantics$/;"	s	chapter:Monte Carlo Tree Search
+The State of the Art	472notes1.md	/^## The State of the Art$/;"	s	chapter:Principals of AI
+The nature of environments	472notes1.md	/^### The nature of environments$/;"	S	section:Principals of AI""Intelligent Agents
+This exercise explores subset–superset relations between belief states in sensorless or partially observable environments.	problemSet2.md	/^###### This exercise explores subset–superset relations between belief states in sensorless or/;"	u	section:COMS 472 Problem Set 2""4.8
+TileMismatch	astar/edu/iastate/cs472/proj1/Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
+Trace the operation of A search applied to the problem of getting to Bucharest from Lugoj using the straight-line distance heuristic. That is, show the sequence of nodes that the algorithm will consider and the f, g, and h score for each node.	problemSet1.md	/^###### Trace the operation of A search applied to the problem of getting to Bucharest from Lugoj/;"	u	section:COMS 472 Problem Set 1""3.27
+Transition Model between b-states	472notes1.md	/^#### Transition Model between b-states$/;"	t	section:Principals of AI""Non-deterministic Actions
+Tree Decomposition	472notes1.md	/^## Tree Decomposition$/;"	s	chapter:Monte Carlo Tree Search
+Tree Search	472notes1.md	/^## Tree Search$/;"	s	chapter:Principals of AI
+UP	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+Vacuum World	472notes1.md	/^## Vacuum World$/;"	s	chapter:Principals of AI
+Vacuum vs Knuth	472notes1.md	/^#### Vacuum vs Knuth$/;"	t	section:Principals of AI""Knuth's Conjecture
+What is AI?	472notes1.md	/^## What is AI?$/;"	s	chapter:Principals of AI
+What is considered to be _Rational_?	472notes1.md	/^### What is considered to be _Rational_?$/;"	S	section:Principals of AI""Intelligent Agents
+Wumpus World	472notes1.md	/^## Wumpus World$/;"	s	chapter:Monte Carlo Tree Search
+actionPerformed	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void actionPerformed(ActionEvent evt) {$/;"	m	class:Checkers.Board
+addState	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  public void addState(State s)$/;"	m	class:OrderedStateList
+aiKey	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  static int aiKey = 0;$/;"	f	class:Checkers
+board	astar/edu/iastate/cs472/proj1/State.java	/^  public int[][] board; \/\/ configuration of tiles$/;"	f	class:State
+board	checkers/edu/iastate/cs472/proj2/AdversarialSearch.java	/^    protected CheckersData board;$/;"	f	class:AdversarialSearch
+board	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    CheckersData board;  \/\/ The data for the checkers board is kept here.$/;"	f	class:Checkers.Board
+board	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  int[][] board;  \/\/ board[r][c] is the contents of row r, column c.$/;"	f	class:CheckersData
+checkIf	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  boolean checkIf(int row, int col, int color) {$/;"	m	class:CheckersData
+chengeValue	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  static boolean chengeValue = false;$/;"	f	class:Checkers
+clone	astar/edu/iastate/cs472/proj1/State.java	/^  public Object clone() {$/;"	m	class:State
+compare	astar/edu/iastate/cs472/proj1/StateComparator.java	/^	public int compare(State s1, State s2)$/;"	m	class:StateComparator
+compareStates	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  private int compareStates(State s1, State s2)$/;"	m	class:OrderedStateList	file:
+compareTo	astar/edu/iastate/cs472/proj1/State.java	/^  public int compareTo(State s) {$/;"	m	class:State
+computeManhattanDistance	astar/edu/iastate/cs472/proj1/State.java	/^  private int computeManhattanDistance() {$/;"	m	class:State	file:
+computeNumMismatchedTiles	astar/edu/iastate/cs472/proj1/State.java	/^  private int computeNumMismatchedTiles() {$/;"	m	class:State	file:
+computeNumSingleDoubleMoves	astar/edu/iastate/cs472/proj1/State.java	/^  private int computeNumSingleDoubleMoves() {$/;"	m	class:State	file:
+copyBoard	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    private CheckersData copyBoard(CheckersData board)$/;"	m	class:Checkers.Board	file:
+cost	astar/edu/iastate/cs472/proj1/State.java	/^  public int cost() throws IllegalArgumentException {$/;"	m	class:State
+currentPlayer	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    int currentPlayer;      \/\/ Whose turn is it now?  The possible values$/;"	f	class:Checkers.Board
+data	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  protected E data;$/;"	f	class:CSNode
+decideAIplayer	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void decideAIplayer()$/;"	m	class:Checkers.Board
+doClickSquare	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    void doClickSquare(int row, int col) {$/;"	m	class:Checkers.Board
+doMakeMove	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    void doMakeMove(CheckersMove move) {	$/;"	m	class:Checkers.Board
+doNewGame	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    void doNewGame() {$/;"	m	class:Checkers.Board
+doResign	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    void doResign() {$/;"	m	class:Checkers.Board
+drawBoard	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void drawBoard(CheckersData currentBoard)$/;"	m	class:Checkers.PreBoard
+edu.iastate.cs472.proj1	astar/edu/iastate/cs472/proj1/EightPuzzle.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	astar/edu/iastate/cs472/proj1/Heuristic.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	astar/edu/iastate/cs472/proj1/Move.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	astar/edu/iastate/cs472/proj1/PuzzleSolver.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	astar/edu/iastate/cs472/proj1/State.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj1	astar/edu/iastate/cs472/proj1/StateComparator.java	/^package edu.iastate.cs472.proj1;$/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/AdversarialSearch.java	/^package edu.iastate.cs472.proj2;$/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/AlphaBetaSearch.java	/^package edu.iastate.cs472.proj2;$/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/CSNode.java	/^package edu.iastate.cs472.proj2;$/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/CSTree.java	/^package edu.iastate.cs472.proj2; $/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/Checkers.java	/^package edu.iastate.cs472.proj2; $/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^package edu.iastate.cs472.proj2;$/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^package edu.iastate.cs472.proj2;$/;"	p
+edu.iastate.cs472.proj2	checkers/edu/iastate/cs472/proj2/MonteCarloTreeSearch.java	/^package edu.iastate.cs472.proj2;$/;"	p
+equals	astar/edu/iastate/cs472/proj1/State.java	/^  public boolean equals(Object o) {$/;"	m	class:State
+evalValue	checkers/edu/iastate/cs472/proj2/AlphaBetaSearch.java	/^    private double evalValue(CheckersData state, int depth, int player)$/;"	m	class:AlphaBetaSearch	file:
+findState	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  public State findState(State s)$/;"	m	class:OrderedStateList
+firstChild	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  protected CSNode<E> firstChild;$/;"	f	class:CSNode
+fromCol	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^    int fromRow, fromCol;  \/\/ Position of piece to be moved.$/;"	f	class:CheckersMove
+fromRow	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^    int fromRow, fromCol;  \/\/ Position of piece to be moved.$/;"	f	class:CheckersMove
+gameInProgress	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    boolean gameInProgress; \/\/ Is a game currently in progress?$/;"	f	class:Checkers.Board
+gameOver	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    void gameOver(String str) {$/;"	m	class:Checkers.Board
+generateSubsets	astar/edu/iastate/cs472/proj1/EightPuzzle.java	/^  public static ArrayList<State> generateSubsets(State s) {$/;"	m	class:EightPuzzle
+getBoardString	astar/edu/iastate/cs472/proj1/State.java	/^  private String getBoardString() {$/;"	m	class:State	file:
+getChild	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public CSNode<E> getChild()$/;"	m	class:CSNode
+getData	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public E getData()$/;"	m	class:CSNode
+getDoubleManhattanSingle	astar/edu/iastate/cs472/proj1/State.java	/^  private int getDoubleManhattanSingle(int in_i, int in_j) {$/;"	m	class:State	file:
+getLegalJumpsFrom	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  CheckersMove[] getLegalJumpsFrom(int player, int row, int col) {$/;"	m	class:CheckersData
+getLegalMoves	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  CheckersMove[] getLegalMoves(int player) {$/;"	m	class:CheckersData
+getLegalMovesSingle	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  CheckersMove[] getLegalMovesSingle(int player, int row, int col) {$/;"	m	class:CheckersData
+getManhattanSingle	astar/edu/iastate/cs472/proj1/State.java	/^  private int getManhattanSingle(int in_i, int in_j) {$/;"	m	class:State	file:
+getSibling	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public CSNode<E> getSibling()$/;"	m	class:CSNode
+getZero	astar/edu/iastate/cs472/proj1/State.java	/^  public int[] getZero() {$/;"	m	class:State
+get_inversions	astar/edu/iastate/cs472/proj1/State.java	/^  private int get_inversions() {$/;"	m	class:State	file:
+head	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  private State head;           \/\/ dummy node as the head of the sorted linked list$/;"	f	class:OrderedStateList	file:
+heu	astar/edu/iastate/cs472/proj1/State.java	/^  public static Heuristic heu; \/\/ heuristic used. shared by all the states.$/;"	f	class:State
+heuristic	checkers/edu/iastate/cs472/proj2/AlphaBetaSearch.java	/^    private double heuristic(CheckersData state)$/;"	m	class:AlphaBetaSearch	file:
+isGoalState	astar/edu/iastate/cs472/proj1/State.java	/^  public boolean isGoalState() {$/;"	m	class:State
+isIllegalMove	astar/edu/iastate/cs472/proj1/State.java	/^  public boolean isIllegalMove(Move move) {$/;"	m	class:State
+isJump	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^    boolean isJump() {$/;"	m	class:CheckersMove
+isLeaf	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public boolean isLeaf()$/;"	m	class:CSNode
+isOPEN	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  private boolean isOPEN;       \/\/ true if this OrderedStateList object is the list OPEN and f/;"	f	class:OrderedStateList	file:
+legalMoves	checkers/edu/iastate/cs472/proj2/AdversarialSearch.java	/^    protected CheckersMove[] legalMoves() {$/;"	m	class:AdversarialSearch
+legalMoves	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    CheckersMove[] legalMoves;  \/\/ An array containing the legal moves for the$/;"	f	class:Checkers.Board
+main	astar/edu/iastate/cs472/proj1/PuzzleSolver.java	/^  public static void main(String[] args) throws FileNotFoundException, IllegalArgumentException$/;"	m	class:PuzzleSolver
+main	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  public static void main(String[] args) {$/;"	m	class:Checkers
+main	test.c	/^int main() {$/;"	f	typeref:typename:int
+makeMove	checkers/edu/iastate/cs472/proj2/AdversarialSearch.java	/^    public abstract CheckersMove makeMove(CheckersMove[] legalMoves);$/;"	m	class:AdversarialSearch
+makeMove	checkers/edu/iastate/cs472/proj2/AlphaBetaSearch.java	/^    public CheckersMove makeMove(CheckersMove[] legalMoves) {$/;"	m	class:AlphaBetaSearch
+makeMove	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  void makeMove(CheckersMove move) {$/;"	m	class:CheckersData
+makeMove	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  void makeMove(int fromRow, int fromCol, int toRow, int toCol) {$/;"	m	class:CheckersData
+makeMove	checkers/edu/iastate/cs472/proj2/MonteCarloTreeSearch.java	/^    public CheckersMove makeMove(CheckersMove[] legalMoves) {$/;"	m	class:MonteCarloTreeSearch
+message	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  private JLabel message;  \/\/ Label for displaying messages to the user.$/;"	f	class:Checkers	file:
+mouseClicked	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void mouseClicked(MouseEvent evt) { }$/;"	m	class:Checkers.Board
+mouseEntered	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void mouseEntered(MouseEvent evt) { }$/;"	m	class:Checkers.Board
+mouseExited	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void mouseExited(MouseEvent evt) { }$/;"	m	class:Checkers.Board
+mousePressed	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void mousePressed(MouseEvent evt) {$/;"	m	class:Checkers.Board
+mouseReleased	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void mouseReleased(MouseEvent evt) { }$/;"	m	class:Checkers.Board
+move	astar/edu/iastate/cs472/proj1/State.java	/^  public Move move; \/\/ the move that generated this state from its predecessor$/;"	f	class:State
+newGameButton	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  private JButton newGameButton;  \/\/ Button for starting a new game.$/;"	f	class:Checkers	file:
+next	astar/edu/iastate/cs472/proj1/State.java	/^  public State next; \/\/ next node on the OPEN\/CLOSED list$/;"	f	class:State
+nextSibling	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  protected CSNode<E> nextSibling;$/;"	f	class:CSNode
+numMismatchedTiles	astar/edu/iastate/cs472/proj1/State.java	/^  private int numMismatchedTiles = -1; \/\/ number of mismatched tiles between this state$/;"	f	class:State	file:
+numMoves	astar/edu/iastate/cs472/proj1/State.java	/^  public int numMoves; \/\/ number of moves from the initial state to this state$/;"	f	class:State
+numSingleDoubleMoves	astar/edu/iastate/cs472/proj1/State.java	/^  private int numSingleDoubleMoves = -1; \/\/ number of single and double moves with each double$/;"	f	class:State	file:
+paintComponent	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void paintComponent(Graphics g) {$/;"	m	class:Checkers.Board
+paintComponent	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    public void paintComponent(Graphics g) {$/;"	m	class:Checkers.PreBoard
+pieceAt	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  int pieceAt(int row, int col) {$/;"	m	class:CheckersData
+player	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    AdversarialSearch player; \/\/ AI player$/;"	f	class:Checkers.Board
+preBoard	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    CheckersData preBoard;$/;"	f	class:Checkers.PreBoard
+predecessor	astar/edu/iastate/cs472/proj1/State.java	/^  public State predecessor; \/\/ predecessor node on the path from the initial state$/;"	f	class:State
+premessage	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  private static JLabel premessage;$/;"	f	class:Checkers	file:
+previous	astar/edu/iastate/cs472/proj1/State.java	/^  public State previous; \/\/ previous node on the OPEN\/CLOSED list$/;"	f	class:State
+previous	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  static PreBoard previous = new PreBoard(); \/\/ Display previous board$/;"	f	class:Checkers
+print	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  public void print() {$/;"	m	class:OrderedStateList
+remove	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  public State remove()$/;"	m	class:OrderedStateList
+removeState	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  public void removeState(State s) throws IllegalStateException$/;"	m	class:OrderedStateList
+resignButton	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  private JButton resignButton;   \/\/ Button that a player can use to end$/;"	f	class:Checkers	file:
+root	checkers/edu/iastate/cs472/proj2/CSTree.java	/^	CSNode<E> root;$/;"	f	class:CSTree
+selectedCol	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    int selectedRow, selectedCol;  \/\/ If the current player has selected a piece to$/;"	f	class:Checkers.Board
+selectedRow	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    int selectedRow, selectedCol;  \/\/ If the current player has selected a piece to$/;"	f	class:Checkers.Board
+setCheckersData	checkers/edu/iastate/cs472/proj2/AdversarialSearch.java	/^    protected void setCheckersData(CheckersData board) {$/;"	m	class:AdversarialSearch
+setChild	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public void setChild(CSNode<E> child)$/;"	m	class:CSNode
+setData	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public void setData(E data)$/;"	m	class:CSNode
+setSibling	checkers/edu/iastate/cs472/proj2/CSNode.java	/^  public void setSibling(CSNode<E> sibling)$/;"	m	class:CSNode
+setUpGame	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  void setUpGame() {$/;"	m	class:CheckersData
+size	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  private int size = 0;$/;"	f	class:OrderedStateList	file:
+size	astar/edu/iastate/cs472/proj1/OrderedStateList.java	/^  public int size()$/;"	m	class:OrderedStateList
+size	checkers/edu/iastate/cs472/proj2/CSTree.java	/^	int size;$/;"	f	class:CSTree
+solutionPath	astar/edu/iastate/cs472/proj1/EightPuzzle.java	/^  private static String solutionPath(State goal)$/;"	m	class:EightPuzzle	file:
+solvable	astar/edu/iastate/cs472/proj1/State.java	/^  public boolean solvable() {$/;"	m	class:State
+solve8Puzzle	astar/edu/iastate/cs472/proj1/EightPuzzle.java	/^  public static String solve8Puzzle(State s0)$/;"	m	class:EightPuzzle
+successorState	astar/edu/iastate/cs472/proj1/State.java	/^  public State successorState(Move m) throws IllegalArgumentException {$/;"	m	class:State
+toCol	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^    int toRow, toCol;      \/\/ Square it is to move to.$/;"	f	class:CheckersMove
+toRow	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^    int toRow, toCol;      \/\/ Square it is to move to.$/;"	f	class:CheckersMove
+toString	astar/edu/iastate/cs472/proj1/State.java	/^  public String toString() {$/;"	m	class:State
+toString	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  public String toString() {$/;"	m	class:CheckersData

@@ -18,6 +18,24 @@ How many solutions are there for the map-coloring problem in Figure 6.1? How man
 
 ---
 
+3 Colors:
+
+- T gets all 3 choices
+
+- SA gets 3 colors to choose from
+
+- WA gets 2 choices bc can't choose SA's color
+
+- NT gets 1 choices bc can't choose WA or SA
+
+- Q gets 1 choices bc can't choose NT or SA
+
+- NSW gets 1 choices bc can't choose Q or SA
+
+- V gets 1 choices bc can't choose NSW or SA
+
+3 x 3 x 2 x 1 x 1 x 1 x 1 = 18
+
 4 Colors:
 
 - T gets all 4 choices
@@ -133,11 +151,47 @@ Consider the problem of tiling a surface (completely and exactly covering it) wi
 
 1. Formulate this problem precisely as a CSP where the dominoes are the variables.
 
+- dominoes are all represented as $D_1$ $D_2$ $D_3$ ... $D_n$
+
+- all n dominoes has 2 $X$ values ($X_1$, $X_2$), and 2 $Y$ values ($Y_1$, $Y_2$), each which are the coordinates of the first piece of the domino and the second piece of the domino
+
+- all n dominoes must either have the same $X_1$ and $X_2$ value, with $Y_1$ and $Y_2$ being one apart, or vice versa
+
+- all n dominoes must never have any overlapping $X$ $Y$ pairs with any other $X$ $Y$ pairs of any other domino
+
+- all n dominoes' $X$ $Y$ pairs must be contained within the set of all coordinates in the surface
+
+- all coordinates in the surface must be contained within the set of all n dominoes' $X$ $Y$ pairs
+
 2. Formulate this problem precisely as a CSP where the squares are the variables, keeping the state space as small as possible. (*Hint:* does it matter which particular domino goes on a given pair of squares?)
+
+- squares are all represented as $S_1$ $S_2$ $S_3$ ... $S_n$
+
+- all squares must have 1 partner square that is directly adjacent to it
+
+- every square's partner must also put the current square's partner as their partner square
 
 3. Construct a surface consisting of 6 squares such that your CSP formulation from part (b) has a *tree-structured* constraint graph.
 
+```
+a
+|
+b
+|
+c
+|
+d
+|
+e
+|
+f
+```
+
 4. Describe exactly the set of solvable instances that have a tree-structured constraint graph.
+
+pick edge and remove both nodes and each one of their edges
+
+if can keep doing this and end up with removing all nodes, then it is solvable
 
 7.4 (12 X 1 = 12 pts)
 
@@ -157,7 +211,17 @@ Which of the following are correct?
 
 4. A⇔B ⊨ A∨B.
 
-> Correct
+- (A⇒B)∧(B⇒A) ⊨ A∨B.
+
+- (!A∨B)∧(!B∨A) ⊨ A∨B.
+
+- Counter Example:
+
+- A = False
+
+- B = False
+
+> Incorrect
 
 5. A⇔B ⊨ ¬A∨B.
 
@@ -239,6 +303,8 @@ Which of the following are correct?
 
 12. (A⇔B)⇔C has the same number of models as (A⇔B) for any fixed set of proposition symbols that includes A, B, C.
 
+> Incorrect
+
 7.6a, b, e (4+3+3 = 10 pts)
 
 Prove each of the following assertions:
@@ -262,7 +328,7 @@ b. For any α, False⊨α.
 
 e. α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
 
-- assume α = True
+- assume α = True, because if α = False, (α∧¬β) is unsatisfiable.
 
 - True⊨β must also be true
 
@@ -275,6 +341,15 @@ e. α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
 7.7 (2+4+4 = 10 pts)
 
 Prove, or find a counterexample to, each of the following assertions:
+
 1. If α⊨γ or β⊨γ (or both) then (α∧β)⊨γ
+
+- assume 2 steps α⊨γ or β⊨γ, and prove (α∧β)⊨γ
+
 2. If (α∧β)⊨γ then α⊨γ or β⊨γ (or both).
+
+- Counter Example: γ=(α∧β)
+
 3. If α⊨(β∨γ) then α⊨β or α⊨γ (or both).
+
+- Counter Example: α=(β∨γ)

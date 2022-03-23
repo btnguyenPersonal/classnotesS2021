@@ -1415,3 +1415,61 @@ void mMain(...) {
 ## Direct Memory Access (DMA)
 
 - Kind of like a second CPU just for transferring memory to things around the bus instead of just using the CPU for everything
+
+## Hard Disk Drive
+
+HDD have been the main form of persistent data storage for decades
+
+file systems were developed around their behavior
+
+address space of the drive is divided into 512-byte blocks called sectors
+
+Writing to a block is atomic
+
+- Either write to block fully succeeds or it doesn't change anything
+
+- No partial write to block, even if power goes out in the middle
+
+Multi-sector reads and writes are supported, but no guarantee of atomicity
+
+- If power goes out during multi-sector write, __torn write__ possible
+
+__Platter__ - circular hard surface where data is stored using magnetic persistence
+
+__Surface__ - platter has a top and bottom surface, both can store data
+
+__Track__ - a single circle around center, a surface consists of thousands of tracks
+
+__Spindle__ - the center of the platter which connects to a motor
+
+__Disk Arm__ - moves the head across the platter to select a specific track
+
+__Disk Head__ - transforms the magnetic field into electrical current
+
+## Latencies
+
+__Rotational delay__ - time for sector to rotate under the disk head
+
+__Seek time__ - time for disk arm to change position to the correct track
+
+## Random vs Sequential
+
+__Random__ - software requests addresses in any order it chooses
+
+- can result in very high seek time
+
+__Sequential__ - software requests addresses in increasing
+
+- only need to seek for the first access
+
+## Scheduling
+
+Multiple processes making concurrent threads can result in frequent seeking
+
+Order of requests by an application can also increase seek time
+
+Solution is to use a scheduling process
+
+- Maintain an ordered queue of I/O requests by track
+
+- Shortest Seek Time First (SSTF) - pick requests on the nearest track to complete first
