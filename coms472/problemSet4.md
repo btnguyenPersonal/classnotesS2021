@@ -70,13 +70,13 @@ Next, show how constraints with more than three variables can be treated similar
 
 Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.
 
-- $consider$ $D$
+- $consider$ $D(firstElement, secondElement)$
 
-- $A$ $=$ $D(firstPair)$
+- $A$ $=$ $D(firstElement)$
 
-- $B$ $=$ $D(secondPair)$
+- $B$ $=$ $D(secondElement)$
 
-- $D(value)$ $=$ $D(sumOfPairs)$
+- $D(value)$ $=$ $D(sumOfElements)$
 
 - $Therefore$ $D=C$
 
@@ -92,7 +92,7 @@ Finally, show how unary constraints can be eliminated by altering the domains of
 
 - Use the AC-3 algorithm to show that arc consistency can detect the inconsistency of the partial assignment green, red for the problem shown in Figure 6.1.
 
-available colors: Green, Red
+available colors: Green, Red, Blue //redo for 3 colors
 
 ```
 queue = WA, SA, T, NT, Q, NSW, V
