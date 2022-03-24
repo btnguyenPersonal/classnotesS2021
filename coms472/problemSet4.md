@@ -95,54 +95,722 @@ Finally, show how unary constraints can be eliminated by altering the domains of
 available colors: Green, Red, Blue //redo for 3 colors
 
 ```
-queue = WA, SA, T, NT, Q, NSW, V
-  WA=green
-  SA=?
-  T=?
-  NT=?
-  Q=?
-  NSW=?
-  V=red
-```
-```
-queue = SA, T, NT, Q, NSW, V
-  WA=green
-  SA=?
-  T=?
-  NT=?
-  Q=?
-  NSW=?
-  V=red
-```
-```
-queue = T, NT, Q, NSW, V
-  WA=green
-  SA=red
-  T=?
-  NT=?
-  Q=?
-  NSW=?
-  V=red
-```
-```
-queue = NT, Q, NSW, V
-  WA=green
-  SA=red
-  T=green
-  NT=?
-  Q=?
-  NSW=?
-  V=red
-```
-```
-queue = Q, NSW, V
-  WA=green
-  SA=red
-  T=green
-  NT=(can't revise so backtrack)
-  Q=?
-  NSW=?
-  V=red
+Inital State:
+queue =
+    {WA,SA}
+    {SA,WA}
+    {WA,NT}
+    {NT,WA}
+    {SA,NT}
+    {NT,SA}
+    {NT,Q}
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+
+    WA={green}
+    SA={red,green,blue}
+    T={red,green,blue}
+    NT={red,green,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 1:
+Change nothing in any color domain
+popped =
+    {WA,SA}
+queue =
+    {SA,WA}
+    {WA,NT}
+    {NT,WA}
+    {SA,NT}
+    {NT,SA}
+    {NT,Q}
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+
+    WA={green}
+    SA={red,green,blue}
+    T={red,green,blue}
+    NT={red,green,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 2:
+Revised SA's color domain
+popped =
+    {SA,WA}
+queue =
+    {WA,NT}
+    {NT,WA}
+    {SA,NT}
+    {NT,SA}
+    {NT,Q}
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,green,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 3:
+Change nothing in any color domain
+popped =
+    {WA,NT}
+queue =
+    {NT,WA}
+    {SA,NT}
+    {NT,SA}
+    {NT,Q}
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,green,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 4:
+Revised NT's color domain
+popped =
+    {NT,WA}
+queue =
+    {SA,NT}
+    {NT,SA}
+    {NT,Q}
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 5:
+Changed no color domains
+popped =
+    {SA,NT}
+queue =
+    {NT,SA}
+    {NT,Q}
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 6:
+Doesn't change any color domains
+popped =
+    {NT,SA}
+queue =
+    {NT,Q}
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 7:
+Doesn't change any color domains
+popped =
+    {NT,Q}
+queue =
+    {Q,NT}
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 8:
+Doesn't change any color domains
+popped =
+    {Q,NT}
+queue =
+    {SA,Q}
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 9:
+Doesn't change any color domains
+popped =
+    {SA,Q}
+queue =
+    {Q,SA}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 10:
+Doesn't change any color domains
+popped =
+    {Q,SA}
+queue =
+    {Q,NSW}
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 11:
+Doesn't change any color domains
+popped =
+    {Q,NSW}
+queue =
+    {NSW,Q}
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 12:
+Doesn't change any color domains
+popped =
+    {NSW,Q}
+queue =
+    {SA,NSW}
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 13:
+Doesn't change any color domains
+popped =
+    {SA,NSW}
+queue =
+    {NSW,SA}
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 14:
+Doesn't change any color domains
+popped =
+    {NSW,SA}
+queue =
+    {NSW,V}
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={red,green,blue}
+    V={red}
+Step 15:
+Revised NSW's color domain
+popped =
+    {NSW,V}
+queue =
+    {V,NSW}
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={green,blue}
+    V={red}
+Step 16:
+No color domains changed
+popped =
+    {V,NSW}
+queue =
+    {SA,V}
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+
+    WA={green}
+    SA={red,blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={green,blue}
+    V={red}
+Step 17:
+Revised SA's color domain
+popped =
+    {SA,V}
+queue =
+    {V,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={green,blue}
+    V={red}
+Step 18:
+Does not change any color domains
+popped =
+    {V,SA}
+queue =
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red,blue}
+    Q={red,green,blue}
+    NSW={green,blue}
+    V={red}
+Step 19:
+Revised NT's color domain
+popped =
+    {NT,SA}
+queue =
+    {Q,SA}
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {WA,NT}
+    {Q,NT}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={red,green,blue}
+    NSW={green,blue}
+    V={red}
+Step 20:
+Revise color domain of Q
+popped =
+    {Q,SA}
+queue =
+    {NSW,SA}
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {WA,NT}
+    {Q,NT}
+    {NT,Q}
+    {NSW,Q}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={red,green}
+    NSW={green,blue}
+    V={red}
+Step 21:
+Revise color domain of NSW
+popped =
+    {NSW,SA}
+queue =
+    {V,SA}
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {WA,NT}
+    {Q,NT}
+    {NT,Q}
+    {NSW,Q}
+    {Q,NSW}
+    {V,NSW}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={red,green}
+    NSW={green}
+    V={red}
+Step 22:
+Does not revise any color domains
+popped =
+    {V,SA}
+queue =
+    {SA,NT}
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {WA,NT}
+    {Q,NT}
+    {NT,Q}
+    {NSW,Q}
+    {Q,NSW}
+    {V,NSW}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={red,green}
+    NSW={green}
+    V={red}
+Step 23:
+Does not revise any color domains
+popped =
+    {SA,NT}
+queue =
+    {Q,NT}
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {WA,NT}
+    {Q,NT}
+    {NT,Q}
+    {NSW,Q}
+    {Q,NSW}
+    {V,NSW}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={red,green}
+    NSW={green}
+    V={red}
+Step 24:
+Revised Q's color domain
+popped =
+    {Q,NT}
+queue =
+    {Q,NSW}
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {WA,NT}
+    {Q,NT}
+    {NT,Q}
+    {NSW,Q}
+    {Q,NSW}
+    {V,NSW}
+    {SA,Q}
+    {NSW,Q}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={green}
+    NSW={green}
+    V={red}
+Step 25:
+Terminates: no possible colors
+popped =
+    {Q,NSW}
+queue =
+    {SA,NSW}
+    {WA,SA}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
+    {WA,NT}
+    {Q,NT}
+    {NT,Q}
+    {NSW,Q}
+    {Q,NSW}
+    {V,NSW}
+    {SA,Q}
+    {NSW,Q}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={green}
+    NSW={green}
+    V={red}
 ```
 
 6.20 (2+2+2+2=8 pts)
@@ -175,7 +843,6 @@ Consider the problem of tiling a surface (completely and exactly covering it) wi
 
 3. Construct a surface consisting of 6 squares such that your CSP formulation from part (b) has a *tree-structured* constraint graph.
 
-```
 a
 |
 b
@@ -185,7 +852,6 @@ c
 d---e
 |
 f
-```
 
 4. Describe exactly the set of solvable instances that have a tree-structured constraint graph.
 
