@@ -869,3 +869,7 @@ Chain that up the more complex statements
 Doesn't do everything, will only go until the statement trying to prove gets an answer
 
 Recursively try to get a statement that will give the statement, using only known variables, then evaluates
+
+## DPLL algorithm
+
+with enhancements, modern solvers can handle a problem with a multiple of 10^7 variables
