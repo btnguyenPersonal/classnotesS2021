@@ -25,7 +25,7 @@ CREATE PROCEDURE influentialTweet(IN num INT, IN m INT, IN yr INT)
 DROP PROCEDURE IF EXISTS mostMentioned;
 
 CREATE PROCEDURE mostMentioned(IN num INT, IN partyType varchar(80), IN m INT, IN yr INT)
-  SELECT Mentions.screen_name as mentionedUser, group_concat(Distinct Users.screen_name) AS postingUsers, count(Distinct Users.screen_name)
+  SELECT Mentions.screen_name as mentionedUser, group_concat(Distinct Users.screen_name) AS postingUsers
   FROM Mentions JOIN Tweets
   ON Mentions.tid = Tweets.tid
   JOIN Users 
