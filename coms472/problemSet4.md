@@ -169,7 +169,9 @@ Consider the problem of tiling a surface (completely and exactly covering it) wi
 
 - all squares must have 1 partner square that is directly adjacent to it
 
-- every square's partner must also put the current square's partner as their partner square
+- all partner squares much point to each other
+
+    - ex: if A is a partner to B, B's partner must be A
 
 3. Construct a surface consisting of 6 squares such that your CSP formulation from part (b) has a *tree-structured* constraint graph.
 
@@ -180,18 +182,16 @@ b
 |
 c
 |
-d
-|
-e
+d---e
 |
 f
 ```
 
 4. Describe exactly the set of solvable instances that have a tree-structured constraint graph.
 
-pick edge and remove both nodes and each one of their edges
+- pick edge and remove both nodes and every edge connecting to each of the nodes
 
-if can keep doing this and end up with removing all nodes, then it is solvable
+- if it is possible to repeat step 1 until there are no nodes left in the graph, then it is solvable
 
 7.4 (12 X 1 = 12 pts)
 
@@ -213,7 +213,7 @@ Which of the following are correct?
 
 - (A⇒B)∧(B⇒A) ⊨ A∨B.
 
-- (!A∨B)∧(!B∨A) ⊨ A∨B.
+- ($\neg$A∨B)∧($\neg$B∨A) ⊨ A∨B.
 
 - Counter Example:
 
@@ -227,7 +227,7 @@ Which of the following are correct?
 
 - (A⇒B)∧(B⇒A) ⊨ ¬A∨B.
 
-- (!A∨B)∧(!B∨A) ⊨ ¬A∨B.
+- ($\neg$A∨B)∧($\neg$B∨A) ⊨ ¬A∨B.
 
 - Every time the first statement is true the first part of the and must also be true, meaning that this is true
 
@@ -235,21 +235,21 @@ Which of the following are correct?
 
 6. (A∧B)⇒C ⊨ (A⇒C)∨(B⇒C).
 
-- !(A∧B)∨C ⊨ (!A∨C)∨(!B∨C).
+- $\neg$(A∧B)∨C ⊨ ($\neg$A∨C)∨($\neg$B∨C).
 
-- !A∨!B∨C ⊨ (!A∨C)∨(!B∨C).
+- $\neg$A∨$\neg$B∨C ⊨ ($\neg$A∨C)∨($\neg$B∨C).
 
-- !A∨!B∨C ⊨ !A∨C∨!B∨C.
+- $\neg$A∨$\neg$B∨C ⊨ $\neg$A∨C∨$\neg$B∨C.
 
-- !A∨!B∨C ⊨ !A∨!B∨C.
+- $\neg$A∨$\neg$B∨C ⊨ $\neg$A∨$\neg$B∨C.
 
 > Correct
 
 7. (C∨(¬A∧¬B)) ≡ ((A⇒C)∧(B⇒C)).
 
-- (C∨(¬A∧¬B)) ≡ (!A∨C)∧(!B∨C).
+- (C∨(¬A∧¬B)) ≡ ($\neg$A∨C)∧($\neg$B∨C).
 
-- (C∨(¬A∧¬B)) ≡ (!A∧!B)∨C.
+- (C∨(¬A∧¬B)) ≡ ($\neg$A∧$\neg$B)∨C.
 
 > Correct
 
@@ -277,11 +277,11 @@ Which of the following are correct?
 
 10. (A∨B)∧¬(A⇒B) is satisfiable.
 
-- (A∨B)∧¬(!A∨B)
+- (A∨B)∧¬($\neg$A∨B)
 
-- (A∨B)∧(A∧!B)
+- (A∨B)∧(A∧$\neg$B)
 
-- (A∨B)∧(A∧!B)
+- (A∨B)∧(A∧$\neg$B)
 
 - A = True
 
@@ -293,7 +293,7 @@ Which of the following are correct?
 
 - (A⇒B)∧(B⇒A)∧(¬A∨B).
 
-- (!A∨B)∧(!B∨A)∧(¬A∨B).
+- ($\neg$A∨B)∧($\neg$B∨A)∧(¬A∨B).
 
 - A = False
 

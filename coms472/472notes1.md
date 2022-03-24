@@ -847,3 +847,25 @@ To show KB &vDash; a, we show that KB &or; !a is unsatisfiable
 ## Ground Resolution Theorem
 
 if $S$ is unsatisfiable, then RC(S) contains the empty clause &empty;
+
+## Horn Clauses
+
+A clause is called a Horn clause if it contains &leq; 1 positive literal
+
+p: positive literal
+
+$\neg$ p: negative literal
+
+Definite clause (1 positive literal and &geq; 1 negative clause)
+
+## Forward Chaining
+
+Start with A = True, B = True
+
+Chain that up the more complex statements
+
+## Backward Chaining
+
+Doesn't do everything, will only go until the statement trying to prove gets an answer
+
+Recursively try to get a statement that will give the statement, using only known variables, then evaluates
