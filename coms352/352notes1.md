@@ -1473,3 +1473,25 @@ Solution is to use a scheduling process
 - Maintain an ordered queue of I/O requests by track
 
 - Shortest Seek Time First (SSTF) - pick requests on the nearest track to complete first
+
+## File System API
+
+__File__ -  an array of bytes given an identifier (inode number)
+
+__Directory__ - A list of (user-readable aname, inode number) pairs that is also given an inode
+
+## Creating File (POSIX API)
+
+```
+int fd= open("foo", O_CREAT|O_WRONLY|O_TRUNC|S_IRUSR|S_IWUSR);
+```
+
+Open system call takes a file name and options. The file will be opened in the __current working directory__
+
+File descriptor - an identifier the process uses to reference the file when making system calls (read() and write()).
+
+Think of a file descriptor as a pointer to an object that maintains the location of the file.
+
+## Support for Concurrent Access
+
+xv6 uses a lock for each file so only one process can be accessing a file at one time

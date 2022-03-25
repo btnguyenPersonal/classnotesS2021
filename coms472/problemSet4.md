@@ -72,11 +72,11 @@ Finally, show how unary constraints can be eliminated by altering the domains of
 
 - $consider$ $D(firstElement, secondElement)$
 
-- $A$ $=$ $D(firstElement)$
+- 1. $A$ $=$ $D(firstElement)$
 
-- $B$ $=$ $D(secondElement)$
+- 2. $B$ $=$ $D(secondElement)$
 
-- $D(value)$ $=$ $D(sumOfElements)$
+- 3. $D(value)$ $=$ $D(sumOfElements)$
 
 - $Therefore$ $D=C$
 
@@ -92,29 +92,747 @@ Finally, show how unary constraints can be eliminated by altering the domains of
 
 - Use the AC-3 algorithm to show that arc consistency can detect the inconsistency of the partial assignment green, red for the problem shown in Figure 6.1.
 
-available colors: Green, Red, Blue //redo for 3 colors
+available colors: Green, Red, Blue
+
+<!-- Inital State: -->
+<!-- queue = -->
+<!--     {WA,SA} -->
+<!--     {SA,WA} -->
+<!--     {WA,NT} -->
+<!--     {NT,WA} -->
+<!--     {SA,NT} -->
+<!--     {NT,SA} -->
+<!--     {NT,Q} -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+
+<!--     WA={green} -->
+<!--     SA={red,green,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,green,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 1: -->
+<!-- Change nothing in any color domain -->
+<!-- popped = -->
+<!--     {WA,SA} -->
+<!-- queue = -->
+<!--     {SA,WA} -->
+<!--     {WA,NT} -->
+<!--     {NT,WA} -->
+<!--     {SA,NT} -->
+<!--     {NT,SA} -->
+<!--     {NT,Q} -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+
+<!--     WA={green} -->
+<!--     SA={red,green,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,green,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 2: -->
+<!-- Revised SA's color domain -->
+<!-- popped = -->
+<!--     {SA,WA} -->
+<!-- queue = -->
+<!--     {WA,NT} -->
+<!--     {NT,WA} -->
+<!--     {SA,NT} -->
+<!--     {NT,SA} -->
+<!--     {NT,Q} -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,green,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 3: -->
+<!-- Change nothing in any color domain -->
+<!-- popped = -->
+<!--     {WA,NT} -->
+<!-- queue = -->
+<!--     {NT,WA} -->
+<!--     {SA,NT} -->
+<!--     {NT,SA} -->
+<!--     {NT,Q} -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,green,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 4: -->
+<!-- Revised NT's color domain -->
+<!-- popped = -->
+<!--     {NT,WA} -->
+<!-- queue = -->
+<!--     {SA,NT} -->
+<!--     {NT,SA} -->
+<!--     {NT,Q} -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 5: -->
+<!-- Changed no color domains -->
+<!-- popped = -->
+<!--     {SA,NT} -->
+<!-- queue = -->
+<!--     {NT,SA} -->
+<!--     {NT,Q} -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 6: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {NT,SA} -->
+<!-- queue = -->
+<!--     {NT,Q} -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 7: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {NT,Q} -->
+<!-- queue = -->
+<!--     {Q,NT} -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 8: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {Q,NT} -->
+<!-- queue = -->
+<!--     {SA,Q} -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 9: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {SA,Q} -->
+<!-- queue = -->
+<!--     {Q,SA} -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 10: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {Q,SA} -->
+<!-- queue = -->
+<!--     {Q,NSW} -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 11: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {Q,NSW} -->
+<!-- queue = -->
+<!--     {NSW,Q} -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 12: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {NSW,Q} -->
+<!-- queue = -->
+<!--     {SA,NSW} -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 13: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {SA,NSW} -->
+<!-- queue = -->
+<!--     {NSW,SA} -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 14: -->
+<!-- Doesn't change any color domains -->
+<!-- popped = -->
+<!--     {NSW,SA} -->
+<!-- queue = -->
+<!--     {NSW,V} -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={red,green,blue} -->
+<!--     V={red} -->
+<!-- Step 15: -->
+<!-- Revised NSW's color domain -->
+<!-- popped = -->
+<!--     {NSW,V} -->
+<!-- queue = -->
+<!--     {V,NSW} -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={green,blue} -->
+<!--     V={red} -->
+<!-- Step 16: -->
+<!-- No color domains changed -->
+<!-- popped = -->
+<!--     {V,NSW} -->
+<!-- queue = -->
+<!--     {SA,V} -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+
+<!--     WA={green} -->
+<!--     SA={red,blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={green,blue} -->
+<!--     V={red} -->
+<!-- Step 17: -->
+<!-- Revised SA's color domain -->
+<!-- popped = -->
+<!--     {SA,V} -->
+<!-- queue = -->
+<!--     {V,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={green,blue} -->
+<!--     V={red} -->
+<!-- Step 18: -->
+<!-- Does not change any color domains -->
+<!-- popped = -->
+<!--     {V,SA} -->
+<!-- queue = -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red,blue} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={green,blue} -->
+<!--     V={red} -->
+<!-- Step 19: -->
+<!-- Revised NT's color domain -->
+<!-- popped = -->
+<!--     {NT,SA} -->
+<!-- queue = -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {WA,NT} -->
+<!--     {Q,NT} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red} -->
+<!--     Q={red,green,blue} -->
+<!--     NSW={green,blue} -->
+<!--     V={red} -->
+<!-- Step 20: -->
+<!-- Revise color domain of Q -->
+<!-- popped = -->
+<!--     {Q,SA} -->
+<!-- queue = -->
+<!--     {NSW,SA} -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {WA,NT} -->
+<!--     {Q,NT} -->
+<!--     {NT,Q} -->
+<!--     {NSW,Q} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red} -->
+<!--     Q={red,green} -->
+<!--     NSW={green,blue} -->
+<!--     V={red} -->
+<!-- Step 21: -->
+<!-- Revise color domain of NSW -->
+<!-- popped = -->
+<!--     {NSW,SA} -->
+<!-- queue = -->
+<!--     {V,SA} -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {WA,NT} -->
+<!--     {Q,NT} -->
+<!--     {NT,Q} -->
+<!--     {NSW,Q} -->
+<!--     {Q,NSW} -->
+<!--     {V,NSW} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red} -->
+<!--     Q={red,green} -->
+<!--     NSW={green} -->
+<!--     V={red} -->
+<!-- Step 22: -->
+<!-- Does not revise any color domains -->
+<!-- popped = -->
+<!--     {V,SA} -->
+<!-- queue = -->
+<!--     {SA,NT} -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {WA,NT} -->
+<!--     {Q,NT} -->
+<!--     {NT,Q} -->
+<!--     {NSW,Q} -->
+<!--     {Q,NSW} -->
+<!--     {V,NSW} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red} -->
+<!--     Q={red,green} -->
+<!--     NSW={green} -->
+<!--     V={red} -->
+<!-- Step 23: -->
+<!-- Does not revise any color domains -->
+<!-- popped = -->
+<!--     {SA,NT} -->
+<!-- queue = -->
+<!--     {Q,NT} -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {WA,NT} -->
+<!--     {Q,NT} -->
+<!--     {NT,Q} -->
+<!--     {NSW,Q} -->
+<!--     {Q,NSW} -->
+<!--     {V,NSW} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red} -->
+<!--     Q={red,green} -->
+<!--     NSW={green} -->
+<!--     V={red} -->
+<!-- Step 24: -->
+<!-- Revised Q's color domain -->
+<!-- popped = -->
+<!--     {Q,NT} -->
+<!-- queue = -->
+<!--     {Q,NSW} -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {WA,NT} -->
+<!--     {Q,NT} -->
+<!--     {NT,Q} -->
+<!--     {NSW,Q} -->
+<!--     {Q,NSW} -->
+<!--     {V,NSW} -->
+<!--     {SA,Q} -->
+<!--     {NSW,Q} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red} -->
+<!--     Q={green} -->
+<!--     NSW={green} -->
+<!--     V={red} -->
+<!-- Step 25: -->
+<!-- Terminates: no possible colors -->
+<!-- popped = -->
+<!--     {Q,NSW} -->
+<!-- queue = -->
+<!--     {SA,NSW} -->
+<!--     {WA,SA} -->
+<!--     {NT,SA} -->
+<!--     {Q,SA} -->
+<!--     {NSW,SA} -->
+<!--     {WA,NT} -->
+<!--     {Q,NT} -->
+<!--     {NT,Q} -->
+<!--     {NSW,Q} -->
+<!--     {Q,NSW} -->
+<!--     {V,NSW} -->
+<!--     {SA,Q} -->
+<!--     {NSW,Q} -->
+
+<!--     WA={green} -->
+<!--     SA={blue} -->
+<!--     T={red,green,blue} -->
+<!--     NT={red} -->
+<!--     Q={green} -->
+<!--     NSW={green} -->
+<!--     V={red} -->
+<!-- -------------------------------------------------------------- -->
 
 ```
-Inital State:
+Initial State:
 queue =
-    {WA,SA}
     {SA,WA}
-    {WA,NT}
+    {NSW,SA}
+    {SA,NSW}
+    {V,SA}
     {NT,WA}
-    {SA,NT}
     {NT,SA}
-    {NT,Q}
-    {Q,NT}
     {SA,Q}
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
 
     WA={green}
     SA={red,green,blue}
@@ -124,56 +842,60 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 1:
-Change nothing in any color domain
+SA's color domain changed
 popped =
-    {WA,SA}
-queue =
     {SA,WA}
-    {WA,NT}
+queue =
+    {NSW,SA}
+    {SA,NSW}
+    {V,SA}
     {NT,WA}
-    {SA,NT}
     {NT,SA}
-    {NT,Q}
-    {Q,NT}
     {SA,Q}
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
+    {WA,NT}
+    {NT,SA}
+    {Q,SA}
+    {NSW,SA}
     {V,SA}
 
     WA={green}
-    SA={red,green,blue}
+    SA={red,blue}
     T={red,green,blue}
     NT={red,green,blue}
     Q={red,green,blue}
     NSW={red,green,blue}
     V={red}
 Step 2:
-Revised SA's color domain
+no color domain changed
 popped =
-    {SA,WA}
+    {NSW,SA}
 queue =
-    {WA,NT}
+    {SA,NSW}
+    {V,SA}
     {NT,WA}
-    {SA,NT}
     {NT,SA}
-    {NT,Q}
-    {Q,NT}
     {SA,Q}
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -187,25 +909,25 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 3:
-Change nothing in any color domain
+no color domain changed
 popped =
-    {WA,NT}
+    {SA,NSW}
 queue =
+    {V,SA}
     {NT,WA}
-    {SA,NT}
     {NT,SA}
-    {NT,Q}
-    {Q,NT}
     {SA,Q}
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -219,56 +941,54 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 4:
-Revised NT's color domain
+no color domain changed
 popped =
-    {NT,WA}
+    {V,SA}
 queue =
-    {SA,NT}
+    {NT,WA}
     {NT,SA}
-    {NT,Q}
-    {Q,NT}
     {SA,Q}
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
     {V,SA}
-    {SA,NT}
-    {Q,NT}
 
     WA={green}
     SA={red,blue}
     T={red,green,blue}
-    NT={red,blue}
+    NT={red,green,blue}
     Q={red,green,blue}
     NSW={red,green,blue}
     V={red}
 Step 5:
-Changed no color domains
+NT's color domain changed
 popped =
-    {SA,NT}
+    {NT,WA}
 queue =
     {NT,SA}
-    {NT,Q}
-    {Q,NT}
     {SA,Q}
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -284,22 +1004,22 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 6:
-Doesn't change any color domains
+no color domain changed
 popped =
     {NT,SA}
 queue =
-    {NT,Q}
-    {Q,NT}
     {SA,Q}
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -315,21 +1035,21 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 7:
-Doesn't change any color domains
+no color domain changed
 popped =
-    {NT,Q}
-queue =
-    {Q,NT}
     {SA,Q}
+queue =
+    {WA,SA}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -345,20 +1065,20 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 8:
-Doesn't change any color domains
+no color domain changed
 popped =
-    {Q,NT}
+    {WA,SA}
 queue =
-    {SA,Q}
     {Q,SA}
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -374,19 +1094,19 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 9:
-Doesn't change any color domains
+no color domain changed
 popped =
-    {SA,Q}
-queue =
     {Q,SA}
+queue =
     {Q,NSW}
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -402,18 +1122,18 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 10:
-Doesn't change any color domains
+no color domain changed
 popped =
-    {Q,SA}
-queue =
     {Q,NSW}
+queue =
+    {NT,Q}
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -429,17 +1149,17 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 11:
-Doesn't change any color domains
+no color domain changed
 popped =
-    {Q,NSW}
+    {NT,Q}
 queue =
+    {Q,NT}
     {NSW,Q}
-    {SA,NSW}
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -455,16 +1175,16 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 12:
-Doesn't change any color domains
+no color domain changed
 popped =
-    {NSW,Q}
+    {Q,NT}
 queue =
-    {SA,NSW}
-    {NSW,SA}
+    {NSW,Q}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -480,15 +1200,15 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 13:
-Doesn't change any color domains
+no color domain changed
 popped =
-    {SA,NSW}
+    {NSW,Q}
 queue =
-    {NSW,SA}
     {NSW,V}
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
@@ -504,44 +1224,46 @@ queue =
     NSW={red,green,blue}
     V={red}
 Step 14:
-Doesn't change any color domains
+NSW's color domain changed
 popped =
-    {NSW,SA}
-queue =
     {NSW,V}
+queue =
+    {SA,NT}
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
     {V,SA}
     {SA,NT}
     {Q,NT}
+    {SA,NSW}
+    {Q,NSW}
 
     WA={green}
     SA={red,blue}
     T={red,green,blue}
     NT={red,blue}
     Q={red,green,blue}
-    NSW={red,green,blue}
+    NSW={green,blue}
     V={red}
 Step 15:
-Revised NSW's color domain
+no color domain changed
 popped =
-    {NSW,V}
+    {SA,NT}
 queue =
     {V,NSW}
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
     {V,SA}
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
+    {Q,NSW}
 
     WA={green}
     SA={red,blue}
@@ -551,20 +1273,20 @@ queue =
     NSW={green,blue}
     V={red}
 Step 16:
-No color domains changed
+no color domain changed
 popped =
     {V,NSW}
 queue =
     {SA,V}
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
     {V,SA}
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
+    {Q,NSW}
 
     WA={green}
     SA={red,blue}
@@ -574,23 +1296,23 @@ queue =
     NSW={green,blue}
     V={red}
 Step 17:
-Revised SA's color domain
+SA's color domain changed
 popped =
     {SA,V}
 queue =
-    {V,SA}
+    {WA,NT}
     {NT,SA}
     {Q,SA}
     {NSW,SA}
     {V,SA}
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
+    {Q,NSW}
     {NSW,SA}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
 
     WA={green}
     SA={blue}
@@ -600,9 +1322,9 @@ queue =
     NSW={green,blue}
     V={red}
 Step 18:
-Does not change any color domains
+no color domain changed
 popped =
-    {V,SA}
+    {WA,NT}
 queue =
     {NT,SA}
     {Q,SA}
@@ -610,12 +1332,12 @@ queue =
     {V,SA}
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
+    {Q,NSW}
     {NSW,SA}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
 
     WA={green}
     SA={blue}
@@ -625,7 +1347,7 @@ queue =
     NSW={green,blue}
     V={red}
 Step 19:
-Revised NT's color domain
+NT's color domain changed
 popped =
     {NT,SA}
 queue =
@@ -634,14 +1356,14 @@ queue =
     {V,SA}
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
+    {Q,NSW}
     {NSW,SA}
-    {WA,NT}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
     {Q,NT}
+    {WA,NT}
 
     WA={green}
     SA={blue}
@@ -651,7 +1373,7 @@ queue =
     NSW={green,blue}
     V={red}
 Step 20:
-Revise color domain of Q
+Q's color domain changed
 popped =
     {Q,SA}
 queue =
@@ -659,16 +1381,16 @@ queue =
     {V,SA}
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
+    {Q,NSW}
     {NSW,SA}
-    {WA,NT}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
     {Q,NT}
-    {NT,Q}
+    {WA,NT}
     {NSW,Q}
+    {NT,Q}
 
     WA={green}
     SA={blue}
@@ -678,25 +1400,25 @@ queue =
     NSW={green,blue}
     V={red}
 Step 21:
-Revise color domain of NSW
+NSW's color domain changed
 popped =
     {NSW,SA}
 queue =
     {V,SA}
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
-    {NSW,SA}
-    {WA,NT}
-    {Q,NT}
-    {NT,Q}
-    {NSW,Q}
     {Q,NSW}
+    {NSW,SA}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
+    {Q,NT}
+    {WA,NT}
+    {NSW,Q}
+    {NT,Q}
     {V,NSW}
+    {Q,NSW}
 
     WA={green}
     SA={blue}
@@ -706,24 +1428,24 @@ queue =
     NSW={green}
     V={red}
 Step 22:
-Does not revise any color domains
+no color domain changed
 popped =
     {V,SA}
 queue =
     {SA,NT}
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
-    {NSW,SA}
-    {WA,NT}
-    {Q,NT}
-    {NT,Q}
-    {NSW,Q}
     {Q,NSW}
+    {NSW,SA}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
+    {Q,NT}
+    {WA,NT}
+    {NSW,Q}
+    {NT,Q}
     {V,NSW}
+    {Q,NSW}
 
     WA={green}
     SA={blue}
@@ -733,23 +1455,23 @@ queue =
     NSW={green}
     V={red}
 Step 23:
-Does not revise any color domains
+no color domain changed
 popped =
     {SA,NT}
 queue =
     {Q,NT}
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
-    {NSW,SA}
-    {WA,NT}
-    {Q,NT}
-    {NT,Q}
-    {NSW,Q}
     {Q,NSW}
+    {NSW,SA}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
+    {Q,NT}
+    {WA,NT}
+    {NSW,Q}
+    {NT,Q}
     {V,NSW}
+    {Q,NSW}
 
     WA={green}
     SA={blue}
@@ -759,24 +1481,24 @@ queue =
     NSW={green}
     V={red}
 Step 24:
-Revised Q's color domain
+Q's color domain changed
 popped =
     {Q,NT}
 queue =
-    {Q,NSW}
     {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
-    {NSW,SA}
-    {WA,NT}
-    {Q,NT}
-    {NT,Q}
-    {NSW,Q}
     {Q,NSW}
-    {V,NSW}
-    {SA,Q}
+    {NSW,SA}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
+    {Q,NT}
+    {WA,NT}
     {NSW,Q}
+    {NT,Q}
+    {V,NSW}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,Q}
 
     WA={green}
     SA={blue}
@@ -786,23 +1508,48 @@ queue =
     NSW={green}
     V={red}
 Step 25:
-Terminates: no possible colors
+no color domain changed
+popped =
+    {SA,NSW}
+queue =
+    {Q,NSW}
+    {NSW,SA}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
+    {Q,NT}
+    {WA,NT}
+    {NSW,Q}
+    {NT,Q}
+    {V,NSW}
+    {Q,NSW}
+    {NSW,Q}
+    {SA,Q}
+
+    WA={green}
+    SA={blue}
+    T={red,green,blue}
+    NT={red}
+    Q={green}
+    NSW={green}
+    V={red}
+Step 26:
+Terminated: no color possible
 popped =
     {Q,NSW}
 queue =
-    {SA,NSW}
-    {WA,SA}
-    {NT,SA}
-    {Q,SA}
     {NSW,SA}
-    {WA,NT}
+    {Q,SA}
+    {NT,SA}
+    {WA,SA}
     {Q,NT}
+    {WA,NT}
+    {NSW,Q}
     {NT,Q}
-    {NSW,Q}
-    {Q,NSW}
     {V,NSW}
-    {SA,Q}
+    {Q,NSW}
     {NSW,Q}
+    {SA,Q}
 
     WA={green}
     SA={blue}
@@ -843,15 +1590,35 @@ Consider the problem of tiling a surface (completely and exactly covering it) wi
 
 3. Construct a surface consisting of 6 squares such that your CSP formulation from part (b) has a *tree-structured* constraint graph.
 
+---
+
+Domino Graph:
+|a|
+|---|
+|b|
+|c|
+|d|
+|e|
+|f|
+
+---
+
+Constraint Graph:
+```
 a
 |
 b
 |
 c
 |
-d---e
+d
+|
+e
 |
 f
+```
+
+---
 
 4. Describe exactly the set of solvable instances that have a tree-structured constraint graph.
 
@@ -863,23 +1630,23 @@ f
 
 Which of the following are correct?
 
-1. False ⊨ True.
+1. False $\models$ True.
 
 > Correct
 
-2. True ⊨ False.
+2. True $\models$ False.
 
 > Incorrect
 
-3. (A∧B) ⊨ (A⇔B).
+3. (A∧B) $\models$ (A⇔B).
 
 > Correct
 
-4. A⇔B ⊨ A∨B.
+4. A⇔B $\models$ A∨B.
 
-- (A⇒B)∧(B⇒A) ⊨ A∨B.
+- (A⇒B)∧(B⇒A) $\models$ A∨B.
 
-- ($\neg$A∨B)∧($\neg$B∨A) ⊨ A∨B.
+- ($\neg$A∨B)∧($\neg$B∨A) $\models$ A∨B.
 
 - Counter Example:
 
@@ -889,43 +1656,43 @@ Which of the following are correct?
 
 > Incorrect
 
-5. A⇔B ⊨ ¬A∨B.
+5. A⇔B $\models$ $\neg$A∨B.
 
-- (A⇒B)∧(B⇒A) ⊨ ¬A∨B.
+- (A⇒B)∧(B⇒A) $\models$ $\neg$A∨B.
 
-- ($\neg$A∨B)∧($\neg$B∨A) ⊨ ¬A∨B.
-
-- Every time the first statement is true the first part of the and must also be true, meaning that this is true
-
-> Correct
-
-6. (A∧B)⇒C ⊨ (A⇒C)∨(B⇒C).
-
-- $\neg$(A∧B)∨C ⊨ ($\neg$A∨C)∨($\neg$B∨C).
-
-- $\neg$A∨$\neg$B∨C ⊨ ($\neg$A∨C)∨($\neg$B∨C).
-
-- $\neg$A∨$\neg$B∨C ⊨ $\neg$A∨C∨$\neg$B∨C.
-
-- $\neg$A∨$\neg$B∨C ⊨ $\neg$A∨$\neg$B∨C.
-
-> Correct
-
-7. (C∨(¬A∧¬B)) ≡ ((A⇒C)∧(B⇒C)).
-
-- (C∨(¬A∧¬B)) ≡ ($\neg$A∨C)∧($\neg$B∨C).
-
-- (C∨(¬A∧¬B)) ≡ ($\neg$A∧$\neg$B)∨C.
-
-> Correct
-
-8. (A∨B)∧(¬C∨¬D∨E) ⊨ (A∨B).
+- ($\neg$A∨B)∧($\neg$B∨A) $\models$ $\neg$A∨B.
 
 - Every time the first statement is true the first part of the and must also be true, meaning that this is true
 
 > Correct
 
-9. (A∨B)∧(¬C∨¬D∨E) ⊨ (A∨B)∧(¬D∨E).
+6. (A∧B)$\implies$C $\models$ (A⇒C)∨(B$\implies$C).
+
+- $\neg$(A∧B)∨C $\models$ ($\neg$A∨C)∨($\neg$B∨C).
+
+- $\neg$A∨$\neg$B∨C $\models$ ($\neg$A∨C)∨($\neg$B∨C).
+
+- $\neg$A∨$\neg$B∨C $\models$ $\neg$A∨C∨$\neg$B∨C.
+
+- $\neg$A∨$\neg$B∨C $\models$ $\neg$A∨$\neg$B∨C.
+
+> Correct
+
+7. (C∨($\neg$A∧$\neg$B)) ≡ ((A$\implies$C)∧(B$\implies$C)).
+
+- (C∨($\neg$A∧$\neg$B)) ≡ ($\neg$A∨C)∧($\neg$B∨C).
+
+- (C∨($\neg$A∧$\neg$B)) ≡ ($\neg$A∧$\neg$B)∨C.
+
+> Correct
+
+8. (A∨B)∧($\neg$C∨$\neg$D∨E) $\models$ (A∨B).
+
+- Every time the first statement is true the first part of the and must also be true, meaning that this is true
+
+> Correct
+
+9. (A∨B)∧($\neg$C∨$\neg$D∨E) $\models$ (A∨B)∧($\neg$D∨E).
 
 - Counter Example:
 
@@ -941,9 +1708,9 @@ Which of the following are correct?
 
 > Incorrect
 
-10. (A∨B)∧¬(A⇒B) is satisfiable.
+10. (A∨B)∧$\neg$(A$\implies$B) is satisfiable.
 
-- (A∨B)∧¬($\neg$A∨B)
+- (A∨B)∧$\neg$($\neg$A∨B)
 
 - (A∨B)∧(A∧$\neg$B)
 
@@ -955,11 +1722,11 @@ Which of the following are correct?
 
 > Correct
 
-11. (A⇔B)∧(¬A∨B) is satisfiable.
+11. (A⇔B)∧($\neg$A∨B) is satisfiable.
 
-- (A⇒B)∧(B⇒A)∧(¬A∨B).
+- (A$\implies$B)∧(B$\implies$A)∧($\neg$A∨B).
 
-- ($\neg$A∨B)∧($\neg$B∨A)∧(¬A∨B).
+- ($\neg$A∨B)∧($\neg$B∨A)∧($\neg$A∨B).
 
 - A = False
 
@@ -974,48 +1741,48 @@ Which of the following are correct?
 7.6a, b, e (4+3+3 = 10 pts)
 
 Prove each of the following assertions:
-a. α is valid if and only if True⊨α.
+a. a is valid if and only if True$\models$a.
 
-True⊨False is false
+True$\models$False is false
 
-True⊨True is True
+True$\models$True is True
 
-therefore, α must always be true for the statement to be true
+therefore, a must always be true for the statement to be true
 
-Therefore α must be valid
+Therefore a must be valid
 
-b. For any α, False⊨α.
+b. For any a, False$\models$a.
 
-- False⊨False is true.
+- False$\models$False is true.
 
-- False⊨True is true.
+- False$\models$True is true.
 
-- Therefore, False⊨α is always true because α can be either False or True and the statement will still be true
+- Therefore, False$\models$a is always true because a can be either False or True and the statement will still be true
 
-e. α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
+e. a$\models$B if and only if the sentence (a∧$\neg$B) is unsatisfiable.
 
-- assume α = True, because if α = False, (α∧¬β) is unsatisfiable.
+- assume a = True, because if a = False, (a∧$\neg$B) is unsatisfiable.
 
-- True⊨β must also be true
+- True$\models$B must also be true
 
-- β must also be true by definition of ⊨.
+- B must also be true by definition of $\models$
 
-- Therefore, (α∧¬β) cannot be satisfied
+- Therefore, (a∧$\neg$B) cannot be satisfied
 
-- Therefore, (α∧¬β) is unsatisfiable.
+- Therefore, (a∧$\neg$B) is unsatisfiable.
 
 7.7 (2+4+4 = 10 pts)
 
 Prove, or find a counterexample to, each of the following assertions:
 
-1. If α⊨γ or β⊨γ (or both) then (α∧β)⊨γ
+1. If a$\models$y or B$\models$y (or both) then (a∧B)$\models$y
 
-- assume 2 steps α⊨γ or β⊨γ, and prove (α∧β)⊨γ
+- assume 2 steps a$\models$y or B$\models$y, and prove (a∧B)$\models$y
 
-2. If (α∧β)⊨γ then α⊨γ or β⊨γ (or both).
+2. If (a∧B)$\models$y then a$\models$y or B$\models$y (or both).
 
-- Counter Example: γ=(α∧β)
+- Counter Example: y=(a∧B)
 
-3. If α⊨(β∨γ) then α⊨β or α⊨γ (or both).
+3. If a$\models$(B∨y) then a$\models$B or a$\models$y (or both).
 
-- Counter Example: α=(β∨γ)
+- Counter Example: a=(B∨y)
