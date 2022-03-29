@@ -873,3 +873,14 @@ Recursively try to get a statement that will give the statement, using only know
 ## DPLL algorithm
 
 with enhancements, modern solvers can handle a problem with a multiple of $10^7$ variables
+
+## First-Order Logic
+
+![](../pic/syntaxfirstorder.png)
+
+Free and bound variables can have the same name
+
+P(x) => $\exists$ x Q(x)
+
+![](../pic/zeusBrothers.png)
+
