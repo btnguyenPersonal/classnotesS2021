@@ -114,7 +114,11 @@ ___Note___: Attributes can connect to relationships if they relate to all partie
 
 - Neo4j uses the Cypher language
 
+```cypher
 match (:Suppliers)-[e:SUPPLIES]->(:Parts) return count(e)
+```
 621
 
+```cypher
 match (:Parts{color:'blue'})<-[:SUPPLIES]-(:Suppliers)-[e:SUPPLIES]->(:Parts{color:'black'}) return distinct s.sid, s.sname order by s.sid
+```

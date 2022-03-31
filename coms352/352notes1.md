@@ -1495,3 +1495,53 @@ Think of a file descriptor as a pointer to an object that maintains the location
 ## Support for Concurrent Access
 
 xv6 uses a lock for each file so only one process can be accessing a file at one time
+
+## File System Metadata
+
+inodes - contains information about a particular file
+
+data bitmap - stored which blocks are free/used in the data region
+
+inode bitmap - stores which blocks are free/used in the metadata region
+
+super block - contains information about the file system
+
+## Basic Performance Improvements
+
+Caching - holds the popular blocks to decrease number of reads/writes
+
+first file system was complete trash
+
+## Consequence of Fragmentation
+
+Block based allocation means files can become spread out over the disk
+
+Best performance is when files are written to contiguous memory
+
+## Cylinder Group
+
+Cylinder is a stack of tracks near to each other on the drive
+
+## Block groups
+
+Block groups are consecutive portions of the disk's address space
+
+## Berkeley Fast File System (FFS)
+
+Principle: _keep related stuff together_
+
+Two heuristics to improve performance:
+
+- Try to allocate data blocks for a file in the same block group as the files inode
+
+- Try to locate files that are together in a directory in the same block group
+
+## Path locality
+
+FFS heuristics are based on another form of locality
+
+Path Locality - consecutive file accesses are likely to be two file paths that are near to each other
+
+## Large File Exception
+
+Large file will completely fill block group, preventing files in same directory being in same group

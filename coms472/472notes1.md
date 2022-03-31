@@ -475,10 +475,10 @@ Variations
     - Random selection among the uphill moves
     - Probability of selection varying with steepness
   - First-choice hill climbing
-    - Random generation of successors untila better (than the current) one is found
+    - Random generation of successors until a better (than the current) one is found
     - Useful when many successors exist and/or the objective function is costly to evaluate
   - Random restart hill climbing
-    - Restart search from random inital state
+    - Restart search from random initial state
 
 #### Simulated Annealing
 
@@ -527,7 +527,7 @@ Doesn't know the next state
 _belief state_ is a set of physical states believed to be possible by the agent
   - Solution: __conditional plan__ &rarr; gives a set of actions based on what could happen
 
-#### Sensorless Situation
+#### Sensor-less Situation
 
 Agent's precepts provide no information at all.
 
@@ -660,21 +660,21 @@ __Alldiff constraint__ involves every variable
 
 ## Cryptoarithmetic Puzzle
 
-see slides to get picture
+See slides to get picture
 
 ??? I have no idea how to do this
 
-#### Constraint Propogation
+#### Constraint Propagation
 
 Use constraints to reduce the number of legal values for a variable, which in turn reduce those for another variable, and so on.
 
-Suppost South Australians dislike green
+Suppose South Australians dislike green
 
 &darr;
 
 Domain for SA: {red,blue}
 
-__Arc Consistency__ every value that can be assigned to Xi, also has a corresponding value Xj
+__Arc Consistency__ every value that can be assigned to $X_i$, also has a corresponding value $X_j$
 
 ## Path Consistency
 
@@ -846,15 +846,15 @@ To show KB &vDash; a, we show that KB &or; !a is unsatisfiable
 
 ## Ground Resolution Theorem
 
-if $S$ is unsatisfiable, then RC(S) contains the empty clause &empty;
+If $S$ is unsatisfiable, then RC(S) contains the empty clause &empty;
 
 ## Horn Clauses
 
 A clause is called a Horn clause if it contains &leq; 1 positive literal
 
-p: positive literal
+- p: positive literal
 
-$\neg$ p: negative literal
+- $\neg$ p: negative literal
 
 Definite clause (1 positive literal and &geq; 1 negative clause)
 
@@ -872,7 +872,7 @@ Recursively try to get a statement that will give the statement, using only know
 
 ## DPLL algorithm
 
-with enhancements, modern solvers can handle a problem with a multiple of $10^7$ variables
+With enhancements, modern solvers can handle a problem with a multiple of $10^7$ variables
 
 ## First-Order Logic
 
@@ -884,3 +884,14 @@ P(x) => $\exists$ x Q(x)
 
 ![](../pic/zeusBrothers.png)
 
+## Domain of Natural Numbers
+
+- one constant symbol, $0$
+
+- one function symbol, $S$
+
+- one predicate, _NatSum_
+
+## Automating reasoning
+
+Use the first order logic and reduce everything
