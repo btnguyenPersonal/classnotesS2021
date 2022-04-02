@@ -1506,11 +1506,27 @@ inode bitmap - stores which blocks are free/used in the metadata region
 
 super block - contains information about the file system
 
+## Very Basic File System (VBFS)
+
+Very small amount of data is for the storing of the file metadata(date created, where it is)
+
+## Contiguous vs Block Allocation
+
+- Contiguous has problem of _external fragmentation_
+
+- Block has problem of _internal fragmentation_
+
+## Multi-level indexing
+
+Have some direct pointers in the initial inode, and it also stores a single and double indirection
+
+- Pros: Faster access to initial part of files, and also can store really big files
+
 ## Basic Performance Improvements
 
 Caching - holds the popular blocks to decrease number of reads/writes
 
-first file system was complete trash
+First file system was complete trash
 
 ## Consequence of Fragmentation
 
