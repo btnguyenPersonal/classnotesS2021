@@ -7,12 +7,12 @@ Use resolution to prove the sentence ¬A∧¬B from the clauses in Exercise 7.25
 
 Exercise 7.25
 Convert the following set of sentences to clausal form.
-1. S1: A⇔(B∨E)A⇔(B∨E).
-2. S2: E⇒DE⇒D.
-3. S3: C∧F⇒¬BC∧F⇒¬B.
-4. S4: E⇒BE⇒B.
-5. S5: B⇒FB⇒F.
-6. S6: B⇒CB⇒C
+1. S1: A⇔(B∨E).
+2. S2: E⇒D.
+3. S3: C∧F⇒¬B.
+4. S4: E⇒B.
+5. S5: B⇒F.
+6. S6: B⇒C.
 
 Give a trace of the execution of DPLL on the conjunction of these clauses.
 
@@ -65,6 +65,9 @@ number of combinations of Q_n = $2^n$
 ???
 
 3. Write down the full resolution rule for sentences in implicative normal form.
+
+wtf is implicative normal form?????? do I have to know for test?
+
 ## 7.21 (3+4+3+3 = 13 pts)
 A propositional 2-CNF expression is a conjunction of clauses, each containing exactly 2 literals, e.g.,
 
@@ -81,17 +84,41 @@ Prove each of the following assertions:
 3. If a propositional clause CC can be resolved with a copy of itself, it must be logically equivalent to True.
 ## 7.23 (5+5+5 = 15 pts)
 Consider the following sentence:
+
 [(Food⇒Party)∨(Drinks⇒Party)]⇒[(Food∧Drinks)⇒Party].
-[(Food⇒Party)∨(Drinks⇒Party)]⇒[(Food∧Drinks)⇒Party].
+
 1. Determine, using enumeration, whether this sentence is valid, satisfiable (but not valid), or unsatisfiable.
+
+??? what is enumeration //TODO
+
 2. Convert the left-hand and right-hand sides of the main implication into CNF, showing each step, and explain how the results confirm your answer to (a).
+
+[(Food⇒Party)∨(Drinks⇒Party)]⇒[(Food∧Drinks)⇒Party]
+
+[(F⇒P)∨(D⇒P)]⇒[(F∧D)⇒P]
+
+[(¬F∨P)∨(¬D∨P)]⇒[¬(F∧D)∨P]
+
+[¬F∨P∨¬D∨P]⇒[¬(F∧D)∨P]
+
+[¬F∨¬D∨P]⇒[¬(F∧D)∨P]
+
+[¬(F∧D)∨P]⇒[¬(F∧D)∨P]
+
+Therefore, this sentence is satisfiable
+
 3. Prove your answer to (a) using resolution.
+
+??? what is resolution //TODO
+
 ## 7.26 (10 pts)
 Convert the following set of sentences to clausal form.
-1. S1: A⇔(B∨E)A⇔(B∨E).
-2. S2: E⇒DE⇒D.
-3. S3: C∧F⇒¬BC∧F⇒¬B.
-4. S4: E⇒BE⇒B.
-5. S5: B⇒FB⇒F.
-6. S6: B⇒CB⇒C
+1. S1: A⇔(B∨E).
+2. S2: E⇒D.
+3. S3: C∧F⇒¬B.
+4. S4: E⇒B.
+5. S5: B⇒F.
+6. S6: B⇒C
 Give a trace of the execution of DPLL on the conjunction of these clauses.
+
+??? What does this mean? Turn them all into one sentence? Give possible set of values (True/False)?
