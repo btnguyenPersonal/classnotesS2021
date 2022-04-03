@@ -13,7 +13,29 @@ Convert the following set of sentences to clausal form.
 4. S4: E⇒BE⇒B.
 5. S5: B⇒FB⇒F.
 6. S6: B⇒CB⇒C
+
 Give a trace of the execution of DPLL on the conjunction of these clauses.
+
+```
+function DPLL_Satisfiable(s) returns true or false
+    inputs: s, a sentence in propositional logic
+
+    clauses <- the set of clases in the CNF representation of s
+    symbols <- a list of the proposition symbols in s
+    return DPLL(clauses, symbols, {})
+
+function DPLL(clauses, symbols, model) returns true or false
+    if every clause in clauses is true in model then return true
+    if some clause in clauses is false in model then return false
+    P,value <- Find-Pure-Symbol(symbols, clauses, model)
+    if P is non-null then return DPLL(clauses, symbols - P, model \union {P=value})
+    P,value <- Find-Unit-Clause(clauses, model)
+    if P is non-null then return DPLL(clauses, symbols - P, model \union {P=value})
+    P <- First(symbols); rest <- Rest(symbols)
+    return DPLL(clauses, rest, model \union {P=true}) or
+        DPLL(clauses, rest, model \union {P=false}) or
+```
+
 ## 7.16 (5+5+5 = 15 pts)
 This exercise looks into the relationship between clauses and implication sentences.
 1. Show that the clause $(¬P_1∨⋯∨¬P_m∨Q)$ is logically equivalent to the implication sentence $(P_1∧⋯∧P_m)⇒Q$.
@@ -31,6 +53,17 @@ $(¬(P_1∧P_2∧⋯∧P_m)∨Q)$
 $(P_1∧⋯∧P_m)⇒Q$
 
 2. Show that every clause (regardless of the number of positive literals) can be written in the form $(P_1∧⋯∧P_m)⇒(Q_1∨⋯∨Q_n)$, where the P's and Q's are proposition symbols. A knowledge base consisting of such sentences is in implicative normal form or Kowalski form.
+
+$(P_1∧⋯∧P_m)⇒(Q_1∨⋯∨Q_n)$,
+
+$¬(P_1∧⋯∧P_m)∨(Q_1∨⋯∨Q_n)$,
+
+number of combinations of P_m = $2^m$
+
+number of combinations of Q_n = $2^n$
+
+???
+
 3. Write down the full resolution rule for sentences in implicative normal form.
 ## 7.21 (3+4+3+3 = 13 pts)
 A propositional 2-CNF expression is a conjunction of clauses, each containing exactly 2 literals, e.g.,
