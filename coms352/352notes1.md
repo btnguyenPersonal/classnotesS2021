@@ -1625,3 +1625,43 @@ Mapping table can be very large
 Assume 1TB SSD and 4 byte entry for each 4KB page, then map is 1GB
 
 A hybrid mapping approach can map at either the page or block level, far fewer blocks so less mapping required
+
+## Crash Consistency
+
+Only inode and bitmap are written to disk - inode and bitmap are consistent, but data has garbage
+
+Only inode and data block are written to disk - the bitmap has not been updated to allocate the data block, in future data block could be overwritten
+
+Only bitmap and data block are written to disk - space  is allocated but not used, will never be freed
+
+## Crash recovery with File System Checker
+
+Unix tool __fsck__ (file system check) is used to check and fix file system on boot
+
+Disadvantage - need to check entire file system, slow for big file systems
+
+## Journaling (Write-ahead logging)
+
+Second Strategy, before making any change to the file system, first store a note to the disk about what operations are about to be performed
+
+Write ahead of the operation into a log, thus the name write-ahead logging or journaling
+
+If crash occurs you know from logs exactly what needs to be checked and fixed, no need to scan entire file system for errors
+
+## Physical Logging
+
+In physical logging the complete contents of the update are first written to a log
+
+Have both a Journal write __before__ and __after__ the writing to disk, for confirmation
+
+To speed up file system, blocks can be written out of order
+
+## Journal Steps
+
+1. Journal write - write the contents of the transaction
+
+2. Journal commit - write the transaction commit blocks
+
+3. Checkpoint - write the commit data and post that the transaction is done
+
+## Recovery
