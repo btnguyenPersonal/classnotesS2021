@@ -1561,3 +1561,67 @@ Path Locality - consecutive file accesses are likely to be two file paths that a
 ## Large File Exception
 
 Large file will completely fill block group, preventing files in same directory being in same group
+
+## SSD
+
+made from flash memory
+
+no moving parts
+
+need to erase before a write
+
+Bank = multiple blocks
+
+Block = 128KB usually and consists of multiple pages
+
+Page = 4KB usually
+
+Individual bits stored in cells
+
+## Basic Flash Operations
+
+Read (page) - client provides page number to read, relatively fast, does not depend on location of page or previous page
+
+Erase (block) - before programming the block must be set to all 1, orders of magnitude slower than read
+
+Program (page) - writes the page by setting 1's to 0's where needed, time is somewhere between a read and an erase
+
+In General, SSD much faster than HDD
+
+## Wear out
+
+Wear out is the issue that a flash block has a limited number of times (100,000) it can be erased before it becomes unusable
+
+SSD mitigates this problem with __wear leveling__
+
+- logic page address is independent of physical page on flash
+
+- every time a page is written a new physical page is used to store the logic page
+
+- in this way a logic page can be written to 100,000 times but every write is to a physical location
+
+## Flash Translation Layer (FTL)
+
+Virtualises the flash (mapping logical address to virtual address)
+
+Large time cost of erasing a block before pages can be written
+
+Want to have wear leveling
+
+In __log-structured FTL__ an in-memory table is used to map virtual to physical pages
+
+On every write the page is moved to a different physical location
+
+## Garbage Collection
+
+If the same logical page is written multiple times, the old versions of the page will remain in physical memory as garbage (unusable)
+
+Garbage Collection is reclamation of dead blocks
+
+## Mapping Table Size
+
+Mapping table can be very large
+
+Assume 1TB SSD and 4 byte entry for each 4KB page, then map is 1GB
+
+A hybrid mapping approach can map at either the page or block level, far fewer blocks so less mapping required
