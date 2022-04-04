@@ -8,18 +8,49 @@ Use resolution to prove the sentence ¬A∧¬B from the clauses in Exercise 7.25
 Exercise 7.25
 Convert the following set of sentences to clausal form.
 1. S1: A⇔(B∨E).
+
+(¬A∨(B∨E))∧(¬(B∨E)∨A)
+
+(¬A∨B∨E)∧(¬B∧¬E∨A)
+
 2. S2: E⇒D.
+
+¬E∨D
+
 3. S3: C∧F⇒¬B.
+
+¬(C∧F)∨¬B
+
+¬C∨¬F∨¬B
+
 4. S4: E⇒B.
+
+¬E∨B
+
 5. S5: B⇒F.
+
+¬B∨F
+
 6. S6: B⇒C.
 
+¬B∨C
+
 Give a trace of the execution of DPLL on the conjunction of these clauses.
+
+Proof by Contradiction: ¬(¬A∨¬B) = A∨B
+
+|||
+|:---:|:---:|
+|A∨B | ¬A∨B∨E |
+|B∨B∨E | Simplify |
+|B∨E | ¬B |
+|E | ¬E∨B |
+|B | ¬B |
+|$\empty$||
 
 ```
 function DPLL_Satisfiable(s) returns true or false
     inputs: s, a sentence in propositional logic
-
     clauses <- the set of clases in the CNF representation of s
     symbols <- a list of the proposition symbols in s
     return DPLL(clauses, symbols, {})
