@@ -52,7 +52,8 @@ Proof by Contradiction: ¬(¬A∧¬B) = A∨B
 | C | ¬C∨¬F∨¬B |
 | ¬F∨¬B | ¬B∨F |
 | ¬B∨¬B | Simplify |
-| ¬B ||
+| ¬B | B |
+| $\empty$ | |
 
 Contradiction - B must be true because it is correct given the steps, then ¬B must also be true given the steps
 
@@ -93,25 +94,44 @@ A propositional 2-CNF expression is a conjunction of clauses, each containing ex
 
 1. Prove using resolution that the above sentence entails G.
 
-(A∨B) $\models$ G
+(A∨B)
 
-(¬A∨C) $\models$ G
+(¬A∨C)
 
-(¬B∨D) $\models$ G
+(¬B∨D)
 
-(¬C∨G) $\models$ G
+(¬C∨G)
 
-(¬D∨G) $\models$ G
+(¬D∨G)
+
+Proof by Contradiction: Assume ¬G
+
+|||
+|:---:|:---:|
+|(¬G)|(¬C∨G)|
+|(¬C)|(¬A∨C)|
+|(¬A)|(A∨B)|
+|(B)|(¬B∨G)|
+|(G)|(¬G)|
+|$\empty$||
 
 2. Two clauses are semantically distinct if they are not logically equivalent. How many semantically distinct 2-CNF clauses can be constructed from n proposition symbols?
+
+n=1 &rarr; 3
+
+n=2 &rarr; 10
+
 3. Using your answer to (b), prove that propositional resolution always terminates in time polynomial in n given a 2-CNF sentence containing no more than n distinct symbols.
 4. Explain why your argument in c does not apply to 3-CNF.
 
 ## 7.22 (4+4+4 = 12 pts)
 Prove each of the following assertions:
 1. Every pair of propositional clauses either has no resolvents, or all their resolvents are logically equivalent.
+
+Show that if one resolvent is true, all must be true
+
 2. There is no clause that, when resolved with itself, yields (after factoring) the clause (¬P∨¬Q).
-3. If a propositional clause CC can be resolved with a copy of itself, it must be logically equivalent to True.
+3. If a propositional clause C can be resolved with a copy of itself, it must be logically equivalent to True.
 
 ## 7.23 (5+5+5 = 15 pts)
 Consider the following sentence:
@@ -120,7 +140,20 @@ Consider the following sentence:
 
 1. Determine, using enumeration, whether this sentence is valid, satisfiable (but not valid), or unsatisfiable.
 
-??? what is enumeration //TODO
+Truth Table for everything
+
+|Food|Party|Drinks|[(Food⇒Party)∨(Drinks⇒Party)]⇒[(Food∧Drinks)⇒Party]|
+|:---:|:---:|:---:|:---:|
+|T|T|T|T|
+|T|T|F|T|
+|T|F|T|T|
+|T|F|F|T|
+|F|T|T|T|
+|F|T|F|T|
+|F|F|T|T|
+|F|F|F|T|
+
+Since all possible valid inputs satisfy the sentence, it will work.
 
 2. Convert the left-hand and right-hand sides of the main implication into CNF, showing each step, and explain how the results confirm your answer to (a).
 
@@ -136,7 +169,9 @@ Consider the following sentence:
 
 [¬(F∧D)∨P]⇒[¬(F∧D)∨P]
 
-Therefore, this sentence is satisfiable
+[¬F∨¬D∨P]⇒[¬F∨¬D∨P]
+
+Therefore, this sentence is satisfiable because both sides compile down to the same CNF
 
 3. Prove your answer to (a) using resolution.
 
