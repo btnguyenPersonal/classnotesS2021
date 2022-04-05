@@ -895,3 +895,37 @@ P(x) => $\exists$ x Q(x)
 ## Automating reasoning
 
 Use the first order logic and reduce everything
+
+## Translating English Sentences to FOL
+
+The law says that it is a crime for an American to sell weapons to hostile nations. The country Nono, an enemy of America, has some missiles, and all of its missiles were sold to it by Colonel West, who is American.
+
+American(x) &and; Weapon(y) &and; Hostile(z) &and; Sells(x,y,z) $\implies$ Criminal(x)
+
+## Forward Chaining
+
+1. Start from known facts
+
+1. Trigger all the rules whose premises are satisfied
+
+1. Add their conclusion to known facts
+
+1. Repeat Steps 2 and 3 until one of the following situations occurs
+
+    - Correct solutions found
+
+    - Returns empty set
+
+Improvement 1: Matching Rules Against Known Facts
+
+Improvement 2: Incremental Forward Chaining
+
+## Backward Chaining
+
+1. Start from correct solution
+
+Depth-First Proof Tree
+
+## Logic Programming
+
+## Conversion into Conjunctive normal form

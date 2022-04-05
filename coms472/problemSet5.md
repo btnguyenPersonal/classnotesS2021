@@ -7,11 +7,14 @@ Use resolution to prove the sentence ¬A∧¬B from the clauses in Exercise 7.25
 
 Exercise 7.25
 Convert the following set of sentences to clausal form.
+
 1. S1: A⇔(B∨E).
 
 (¬A∨(B∨E))∧(¬(B∨E)∨A)
 
-(¬A∨B∨E)∧(¬B∧¬E∨A)
+(¬A∨B∨E)∧((¬B∧¬E)∨A)
+
+(¬A∨B∨E)∧(¬B∨A)∧(¬E∨A)
 
 2. S2: E⇒D.
 
@@ -37,35 +40,21 @@ Convert the following set of sentences to clausal form.
 
 Give a trace of the execution of DPLL on the conjunction of these clauses.
 
-Proof by Contradiction: ¬(¬A∨¬B) = A∨B
+Proof by Contradiction: ¬(¬A∧¬B) = A∨B
 
 |||
 |:---:|:---:|
-|A∨B | ¬A∨B∨E |
-|B∨B∨E | Simplify |
-|B∨E | ¬B |
-|E | ¬E∨B |
-|B | ¬B |
-|$\empty$||
+| A∨B | ¬B∨A |
+| A∨A | Simplify |
+| A | ¬A∨B∨E |
+| B∨E | ¬E∨B |
+| B | ¬B∨C |
+| C | ¬C∨¬F∨¬B |
+| ¬F∨¬B | ¬B∨F |
+| ¬B∨¬B | Simplify |
+| ¬B ||
 
-```
-function DPLL_Satisfiable(s) returns true or false
-    inputs: s, a sentence in propositional logic
-    clauses <- the set of clases in the CNF representation of s
-    symbols <- a list of the proposition symbols in s
-    return DPLL(clauses, symbols, {})
-
-function DPLL(clauses, symbols, model) returns true or false
-    if every clause in clauses is true in model then return true
-    if some clause in clauses is false in model then return false
-    P,value <- Find-Pure-Symbol(symbols, clauses, model)
-    if P is non-null then return DPLL(clauses, symbols - P, model \union {P=value})
-    P,value <- Find-Unit-Clause(clauses, model)
-    if P is non-null then return DPLL(clauses, symbols - P, model \union {P=value})
-    P <- First(symbols); rest <- Rest(symbols)
-    return DPLL(clauses, rest, model \union {P=true}) or
-        DPLL(clauses, rest, model \union {P=false}) or
-```
+Contradiction - B must be true because it is correct given the steps, then ¬B must also be true given the steps
 
 ## 7.16 (5+5+5 = 15 pts)
 This exercise looks into the relationship between clauses and implication sentences.
@@ -89,11 +78,9 @@ $(P_1∧⋯∧P_m)⇒(Q_1∨⋯∨Q_n)$,
 
 $¬(P_1∧⋯∧P_m)∨(Q_1∨⋯∨Q_n)$,
 
-number of combinations of P_m = $2^m$
+$(¬P_1∨⋯∨¬P_m)∨(Q_1∨⋯∨Q_n)$,
 
-number of combinations of Q_n = $2^n$
-
-???
+$(¬P_1∨⋯∨¬P_m)∨(Q_1∨⋯∨Q_n)$,
 
 3. Write down the full resolution rule for sentences in implicative normal form.
 
@@ -105,14 +92,27 @@ A propositional 2-CNF expression is a conjunction of clauses, each containing ex
 (A∨B)∧(¬A∨C)∧(¬B∨D)∧(¬C∨G)∧(¬D∨G).
 
 1. Prove using resolution that the above sentence entails G.
+
+(A∨B) $\models$ G
+
+(¬A∨C) $\models$ G
+
+(¬B∨D) $\models$ G
+
+(¬C∨G) $\models$ G
+
+(¬D∨G) $\models$ G
+
 2. Two clauses are semantically distinct if they are not logically equivalent. How many semantically distinct 2-CNF clauses can be constructed from n proposition symbols?
 3. Using your answer to (b), prove that propositional resolution always terminates in time polynomial in n given a 2-CNF sentence containing no more than n distinct symbols.
-4. Explain why your argument in (c) does not apply to 3-CNF.
+4. Explain why your argument in c does not apply to 3-CNF.
+
 ## 7.22 (4+4+4 = 12 pts)
 Prove each of the following assertions:
 1. Every pair of propositional clauses either has no resolvents, or all their resolvents are logically equivalent.
-2. There is no clause that, when resolved with itself, yields (after factoring) the clause (¬P∨¬Q)(¬P∨¬Q).
+2. There is no clause that, when resolved with itself, yields (after factoring) the clause (¬P∨¬Q).
 3. If a propositional clause CC can be resolved with a copy of itself, it must be logically equivalent to True.
+
 ## 7.23 (5+5+5 = 15 pts)
 Consider the following sentence:
 
@@ -144,12 +144,54 @@ Therefore, this sentence is satisfiable
 
 ## 7.26 (10 pts)
 Convert the following set of sentences to clausal form.
-1. S1: A⇔(B∨E).
-2. S2: E⇒D.
-3. S3: C∧F⇒¬B.
-4. S4: E⇒B.
-5. S5: B⇒F.
-6. S6: B⇒C
 Give a trace of the execution of DPLL on the conjunction of these clauses.
 
-??? What does this mean? Turn them all into one sentence? Give possible set of values (True/False)?
+1. A⇔(B∨E).
+
+(¬A∨(B∨E))∧(¬(B∨E)∨A)
+
+(¬A∨B∨E)∧((¬B∧¬E)∨A)
+
+(¬A∨B∨E)∧(¬B∨A)∧(¬E∨A)
+
+2. E⇒D.
+
+¬E∨D
+
+3. C∧F⇒¬B.
+
+¬(C∧F)∨¬B
+
+¬C∨¬F∨¬B
+
+4. E⇒B.
+
+¬E∨B
+
+5. B⇒F.
+
+¬B∨F
+
+6. B⇒C.
+
+¬B∨C
+
+```
+function DPLL_Satisfiable(s) returns true or false
+    inputs: s, a sentence in propositional logic
+    clauses <- the set of clases in the CNF representation of s
+    symbols <- a list of the proposition symbols in s
+    return DPLL(clauses, symbols, {})
+
+function DPLL(clauses, symbols, model) returns true or false
+    if every clause in clauses is true in model then return true
+    if some clause in clauses is false in model then return false
+    P,value <- Find-Pure-Symbol(symbols, clauses, model)
+    if P is non-null then return DPLL(clauses, symbols - P, model \union {P=value})
+    P,value <- Find-Unit-Clause(clauses, model)
+    if P is non-null then return DPLL(clauses, symbols - P, model \union {P=value})
+    P <- First(symbols); rest <- Rest(symbols)
+    return DPLL(clauses, rest, model \union {P=true}) or
+        DPLL(clauses, rest, model \union {P=false}) or
+```
+
