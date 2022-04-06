@@ -230,3 +230,16 @@ function DPLL(clauses, symbols, model) returns true or false
         DPLL(clauses, rest, model \union {P=false}) or
 ```
 
+|Iteration|Symbols|Model|Pure?|Unit?|return?|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|0|{A,B,C,D,E,F}|{}|D|N/A|
+|1|{A,B,C,E,F}|{D = True}|N/A|N/A|
+|2|{B,C,E,F}|{A = True, D = True}|N/A|N/A|
+|3|{C,E,F}|{B = True, A = True, D = True}|N/A|¬B∨F $\implies$ F = True|
+|4|{C,E}|{F = True, B = True, A = True, D = True}|N/A|¬C∨¬F∨¬B $\implies$ C = False|
+|5|{E}|{C = False, F = True, B = True, A = True, D = True}|N/A|N/A|¬B∨C returns false|
+|6|{C,E,F}|{B = False, A = True, D = True}|N/A|¬A∨B∨E $\implies$ E = True|
+|7|{C,F}|{E = True, B = False, A = True, D = True}|N/A|N/A|¬E∨B returns false|
+|8|{B,C,E,F}|{A = False, D = True}|E = False|N/A|
+|9|{B,C,F}|{E = False, A = False, D = True}|B = False|N/A|
+|10|{C,F}|{B = False, E = False, A = False, D = True}|N/A|N/A|return true|
