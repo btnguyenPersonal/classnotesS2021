@@ -125,20 +125,47 @@ There are ${2 \choose 2n} - (n - 1)$ semantically distinct clauses. There are $2
 
 ${2 \choose 2n} - (n - 1) = 2n^2 - 2n + 1$
 
-two 2-CNF clauses will always create at maximum another 2-CNF clause when they resolve, therefore there at maximum the algorithm will go through all $2n^2 - 2n + 1$ clauses, which is polynomial time.
+Two 2-CNF clauses will always create at maximum another 2-CNF clause when they resolve, therefore there at maximum the algorithm will go through all $2n^2 - 2n + 1$ clauses, which is polynomial time.
 
 4. Explain why your argument in c does not apply to 3-CNF.
 
-two 3-CNF clauses does not always create at maximum another 3-CNF clause, so the same logic does not apply
+Two 3-CNF clauses does not always create at maximum another 3-CNF clause, so the same logic does not apply
 
 ## 7.22 (4+4+4 = 12 pts)
+
 Prove each of the following assertions:
+
 1. Every pair of propositional clauses either has no resolvents, or all their resolvents are logically equivalent.
 
-Show that if one resolvent is true, all must be true
+Proof by Contradiction:
+
+Assume that a pair of propositional clause A∨B and ¬A∨C, where A, B, and C can be any literal, does not have all of their resolvents logically equivalent.
+
+A∨B is true
+
+¬A∨C is true
+
+¬A∨C is true by definition
+
+??? isn't there only one resolvent for each pair of propositional clauses?
 
 2. There is no clause that, when resolved with itself, yields (after factoring) the clause (¬P∨¬Q).
+
+The only clauses that can be resolved with themself must have at least one literal and the corresponding opposite literal in the same clause.
+
+¬A∨A∨...
+
+Therefore, resolving with themself will lead to a clause with the form: ¬A∨A∨... which is always true
+
 3. If a propositional clause C can be resolved with a copy of itself, it must be logically equivalent to True.
+
+The only clauses that can be resolved with themself must have at least one literal and the corresponding opposite literal in the same clause.
+
+¬A∨A∨...
+
+However, having a literal and the corresponding opposite literal in the same clause will always force it to be true
+
+¬A∨A is always true
 
 ## 7.23 (5+5+5 = 15 pts)
 Consider the following sentence:
@@ -160,7 +187,7 @@ Truth Table for everything
 |F|F|T|T|
 |F|F|F|T|
 
-Since all possible valid inputs satisfy the sentence, it will work.
+Since all possible valid inputs satisfy the implication, the implication is true.
 
 2. Convert the left-hand and right-hand sides of the main implication into CNF, showing each step, and explain how the results confirm your answer to (a).
 
