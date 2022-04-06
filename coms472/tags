@@ -31,6 +31,12 @@
 5.14 (4+4+5+4 = 17 pts)	problemSet3.md	/^## 5.14 (4+4+5+4 = 17 pts)$/;"	s
 5.8 (7+3+7+6 = 23 pts)	problemSet3.md	/^## 5.8 (7+3+7+6 = 23 pts)$/;"	s
 5.9 (3+4+3+4+4 = 18 pts)	problemSet3.md	/^## 5.9 (3+4+3+4+4 = 18 pts)$/;"	s
+7.15 (15 pts)	problemSet5.md	/^## 7.15 (15 pts)$/;"	s	chapter:Problem Set 5
+7.16 (5+5+5 = 15 pts)	problemSet5.md	/^## 7.16 (5+5+5 = 15 pts)$/;"	s	chapter:Problem Set 5
+7.21 (3+4+3+3 = 13 pts)	problemSet5.md	/^## 7.21 (3+4+3+3 = 13 pts)$/;"	s	chapter:Problem Set 5
+7.22 (4+4+4 = 12 pts)	problemSet5.md	/^## 7.22 (4+4+4 = 12 pts)$/;"	s	chapter:Problem Set 5
+7.23 (5+5+5 = 15 pts)	problemSet5.md	/^## 7.23 (5+5+5 = 15 pts)$/;"	s	chapter:Problem Set 5
+7.26 (10 pts)	problemSet5.md	/^## 7.26 (10 pts)$/;"	s	chapter:Problem Set 5
 A Brief History	472notes1.md	/^## A Brief History$/;"	s	chapter:Principals of AI
 A$\\ast$ search	472notes1.md	/^#### A$\\ast$ search$/;"	t	section:Principals of AI""Tree Search
 ANSI_RED	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^  public static final String ANSI_RED = "\\u001B[31m";$/;"	f	class:CheckersData
@@ -46,9 +52,11 @@ Alpha-Beta Cutoff	472notes1.md	/^#### Alpha-Beta Cutoff$/;"	t	section:Principals
 AlphaBetaSearch	checkers/edu/iastate/cs472/proj2/AlphaBetaSearch.java	/^public class AlphaBetaSearch extends AdversarialSearch {$/;"	c
 Applications of GA	472notes1.md	/^#### Applications of GA$/;"	t	section:Principals of AI""Local Search
 Applying A$\\ast$ to 8-puzzle	472notes1.md	/^#### Applying A$\\ast$ to 8-puzzle$/;"	t	section:Principals of AI""Tree Search
+Automating reasoning	472notes1.md	/^## Automating reasoning$/;"	s	chapter:Monte Carlo Tree Search
 BLACK	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^          BLACK = 3,$/;"	f	class:CheckersData
 BLACK_KING	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^          BLACK_KING = 4;$/;"	f	class:CheckersData
 Backtracking Algorithm	472notes1.md	/^## Backtracking Algorithm$/;"	s	chapter:Monte Carlo Tree Search
+Backward Chaining	472notes1.md	/^## Backward Chaining$/;"	s	chapter:Monte Carlo Tree Search
 Basic Agent Types	472notes1.md	/^### Basic Agent Types$/;"	S	section:Principals of AI""Structure of Agents
 Best First	472notes1.md	/^#### Best First$/;"	t	section:Principals of AI""Tree Search
 Bidirectional Search	472notes1.md	/^#### Bidirectional Search$/;"	t	section:Principals of AI""Tree Search
@@ -75,7 +83,8 @@ CheckersMove	checkers/edu/iastate/cs472/proj2/CheckersMove.java	/^public class C
 Conjunctive Normal Form	472notes1.md	/^## Conjunctive Normal Form$/;"	s	chapter:Monte Carlo Tree Search
 Consider the n-queens problem using the “efficient” incremental formulation given on page . Explain why the state space has at least $\\sqrt[3]{n!}$ states and estimate the largest n for which exhaustive exploration is feasible. (Hint: Derive a lower bound on the branching factor by considering the maximum number of squares that a queen can attack in any column.)	problemSet1.md	/^###### Consider the n-queens problem using the “efficient” incremental formulation given on /;"	u	section:COMS 472 Problem Set 1""3.7
 Consider the sensorless version of the erratic vacuum world. Draw the belief-state space reachable from the initial belief state {1,2,3,4,5,6,7,8}, and explain why the problem is unsolvable.	problemSet2.md	/^###### Consider the sensorless version of the erratic vacuum world. Draw the belief-state space /;"	u	section:COMS 472 Problem Set 2""4.10
-Constraint Propogation	472notes1.md	/^#### Constraint Propogation$/;"	t	section:Monte Carlo Tree Search""Cryptoarithmetic Puzzle
+Constraint Propagation	472notes1.md	/^#### Constraint Propagation$/;"	t	section:Monte Carlo Tree Search""Cryptoarithmetic Puzzle
+Conversion into Conjunctive normal form	472notes1.md	/^## Conversion into Conjunctive normal form$/;"	s	chapter:Monte Carlo Tree Search
 Converting to CNF	472notes1.md	/^## Converting to CNF$/;"	s	chapter:Monte Carlo Tree Search
 Cryptoarithmetic Puzzle	472notes1.md	/^## Cryptoarithmetic Puzzle$/;"	s	chapter:Monte Carlo Tree Search
 DBL_DOWN	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
@@ -83,12 +92,14 @@ DBL_LEFT	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_
 DBL_RIGHT	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
 DBL_UP	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
 DOWN	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
+DPLL algorithm	472notes1.md	/^## DPLL algorithm$/;"	s	chapter:Monte Carlo Tree Search
 Daily Serving Limits	472notes1.md	/^## Daily Serving Limits$/;"	s	chapter:Monte Carlo Tree Search
 Dead Ends	472notes1.md	/^#### Dead Ends$/;"	t	section:Principals of AI""Non-deterministic Actions
 Depth First	472notes1.md	/^#### Depth First$/;"	t	section:Principals of AI""Tree Search
 Describe a state space in which iterative deepening search performs much worse than depth-first search (for example, O(n2) vs. O(n)).	problemSet1.md	/^###### Describe a state space in which iterative deepening search performs much worse than depth/;"	u	section:COMS 472 Problem Set 1""3.22
 Dijkstra's Algorithm vs A$\\ast$ Search	472notes1.md	/^#### Dijkstra's Algorithm vs A$\\ast$ Search$/;"	t	section:Principals of AI""Tree Search
 Disjunctive Constraint	472notes1.md	/^#### Disjunctive Constraint$/;"	t	chapter:Monte Carlo Tree Search
+Domain of Natural Numbers	472notes1.md	/^## Domain of Natural Numbers$/;"	s	chapter:Monte Carlo Tree Search
 DoubleMoveHeuristic	astar/edu/iastate/cs472/proj1/Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
 Dynamic vs Semi-Dynamic vs Static	472notes1.md	/^### Dynamic vs Semi-Dynamic vs Static$/;"	S	section:Principals of AI""Intelligent Agents
 EMPTY	checkers/edu/iastate/cs472/proj2/CheckersData.java	/^    EMPTY = 0,$/;"	f	class:CheckersData
@@ -99,6 +110,8 @@ Evolutionary Algorithms	472notes1.md	/^#### Evolutionary Algorithms$/;"	t	sectio
 Expensive search effort	472notes1.md	/^#### Expensive search effort$/;"	t	section:Principals of AI""Non-deterministic Actions
 Extra problem (17 pts)	problemSet3.md	/^## Extra problem (17 pts)$/;"	s
 First Day Orientation	472notes1.md	/^### First Day Orientation$/;"	S	chapter:Principals of AI
+First-Order Logic	472notes1.md	/^## First-Order Logic$/;"	s	chapter:Monte Carlo Tree Search
+Forward Chaining	472notes1.md	/^## Forward Chaining$/;"	s	chapter:Monte Carlo Tree Search
 Forward Checking	472notes1.md	/^## Forward Checking$/;"	s	chapter:Monte Carlo Tree Search
 Fully Observable vs Partially Observable	472notes1.md	/^### Fully Observable vs Partially Observable$/;"	S	section:Principals of AI""Intelligent Agents
 Give a complete problem formulation for each of the following problems. Choose a formulation that is precise enough to be implemented.	problemSet1.md	/^###### Give a complete problem formulation for each of the following problems. Choose a formulat/;"	u	section:COMS 472 Problem Set 1""3.2
@@ -108,6 +121,7 @@ Ground Resolution Theorem	472notes1.md	/^## Ground Resolution Theorem$/;"	s	chap
 Heuristic	astar/edu/iastate/cs472/proj1/Heuristic.java	/^public enum Heuristic $/;"	g
 Heuristics from Formal Specification	472notes1.md	/^#### Heuristics from Formal Specification$/;"	t	section:Principals of AI""Tree Search
 Hill Climbing	472notes1.md	/^#### Hill Climbing$/;"	t	section:Principals of AI""Local Search
+Horn Clauses	472notes1.md	/^## Horn Clauses$/;"	s	chapter:Monte Carlo Tree Search
 In Section  we introduced belief states to solve sensorless search problems. A sequence of actions solves a sensorless problem if it maps every physical state in the initial belief state b to a goal state. Suppose the agent knows h$\\ast$(s), the true optimal cost of solving the physical state s in the fully observable problem, for every state s in b. Find an admissible heuristic h(b) for the sensorless problem in terms of these costs, and prove its admissibilty. Comment on the accuracy of this heuristic on the sensorless vacuum problem of Figure 4.14. How well does A$\\ast$ perform?	problemSet2.md	/^###### In Section  we introduced belief states to solve sensorless search problems. A sequence o/;"	u	section:COMS 472 Problem Set 2""4.7
 Informed (Heuristic) Search	472notes1.md	/^#### Informed (Heuristic) Search$/;"	t	section:Principals of AI""Tree Search
 Intelligent Agents	472notes1.md	/^## Intelligent Agents$/;"	s	chapter:Principals of AI
@@ -118,6 +132,7 @@ Knuth's Conjecture	472notes1.md	/^## Knuth's Conjecture$/;"	s	chapter:Principals
 LEFT	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:
 Local Beam Search	472notes1.md	/^#### Local Beam Search$/;"	t	section:Principals of AI""Local Search
 Local Search	472notes1.md	/^## Local Search$/;"	s	chapter:Principals of AI
+Logic Programming	472notes1.md	/^## Logic Programming$/;"	s	chapter:Monte Carlo Tree Search
 ManhattanDist	astar/edu/iastate/cs472/proj1/Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
 ManhattanDistance	astar/edu/iastate/cs472/proj1/State.java	/^  private int ManhattanDistance = -1; \/\/ Manhattan distance between this state and the$/;"	f	class:State	file:
 Memory-Bounded Search	472notes1.md	/^#### Memory-Bounded Search$/;"	t	section:Principals of AI""Tree Search
@@ -145,6 +160,7 @@ PreBoard	checkers/edu/iastate/cs472/proj2/Checkers.java	/^    PreBoard()$/;"	m	c
 PreBoard	checkers/edu/iastate/cs472/proj2/Checkers.java	/^  public static class PreBoard extends JPanel{$/;"	c	class:Checkers
 Principals of AI	472notes1.md	/^# Principals of AI$/;"	c
 Problem Set 3	problemSet3.md	/^## Problem Set 3$/;"	s
+Problem Set 5	problemSet5.md	/^# Problem Set 5$/;"	c
 Problem Solving via Search	472notes1.md	/^## Problem Solving via Search$/;"	s	chapter:Principals of AI
 PuzzleSolver	astar/edu/iastate/cs472/proj1/PuzzleSolver.java	/^public class PuzzleSolver $/;"	c
 Queues	472notes1.md	/^#### Queues$/;"	t	section:Principals of AI""Knuth's Conjecture
@@ -156,7 +172,7 @@ Recursive Best-First Search (RBFS)	472notes1.md	/^#### Recursive Best-First Sear
 Resolution	472notes1.md	/^## Resolution$/;"	s	chapter:Monte Carlo Tree Search
 Resolution tree	472notes1.md	/^## Resolution tree$/;"	s	chapter:Monte Carlo Tree Search
 Sacrificing Search (Weighted A$\\ast$ Search)	472notes1.md	/^#### Sacrificing Search (Weighted A$\\ast$ Search)$/;"	t	section:Principals of AI""Tree Search
-Sensorless Situation	472notes1.md	/^#### Sensorless Situation$/;"	t	section:Principals of AI""Non-deterministic Actions
+Sensor-less Situation	472notes1.md	/^#### Sensor-less Situation$/;"	t	section:Principals of AI""Non-deterministic Actions
 Simplex method $O(2^n)$	472notes1.md	/^## Simplex method $O(2^n)\$$/;"	s	chapter:Monte Carlo Tree Search
 Simulated Annealing	472notes1.md	/^#### Simulated Annealing$/;"	t	section:Principals of AI""Local Search
 State	astar/edu/iastate/cs472/proj1/State.java	/^  public State() throws IllegalArgumentException {$/;"	m	class:State
@@ -172,6 +188,7 @@ This exercise explores subset–superset relations between belief states in sens
 TileMismatch	astar/edu/iastate/cs472/proj1/Heuristic.java	/^	TileMismatch, ManhattanDist, DoubleMoveHeuristic$/;"	e	enum:Heuristic	file:
 Trace the operation of A search applied to the problem of getting to Bucharest from Lugoj using the straight-line distance heuristic. That is, show the sequence of nodes that the algorithm will consider and the f, g, and h score for each node.	problemSet1.md	/^###### Trace the operation of A search applied to the problem of getting to Bucharest from Lugoj/;"	u	section:COMS 472 Problem Set 1""3.27
 Transition Model between b-states	472notes1.md	/^#### Transition Model between b-states$/;"	t	section:Principals of AI""Non-deterministic Actions
+Translating English Sentences to FOL	472notes1.md	/^## Translating English Sentences to FOL$/;"	s	chapter:Monte Carlo Tree Search
 Tree Decomposition	472notes1.md	/^## Tree Decomposition$/;"	s	chapter:Monte Carlo Tree Search
 Tree Search	472notes1.md	/^## Tree Search$/;"	s	chapter:Principals of AI
 UP	astar/edu/iastate/cs472/proj1/Move.java	/^	LEFT, RIGHT, UP, DOWN,  DBL_LEFT, DBL_RIGHT, DBL_UP, DBL_DOWN$/;"	e	enum:Move	file:

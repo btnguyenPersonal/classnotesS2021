@@ -83,6 +83,8 @@ $(¬P_1∨⋯∨¬P_m)∨(Q_1∨⋯∨Q_n)$,
 
 $(¬P_1∨⋯∨¬P_m)∨(Q_1∨⋯∨Q_n)$,
 
+$¬P_1∨⋯∨¬P_m∨Q_1∨⋯∨Q_n$,
+
 3. Write down the full resolution rule for sentences in implicative normal form.
 
 wtf is implicative normal form?????? do I have to know for test?
@@ -117,12 +119,17 @@ Proof by Contradiction: Assume ¬G
 
 2. Two clauses are semantically distinct if they are not logically equivalent. How many semantically distinct 2-CNF clauses can be constructed from n proposition symbols?
 
-n=1 &rarr; 3
-
-n=2 &rarr; 10
+There are ${2 \choose 2n} - (n - 1)$ semantically distinct clauses. There are $2n$ symbols, because each symbol can be inverted _eg. ¬A or A_, and each of the $2n$ symbols can be chosen for each of the $2$ symbols. However, since the problem says semantically distinct we cannot count clauses like ¬A∨A, because they just evaluate to true, so that takes $(n - 1)$ from our total.
 
 3. Using your answer to (b), prove that propositional resolution always terminates in time polynomial in n given a 2-CNF sentence containing no more than n distinct symbols.
+
+${2 \choose 2n} - (n - 1) = 2n^2 - 2n + 1$
+
+two 2-CNF clauses will always create at maximum another 2-CNF clause when they resolve, therefore there at maximum the algorithm will go through all $2n^2 - 2n + 1$ clauses, which is polynomial time.
+
 4. Explain why your argument in c does not apply to 3-CNF.
+
+two 3-CNF clauses does not always create at maximum another 3-CNF clause, so the same logic does not apply
 
 ## 7.22 (4+4+4 = 12 pts)
 Prove each of the following assertions:
@@ -234,12 +241,12 @@ function DPLL(clauses, symbols, model) returns true or false
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |0|{A,B,C,D,E,F}|{}|D|N/A|
 |1|{A,B,C,E,F}|{D = True}|N/A|N/A|
-|2|{B,C,E,F}|{A = True, D = True}|N/A|N/A|
-|3|{C,E,F}|{B = True, A = True, D = True}|N/A|¬B∨F $\implies$ F = True|
-|4|{C,E}|{F = True, B = True, A = True, D = True}|N/A|¬C∨¬F∨¬B $\implies$ C = False|
-|5|{E}|{C = False, F = True, B = True, A = True, D = True}|N/A|N/A|¬B∨C returns false|
-|6|{C,E,F}|{B = False, A = True, D = True}|N/A|¬A∨B∨E $\implies$ E = True|
-|7|{C,F}|{E = True, B = False, A = True, D = True}|N/A|N/A|¬E∨B returns false|
-|8|{B,C,E,F}|{A = False, D = True}|E = False|N/A|
-|9|{B,C,F}|{E = False, A = False, D = True}|B = False|N/A|
-|10|{C,F}|{B = False, E = False, A = False, D = True}|N/A|N/A|return true|
+|2|{B,C,E,F}|{D = True, A = True}|N/A|N/A|
+|3|{C,E,F}|{D = True, A = True, B = True}|N/A|¬B∨F $\implies$ F = True|
+|4|{C,E}|{D = True, A = True, B = True, F = True}|N/A|¬C∨¬F∨¬B $\implies$ C = False|
+|5|{E}|{D = True, A = True, B = True, F = True, C = False}|N/A|N/A|¬B∨C returns false|
+|6|{C,E,F}|{D = True, A = True, B = False}|N/A|¬A∨B∨E $\implies$ E = True|
+|7|{C,F}|{D = True, A = True, B = False, E = True}|N/A|N/A|¬E∨B returns false|
+|8|{B,C,E,F}|{D = True, A = False}|E = False|N/A|
+|9|{B,C,F}|{D = True, A = False, E = False}|B = False|N/A|
+|10|{C,F}|{D = True, A = False, E = False, B = False}|N/A|N/A|return true|
