@@ -55,7 +55,7 @@ Proof by Contradiction: ¬(¬A∧¬B) = A∨B
 | ¬B | B |
 | $\empty$ | |
 
-Contradiction - B must be true because it is correct given the steps, then ¬B must also be true given the steps
+Contradiction - B must be true because it is correct given the steps, then ¬B must also be true given the steps. Since both cannot be true, this proves the contradiction
 
 ## 7.16 (5+5+5 = 15 pts)
 This exercise looks into the relationship between clauses and implication sentences.
@@ -138,23 +138,20 @@ Prove each of the following assertions:
 
 1. Every pair of propositional clauses either has no resolvents, or all their resolvents are logically equivalent.
 
-Proof by Contradiction:
+Case 1:
 
-Assume that a pair of propositional clause A∨B and ¬A∨C, where A, B, and C can be any literal, does not have all of their resolvents logically equivalent.
+If a pair of propositional clauses do not resolve, there must be zero resolvents.
 
-A∨B is true
+Case 2:
 
-¬A∨C is true
+If a pair of propositional clauses resolves to one resolvent, then all resolvents must be logically equivalent because there is only one resolvent.
 
-¬A∨C is true by definition
+Case 3:
 
-??? isn't there only one resolvent for each pair of propositional clauses?
+If a pair of propositional clauses resolves to more than one resolvent, then there must be more than one shared symbol in the pair of propositional clauses where they are the inverse of each other in each clause. For example, ¬P will be in clause 1, and P will be in clause 2.
+Therefore, if you resolve each of those resolvents with every single shared symbol, they will all resolve to the exact same thing in the end, making them all logically equivalent.
 
-split into three cases? 0 resolvents, 1 resolvent, >=2 resolvents
-
-case 1:
-case 2:
-case 3:
+This covers all cases of every different number of resolvents, therefore every pair of propositional clauses either has no resolvents, or all their resolvents are logically equivalent.
 
 2. There is no clause that, when resolved with itself, yields (after factoring) the clause (¬P∨¬Q).
 
@@ -218,11 +215,31 @@ Therefore, this sentence is satisfiable because both sides compile down to the s
 
 3. Prove your answer to (a) using resolution.
 
-Contradiction: ¬([¬F∨¬D∨P]⇒[¬F∨¬D∨P])
+[(Food⇒Party)∨(Drinks⇒Party)]⇒[(Food∧Drinks)⇒Party]
 
-Simplify
+[(F⇒P)∨(D⇒P)]⇒[(F∧D)⇒P]
 
-say false or false or ...
+[(¬F∨P)∨(¬D∨P)]⇒[¬(F∧D)∨P]
+
+[¬F∨P∨¬D∨P]⇒[¬(F∧D)∨P]
+
+[¬F∨¬D∨P]⇒[¬(F∧D)∨P]
+
+[¬(F∧D)∨P]⇒[¬(F∧D)∨P]
+
+[¬F∨¬D∨P]⇒[¬F∨¬D∨P]
+
+¬(¬F∨¬D∨P)∨¬F∨¬D∨P
+
+(F∧D∧¬P)∨¬F∨¬D∨P
+
+(F∨¬F∨¬D∨P)∧(D∨¬F∨¬D∨P)∧(¬P∨¬F∨¬D∨P)
+
+(True)∧(True)∧(True)
+
+True
+
+By resolution, this statement is always true
 
 ## 7.26 (10 pts)
 Convert the following set of sentences to clausal form.
