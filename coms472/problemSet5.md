@@ -87,7 +87,8 @@ $¬P_1∨⋯∨¬P_m∨Q_1∨⋯∨Q_n$,
 
 3. Write down the full resolution rule for sentences in implicative normal form.
 
-wtf is implicative normal form?????? do I have to know for test?
+$\frac{¬P_1∨⋯∨l_i∨⋯∨¬P_m∨Q_1∨⋯∨Q_n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ¬A_1∨⋯∨¬A_m∨B_1∨⋯∨r_j∨⋯∨B_n}
+{¬P_1∨⋯∨l_{i-1}∨l_{i+1}∨⋯∨¬P_m∨¬A_1∨⋯∨¬A_m∨Q_1∨⋯∨Q_n∨B_1∨⋯∨r_{j-1}∨r_{j+1}∨⋯∨B_n}$
 
 ## 7.21 (3+4+3+3 = 13 pts)
 A propositional 2-CNF expression is a conjunction of clauses, each containing exactly 2 literals, e.g.,
@@ -149,11 +150,21 @@ A∨B is true
 
 ??? isn't there only one resolvent for each pair of propositional clauses?
 
+split into three cases? 0 resolvents, 1 resolvent, >=2 resolvents
+
+case 1:
+case 2:
+case 3:
+
 2. There is no clause that, when resolved with itself, yields (after factoring) the clause (¬P∨¬Q).
 
 The only clauses that can be resolved with themself must have at least one literal and the corresponding opposite literal in the same clause.
 
-¬A∨A∨...
+Clause 1: ¬A∨A∨...
+
+Clause 2: ¬A∨A∨...
+
+Resolvent: ¬A∨A∨...
 
 Therefore, resolving with themself will lead to a clause with the form: ¬A∨A∨... which is always true
 
@@ -161,11 +172,11 @@ Therefore, resolving with themself will lead to a clause with the form: ¬A∨A�
 
 The only clauses that can be resolved with themself must have at least one literal and the corresponding opposite literal in the same clause.
 
-¬A∨A∨...
+Clause: ¬A∨A∨...
 
 However, having a literal and the corresponding opposite literal in the same clause will always force it to be true
 
-¬A∨A is always true
+Any clause that contains ¬A∨A is always true
 
 ## 7.23 (5+5+5 = 15 pts)
 Consider the following sentence:
@@ -173,8 +184,6 @@ Consider the following sentence:
 [(Food⇒Party)∨(Drinks⇒Party)]⇒[(Food∧Drinks)⇒Party].
 
 1. Determine, using enumeration, whether this sentence is valid, satisfiable (but not valid), or unsatisfiable.
-
-Truth Table for everything
 
 |Food|Party|Drinks|[(Food⇒Party)∨(Drinks⇒Party)]⇒[(Food∧Drinks)⇒Party]|
 |:---:|:---:|:---:|:---:|
@@ -209,7 +218,11 @@ Therefore, this sentence is satisfiable because both sides compile down to the s
 
 3. Prove your answer to (a) using resolution.
 
-??? what is resolution //TODO
+Contradiction: ¬([¬F∨¬D∨P]⇒[¬F∨¬D∨P])
+
+Simplify
+
+say false or false or ...
 
 ## 7.26 (10 pts)
 Convert the following set of sentences to clausal form.
@@ -266,7 +279,7 @@ function DPLL(clauses, symbols, model) returns true or false
 
 |Iteration|Symbols|Model|Pure?|Unit?|return?|
 |:---:|:---:|:---:|:---:|:---:|:---:|
-|0|{A,B,C,D,E,F}|{}|D|N/A|
+|0|{A,B,C,D,E,F}|{}|D = True|N/A|
 |1|{A,B,C,E,F}|{D = True}|N/A|N/A|
 |2|{B,C,E,F}|{D = True, A = True}|N/A|N/A|
 |3|{C,E,F}|{D = True, A = True, B = True}|N/A|¬B∨F $\implies$ F = True|

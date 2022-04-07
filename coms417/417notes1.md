@@ -229,3 +229,11 @@ public void test_1 {
 
 #### Functional Units are aspects of the program behavior that can be tested independently
   - TSL (test specification language) means of implementing the category partition method
+
+## Mutation and Ground Strings
+
+The key to mutation testing is the design of the mutation operators
+
+Some mutant strings are based on ground strings
+
+Sometimes they are derived directly from the grammar

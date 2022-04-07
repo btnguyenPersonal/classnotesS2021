@@ -929,3 +929,31 @@ Depth-First Proof Tree
 ## Logic Programming
 
 ## Conversion into Conjunctive normal form
+
+## Drawbacks of using Belief states
+
+- large belief states &rarr; full of unlikely possibilities because every possible explanation of the percepts needs to be considered
+
+- correct contingent plan growing arbitrarily large
+
+- no successful plan guaranteed
+
+## Probability
+
+deals with chance experiments
+
+$\Omega$ is the sample space
+
+rolling the dice $\Omega$ = {1,2,3,4,5,6}
+
+## Probability Syntax
+
+__P__(Weather) = {0.6,0.1,0.29,0.01}
+
+P(Weather = sun) = 0.6
+
+P(Weather = rain) = 0.1
+
+P(Weather = cloud) = 0.29
+
+P(Weather = snow) = 0.01
