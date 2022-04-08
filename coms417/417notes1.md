@@ -237,3 +237,7 @@ The key to mutation testing is the design of the mutation operators
 Some mutant strings are based on ground strings
 
 Sometimes they are derived directly from the grammar
+
+## Mutation testing
+
+generates new versions of your program with one change, and then runs the test suite on them and sees if they can catch the errors

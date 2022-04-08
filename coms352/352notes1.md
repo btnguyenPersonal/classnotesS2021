@@ -1665,3 +1665,51 @@ To speed up file system, blocks can be written out of order
 3. Checkpoint - write the commit data and post that the transaction is done
 
 ## Recovery
+
+## Security
+
+System is secure if resources are used and accessed as intended under all circumstances
+
+## Requirements of Security Mechanisms
+
+Confidentiality: information maintained by a computer system that is accessible only by authorized parties
+
+Integrity: a computer system's resources can be modified only by authorized parties
+
+Availability: a computer system can be accessible at required times by authorized parties
+
+Authenticity: a computer system can verify the identity of a user
+
+## Security Violation Categories
+
+Breach of confidentiality
+
+Breach of integrity
+
+Breach of availability
+
+Theft of service
+
+Denial of service
+
+## Program Threats
+
+Malware
+
+Trojan Horse
+
+Spyware
+
+Ransomware
+
+__Principle of least privilege__ - only give a user the bare minimum that they need to run the tasks they need
+
+Sniffing - interrupt communication
+
+Masquerading - pretend to be sender
+
+Man-in-the-middle - interrupt the communication in the middle
+
+## Denial of Service
+
+(DDoS) send simple message that causes the server to do a lot of work
