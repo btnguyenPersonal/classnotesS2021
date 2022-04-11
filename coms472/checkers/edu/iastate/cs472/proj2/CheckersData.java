@@ -221,7 +221,7 @@ public class CheckersData {
     }
     return legalMoves;
   }
-  
+
   boolean checkIf(int row, int col, int color) {
     if (row < 0 || row > 7 || col < 0 || col > 7) {
       return false;
