@@ -1713,3 +1713,104 @@ Man-in-the-middle - interrupt the communication in the middle
 ## Denial of Service
 
 (DDoS) send simple message that causes the server to do a lot of work
+
+## Cryptography
+
+needing key to decrypt everything
+
+__Symmetric System__ - $E_k$ = $D_k$, so the key must be kept secret
+
+__Asymmetric System__ - $E_k$ != $D_k$, $E_k$ can be made public; $D_k$ is secret and can't easily be derived from $E_K$
+
+- $E_k$ is a public key
+
+- $D_k$ is a private key
+
+## How to agree on a key?
+
+Can't without an asymmetric system
+
+Everyone can share their public keys, then send an encrypted message from that, and only they can see.
+
+## Symmetric Encryption Algorithms
+
+DES most common before (56-bit key), but insecure now
+
+NIST adopted AES (128 bit key)
+
+- machine that could crack 56-bit DES in 1 second, would take 149 trillion years to crack AES key
+
+## Hash functions
+
+$h(p) = C$
+
+- Should be very hard to reverse hash function
+
+$h'(C) = p$
+
+Public-key encryption based on each user having two keys:
+
+- public key - published key used to encrypt data
+
+- private key - key known only to individual user used to decrypt data
+
+No efficient algorithm for finding the prime factors of a number
+
+## Authentication
+
+how do you know they are who they say they are
+
+### AP 1.0
+
+- Alice to Bob: "I am Alice"
+
+- Problem: intruder can also send such a message
+
+### AP 2.0
+
+- Authenticate IP address
+
+- Problem: IP Spoofing (send IP packets with false address)
+
+### AP 3.0
+
+- Use secret password
+
+- Problem: Trudy can intercept Alice's password by sniffing packets
+
+### AP 3.1
+
+- Use symmetric encrypted password
+
+- Problem: can still get the encrypted message and just send at later date
+
+### AP 4.0
+
+- Solution: pick a "once-in-a-lifetime" number (nonce) for each session symmetric key
+
+### AP 5.0
+
+- Use AP 4.0 but with asymmetric keys
+
+## Access Control
+
+__Access Control__ is regulating what actions subjects can perform on general objects
+
+__Subjects__ are users
+
+Access Control matrix 
+
+- Could have matrix to give certain access to everything
+
+- not memory efficient
+
+- fast lookup
+
+Access Control list (looks like sql table)
+
+- Each thing in Directory -> has list of every user and their access rights to everything
+
+- memory efficient
+
+- can't get all things user has access to easy
+
