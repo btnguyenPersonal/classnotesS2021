@@ -957,3 +957,7 @@ P(Weather = rain) = 0.1
 P(Weather = cloud) = 0.29
 
 P(Weather = snow) = 0.01
+
+## Uniform Distribution
+
+same probability for every outcome
