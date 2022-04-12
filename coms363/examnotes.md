@@ -12,3 +12,5 @@ where v.vid in
 (
  select * from events where e.location = 'Des Moines'
 );
+
+think of each nesting as a filter, like take distinct eid where salary > 2000000, then filter out the eid in the surrounding select
