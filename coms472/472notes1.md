@@ -961,3 +961,17 @@ P(Weather = snow) = 0.01
 ## Uniform Distribution
 
 same probability for every outcome
+
+## Normalization
+
+P(cavity|toothache) = $\frac{P(P(cavity \&\& toothache))}{P(toothache)}$
+
+Use Bayes rule to normalize (Bleh)
+
+- The disease meningitis causes a patient to have a stiff neck 70% of the time P(s|m)
+
+- The prior probability that any patient has meningitis is 1/50000 P(m)
+
+- The prior probability that any patient has a stiff neck is 1/100 P(s)
+
+(P(s|m) * P(m)) / P(s)
