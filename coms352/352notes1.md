@@ -1798,7 +1798,7 @@ __Access Control__ is regulating what actions subjects can perform on general ob
 
 __Subjects__ are users
 
-Access Control matrix 
+Access Control matrix
 
 - Could have matrix to give certain access to everything
 
@@ -1814,3 +1814,104 @@ Access Control list (looks like sql table)
 
 - can't get all things user has access to easy
 
+## OS Security
+
+Fundamental controller of all system resources, so it makes it primary of attack
+
+Access Control - who is allowed to access what?
+
+Integrity - how to prevent corruption of resources?
+
+Availability - how to ensure resources are available?
+
+## Common Security Features
+
+Enforced Sharing
+
+- resources should be shared only as appropriate
+
+Interposes communication and synchronization
+
+- OS mediates communication between processes
+
+Protection of critical OS data
+
+- the OS must protect its own secret data from users
+
+Guaranteed fair service
+
+- a process should not be able to "game the system" to get extra resources
+
+Interface to hardware
+
+- processes need to access to hardware resources, the access should be restricted to appropriate use
+
+User authentication
+
+- need method to identify users and verify they are who they say they are
+
+Memory protection
+
+- processes should be limited in what memory they can access
+
+File and I/O
+
+- need to protect files from unauthorized users
+
+Allocation and access control to general objects
+
+- other features that need to protect include concurrency and synchronization
+
+## Defense in Depth
+
+A basic principle of security design is defense in depth, multiple layers of security controls to protect the system
+
+Protect the system using several independent methods, reduces chance that one vulnerability can compromise entire system
+
+Often conceived of as rings of security, the inner most core of the system is protected by the most layers
+
+## Layered Architecture
+
+Often relies on hardware support to protect inner layers, e.g. kernel mode and machine mode
+
+## Layered Trust
+
+A hierarchically designed system has layers of trust
+
+Layers are isolated to limit effects of problems in one layer
+
+Level 2: Noncritical functions few disasters likely from noncritical software
+
+Level 1: Less critical functions impact limited
+
+Level 0: Most Critical function if compromised, nothing is out of reach.
+
+## Trusted System
+
+one that is relied upon to a specified extent to enforce a specified security policy
+
+## Trusted Computing Base (TCB)
+
+name given to everything in the trusted operating system that is necessary to enforce the security policy
+
+## Operating System tools for security
+
+Virtualization 
+
+- providing the appearance of one set of resources by using different resources
+
+Virtual Machine 
+
+- present to the users only the resources they need, giving the user the impression their program its running on its own machine
+
+Hypervisor (virtual machine monitor) 
+
+- software that implements a virtual machine
+
+Sandbox 
+
+- similar to virtualization, a protected environment in which a program can run and not endanger anything else on the system
+
+Honeypot 
+
+- a fake environment intended to lure the attacker
