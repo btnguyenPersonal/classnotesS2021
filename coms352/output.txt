@@ -1,0 +1,228 @@
+   
+ 
+ 
+ 
+ 
+Raspberry Pi Bootcode
+ 
+ 
+ 
+Raspberry Pi Bootcode
+ 
+ 
+ 
+Raspberry Pi Bootcode
+ 
+USB ethernet boot
+USB ethernet boot
+USB ethernet boot
+Sending DHCP request
+Sending DHCP request
+Waiting for dhcp_reply
+ARP request: my IP addr 192.168.1.135 my eth_addr b8:27:eb:f2:ec:f5 ARP for addr 192.168.1.136
+Done ARP for 192.168.1.136 got b8:27:eb:8e:43:1b
+Sending DHCP request
+Waiting for dhcp_reply
+ARP request: my IP addr 192.168.1.135 my eth_addr b8:27:eb:f2:ec:f5 ARP for addr 192.168.1.136
+Done ARP for 192.168.1.136 got b8:27:eb:8e:43:1b
+Waiting for dhcp_reply
+ARP request: my IP addr 192.168.1.135 my eth_addr b8:27:eb:f2:ec:f5 ARP for addr 192.168.1.136
+Done ARP for 192.168.1.136 got b8:27:eb:8e:43:1b
+Read File: config.txt, 13 (bytes)
+Read File: config.txt, 13 (bytes)
+Read File: config.txt, 13 (bytes)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Raspberry Pi Bootcode
+ 
+ 
+ 
+ 
+Raspberry Pi Bootcode
+Raspberry Pi Bootcode
+Read File: config.txt, 13
+Read File: config.txt, 13
+Read File: config.txt, 13
+Read File: start.elf, 2966048 (bytes)
+Read File: start.elf, 2966048 (bytes)
+Read File: start.elf, 2966048 (bytes)
+Read File: fixup.dat, 7221 (bytes)
+Read File: fixup.dat, 7221 (bytes)
+Read File: fixup.dat, 7221 (bytes)
+MESS:00:00:24.322327:0: brfs: File read: /mfs/sd/config.txt
+MESS:00:00:24.322327:0: brfs: File read: /mfs/sd/config.txt
+MESS:00:00:24.322327:0: brfs: File read: /mfs/sd/config.txt
+ MESS:00:00:24.326355:0: brfs: File read: -2 bytes
+ MESS:00:00:24.326355:0: brfs: File read: -2 bytes
+ MESS:00:00:24.326355:0: brfs: File read: -2 bytes
+ MESS:00:00:24.410958:0: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:24.410958:0: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:24.410958:0: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:24.417119:0: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:24.417119:0: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:24.417119:0: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:24.423456:0: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:24.423456:0: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:24.429793:0: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:24.436129:0: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:24.423456:0: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:24.429793:0: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:24.429793:0: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:24.436129:0: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:24.436129:0: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:24.442467:0: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:24.442467:0: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:24.442467:0: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:24.448803:0: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:24.448803:0: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:24.448803:0: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:24.455141:0: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:24.461477:0: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:24.455141:0: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:24.455141:0: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:24.461477:0: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:24.461477:0: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:24.467814:0: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:24.467814:0: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:24.467814:0: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:24.473908:0: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:24.473908:0: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:24.473908:0: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:26.512122:0: brfs: File read: /mfs/sd/config.txt
+ MESS:00:00:26.512122:0: brfs: File read: /mfs/sd/config.txt
+ MESS:00:00:26.512122:0: brfs: File read: /mfs/sd/config.txt
+ MESS:00:00:27.366693:0: gpioman: gpioman_get_pin_num: pin DISPLAY_DSI_PORT not defined
+ MESS:00:00:27.366693:0: gpioman: gpioman_get_pin_num: pin DISPLAY_DSI_PORT not defined
+ MESS:00:00:27.366693:0: gpioman: gpioman_get_pin_num: pin DISPLAY_DSI_PORT not defined
+ MESS:00:00:27.375074:0: *** Restart logging
+ MESS:00:00:27.377565:0: brfs: File read: -2 bytes
+ MESS:00:00:27.407574:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:27.414263:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:27.421121:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:27.427979:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:27.375074:0: *** Restart logging
+ MESS:00:00:27.377565:0: brfs: File read: -2 bytes
+ MESS:00:00:27.407574:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:27.414263:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:27.421121:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:27.427979:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:27.434837:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:27.375074:0: *** Restart logging
+ MESS:00:00:27.377565:0: brfs: File read: -2 bytes
+ MESS:00:00:27.407574:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:27.414263:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:27.421121:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:27.427979:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:27.434837:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:27.434837:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:27.441694:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:27.441694:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:27.441694:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:27.448552:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:27.448552:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:27.455410:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:27.462268:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:27.469125:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:27.475740:0: hdmi: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:27.481645:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:27.489438:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:27.496295:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:27.455410:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:27.462268:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:27.469125:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:27.475740:0: hdmi: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:27.481645:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:27.489438:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:27.496295:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:27.503153:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:27.510010:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:27.516868:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:27.448552:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:27.503153:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:27.455410:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:27.462268:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:27.469125:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:27.475740:0: hdmi: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:27.481645:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 0
+ MESS:00:00:27.489438:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 1
+ MESS:00:00:27.496295:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 2
+ MESS:00:00:27.503153:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 3
+ MESS:00:00:27.510010:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:27.516868:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:27.510010:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 4
+ MESS:00:00:27.516868:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 5
+ MESS:00:00:27.523726:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:27.523726:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:27.523726:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 6
+ MESS:00:00:27.530583:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:27.537441:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:27.544299:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:27.550915:0: hdmi: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:27.530583:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:27.537441:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:27.544299:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:27.530583:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 7
+ MESS:00:00:27.537441:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 8
+ MESS:00:00:27.544299:0: hdmi: HDMI0:EDID error reading EDID block 0 attempt 9
+ MESS:00:00:27.550915:0: hdmi: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:27.550915:0: hdmi: HDMI0:EDID giving up on reading EDID block 0
+ MESS:00:00:27.556529:0: hdmi: HDMI:hdmi_get_state is deprecated, use hdmi_get_display_state instead
+ MESS:00:00:27.556529:0: hdmi: HDMI:hdmi_get_state is deprecated, use hdmi_get_display_state instead
+ MESS:00:00:27.556529:0: hdmi: HDMI:hdmi_get_state is deprecated, use hdmi_get_display_state instead
+ MESS:00:00:27.565275:0: HDMI0: hdmi_pixel_encoding: 162000000
+ MESS:00:00:27.565275:0: HDMI0: hdmi_pixel_encoding: 162000000
+ MESS:00:00:27.565275:0: HDMI0: hdmi_pixel_encoding: 162000000
+ MESS:00:00:27.570985:0: vec: vec_middleware_power_on: vec_base: 0x7e806000 rev-id 0x00002708 @ vec: 0x7e806100 @ 0x00000420 enc: 0x7e806060 @ 0x00000220 cgmsae: 0x7e80605c @ 0x00000000
+ MESS:00:00:27.570985:0: vec: vec_middleware_power_on: vec_base: 0x7e806000 rev-id 0x00002708 @ vec: 0x7e806100 @ 0x00000420 enc: 0x7e806060 @ 0x00000220 cgmsae: 0x7e80605c @ 0x00000000
+ MESS:00:00:27.570985:0: vec: vec_middleware_power_on: vec_base: 0x7e806000 rev-id 0x00002708 @ vec: 0x7e806100 @ 0x00000420 enc: 0x7e806060 @ 0x00000220 cgmsae: 0x7e80605c @ 0x00000000
+ MESS:00:00:27.592421:0: dtb_file 'bcm2710-rpi-3-b-plus.dtb'
+ MESS:00:00:27.592421:0: dtb_file 'bcm2710-rpi-3-b-plus.dtb'
+ MESS:00:00:27.592421:0: dtb_file 'bcm2710-rpi-3-b-plus.dtb'
+ MESS:00:00:28.673544:0: brfs: File read: /mfs/sd/bcm2710-rpi-3-b-plus.dtb
+ MESS:00:00:28.673544:0: brfs: File read: /mfs/sd/bcm2710-rpi-3-b-plus.dtb
+ MESS:00:00:28.673544:0: brfs: File read: /mfs/sd/bcm2710-rpi-3-b-plus.dtb
+ MESS:00:00:28.678636:0: Loading 'bcm2710-rpi-3-b-plus.dtb' to 0x100 size 0x0
+ MESS:00:00:28.699781:0: brfs: File read: -2 bytes
+ MESS:00:00:28.678636:0: Loading 'bcm2710-rpi-3-b-plus.dtb' to 0x100 size 0x0
+ MESS:00:00:28.699781:0: brfs: File read: -2 bytes
+ MESS:00:00:28.678636:0: Loading 'bcm2710-rpi-3-b-plus.dtb' to 0x100 size 0x0
+ MESS:00:00:28.699781:0: brfs: File read: -2 bytes
+ MESS:00:00:29.858452:0: brfs: File read: /mfs/sd/config.txt
+ MESS:00:00:29.858452:0: brfs: File read: /mfs/sd/config.txt
+ MESS:00:00:29.858452:0: brfs: File read: /mfs/sd/config.txt
+ MESS:00:00:29.868523:0: brfs: File read: -2 bytes
+ MESS:00:00:29.868523:0: brfs: File read: -2 bytes
+ MESS:00:00:29.868523:0: brfs: File read: -2 bytes
+ MESS:00:00:30.920596:0: brfs: File read: /mfs/sd/cmdline.txt
+ MESS:00:00:30.920596:0: brfs: File read: /mfs/sd/cmdline.txt
+ MESS:00:00:30.920596:0: brfs: File read: /mfs/sd/cmdline.txt
+ MESS:00:00:30.924551:0: Failed to read command line file 'cmdline.txt'
+ MESS:00:00:30.924551:0: Failed to read command line file 'cmdline.txt'
+ MESS:00:00:30.924551:0: Failed to read command line file 'cmdline.txt'
+ MESS:00:00:31.035750:0: gpioman: gpioman_get_pin_num: pin EMMC_ENABLE not defined
+ MESS:00:00:31.035750:0: gpioman: gpioman_get_pin_num: pin EMMC_ENABLE not defined
+ MESS:00:00:31.035750:0: gpioman: gpioman_get_pin_num: pin EMMC_ENABLE not defined
+ MESS:00:00:31.101517:0: brfs: File read: -2 bytes
+ MESS:00:00:31.101517:0: brfs: File read: -2 bytes
+ MESS:00:00:31.101517:0: brfs: File read: -2 bytes
+ MESS:00:00:37.264464:0: brfs: File read: /mfs/sd/kernel7.img
+ MESS:00:00:37.264464:0: brfs: File read: /mfs/sd/kernel7.img
+ MESS:00:00:37.264464:0: brfs: File read: /mfs/sd/kernel7.img
+ MESS:00:00:37.268426:0: Loading 'kernel7.img' to 0x8000 size 0x0
+ MESS:00:00:37.274164:0: Device tree loaded to 0x2eff7e00 (size 0x81a3)
+ MESS:00:00:37.282467:0: uart: Set PL011 baud rate to 103448.300000 Hz
+ MESS:00:00:37.288761:0: uart: Baud rate change done...
+ MESS:00:00:37.268426:0: Loading 'kernel7.img' to 0x8000 size 0x0
+ MESS:00:00:37.274164:0: Device tree loaded to 0x2eff7e00 (size 0x81a3)
+ MESS:00:00:37.282467:0: uart: Set PL011 baud rate to 103448.300000 Hz
+ MESS:00:00:37.288761:0: uart: Baud rate change done...
+ MESS:00:00:37.268426:0: Loading 'kernel7.img' to 0x8000 size 0x0
+ MESS:00:00:37.274164:0: Device tree loaded to 0x2eff7e00 (size 0x81a3)
+ MESS:00:00:37.282467:0: uart: Set PL011 baud rate to 103448.300000 Hz
+ MESS:00:00:37.288761:0: uart: Baud rate change done...

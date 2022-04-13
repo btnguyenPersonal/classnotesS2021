@@ -56,19 +56,11 @@ d.
 - edge pair coverage is not satisfied
     - Test Paths:
     [1,2,4,5,7,6]
+    [1,2,3,2,4,6]
+    [1,2,4,7,6]
+    [1,2,3,2,3,2,4,6]	
+    [1,2,4,5,7,6]
 - node coverage is satisfied
-
-//TODO need to add new paths
-N={1, 2, 3, 4, 5, 6,7} 
-N0= {1} 
-Nf={6} 
-E={(1,2),),(2,3),(2,4),(3,2),(4,5),(4,6),(5,6),(6,1),(7,6),(4,7),(5,7)} 
-And the following candidate test paths: 
-[1,2,4,5,6] 
-[1,2,3,2,4,7,6] 
-[1,2,4,6,1,2,4,7,6] 
-<!-- [4,7,6] -->
-<!-- [4,6,1,2,3,2,4,5,6] -->
 
 ## Q2
 
@@ -184,6 +176,12 @@ print "end"
 ![](../pic/triangleMutations.png)
 
 5. If you hover over the mutants it will tell you what they are and if they survived or were killed. Pick ONE mutation that survived and explain why. Make sure to state which line/mutation it is.
+
+Line number 8
+Mutation: change conditional boundary
+
+This mutation survived because there were no tests that completely covered all of the conditions for the mutation.
+There was no tests that checked for the very edges of that conditional boundary, so it did not catch the mutation in the test.
 
 ## Q4
 
