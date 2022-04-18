@@ -274,9 +274,14 @@ public class Tweetsdb {
        iname: the name of the ingredient to check
        */
 
-    private static void checkIngredient(Connection conn, String iname) {
+    private static void getTopHashTagUsers(Connection conn, String hashtag, String post_month, String post_year, String state) {
 
-        if (conn==null || iname==null) throw new NullPointerException();
+        if (conn==null 
+                || hashtag==null
+                || post_month==null
+                || post_year==null
+                || state==null
+                ) throw new NullPointerException();
         try {
 
             ResultSet rs =null;
@@ -288,13 +293,15 @@ public class Tweetsdb {
              * 
              */
             PreparedStatement lstmt = conn.prepareStatement(
-                    "select count(*) from ingredient where iname= ?");
+                    "select count(Tweets.tid) as tweet_count,Users.screen_name, Users.category, from Tweets, Users, HashTags where hashtag=? and post_month=? and post_year=? and state=? group by Users.screen_name order by count(Tweets.tid) desc limit 5");
 
             // clear previous parameter values
             lstmt.clearParameters();
 
-            // Replace the first question mark with the value of iname
-            lstmt.setString(1, iname);
+            lstmt.setString(1, hashtag);
+            lstmt.setInt(2, Integer.parseInt(post_month));
+            lstmt.setInt(3, Integer.parseInt(post_year));
+            lstmt.setString(4, state);
 
             // execute the query
             rs=lstmt.executeQuery();
@@ -372,6 +379,11 @@ public class Tweetsdb {
                         deleteUser(conn, user_screen_name);
                     }
                 } else if (option.equals("3")) {
+                    String hashtag=JOptionPane.showInputDialog("Enter the hashtag:");
+                    String post_month=JOptionPane.showInputDialog("Enter the month the tweet was posted:");
+                    String post_year=JOptionPane.showInputDialog("Enter the year the tweet was posted:");
+                    String state=JOptionPane.showInputDialog("Enter the year the state users need to be from:");
+                    getTopHashTagUsers(conn, hashtag, post_month, post_year, state);
                 } else {
                     break;
                 }
