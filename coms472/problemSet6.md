@@ -28,18 +28,49 @@ Assuming predicates Parent(p,q) and Female(p) and constants Joan and Kevin, with
 For each of the following sentences in English, decide if the accompanying first-order logic sentence is a good translation. If not, explain why not and correct it.
 1. Any apartment in London has lower rent than some apartments in Paris.
 ∀x[Apt(x)∧In(x,London)]⟹∃y([Apt(y)∧In(y,Paris)]⟹(Rent(x)<Rent(y)))
+
+Not true, the language "some apartments" implies that there are more than one apartment, but the formal argument makes it so that there can be only one apartment and it will be true
+
+Fixed: ∀x[Apt(x)∧In(x,London)]⟹∃y([Apt(y)∧In(y,Paris)]⟹(Rent(x)<Rent(y))) ∧ ∃z([Apt(z)∧In(z,Paris)]⟹(Rent(x)<Rent(z))) ∧ (y $\neq$ z)
+
 2. There is exactly one apartment in Paris with rent below $1000.
-∃xApt(x)∧In(x,Paris)∧∀y[Apt(y)∧In(y,Paris)∧(Rent(y)<Dollars(1000))]⟹(y=x)
+∃x[Apt(x)∧In(x,Paris)∧∀y[Apt(y)∧In(y,Paris)∧(Rent(y)<Dollars(1000))]⟹(y=x)]
+
+True
+
 3. If an apartment is more expensive than all apartments in London, it must be in Moscow.
 ∀xApt(x)∧[∀yApt(y)∧In(y,London)∧(Rent(x)>Rent(y))]⟹In(x,Moscow).
+
+Not True, it does not restrict the domain of x when putting rent(x)<rent(y)
+
+Fixed:∀xApt(x)∧[$\neg$∃yApt(y)∧In(y,London)∧(Rent(y)>Rent(x))]⟹In(x,Moscow).
 
 9.4  (4 X 3 = 12 pts)
 
 For each pair of atomic sentences, give the most general unifier if it exists:
 1. P(A,B,B), P(x,y,z).
+
+Unify(P(A,B,B), P(x,y,z))
+
+{x/A, y/B, z/B}
+
 2. Q(y,G(A,B)), Q(G(x,x),y).
+
+Unify(Q(y,G(A,B)), Q(G(x,x),y))
+
+{G(x,x)/y G(A,B)/y}
+
 3. Older(Father(y),y), Older(Father(x),John).
+
+Unify(Older(Father(y),y), Older(Father(x),John))
+
+Unification does not exist
+
 4. Knows(Father(y),y), Knows(x,x).
+
+Unify(Knows(Father(y),y), Knows(x,x).)
+
+{Father(y)/y x/y}
 
 9.9  (5 X 2 = 10 pts)
 
