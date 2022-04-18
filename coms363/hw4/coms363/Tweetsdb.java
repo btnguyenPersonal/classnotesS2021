@@ -102,6 +102,86 @@ public class Tweetsdb {
         rs.close();
     }
 
+    private static void deleteUser(Connection conn, String user_screen_name){
+
+        if (conn==null 
+                || post_day==null
+                || post_month==null
+                || post_year==null
+                || texts==null
+                || retweetCt==null
+                || user_screen_name==null
+                ) throw new NullPointerException();
+        try {
+            /* we want to make sure that all SQL statements for insertion 
+               of a new food are considered as one unit.
+               That is all SQL statements between the commit and previous commit 
+               get stored permanently in the DBMS or  all the SQL statements 
+               in the same transaction are rolled back.
+
+               By default, the isolation level is TRANSACTION_REPEATABLE_READ
+               By default, each SQL statement is one transaction
+
+               conn.setAutoCommit(false) is to 
+               specify what SQL statements are in the same transaction 
+               by a developer.
+               Several SQL statements can be put in one transaction.
+               */ 
+
+            conn.setAutoCommit(false);
+            // full protection against interference from other transaction
+            // prevent dirty read
+            // prevent unrepeatable reads
+            // prevent phantom reads
+            conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE );
+
+            PreparedStatement inststmt = conn.prepareStatement(" delete from Mentions where screen_name=? ");
+            inststmt.setString(1, user_screen_name);
+            int rowcount = inststmt.executeUpdate();
+            System.out.println("Number of mention rows updated:" + rowcount);
+            inststmt.close();
+
+            PreparedStatement inststmt = conn.prepareStatement(" delete from Mentions join Tweets join Users where Users.screen_name=? and Tweets.user_screen_name = Users.screen_name and Tweets.tid = Mentions.tid");
+            inststmt.setString(1, user_screen_name);
+            int rowcount = inststmt.executeUpdate();
+            System.out.println("Number of mention rows updated:" + rowcount);
+            inststmt.close();
+
+            PreparedStatement inststmt = conn.prepareStatement(" delete from HashTags join Tweets join Users where Users.screen_name=? and Tweets.user_screen_name = Users.screen_name and Tweets.tid = HashTags.tid");
+            inststmt.setString(1, user_screen_name);
+            int rowcount = inststmt.executeUpdate();
+            System.out.println("Number of hashtags rows updated:" + rowcount);
+            inststmt.close();
+
+            PreparedStatement inststmt = conn.prepareStatement(" delete from URLs join Tweets join Users where Users.screen_name=? and Tweets.user_screen_name = Users.screen_name and Tweets.tid = URLs.tid");
+            inststmt.setString(1, user_screen_name);
+            int rowcount = inststmt.executeUpdate();
+            System.out.println("Number of url rows updated:" + rowcount);
+            inststmt.close();
+
+            PreparedStatement inststmt = conn.prepareStatement(" delete from Tweets where user_screen_name=? ");
+            inststmt.setString(1, user_screen_name);
+            int rowcount = inststmt.executeUpdate();
+            System.out.println("Number of tweet rows updated:" + rowcount);
+            inststmt.close();
+
+            PreparedStatement inststmt = conn.prepareStatement(" delete from Users where screen_name=? ");
+            inststmt.setString(1, user_screen_name);
+            int rowcount = inststmt.executeUpdate();
+            System.out.println("Number of user rows updated:" + rowcount);
+            inststmt.close();
+
+            // Tell DBMS to make sure all the changes you made from 
+            // the prior commit is saved to the database
+            conn.commit();
+
+            // Reset the autocommit to commit per SQL statement
+            conn.setAutoCommit(true);
+
+        } catch (SQLException e) {}
+
+    }
+
     /**
      * Show an example of a transaction
      * @param conn Valid database connection
@@ -276,8 +356,6 @@ public class Tweetsdb {
                 + "Enter 4: Quit Program";
 
             while (true) {
-tid  post_day   post_month   post_year   texts  retweetCt   user_screen_name  
- 
                 option = JOptionPane.showInputDialog(instruction);
                 if (option.equals("1")) {
                     String post_day=JOptionPane.showInputDialog("Enter the day it was posted:");
@@ -288,6 +366,11 @@ tid  post_day   post_month   post_year   texts  retweetCt   user_screen_name
                     String user_screen_name=JOptionPane.showInputDialog("Enter the screen name of the user that posted:");
                     insertTweet(conn, post_day, post_month, post_year, texts, retweetCt, user_screen_name);
                 } else if (option.equals("2")) {
+                    String user_screen_name=JOptionPane.showInputDialog("Enter the screen name of the user you would like to delete:");
+                    String confirmation=JOptionPane.showInputDialog("Warning: all the tweets posted by this user will be deleted, do you still want to delete user (y/n):");
+                    if (confirmation == "y") {
+                        deleteUser(conn, user_screen_name);
+                    }
                 } else if (option.equals("3")) {
                 } else {
                     break;
