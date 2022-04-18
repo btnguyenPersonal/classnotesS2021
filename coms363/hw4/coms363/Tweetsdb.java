@@ -310,14 +310,6 @@ public class Tweetsdb {
             rs.next();
             int count = rs.getInt(1);
 
-
-            System.out.println("count=" + count);
-
-            if (count > 0) {
-                toShow = "The ingredient " + iname + " exists";
-            }
-            else toShow = "The ingredient " + iname + " does not exist";
-
             JOptionPane.showMessageDialog(null, toShow);
             lstmt.close();
             rs.close();
