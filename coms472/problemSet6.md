@@ -36,10 +36,10 @@ $\neg$ ∃x Customer(Joe, x) &and; Occupation(x, Lawyer)
 
 8.23 (5 X 2 = 10 pts)
 
-Assuming predicates 
+Assuming predicates
 
-- Parent( p,q ) 
-- Female( p ) 
+- Parent( p,q )
+- Female( p )
 
 and constants Joan and Kevin, with the obvious meanings, express each of the following sentences in first-order logic. (You may use the abbreviation ∃1 to mean “there exists exactly one.”)
 
@@ -81,7 +81,7 @@ True
 3. If an apartment is more expensive than all apartments in London, it must be in Moscow.
 ∀xApt(x)∧[∀yApt(y)∧In(y,London)∧(Rent(x)>Rent(y))]⟹In(x,Moscow).
 
-Not True, it does not restrict the domain of x when putting rent(x)<rent(y)
+Not True, the statement above is saying for all apartment x, that has a corresponding cheaper apartment y in London, then x must be in Moscow
 
 Fixed:∀xApt(x)∧[$\neg$∃yApt(y)∧In(y,London)∧(Rent(y)>Rent(x))]⟹In(x,Moscow).
 
@@ -115,12 +115,30 @@ Unification does not exist
 9.9  (5 X 2 = 10 pts)
 
 This question considers Horn KBs, such as the following:
-P(F(x))⇒P(x)Q(x)⇒P(F(x))P(A)Q(B)
+
+- P(F(x))⇒P(x)
+- Q(x)⇒P(F(x))
+- P(A)
+- Q(B)
+
 Let FC be a breadth-first forward-chaining algorithm that repeatedly adds all consequences of currently satisfied rules; let BC be a depth-first left-to-right backward-chaining algorithm that tries clauses in the order given in the KB. Which of the following are true?
 1. FC will infer the literal Q(A).
+
+False
+
 2. FC will infer the literal P(B).
+
+True
+
 3. If FC has failed to infer a given literal, then it is not entailed by the KB.
+
+False
+
 4. BC will return true given the query P(B).
+
+False
+??? ask professor if can substitute
+
 5. If BC does not return true given a query literal, then it is not entailed by the KB.
 
 9.24 (2 + 3 + 4 = 9 pts)
