@@ -975,3 +975,5 @@ Use Bayes rule to normalize (Bleh)
 - The prior probability that any patient has a stiff neck is 1/100 P(s)
 
 (P(s|m) * P(m)) / P(s)
+
+Markov blanket consists of its parents, children, and children's parents

@@ -7,21 +7,61 @@ Consider a vocabulary with the following symbols:
 - Doctor, Surgeon, Lawyer, Actor: Constants denoting occupations.
 - Emily, Joe: Constants denoting people. Use these symbols to write the following assertions in first-order logic:
 1. Emily is either a surgeon or a lawyer.
+
+Occupation(Emily, Surgeon) &or; Occupation(Emily, Lawyer)
+
 2. Joe is an actor, but he also holds another job.
+
+∃x Occupation(Joe, Actor) &and; Occupation(Joe, x) &and; x $\neq$ Actor
+
 3. All surgeons are doctors.
-4. Joe does not have a lawyer (i.e., is not a customer of any lawyer).
+
+∀x Occupation(x, Surgeon) ⟹ Occupation(x, Doctor)
+
+4. Joe does not have a lawyer (i.e., is not a customer of any lawyer)
+
+$\neg$ ∃x Customer(Joe, x) &and; Occupation(x, Lawyer)
+
 5. Emily has a boss who is a lawyer.
+
+∃x Boss(x, Emily) &and; Occupation(x, Lawyer)
+
 6. There exists a lawyer all of whose customers are doctors.
+
+∃x Occupation(x, Lawyer) &and; ∀y Customer(y, x) &and; Occupation(y, Doctor)
+
 7. Every surgeon has a lawyer.
+
+∀x Occupation(x, Surgeon) ⟹ ∃y Customer(x, y) &and; Occupation(y, Lawyer)
 
 8.23 (5 X 2 = 10 pts)
 
-Assuming predicates Parent(p,q) and Female(p) and constants Joan and Kevin, with the obvious meanings, express each of the following sentences in first-order logic. (You may use the abbreviation ∃1 to mean “there exists exactly one.”)
+Assuming predicates 
+
+- Parent( p,q ) 
+- Female( p ) 
+
+and constants Joan and Kevin, with the obvious meanings, express each of the following sentences in first-order logic. (You may use the abbreviation ∃1 to mean “there exists exactly one.”)
+
 1. Joan has a daughter (possibly more than one, and possibly sons as well).
+
+∃x Parent(Joan, x) &and; Female(x)
+
 2. Joan has exactly one daughter (but may have sons as well).
+
+∃1x Parent(Joan, x) &and; Female(x)
+
 3. Joan has exactly one child, a daughter.
+
+∃1y Parent(Joan, y) &and; Female(y) &and; $\neg$∃x Parent(Joan, x) &and; $\neg$ Female(x)
+
 4. Joan and Kevin have exactly one child together.
+
+∃1x Parent(Joan, x) &and; Parent(Kevin, x)
+
 5. Joan has at least one child with Kevin, and no children with anyone else.
+
+∃x Parent(Joan, x) &and; Parent(Kevin, x) &and; $\neg$∃y,c Parent(Joan, c) &and; Parent(y, c) &and; y $\neq$ Kevin
 
 8.29 (3 X 3 = 9 pts)
 
@@ -58,19 +98,19 @@ Unify(P(A,B,B), P(x,y,z))
 
 Unify(Q(y,G(A,B)), Q(G(x,x),y))
 
-{G(x,x)/y G(A,B)/y}
+Unification does not exist
 
 3. Older(Father(y),y), Older(Father(x),John).
 
 Unify(Older(Father(y),y), Older(Father(x),John))
 
-Unification does not exist
+{x/John y/John}
 
 4. Knows(Father(y),y), Knows(x,x).
 
 Unify(Knows(Father(y),y), Knows(x,x).)
 
-{Father(y)/y x/y}
+Unification does not exist
 
 9.9  (5 X 2 = 10 pts)
 
