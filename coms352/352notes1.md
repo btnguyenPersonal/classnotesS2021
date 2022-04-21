@@ -1915,3 +1915,33 @@ Sandbox
 Honeypot 
 
 - a fake environment intended to lure the attacker
+
+## Wasted network
+
+How do I ensure that a packet gets to an end user?
+
+get response back = good, get no response back = some failure
+
+Try to resend if get no response, then exponentially more time between changing responses
+
+e.g. 1 second, 2 seconds, 4 seconds, 8 seconds
+
+Transport layer process-to-process channel
+
+only 4 billion IPv4 addresses, not enough for current Internet usage
+
+FTP data transfer = 20
+
+FTP command control = 21
+
+SSH = 22
+
+telnet = 23
+
+SMTP (mail) = 25
+
+DNS = 53
+
+HTTP = 80
+
+HTTPS = 443

@@ -1,0 +1,99 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/ben/git/classnotesS2021/coms417/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+1	Assignment2.md	/^## 1$/;"	s	chapter:Assignment 2
+2	Assignment2.md	/^## 2$/;"	s	chapter:Assignment 2
+All Combinations (ACoC)	exam2notes.md	/^## All Combinations (ACoC)$/;"	s
+Assignment 2	Assignment2.md	/^# Assignment 2$/;"	c
+Assignment 4	Assignment4.md	/^# Assignment 4$/;"	c
+Automation	417notes1.md	/^#### Automation$/;"	t	section:Software Testing""Specification vs Structural Testing
+Base-Choice	exam2notes.md	/^## Base-Choice$/;"	s
+By Ben Nguyen	Assignment2.md	/^#### By Ben Nguyen$/;"	t	chapter:Assignment 2
+By Benjamin Nguyen (btnguyen)	Exam1.md	/^#### By Benjamin Nguyen (btnguyen)$/;"	t	chapter:Exam 1
+COMS 417 Assignment 1	hw1.md	/^# COMS 417 Assignment 1$/;"	c
+Category-Partition	417notes1.md	/^## Category-Partition$/;"	s	chapter:Software Testing
+Code Coverage	417notes1.md	/^#### Code Coverage$/;"	t	section:Software Testing""Triangle Example
+Combinatorial Interaction Testing (CIT)	exam2notes.md	/^## Combinatorial Interaction Testing (CIT)$/;"	s
+Coms 417 Software Testing: Exam 2	Exam2.md	/^# Coms 417 Software Testing: Exam 2$/;"	c
+Control Flow Graph (CFG)	exam2notes.md	/^## Control Flow Graph (CFG)$/;"	s
+Controllability	Exam1.md	/^#### Controllability$/;"	t	section:Exam 1""Problem 6
+Coverage After:	hw1.md	/^#### Coverage After:$/;"	t	chapter:COMS 417 Assignment 1
+Coverage Before:	hw1.md	/^#### Coverage Before:$/;"	t	chapter:COMS 417 Assignment 1
+DU	exam2notes.md	/^## DU$/;"	s
+DU Tables	exam2notes.md	/^## DU Tables$/;"	s
+Each Choice	exam2notes.md	/^## Each Choice$/;"	s
+Early testing Design	417notes1.md	/^## Early testing Design$/;"	s	chapter:Software Testing
+Exam 1	Exam1.md	/^# Exam 1$/;"	c
+Excise task vs Revenue task	417notes1.md	/^#### Excise task vs Revenue task$/;"	t	section:Software Testing""Specification vs Structural Testing
+Finding the overflow	hw1.md	/^#### Finding the overflow$/;"	t	chapter:COMS 417 Assignment 1
+Fixing the Faults	hw1.md	/^#### Fixing the Faults$/;"	t	chapter:COMS 417 Assignment 1
+Functional Units are aspects of the program behavior that can be tested independently	417notes1.md	/^#### Functional Units are aspects of the program behavior that can be tested independently$/;"	t	section:Software Testing""Category-Partition
+Functionality-Based	exam2notes.md	/^## Functionality-Based$/;"	s
+Initial `statistics.csv` output:	Assignment2.md	/^## Initial `statistics.csv` output:$/;"	s	chapter:Assignment 2
+JUnit Methods	417notes1.md	/^#### JUnit Methods$/;"	t	section:Software Testing""Specification vs Structural Testing
+Jacoco	417notes1.md	/^#### Jacoco$/;"	t	section:Software Testing""Specification vs Structural Testing
+Key Challenge	417notes1.md	/^#### Key Challenge$/;"	t	chapter:Software Testing
+Levels	417notes1.md	/^#### Levels$/;"	t	chapter:Software Testing
+Levels of Testing	417notes1.md	/^## Levels of Testing$/;"	s	chapter:Software Testing
+List the Test cases you have added and for each state:	hw1.md	/^#### List the Test cases you have added and for each state:$/;"	t	chapter:COMS 417 Assignment 1
+Maximum Coverage	hw1.md	/^#### Maximum Coverage$/;"	t	chapter:COMS 417 Assignment 1
+Model-Driven Testing	417notes1.md	/^#### Model-Driven Testing$/;"	t	chapter:Software Testing
+Multiple Base-Choice	exam2notes.md	/^## Multiple Base-Choice$/;"	s
+Mutation and Ground Strings	417notes1.md	/^## Mutation and Ground Strings$/;"	s	chapter:Software Testing
+Mutation testing	417notes1.md	/^## Mutation testing$/;"	s	chapter:Software Testing
+Mutation testing	exam2notes.md	/^## Mutation testing$/;"	s
+Observability	Exam1.md	/^#### Observability$/;"	t	section:Exam 1""Problem 6
+Observability and Controllability	417notes1.md	/^#### Observability and Controllability$/;"	t	section:Software Testing""Specification vs Structural Testing
+Pair-Wise	exam2notes.md	/^## Pair-Wise$/;"	s
+Prefix and Postfix Values	417notes1.md	/^#### Prefix and Postfix Values$/;"	t	section:Software Testing""Specification vs Structural Testing
+Problem 1	Exam1.md	/^## Problem 1$/;"	s	chapter:Exam 1
+Problem 2	Exam1.md	/^## Problem 2$/;"	s	chapter:Exam 1
+Problem 3	Exam1.md	/^## Problem 3$/;"	s	chapter:Exam 1
+Problem 4	Exam1.md	/^## Problem 4$/;"	s	chapter:Exam 1
+Problem 5	Exam1.md	/^## Problem 5$/;"	s	chapter:Exam 1
+Problem 6	Exam1.md	/^## Problem 6$/;"	s	chapter:Exam 1
+Q1	Assignment4.md	/^## Q1$/;"	s	chapter:Assignment 4
+Q1 (15 points)	Exam2.md	/^## Q1 (15 points)$/;"	s	chapter:Coms 417 Software Testing: Exam 2
+Q2	Assignment4.md	/^## Q2$/;"	s	chapter:Assignment 4
+Q2 (25 points)	Exam2.md	/^## Q2 (25 points)$/;"	s	chapter:Coms 417 Software Testing: Exam 2
+Q3	Assignment4.md	/^## Q3$/;"	s	chapter:Assignment 4
+Q3 (25 points)	Exam2.md	/^## Q3 (25 points)$/;"	s	chapter:Coms 417 Software Testing: Exam 2
+Q4	Assignment4.md	/^## Q4$/;"	s
+Q4 (25 points)	Exam2.md	/^## Q4 (25 points)$/;"	s	chapter:Coms 417 Software Testing: Exam 2
+Q5 (10 points)	Exam2.md	/^## Q5 (10 points)$/;"	s	chapter:Coms 417 Software Testing: Exam 2
+Regression Testing	417notes1.md	/^#### Regression Testing$/;"	t	section:Software Testing""Levels of Testing
+Section: 3:40 - 4:55	Exam1.md	/^#### Section: 3:40 - 4:55$/;"	t	chapter:Exam 1
+Software Testing	417notes1.md	/^# Software Testing$/;"	c
+Software testability	417notes1.md	/^#### Software testability$/;"	t	section:Software Testing""Specification vs Structural Testing
+Specification vs Structural Testing	417notes1.md	/^## Specification vs Structural Testing$/;"	s	chapter:Software Testing
+Standard Imports	417notes1.md	/^#### Standard Imports$/;"	t	section:Software Testing""Specification vs Structural Testing
+T-Wise	exam2notes.md	/^## T-Wise$/;"	s
+TSL (Test Specification Language)	exam2notes.md	/^## TSL (Test Specification Language)$/;"	s
+Test Automation	417notes1.md	/^#### Test Automation$/;"	t	section:Software Testing""Specification vs Structural Testing
+Test Automation Frameworks	417notes1.md	/^#### Test Automation Frameworks$/;"	t	section:Software Testing""Specification vs Structural Testing
+Test Criterion	417notes1.md	/^#### Test Criterion$/;"	t	section:Software Testing""Early testing Design
+Test Engineer	417notes1.md	/^#### Test Engineer$/;"	t	section:Software Testing""Triangle Example
+Test Fixture	417notes1.md	/^#### Test Fixture$/;"	t	section:Software Testing""Specification vs Structural Testing
+Test Manager	417notes1.md	/^#### Test Manager$/;"	t	section:Software Testing""Triangle Example
+Test requirements	417notes1.md	/^#### Test requirements$/;"	t	section:Software Testing""Early testing Design
+Top down	417notes1.md	/^#### Top down$/;"	t	section:Software Testing""Levels of Testing
+Traditional Testing Levels	417notes1.md	/^#### Traditional Testing Levels$/;"	t	section:Software Testing""Levels of Testing
+Triangle Example	417notes1.md	/^## Triangle Example$/;"	s	chapter:Software Testing
+Two Faults not due to numeric overflow	hw1.md	/^#### Two Faults not due to numeric overflow$/;"	t	chapter:COMS 417 Assignment 1
+Types of mutants	exam2notes.md	/^## Types of mutants$/;"	s
+`RIPR` Model	417notes1.md	/^#### `RIPR` Model$/;"	t	section:Software Testing""Triangle Example
+logo_homepage_link	New Tab.html	/^			<a id="logo_homepage_link" class="logo_homepage" href="\/about">$/;"	I
+pg-chrome_newtab	New Tab.html	/^<body id="pg-chrome_newtab" class="page-chrome_newtab body--home">$/;"	I
+search_button_homepage	New Tab.html	/^    <input id="search_button_homepage" class="search__button  js-search-button" type="submit" ta/;"	I
+search_elements_hidden	New Tab.html	/^    <div id="search_elements_hidden" class="search__hidden  js-search-hidden"><\/div>$/;"	I
+search_form_homepage	New Tab.html	/^        <form id="search_form_homepage" class="search  search--home  js-search-form" name="x" me/;"	I
+search_form_input_clear	New Tab.html	/^    <input id="search_form_input_clear" class="search__clear  empty  js-search-clear" type="butt/;"	I
+search_form_input_homepage	New Tab.html	/^    <input id="search_form_input_homepage" class="search__input  js-search-input" type="text" au/;"	I

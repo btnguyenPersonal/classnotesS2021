@@ -207,7 +207,7 @@ Four-Phase Problem Solving
       - `RESULT(Arad, ToZerind) = Zerind`
     - Action cost function
       - cost of applying action a in state s to reach s'
-    - Solution inital state &rarr; goal state
+    - Solution initial state &rarr; goal state
   - Execution
 
 ## Vacuum World
@@ -966,7 +966,7 @@ same probability for every outcome
 
 P(cavity|toothache) = $\frac{P(P(cavity \&\& toothache))}{P(toothache)}$
 
-Use Bayes rule to normalize (Bleh)
+Use Bayes rule to normalize
 
 - The disease meningitis causes a patient to have a stiff neck 70% of the time P(s|m)
 
