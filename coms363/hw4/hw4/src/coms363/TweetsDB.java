@@ -1,5 +1,8 @@
 package coms363;
 
+/**
+ * @author Benjamin Nguyen btnguyen
+ */
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -102,27 +105,17 @@ public class TweetsDB {
         rs.close();
     }
 
+    /**
+     * deletes the everything in the database related to the user_screen_name
+     * @param conn
+     * @param user_screen_name
+     */
     private static void deleteUser(Connection conn, String user_screen_name){
 
         if (conn==null 
                 || user_screen_name==null
                 ) throw new NullPointerException();
         try {
-            /* we want to make sure that all SQL statements for insertion 
-               of a new food are considered as one unit.
-               That is all SQL statements between the commit and previous commit 
-               get stored permanently in the DBMS or  all the SQL statements 
-               in the same transaction are rolled back.
-
-               By default, the isolation level is TRANSACTION_REPEATABLE_READ
-               By default, each SQL statement is one transaction
-
-               conn.setAutoCommit(false) is to 
-               specify what SQL statements are in the same transaction 
-               by a developer.
-               Several SQL statements can be put in one transaction.
-               */ 
-
             conn.setAutoCommit(false);
             // full protection against interference from other transaction
             // prevent dirty read
@@ -133,38 +126,42 @@ public class TweetsDB {
             PreparedStatement inststmt = conn.prepareStatement(" delete from Mentions where screen_name=? ");
             inststmt.setString(1, user_screen_name);
             int rowcount = inststmt.executeUpdate();
-            System.out.println("Number of mention rows updated:" + rowcount);
             inststmt.close();
 
-            inststmt = conn.prepareStatement(" delete from Mentions join Tweets join Users where Users.screen_name=? and Tweets.user_screen_name = Users.screen_name and Tweets.tid = Mentions.tid");
+            inststmt = conn.prepareStatement(" delete from Mentions where tid in ("
+            		+ " select tid from Tweets "
+            		+ " where Tweets.user_screen_name = ? "
+            		+ " );");
             inststmt.setString(1, user_screen_name);
-            rowcount = inststmt.executeUpdate();
-            System.out.println("Number of mention rows updated:" + rowcount);
+            rowcount += inststmt.executeUpdate();
             inststmt.close();
 
-            inststmt = conn.prepareStatement(" delete from HashTags join Tweets join Users where Users.screen_name=? and Tweets.user_screen_name = Users.screen_name and Tweets.tid = HashTags.tid");
+            inststmt = conn.prepareStatement(" delete from Hashtags where tid in ("
+            		+ " select tid from Tweets "
+            		+ " where Tweets.user_screen_name = ? "
+            		+ " );");            
             inststmt.setString(1, user_screen_name);
-            rowcount = inststmt.executeUpdate();
-            System.out.println("Number of hashtags rows updated:" + rowcount);
+            rowcount += inststmt.executeUpdate();
             inststmt.close();
 
-            inststmt = conn.prepareStatement(" delete from URLs join Tweets join Users where Users.screen_name=? and Tweets.user_screen_name = Users.screen_name and Tweets.tid = URLs.tid");
-            inststmt.setString(1, user_screen_name);
-            rowcount = inststmt.executeUpdate();
-            System.out.println("Number of url rows updated:" + rowcount);
+            inststmt = conn.prepareStatement(" delete from URLs where tid in ("
+            		+ " select tid from Tweets "
+            		+ " where Tweets.user_screen_name = ? "
+            		+ " );");            inststmt.setString(1, user_screen_name);
+            rowcount += inststmt.executeUpdate();
             inststmt.close();
 
             inststmt = conn.prepareStatement(" delete from Tweets where user_screen_name=? ");
             inststmt.setString(1, user_screen_name);
-            rowcount = inststmt.executeUpdate();
-            System.out.println("Number of tweet rows updated:" + rowcount);
+            rowcount += inststmt.executeUpdate();
             inststmt.close();
 
             inststmt = conn.prepareStatement(" delete from Users where screen_name=? ");
             inststmt.setString(1, user_screen_name);
-            rowcount = inststmt.executeUpdate();
-            System.out.println("Number of user rows updated:" + rowcount);
+            rowcount += inststmt.executeUpdate();
             inststmt.close();
+
+            System.out.println("Number of rows updated:" + rowcount);
 
             // Tell DBMS to make sure all the changes you made from 
             // the prior commit is saved to the database
@@ -178,9 +175,14 @@ public class TweetsDB {
     }
 
     /**
-     * Show an example of a transaction
-     * @param conn Valid database connection
-     * 		  fname: Name of a food to check
+     * inserts a tweet with given attributes
+     * @param conn
+     * @param post_day
+     * @param post_month
+     * @param post_year
+     * @param texts
+     * @param retweetCt
+     * @param user_screen_name
      */
     private static void insertTweet(Connection conn, String post_day, String post_month, String post_year, String texts, String retweetCt, String user_screen_name){
 
@@ -193,21 +195,6 @@ public class TweetsDB {
                 || user_screen_name==null
                 ) throw new NullPointerException();
         try {
-            /* we want to make sure that all SQL statements for insertion 
-               of a new food are considered as one unit.
-               That is all SQL statements between the commit and previous commit 
-               get stored permanently in the DBMS or  all the SQL statements 
-               in the same transaction are rolled back.
-
-               By default, the isolation level is TRANSACTION_REPEATABLE_READ
-               By default, each SQL statement is one transaction
-
-               conn.setAutoCommit(false) is to 
-               specify what SQL statements are in the same transaction 
-               by a developer.
-               Several SQL statements can be put in one transaction.
-               */ 
-
             conn.setAutoCommit(false);
             // full protection against interference from other transaction
             // prevent dirty read
@@ -235,7 +222,9 @@ public class TweetsDB {
                replaced by a value obtained from a user
                */
             PreparedStatement inststmt = conn.prepareStatement(
-                    " insert into Tweets (tid,post_day,post_month,post_year,texts,retweetCt,user_screen_name) values(?,?,?,?,?,?,?) ");
+                    " insert into Tweets "
+                    + "(tid,post_day,post_month,post_year,texts,retweetCt,user_screen_name) "
+                    + "values(?,?,?,?,?,?,?) ");
 
             inststmt.setLong(1, id+1);
             inststmt.setInt(2, Integer.parseInt(post_day));
@@ -261,17 +250,18 @@ public class TweetsDB {
             // Reset the autocommit to commit per SQL statement
             conn.setAutoCommit(true);
 
-        } catch (SQLException e) {
-        	System.out.println(e);
-        }
+        } catch (SQLException e) {}
 
     }
 
-    /* this example shows how to use a parameterized SQL query
-       @param conn: Valid connection to a dbms
-       iname: the name of the ingredient to check
-       */
-
+    /**
+     * returns the top 5 users that used the given hashtag the most in the state, month, and year given in the parameters
+     * @param conn
+     * @param hashtag
+     * @param post_month
+     * @param post_year
+     * @param state
+     */
     private static void getTopHashTagUsers(Connection conn, String hashtag, String post_month, String post_year, String state) {
 
         if (conn==null 
@@ -291,8 +281,18 @@ public class TweetsDB {
              * 
              */
             PreparedStatement lstmt = conn.prepareStatement(
-                    "select count(Tweets.tid) as tweet_count,Users.screen_name, Users.category, from Tweets, Users, HashTags where hashtag=? and post_month=? and post_year=? and state=? group by Users.screen_name order by count(Tweets.tid) desc limit 5");
-
+                    "select count(Tweets.tid) as tweet_count, Users.screen_name, Users.category"
+                    + " from HashTags"
+                    + " right join Tweets on Tweets.tid = HashTags.tid"
+                    + " right join Users on Tweets.user_screen_name = Users.screen_name"
+                    + " where HashTags.tid is not null"
+                    + " and HashTags.name=?"
+                    + " and Tweets.post_month=?"
+                    + " and Tweets.post_year=?"
+                    + " and Users.state=?"
+                    + " group by Users.screen_name"
+                    + " order by count(Tweets.tid) desc"
+        	);
             // clear previous parameter values
             lstmt.clearParameters();
 
@@ -304,11 +304,14 @@ public class TweetsDB {
             // execute the query
             rs=lstmt.executeQuery();
 
-            // advance the cursor to the first record
-            rs.next();
-            int count = rs.getInt(1);
+            while (rs.next()) {
+                System.out.println(
+                		"tweet_count: " + rs.getInt(1)
+                		+ " screen_name: " + rs.getString(2)
+                		+ " category: " + rs.getString(3)
+                		);
+            }
 
-            JOptionPane.showMessageDialog(null, toShow);
             lstmt.close();
             rs.close();
 
@@ -346,15 +349,14 @@ public class TweetsDB {
             String sqlQuery = "";
 
             String option = "";
-            // TODO change to a-c and e instead of 1-4
-            String instruction = "Enter 1: Insert a new Tweet into the tweets relation" + "\n"
-                + "Enter 2: Delete a user from the users relation given the user's screen name" + "\n" 
-                + "Enter 3: Report top 5 twitter users who used a given hashtag the most in their tweets posted in a given month of given year" + "\n"
-                + "Enter 4: Quit Program";
+            String instruction = "Enter a: Insert a new Tweet into the tweets relation" + "\n"
+                + "Enter b: Delete a user from the users relation given the user's screen name" + "\n" 
+                + "Enter c: Report top 5 twitter users who used a given hashtag the most in their tweets posted in a given month of given year" + "\n"
+                + "Enter e: Quit Program";
 
             while (true) {
                 option = JOptionPane.showInputDialog(instruction);
-                if (option.equals("1")) {
+                if (option.equals("a")) {
                     String post_day=JOptionPane.showInputDialog("Enter the day it was posted:");
                     String post_month=JOptionPane.showInputDialog("Enter the month the tweet was posted:");
                     String post_year=JOptionPane.showInputDialog("Enter the year the tweet was posted:");
@@ -362,20 +364,22 @@ public class TweetsDB {
                     String retweetCt=JOptionPane.showInputDialog("Enter how many retweets the tweet got:");
                     String user_screen_name=JOptionPane.showInputDialog("Enter the screen name of the user that posted:");
                     insertTweet(conn, post_day, post_month, post_year, texts, retweetCt, user_screen_name);
-                } else if (option.equals("2")) {
+                } else if (option.equals("b")) {
                     String user_screen_name=JOptionPane.showInputDialog("Enter the screen name of the user you would like to delete:");
                     String confirmation=JOptionPane.showInputDialog("Warning: all the tweets posted by this user will be deleted, do you still want to delete user (y/n):");
-                    if (confirmation == "y") {
+                    if (confirmation.equals("y")) {
                         deleteUser(conn, user_screen_name);
                     }
-                } else if (option.equals("3")) {
+                } else if (option.equals("c")) {
                     String hashtag=JOptionPane.showInputDialog("Enter the hashtag:");
                     String post_month=JOptionPane.showInputDialog("Enter the month the tweet was posted:");
                     String post_year=JOptionPane.showInputDialog("Enter the year the tweet was posted:");
                     String state=JOptionPane.showInputDialog("Enter the year the state users need to be from:");
                     getTopHashTagUsers(conn, hashtag, post_month, post_year, state);
-                } else {
+                } else if (option.equals("e")) {
                     break;
+                } else {
+                	break;
                 }
             }
             // close the statement
