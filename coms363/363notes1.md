@@ -128,3 +128,11 @@ number of bytes per row = 4 + 30 + 66 = 100
 number of rows per page = floor(2000/100) = 20
 
 number of pages = ceiling(10000/20) = 500
+
+a)
+b)
+c)
+d)
+e)
+f)
+g)

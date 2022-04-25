@@ -1945,3 +1945,35 @@ DNS = 53
 HTTP = 80
 
 HTTPS = 443
+
+--------------------------------------------------
+
+## Remote Procedure Call
+
+RPC have goal of making the process of executing code on a remote machine as simple and straight forward as calling a local function
+
+## Stub Generator Actions (Client Side)
+
+- Create a message buffer - a message buffer is usually just a contiguous array of bytes of some size
+
+- Path the needed information into the message buffer
+
+    - Putting all the information into a single contiguous buffer
+
+- Send the message to the destination RPC server
+
+- Wait for the reply
+
+- Unpack return code and other arguments
+
+- Return to the caller
+
+## Stub Generator Actions (Server Side)
+
+- Unpack the message
+
+- Call into the actual function
+
+- Package the results
+
+- Send the reply

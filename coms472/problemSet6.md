@@ -175,7 +175,7 @@ Fact 2: [ $\neg$S(r,r) &or; $\neg$S(Person,r) ]
 
 [ $\neg$S(Person,r) ] &or; [ S(Person,r) ]
 
-True
+True, therefore inconsistent
 
 9.29 (2 + 2 + 2 + 2 + 2 + 3 + 3 = 16 pts)
 
@@ -217,25 +217,21 @@ B: ∀y$\neg$∀x(x≥y)
 
 B: ∀y∃x$\neg$(x≥y) 
 
-B: ∃x$\neg$(x≥y) 
-
-B: ∃x(x\<y) 
-
-B: (X\<y) 
+B: $\neg$(X≥y)
 
 A: ∀x∃y(x≥y)
-
-A: ∃y(x≥y)
 
 A: (x≥Y)
 
 Unify(A, B)
 
-Unify((x≥Y), (X\<y))
+Unify((x≥Y), $\neg$(X≥y))
 
-Unification fails &rarr; Contradiction!
+{x/X, y/Y}
 
-Therefore, by contradiction A must entail B
+Unification works!
+
+Therefore, A cannot entail B
 
 7. Now try to prove that (B) follows from (A).
 
@@ -247,19 +243,13 @@ A: ∃x$\neg$∃y(x≥y)
 
 A: ∃x∀y$\neg$(x≥y)
 
-A: ∃x∀y(x\<y)
-
-A: ∃x(x\<y)
-
-A: (X\<y)
+A: $\neg$(X(y)≥y)
 
 B: ∃y∀x(x≥y) 
 
-B: ∃y(x≥y) 
+B: (x≥Y(x)) 
 
-B: (x≥Y) 
-
-Unify((x≥Y), (X\<y))
+Unify((x≥Y(x)), $\neg$(X(y)≥y))
 
 Unification fails &rarr; Contradiction!
 

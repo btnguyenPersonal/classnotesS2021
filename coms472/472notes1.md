@@ -977,3 +977,5 @@ Use Bayes rule to normalize
 (P(s|m) * P(m)) / P(s)
 
 Markov blanket consists of its parents, children, and children's parents
+
+
