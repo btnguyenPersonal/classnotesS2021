@@ -6,15 +6,25 @@ By Ben Nguyen
 
 Prove true or give counter example
 
-// look at slides for this one
-
 a. If $P(a | b, c) = P(b | a, c)$, then $P(a | c) = P (b | c)$.
 
-// kind of looks right
+$P(a | b, c)$ = $P(a, b, c)$ / $P(b, c)$
+
+$P(b | a, c)$ = $P(b, a, c)$ / $P(a, c)$
+
+$P(b | a, c)$ = $P(a, b, c)$ / $P(a, c)$
+
+$P(b, c)$ = $P(a, c)$
+
+$P(b | c)$ = $P(a | c)$
 
 b. If $P(a | b, c) = P(a)$, then $P(b | c) = P(b)$.
 
 Counter Example:
+
+// make non-number counter example
+
+// b and c do not affect chance of a so doesn't make sense
 
 $P(a | b, c)$ = 100%
 
@@ -26,7 +36,17 @@ $P(b)$ = 5%
 
 c. If $P(a | b) = P(a)$, then $P(a | b, c) = P(a | c)$.
 
-// b does not matter to a, so probably true
+$P(a | b, c)$
+
+$P(a, b, c) / P(b, c)$
+
+$((P(a) P(c)) P(b)) / ((P(c)) P(b))$ given $P(a | b) = P(a)$
+
+$(P(a) P(c)) / P(c)$
+
+$P(a | c)$
+
+True
 
 ## 13.8 (2 + 3 + 2 + 4 = 11 pts)
 

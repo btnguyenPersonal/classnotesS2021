@@ -976,6 +976,24 @@ Use Bayes rule to normalize
 
 (P(s|m) * P(m)) / P(s)
 
+## Gibbs Sampling
+
+???? kinda missed it
+
+## Example of Markov Blanket
+
 Markov blanket consists of its parents, children, and children's parents
 
+![](../pic/markovChain.png)
 
+P(Cloudy | Sprinkler = true, Rain = false)
+
+mb(Cloudy) = Cloudy, Sprinkler, Rain
+
+P(c | s, $\neg$ r) = a P( c ) P($\neg$ r | c) = a 0.5 * 0.1 * 0.2
+
+P($\neg$ c | s, $\neg$ r) = a P( $\neg$ c ) P($\neg$ r | $\neg$ c) = a 0.5 * 0.5 * 0.8
+
+Markov Chain is just simulating thousands of tries, and will converge on actual probability
+
+Stationary Distribution: as soon as update the markov chain values, and they are the same as previous
