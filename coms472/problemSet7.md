@@ -22,17 +22,16 @@ b. If $P(a | b, c) = P(a)$, then $P(b | c) = P(b)$.
 
 Counter Example:
 
-// make non-number counter example
+Proof by Counter Example:
 
-// b and c do not affect chance of a so doesn't make sense
+Let's say that the chance that there is going to be rain today given that there was snow yesterday and the day before is 70%.
 
-$P(a | b, c)$ = 100%
+Also, the chance that there is going to be rain today given no variables is also 70%.
 
-$P(a)$ = 100%
+Then, the relation above tells us that the chance of snow yesterday given that there is snow the day before is the same probability
+of having snow yesterday.
 
-$P(b | c)$ = 10%
-
-$P(b)$ = 5%
+This sentence does not make sense, so the prompt must be wrong.
 
 c. If $P(a | b) = P(a)$, then $P(a | b, c) = P(a | c)$.
 
@@ -54,23 +53,29 @@ Given the full joint distribution shown in Figure 13.3, calculate the following:
 
 ![](../pic/toothachecavity.png)
 
-// slides
-
 1. P(Toothache).
 
 .108 + .012 + .016 + .064 = 0.2
 
-2. P(Cavity).
+P(Toothache) = 0.2
+
+2. P(cavity).
 
 .108 + 0.012 + .072 + .008 = 0.2
 
-3. P(Toothache | Cavity).
+P(cavity) = <0.2, 0.8>
+
+3. P(Toothache | cavity).
 
 (.108 + 0.012) / 0.2 = 0.6
+
+P(Toothache | cavity) = <0.6, 0.4>
 
 4. P(Cavity | Toothache ∨ Catch).
 
 (.108 + 0.012 + 0.072) / 0.416 = 0.4615
+
+P(Cavity | Toothache ∨ Catch) = <0.4615, 0.5385>
 
 ## 13.18 (12 pts)
 
@@ -93,8 +98,6 @@ P(HaveDisease | TestPositive) = (0.000099) / (0.010098)
 P(HaveDisease | TestPositive) = 0.00980392156863
 
 P(HaveDisease | TestPositive) = Approximately 0.98% chance
-
-// TODO answer questions
 
 ## 13.26 (10 pts)
 
@@ -120,7 +123,9 @@ P(TaxiColor = Blue) = 0.1
 
 P(TaxiColor = Green) = 0.9
 
-// Bayes' Theorem probably
+$\frac{0.75 * 0.1}{0.25 * 0.9 + 0.75 * 0.1}$ = 0.25
+
+There is a now a 25% chance that the witness is right
 
 ## 14.5 (3 + 9 = 13 pts)
 
@@ -130,8 +135,30 @@ Consider the Bayesian network in Figure burglary-figure.
 
 1. If no evidence is observed, are Burglary and Earthquake independent? Prove this from the numerical semantics and from the topological semantics.
 
-// prob are independent bc parent nodes
+P(Burglary) * P(Earthquake) = 0.000002, and since that is so close to 0, they are almost certainly independent
 
 2. If we observe Alarm true, are Burglary and Earthquake independent? Justify your answer by calculating whether the probabilities involved satisfy the definition of conditional independence.
 
-// prob true cuz proffy
+P(Burglary | Alarm = true) * P(Earthquake | Alarm = true)
+
+(P(Burglary = true, Earthquake = true | Alarm = true) + P(Burglary = true, Earthquake = false | Alarm = true)
+/
+P(Burglary = true, Earthquake = false | Alarm = true) + P(Burglary = true, Earthquake = false | Alarm = true) + P(Burglary = false, Earthquake = false | Alarm = true) + P(Burglary = false, Earthquake = false | Alarm = true))
+*
+(P(Burglary = true, Earthquake = true | Alarm = true) + P(Burglary = false, Earthquake = true | Alarm = true))
+/
+(P(Burglary = true, Earthquake = false | Alarm = true) + P(Burglary = true, Earthquake = false | Alarm = true) + P(Burglary = false, Earthquake = false | Alarm = true) + P(Burglary = false, Earthquake = false | Alarm = true))
+
+(0.95 + 0.94)
+/
+(0.95 + 0.94 + 0.29 + 0.001)
+*
+(0.95 + 0.29)
+/
+(0.95 + 0.94 + 0.29 + 0.001)
+
+(1.89 / 2.181) * (1.24 / 2.181)
+
+0.492688
+
+Therefore, the Burglary and Earthquake are not independent because the product of the probabilities is not equal to 0

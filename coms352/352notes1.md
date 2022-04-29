@@ -1977,3 +1977,129 @@ RPC have goal of making the process of executing code on a remote machine as sim
 - Package the results
 
 - Send the reply
+
+## Network File System (NFS)
+
+Open standard, and everyone can make whatever they wanted using the standard
+
+Advantages:
+
+- Provide easy sharing of data across clients
+
+- Centralized administration of file system
+
+client 0 -\>
+
+client 1 -\> Network -\> Server <\- Raid
+
+client 2 -\>
+
+client 3 -\>
+
+## Architecture
+
+distinguish between client-side and server-side components
+
+system call is identical to local files system, provides client with transparent access
+
+## Stateful Server
+
+__stateful server__ 
+
+- Means the server maintains information about the client's state, a server without a client stat is __stateless__
+
+| Client | process | fd | inode | lseek |
+| :---: | :---: | :---: | :---: | :---: |
+| 1 | 2018 | ... | ... | ... |
+| 2 | 403 | ... | ... | ... |
+| 3 | 685 | ... | ... | ... |
+
+Cons
+
+- What happens when the server crashes?
+
+- Need to reestablish connections with all clients and request their state to rebuild the complete state on server
+
+- Slow recovery, extra complexity for client
+
+## Fast Server Crash Recovery
+
+- In distributed system we expect servers to crash, design goal is for server to __recover__ quickly
+
+- What if server is stateless? All recovery is local
+
+- Does not remember everything about client
+
+## Client/Server Protocol
+
+A file handle has volume identifier, inode number, and generation number
+
+__Generation number__ identifies the version of the inode
+
+- Unix filesystems often allow reusing inode numbers after a file has been deleted
+
+Common commands sent from client to server
+
+- LOOKUP - obtain file handle
+
+- READ - read from file at specified location at number of bytes
+
+- WRITE - write to file at specified location at number of bytes
+
+- GETATTR - get the attributes for a file
+
+## Retry on Failure
+
+Possible failures:
+
+- network failure
+
+- server crashed and is rebooting
+
+- server is under heavy load and is slow completing the operation
+
+## Case 1: Request lost
+
+- can resend
+
+## Case 2: Server down
+
+- can resend
+
+## Case 3: Reply lost on way back to client
+
+- can't resend
+
+## Idempotency
+
+performing an operation multiple times is equivalent to the effect of performing the operation a single time
+
+Are these Idempotent?
+
+LOOKUP - yes
+READ - yes
+WRITE - yes
+APPEND - no (NFS actually doesn't have this command because it is only Idempotent)
+GETATTR - yes
+
+If you want to append, can just use GETATTR to get file size, then WRITE past EOF
+
+## Client-side caching
+
+sending every read and write request over network has big performance penalty, order of magnitude slower than a local file system
+
+__Write Buffering__ - means write goes to cache first and then later the changes are pushed to the server
+
+## Cache Consistency Problem
+
+Different Clients can get different files based on the __update visibility__ (one client made an update, and other clients have not updated yet)
+
+__stale cache__ - a client could have an out-of-date cache
+
+Flush-on-close - means cache is always flushed when the application closes a file
+
+- not a perfect solution, update visibility problem still exists, but is mitigated for common file usage patterns
+
+GETATTR command will indicate time of last modification to file
+
+Results in a flood of GETATTR commands, solution is to add a local attribute cache that updates contents only after a timeout
