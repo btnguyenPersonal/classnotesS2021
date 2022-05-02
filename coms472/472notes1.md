@@ -997,3 +997,50 @@ P($\neg$ c | s, $\neg$ r) = a P( $\neg$ c ) P($\neg$ r | $\neg$ c) = a 0.5 * 0.5
 Markov Chain is just simulating thousands of tries, and will converge on actual probability
 
 Stationary Distribution: as soon as update the markov chain values, and they are the same as previous
+
+Propositional logic
+- knowledge base and inference;
+- syntax and semantics;
+- entailment vs derivation, soundness, and completeness;
+- truth table and model checking;
+- logical equivalence, satisfiability, and monotonocity;
+- conjunctive normal form;
+- resolution, resolvent, refutation, resolution tree, and the resolution algorithm;
+- Horn clause, definite clause, fact, and goal clause;
+- forward chaining and backward chaining;
+- propositional model checking (DPLL algorithm).
+
+First-order logic
+- syntax, constants, variables, functions, predicates, and terms;
+- quantifiers, nested quantification, precedence, and negation;
+- free and bound variable and equality;
+- models for FOL, assertions, queries, axioms, and theorems;
+- domains of kinship and natural numbers, sets, the wumpus world, and electronic circuits in FOL;
+- instantiations of quantifiers, ground term, and Skolem constant;
+- generalized modus ponens and unification;
+- first-order definite clauses;
+- translation of natural language sentences;
+- simple forward chaining (FC), proof tree, matching a definite clause, and incremental FC;
+- backward chaining and depth-first proof tree;
+- conversion to CNF, eliminations of implication, negation, standardization, Skolemization, and distribution of disjunction over conjuction;
+- resolution in FOL, inference rule (with unification), proof examples, completeness, and handling of equality.
+
+Uncertain knowledge and reasoning
+- probability space, sample space, event, prior and posterior, and random variable;
+- cumulative distribution function, probability density function, uniform distribution, joint probability, Kolmogorov's axioms, and inconsistent beliefs;
+- mean, variance, standard deviation, and Gaussian distribution;
+- the P notation, joint probability distribution, and its table representation;
+- marginalization, conditioning, computation of conditional probabilities, normalization, and independent random variables;
+- Bayes' rule, causal and diagnostic relationships, omission of the evidence's prior probability, general form, conditional independence, decomposition of joint distribution, naive Bayes model, and text classification;
+- Bayesian networks, DAG representation, conditional probability tables, semantics, probability calculation, domain representation, topological order, construction, and compactness;
+- Markov blanket, moral graph, and d-separation;
+- inference by enumeration, expression tree, factors, pointwise product, summing out hidden variables, variable ordering, and handling of irrelevant variables;
+- direct sampling, approximate inference, event generation from random sampling, probability estimation for partially specified event, rejection sampling;
+- Gibbs sampling, Markov blanket distribution, Markov chain, transition kernel, stationary distribution, and detailed balance.
+
+Machine learning
+- learning agents and applications of ML;
+- supervised learning, training set, hypothesis space, and ground truth;
+- best-fit function, underfitting, overfitting, variance, and most probable hypothesis;
+- decision trees, their expressiveness, poor and good attributes, construction algorithm, four cases, and learning curve;
+- entropy of a random variable, attribute selection, expected entropy after an attribute test, and information gain.
