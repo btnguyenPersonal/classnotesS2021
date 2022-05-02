@@ -1896,23 +1896,23 @@ name given to everything in the trusted operating system that is necessary to en
 
 ## Operating System tools for security
 
-Virtualization 
+Virtualization
 
 - providing the appearance of one set of resources by using different resources
 
-Virtual Machine 
+Virtual Machine
 
 - present to the users only the resources they need, giving the user the impression their program its running on its own machine
 
-Hypervisor (virtual machine monitor) 
+Hypervisor (virtual machine monitor)
 
 - software that implements a virtual machine
 
-Sandbox 
+Sandbox
 
 - similar to virtualization, a protected environment in which a program can run and not endanger anything else on the system
 
-Honeypot 
+Honeypot
 
 - a fake environment intended to lure the attacker
 
@@ -2004,7 +2004,7 @@ system call is identical to local files system, provides client with transparent
 
 ## Stateful Server
 
-__stateful server__ 
+__stateful server__
 
 - Means the server maintains information about the client's state, a server without a client stat is __stateless__
 
@@ -2103,3 +2103,43 @@ Flush-on-close - means cache is always flushed when the application closes a fil
 GETATTR command will indicate time of last modification to file
 
 Results in a flood of GETATTR commands, solution is to add a local attribute cache that updates contents only after a timeout
+
+# AFS version 1
+
+Client side is Venus and server-side is Vice
+
+whole-file caching
+
+Path-traversal cost too high
+
+Too many TestAuth messages
+
+Load not balanced across servers
+
+These problems resulted in server CPU becoming bottleneck (a server could only handle 20 clients)
+
+## Volumes 
+
+- directories are mounted to __volumes__
+
+Administrator can move volumes across servers to balance load
+
+## Callback 
+
+- to solve problem of too many AuthTest messages, use callback to reduce number of interactions with server
+
+Server promises to inform client when a file is modified
+
+## File Identifier (FID)
+
+to solve problem of too many path traversals on server, use file identifier
+
+client no longer requires server to traverse absolute path every time
+
+## Opening a file the second time
+
+Last writer always wins
+
+## Recovery after crash
+
+Heartbeat protocol, client sends periodic message and expects response
