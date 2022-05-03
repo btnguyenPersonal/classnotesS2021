@@ -998,6 +998,18 @@ Markov Chain is just simulating thousands of tries, and will converge on actual 
 
 Stationary Distribution: as soon as update the markov chain values, and they are the same as previous
 
+# Machine Learning
+
+Supervised learning - take data set, and get a function to model it
+
+Best-Fit function - with noise in data, we cannot expect an exact match with the ground truth
+
+Noise gets in the way, do not overfit the data
+
+underfitting - fails to find the pattern in the data
+
+Decision Tree gives back understandable output of the algorithm
+
 Propositional logic
 - knowledge base and inference;
 - syntax and semantics;
