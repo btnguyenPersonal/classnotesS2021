@@ -991,7 +991,7 @@ P(Cloudy | Sprinkler = true, Rain = false)
 mb(Cloudy) = Cloudy, Sprinkler, Rain
 
 P(c | s, $\neg$ r) = a P( c ) P($\neg$ r | c) = a 0.5 * 0.1 * 0.2
-
+https://git.linux.iastate.edu/seniordesigncoms/2022spring/2022_1_11_tancreti_embedded/ostestbed/-/merge_requests/35
 P($\neg$ c | s, $\neg$ r) = a P( $\neg$ c ) P($\neg$ r | $\neg$ c) = a 0.5 * 0.5 * 0.8
 
 Markov Chain is just simulating thousands of tries, and will converge on actual probability
@@ -1009,6 +1009,30 @@ Noise gets in the way, do not overfit the data
 underfitting - fails to find the pattern in the data
 
 Decision Tree gives back understandable output of the algorithm
+
+suboptimal tree can be constructed with simple heuristics
+
+- suboptimal means not the smallest size
+
+## Learning DTs
+
+Output Decision Tree
+
+Yes/No tree, until every choice is covered
+
+Decision Trees many times can be simplified if an attribute does not matter
+
+Entropy: Random variable $V$ with values $v_k$ having probability P($v_k$)
+
+H(V) = $\sum_{k}{P(v_k) log_2 \frac{1}{P(v_k)}}$
+
+Boolean random variable that is true with probability $q$
+
+$B(q) = -(q log_2 q + (1-q) log_2 (1-q))$
+
+## Information Gain (calculation)
+
+---
 
 Propositional logic
 - knowledge base and inference;

@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Finish Testing project
+- [X] Finish Testing project
 
 - [ ] All of AI slides, and pick out key ones BACKWARDS (5/6 of points will be on this sem)
 
